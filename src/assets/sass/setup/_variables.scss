@@ -2,8 +2,8 @@
 $layoutPadding: 20px;
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 1200px;
-$break-normal: 1360px;
+$break-narrow: 750px;
+$break-normal: 1000px;
 $break-wide: 1920px;
 
 $padded-break-narrow: $break-narrow + $layoutPadding * 2;
@@ -14,7 +14,6 @@ $padded-break-wide: $break-wide + $layoutPadding * 2;
 $poppins-light: 'poppins-light', Calibri, 'san-serif';
 $poppins-medium: 'poppins-medium', Calibri, 'san-serif';
 $poppins-bold: 'poppins-bold', Calibri, 'san-serif';
-
 
 //COLOR PALETTE
 $color-highlight_blue: #cce5ff;
@@ -54,7 +53,6 @@ $grey-background-color: #f6f7fb;
 $allgrey-background-color: #f6f7fb;
 $inverted-color-background: #323338;
 $disabled-background-color: #ecedf5;
-$disabled-text-color: rgba(50, 51, 56, var($disabled-component-opacity));
 $positive-color: #258750;
 $positive-color-hover: #007038;
 $positive-color-selected: #bbdbc9;
@@ -286,7 +284,6 @@ $primary-background-hover-on-secondary-color: #dcdfec;
 $modal-background-color: #ffffff;
 $secondary-background-color-rgb: 255,255,255;
 $disabled-background-on-secondary-color: #ecedf5;
-$disabled-text-on-secondary-color: rgba(50, 51, 56, var($disabled-component-opacity));
 $ui-border-on-secondary-color: #c3c6d4;
 $layout-border-on-secondary-color: #d0d4e4;
 $dark-background-color: #f6f7fb;
