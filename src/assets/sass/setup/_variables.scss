@@ -11,9 +11,14 @@ $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
 //FONTS
-$poppins-light: 'poppins-light', Calibri, 'san-serif';
-$poppins-medium: 'poppins-medium', Calibri, 'san-serif';
-$poppins-bold: 'poppins-bold', Calibri, 'san-serif';
+$poppins-light: 'poppins-light', Calibri, Arial, 'san-serif';
+$poppins-medium: 'poppins-medium', Calibri, Arial, 'san-serif';
+$poppins-semiBold: 'poppins-bold', Calibri, Arial,'san-serif';
+
+$figtree-regular: 'figtree-regular', Calibri, Arial,'san-serif';
+$figtree-bold: 'figtree-bold', Calibri, Arial,'san-serif';
+
+
 
 //COLOR PALETTE
 $color-highlight_blue: #cce5ff;
