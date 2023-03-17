@@ -1,4 +1,14 @@
 @font-face {
-    font-family: Bahnschrift;
-    src: url(~@/assets/fonts/Bahnschrift/bahnschrift.ttf);
+    font-family: 'poppins-light';
+    src: url(@/assets/fonts/poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: 'poppis-medium';
+    src: url(@/assets/fonts/poppins/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'poppins-bold';
+    src: url(@/assets/fonts/poppins/Poppins-SemiBold.ttf);
 }

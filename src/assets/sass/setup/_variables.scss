@@ -1,4 +1,3 @@
-
 // LAYOUT
 $layoutPadding: 20px;
 
@@ -11,7 +10,13 @@ $padded-break-narrow: $break-narrow + $layoutPadding * 2;
 $padded-break-normal: $break-normal + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;
 
+//FONTS
+$poppins-light: 'poppins-light', Calibri, 'san-serif';
+$poppins-medium: 'poppins-medium', Calibri, 'san-serif';
+$poppins-bold: 'poppins-bold', Calibri, 'san-serif';
 
+
+//COLOR PALETTE
 $color-highlight_blue: #cce5ff;
 $color-basic_blue: #0073ea;
 $color-dark_blue: #0060b9;
