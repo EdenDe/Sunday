@@ -1,11 +1,3 @@
-<template>
-  <section>
-    <p class="font-bold"> hi! we are tinto team whoooooo hooooooooo </p>
-    <p> hi! we are tinto team whoooooo hooooooooo </p>
+<template></template>
 
-  </section>
-</template>
-
-<script>
-
-</script>
+<script></script>
