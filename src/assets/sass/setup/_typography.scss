@@ -1,14 +1,48 @@
+// Poppins
 @font-face {
     font-family: 'poppins-light';
-    src: url(@/assets/fonts/poppins/Poppins-Light.ttf);
+    src: url(@/assets/fonts/Poppins/Poppins-Light.ttf);
 }
 
 @font-face {
     font-family: 'poppis-medium';
-    src: url(@/assets/fonts/poppins/Poppins-Medium.ttf);
+    src: url(@/assets/fonts/Poppins/Poppins-Medium.ttf);
 }
 
 @font-face {
-    font-family: 'poppins-bold';
-    src: url(@/assets/fonts/poppins/Poppins-SemiBold.ttf);
+    font-family: 'poppins-SemiBold';
+    src: url(@/assets/fonts/Poppins/Poppins-SemiBold.ttf);
 }
+
+// Figtree
+@font-face {
+    font-family: 'figtree-light';
+    src: url(@/assets/fonts/Figtree/Figtree-Light.ttf);
+}
+
+@font-face {
+    font-family: 'figtree-regular';
+    src: url(@/assets/fonts/Figtree/Figtree-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'figtree-semiBold';
+    src: url(@/assets/fonts/Figtree/Figtree-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: 'figtree-bold';
+    src: url(@/assets/fonts/Figtree/Figtree-Bold.ttf);
+}
+
+// Roboto
+@font-face {
+    font-family: 'roboto-semiBold';
+    src: url(@/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'roboto-bold';
+    src: url(@/assets/fonts/Roboto/Roboto-Bold.ttf);
+}
+

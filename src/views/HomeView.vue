@@ -1,5 +1,3 @@
-<template>
-  <h1>hii</h1>
-</template>
+<template></template>
 
 <script></script>
