@@ -3,27 +3,30 @@
   background-color: $color-surface;
   display: flex;
   flex-direction: column;
+  width: 66px;
   justify-content: space-between;
   .icon {
     @include icon;
   }
   .monday-icon-wrapper {
-    border-bottom: 1px solid $color-asphalt;
-    margin-bottom: 10px;
+    margin-top: em(8px) 0;
+    margin-bottom: em(8px);
   }
   .icon-wrapper {
-    display: flex;
-    justify-content: center;
-    width: em(36px);
-    height: em(36px);
     border-radius: 6px;
     margin-bottom: em(8px);
-    &.bottom {
+    .svg {
+      display: flex;
+      justify-content: center;
     }
-    .bottom-icon-wrapper {
-      width: em(42px);
-      height: em(42px);
+    .nav-item {
+      height: em(36px);
+      width: em(36px);
     }
+  }
+  .bottom-icon-wrapper {
+    width: em(42px);
+    height: em(42px);
   }
   .top-navigation-items-area {
     flex-grow: 1;
@@ -31,7 +34,24 @@
 
   .bottom-navigation-items-area {
     flex-shrink: 0;
-    border-bottom: 1px solid $color-asphalt;
-    padding-bottom: 1px;
+    padding-bottom: em(1px);
+  }
+
+  .navigation-style-divider {
+    margin: 0 em(8px);
+    width: em(50px);
+    background-color: $color-asphalt;
+    height: em(1px);
+    margin-bottom: em(12px);
+  }
+  .avatar-wrapper {
+    padding: 10px 6px 6px;
+    .avatar-preview {
+      border-radius: 50%;
+      border: 2px solid $color-snow_white;
+      background-image: url("https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png");
+      width: rem(40px);
+      height: rem(40px);
+    }
   }
 }
