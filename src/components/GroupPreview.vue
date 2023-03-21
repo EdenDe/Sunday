@@ -3,7 +3,7 @@
     <span contenteditable class="group-title" :style="{ color: group.color }" :data-tasks-count="group.tasks.length">
       {{ group.title }}
     </span>
-    <VueDraggableNext class="group-labels grid" v-model="labels" @change="log">
+    <VueDraggableNext class="group-labels" v-model="labels" @change="log">
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
 
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       titleEdtiable: false,
-      labels: ['task', null, 'status', 'members', 'priority', 'date'],
+      labels: [null, 'task', 'status', 'priority', 'members', 'date'],
       progress: [null, null, 'status', null, 'priority', null],
     }
   },

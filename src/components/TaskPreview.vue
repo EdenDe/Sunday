@@ -1,5 +1,5 @@
 <template>
-  <section class="" v-for="(cmp, idx) in cmpOrder" :key="idx">
+  <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
     <component :is="cmp" :info="task[cmp]"></component>
   </section>
 </template>

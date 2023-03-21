@@ -1,6 +1,6 @@
 <template>
   <section v-if="member">
-    <section v-if="member.imgUrl" class="member-priview">
+    <section v-if="member.imgUrl" class="avatar">
       <img :src="member.imgUrl" alt="" />
     </section>
     <article :style="{ background: memberColor }" v-else class="member-priview">
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "member-priview",
+  name: "avatar",
   props: {
     member: Object,
   },

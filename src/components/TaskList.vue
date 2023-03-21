@@ -2,7 +2,6 @@
   <DraggableNext v-if="currTasks" v-model="currTasks" @moved="changeIndex">
     <section class="task-list" v-for="task, index in currTasks" :key="index">
       <TaskPreview :task="task" />
-      <i v-icon="'trash'"> </i>
     </section>
   </DraggableNext>
 </template>
@@ -27,9 +26,6 @@ export default {
     changeIndex() {
 
     }
-  },
-  computed: {
-
   },
   created() {
     console.log("TaskList", this.tasks)

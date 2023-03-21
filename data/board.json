@@ -13,19 +13,61 @@
     "taskTitle",
     "status",
     "priority",
-    "TaskMembers",
-    "TaskDate"
+    "person",
+    "date"
   ],
-  "labels": [
+  "priorityLabels": [
+    {
+        "id": "pl101",
+        "taskTitle": "Critical",
+        "color": "#333333"
+    },
+    {
+        "id": "pl102",
+        "taskTitle": "High",
+        "color": "#401694"
+    },
+    {
+      "id": "pl103",
+      "taskTitle": "Medium",
+      "color": "#5559df"
+    },
+    {
+      "id": "pl104",
+      "taskTitle": "Low",
+      "color": "#579bfc"
+    },
+    {
+      "id": "pl105",
+      "taskTitle": "",
+      "color": "#c4c4c4"
+    }
+  ],
+  "statusLabels": [
       {
           "id": "l101",
           "taskTitle": "Done",
-          "color": "#61bd4f"
+          "color": "#00c875"
       },
       {
           "id": "l102",
-          "taskTitle": "Progress",
-          "color": "#61bd33"
+          "taskTitle": "Working on it",
+          "color": "#fdab3d"
+      },
+      {
+        "id": "l103",
+        "taskTitle": "Stuck",
+        "color": "#e2445c"
+      },
+      {
+        "id": "l104",
+        "taskTitle": "Need help",
+        "color": "#a25ddc"
+      },
+      {
+        "id": "l105",
+        "taskTitle": "Finishing soon",
+        "color": "#2b76e5"
       }
   ],
   "members": [
@@ -51,8 +93,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "IN WORK",
-          "priority": "LOW"
+          "status": "Working on it",
+          "priority": "Critical"
         },
         {
           "id": "t102",
@@ -63,9 +105,9 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "Date": "27-02-2022",
-          "status": "STUCK",
-          "priority": "LOW"
+          "date": "27-02-2022",
+          "status": "Stuck",
+          "priority": "Low"
         },
         {
           "id": "t103",
@@ -77,8 +119,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "DONE",
-          "priority": "LOW"
+          "status": "Done",
+          "priority": "Low"
         }
       ]
     },
@@ -97,8 +139,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "IN WORK",
-          "priority": "LOW"
+          "status": "Working on it",
+          "priority": "Low"
         },
         {
           "id": "t102",
@@ -110,8 +152,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "STUCK",
-          "priority": "LOW"
+          "status": "Finishing soon",
+          "priority": "Critical"
         },
         {
           "id": "t103",
@@ -123,8 +165,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "DONE",
-          "priority": "LOW"
+          "status": "Need help",
+          "priority": "Medium"
         }
       ]
     },
@@ -143,8 +185,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "IN WORK",
-          "priority": "LOW"
+          "status": "Working on it",
+          "priority": "High"
         },
         {
           "id": "t102",
@@ -156,8 +198,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "STUCK",
-          "priority": "LOW"
+          "status": "Stuck",
+          "priority": ""
         },
         {
           "id": "t103",
@@ -169,8 +211,8 @@
             { "name": "shal", "color": "green" }
           ],
           "date": "27-02-2022",
-          "status": "DONE",
-          "priority": "LOW"
+          "status": "Done",
+          "priority": "High"
         }
       ]
     }

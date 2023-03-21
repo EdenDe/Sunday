@@ -17,11 +17,29 @@ $poppins-semiBold: "poppins-bold", Calibri, Arial, "san-serif";
 
 $figtree-regular: "figtree-regular", Calibri, Arial, "san-serif";
 $figtree-bold: "figtree-bold", Calibri, Arial, "san-serif";
+$poppins-light: "poppins-light", Calibri, Arial, "san-serif";
+$poppins-medium: "poppins-medium", Calibri, Arial, "san-serif";
+$poppins-semiBold: "poppins-bold", Calibri, Arial, "san-serif";
+
+$figtree-regular: "figtree-regular", Calibri, Arial, "san-serif";
+$figtree-bold: "figtree-bold", Calibri, Arial, "san-serif";
+
+// MARGIN
+$margin-small: 8px;
+
+//PADDIND
+$padding-small: 8px;
+$padding-medium: 16px;
+
+// BORDER RADIUS
+$border-radius: em(5px);
+$btn-border-radius: 5px;
 
 //COLOR PALETTE
 $color-highlight_blue: #cce5ff;
 $color-basic_blue: #0073ea;
 $color-dark_blue: #0060b9;
+$color-blue-btn: #0071d9;
 $color-bazooka: #f65f7c;
 $color-snow_white: #ffffff;
 $color-riverstone_gray: #f6f7fb;
