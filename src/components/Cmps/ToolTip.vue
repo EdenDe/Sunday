@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     showTooltip() {
-      console.log("hi");
       this.visible = true;
     },
     hideTooltip() {

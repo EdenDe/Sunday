@@ -1,7 +1,8 @@
 <template>
-  <DraggableNext v-if="currTasks" v-model="currTasks" @change="log">
-    <section class="group grid" v-for="task, index in currTasks" :key="index">
+  <DraggableNext v-if="currTasks" v-model="currTasks" @moved="changeIndex">
+    <section class="task-list" v-for="task, index in currTasks" :key="index">
       <TaskPreview :task="task" />
+      <i v-icon="'trash'"> </i>
     </section>
   </DraggableNext>
 </template>
@@ -23,6 +24,9 @@ export default {
       console.log(event);
       console.log("this.labels:", this.labels);
     },
+    changeIndex() {
+
+    }
   },
   computed: {
 

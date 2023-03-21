@@ -23,10 +23,7 @@
   }
 }
 
-
-
 /* Media  Mixins */
-
 
 // Mixin for removing hover effects on iphone screen
 @mixin hover-supported {
@@ -39,29 +36,25 @@
 
 // Type
 @mixin type($type: bold) {
-  // type options: 
-  // 1.bold 
-  // 2.boldCondensed 
+  // type options:
+  // 1.bold
+  // 2.boldCondensed
   // 3.condensed
   @if $type == bold {
     font-weight: 900;
-  } 
-  @else if $type == boldCondensed {
+  } @else if $type == boldCondensed {
     font-weight: 430;
     letter-spacing: em(6.72px);
-  } 
-  @else if $type == condensed {
+  } @else if $type == condensed {
     letter-spacing: em(6.72px);
-  }
-  @else if $type == light {
+  } @else if $type == light {
     font-weight: 200;
   }
 }
 
-
-@mixin tooltip ($pos: bottom){
+@mixin tooltip($pos: bottom) {
   position: absolute;
-  
+
   background-color: #323338;
   color: #f8f8f8;
   padding: em(5px) em(10px);
@@ -72,28 +65,26 @@
   opacity: 0;
   transition: opacity 0.3s;
 
-  @if $pos == bottom{
+  @if $pos == bottom {
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-  }
-  @else if $pos == right{
+  } @else if $pos == right {
     // TODO: fix positioning
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-  }
-  @else if $pos == top{
+  } @else if $pos == top {
     // TODO: fix positioning
     bottom: -25%;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  @include tooltip-arrow()
+  @include tooltip-arrow();
 }
 
-@mixin tooltip-arrow{
+@mixin tooltip-arrow {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -112,7 +103,8 @@
 
 }
 
-@mixin btn-hover{
+
+@mixin btn-hover {
   background-color: $primary-background-hover-color;
   border-radius: $btn-border-radius;
 }
@@ -123,7 +115,18 @@
 
 }
 
-@mixin sidenav{
+@mixin sidenav {
   height: 100vh;
   width: 100%;
+}
+@mixin icon($color: #ffffff) {
+  height: 23px;
+  width: 23px;
+  fill: $color;
+}
+
+
+@mixin task-grid-cols{
+  display:grid;
+  grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
 }

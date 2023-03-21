@@ -1,24 +1,24 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html { 
-    font-family: $figtree-regular; 
-   color: $primary-text-color;
-//    line-height: 1.8;
-//    line-height: lh(26px);
+html {
+  font-family: $figtree-regular;
+  color: $primary-text-color;
+  //    line-height: 1.8;
+  //    line-height: lh(26px);
 }
 
 body {
-    background-color: $primary-background-color;
+  background-color: $primary-background-color;
 
-    @include for-normal-layout {
-        // &.sidebar-open {
-        //     overflow: hidden;
-        // }
-    }
+  @include for-normal-layout {
+    // &.sidebar-open {
+    //     overflow: hidden;
+    // }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,30 +29,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-	text-decoration: none;
-	color: unset;
+  text-decoration: none;
+  color: unset;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 p {
-    margin: 0 0 0.5em;
+  margin: 0 0 0.5em;
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 button,
 input,
 textarea,
 select {
-	font-family: inherit;
-	color: inherit;
+  font-family: inherit;
+  color: inherit;
 }
 
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
