@@ -1,0 +1,25 @@
+.task-filter{
+  justify-content: start;
+  padding: $padding-medium 0;
+  .btn {
+      @include btn;
+      @include btn-transparent;
+  
+      &:not(.btn-blue):hover {
+        @include btn-hover;
+      }
+    &-add-task { 
+      >:first-child {
+        border-right: 1px solid $primary-hover-color;
+      }
+      
+    }
+    &-blue{
+      @include btn-blue;
+      &:hover {
+         @include btn-blue-hover;
+       }
+    }
+ 
+}
+}

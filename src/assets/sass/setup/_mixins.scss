@@ -100,7 +100,7 @@
   padding: $padding-small;
   border: none;
   font-size: rem(14px);
-
+  cursor: pointer;
 }
 
 
@@ -112,7 +112,17 @@
 @mixin btn-transparent{
   background-color: transparent;
   color: $color-mud_black;
+}
 
+@mixin btn-blue{
+  background-color: $color-blue-btn;
+  color: $color-snow_white;
+  border-radius: none;
+  border-radius: $btn-border-radius;
+}
+@mixin btn-blue-hover{
+  background-color: $primary-hover-color;
+  
 }
 
 @mixin sidenav {
