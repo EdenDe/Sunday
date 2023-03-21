@@ -50,30 +50,3 @@ export default {
 };
 </script>
 
-<style>
-.grid {
-  background: lightblue;
-  display: grid;
-  grid-template-columns: 2% 200px 1fr 1fr 1fr 1fr;
-  justify-content: center;
-}
-
-.group:ntn-child(2) {
-  position: sticky;
-  z-index: 10;
-  left: 0;
-}
-
-.labels-grid,
-.progress-grid {
-  width: 100%;
-  background: rgb(214, 104, 104);
-  display: grid;
-  grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
-  justify-content: center;
-}
-
-.group-list {
-  margin-top: 2em;
-}
-</style>

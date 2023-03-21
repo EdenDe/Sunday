@@ -1,6 +1,9 @@
 <template>
   <section class="group-preview">
-    <VueDraggableNext class="labels-grid" v-model="labels" @change="log">
+    <span contenteditable class="group-title" :style="{ color: group.color }" :data-tasks-count="group.tasks.length">
+      {{ group.title }}
+    </span>
+    <VueDraggableNext class="group-labels grid" v-model="labels" @change="log">
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
 
@@ -22,7 +25,8 @@ export default {
   },
   data() {
     return {
-      labels: ['groupName', null, 'status', 'members', 'priority', 'date'],
+      titleEdtiable: false,
+      labels: ['task', null, 'status', 'members', 'priority', 'date'],
       progress: [null, null, 'status', null, 'priority', null],
     }
   },

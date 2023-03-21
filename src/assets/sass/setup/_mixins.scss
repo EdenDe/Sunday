@@ -109,3 +109,9 @@
   width: 23px;
   fill: $color;
 }
+
+
+@mixin task-grid-cols{
+  display:grid;
+  grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
+}
