@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getMainMondaySvg(iconName);
     },
   },
   computed: {},
