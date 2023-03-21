@@ -1,18 +1,19 @@
 <template>
-  <AppHeader />
-  <RouterLink to="/boards">boards</RouterLink>
+  <AppHeader :boardId="firstBoardId" />
+  <!-- <RouterLink :to="'/board/' + firstBoardId">boards</RouterLink> -->
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader.vue';
+import AppHeader from '../components/AppHeader.vue'
 export default {
   components: {
-    AppHeader
+    AppHeader,
   },
   computed: {
-    boards() {
-      return this.$store.getters.boardsToDisplay[0]
-    }
-  }
+    firstBoardId() {
+      const board = this.$store.getters.currBoard
+      if (board) return board._id
+    },
+  },
 }
 </script>

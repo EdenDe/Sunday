@@ -1,7 +1,5 @@
 <template>
-  <header>
-
-  </header>
+  <header></header>
 
   <RouterView />
 </template>
@@ -10,7 +8,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 export default {
   created() {
-    this.$store.dispatch({ type: "loadBoard" });
+    this.$store.dispatch({ type: 'loadBoards' })
   },
-};
+}
 </script>

@@ -23,12 +23,7 @@
   }
 }
 
-@mixin layoutGTC($max) {
-  grid-template-columns:
-    minmax($layoutPadding, 1fr)
-    minmax(auto, $max)
-    minmax($layoutPadding, 1fr);
-}
+
 
 /* Media  Mixins */
 
@@ -64,8 +59,7 @@
 }
 
 
-@mixin tooltip ($pos: center){
-  
+@mixin tooltip ($pos: bottom){
   position: absolute;
   
   background-color: #323338;
@@ -78,7 +72,7 @@
   opacity: 0;
   transition: opacity 0.3s;
 
-  @if $pos == center{
+  @if $pos == bottom{
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
@@ -86,6 +80,12 @@
   @else if $pos == right{
     // TODO: fix positioning
     bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if $pos == top{
+    // TODO: fix positioning
+    bottom: -25%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -103,4 +103,13 @@
   border-left: em(5px) solid transparent;
   border-right: em(5px) solid transparent;
   border-top: em(5px) solid black;
+}
+
+@mixin btn-hover{
+  background-color: $primary-background-hover-color;
+}
+
+@mixin sidenav{
+  height: 100vh;
+  width: 100%;
 }

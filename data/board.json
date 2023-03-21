@@ -1,4 +1,4 @@
-{
+[{
   "_id": "b101",
   "taskTitle": "Robot dev proj",
   "isStarred": false,
@@ -187,7 +187,6 @@
               "taskTitle": "Replace Logo"
           }
       }
-  ],
-
-  "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
+  ]
 }
+]

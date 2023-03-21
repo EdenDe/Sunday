@@ -1,27 +1,20 @@
 <template>
-  <RouterLink to="/boards"> Board</RouterLink>
+  <RouterLink :to="'/board/' + boardId">Boards</RouterLink>
 </template>
 
 <script>
 export default {
   name: '',
+  props: { boardId: String },
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  },
-  computed: {
-
-  },
+  methods: {},
+  computed: {},
   created() {
-
+    // console.log(this.boardId)
   },
-  components: {
-
-  },
+  components: {},
 }
 </script>
 

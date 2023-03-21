@@ -1,31 +1,25 @@
 <template>
-  <AppSideNav />
-  <WorkspaceSideNav />
-  <RouterView />
+  <section class="board-index main-layout">
+    <AppSideNav />
+    <WorkspaceSideNav />
+    <RouterView />
+  </section>
 </template>
 
 <script>
-import AppSideNav from '../components/AppSideNav.vue';
-import WorkspaceSideNav from '../components/WorkspaceSideNav.vue';
+import AppSideNav from '../components/AppSideNav.vue'
+import WorkspaceSideNav from '../components/WorkspaceSideNav.vue'
 
 export default {
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods: {
-
-  },
-  computed: {
-
-  },
-  created() {
-
-  },
+  methods: {},
+  computed: {},
+  created() {},
   components: {
     AppSideNav,
-    WorkspaceSideNav
+    WorkspaceSideNav,
   },
 }
 </script>
