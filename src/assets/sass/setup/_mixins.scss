@@ -105,8 +105,22 @@
   border-top: em(5px) solid black;
 }
 
+@mixin btn{
+  padding: $padding-small;
+  border: none;
+  font-size: rem(14px);
+
+}
+
 @mixin btn-hover{
   background-color: $primary-background-hover-color;
+  border-radius: $btn-border-radius;
+}
+
+@mixin btn-transparent{
+  background-color: transparent;
+  color: $color-mud_black;
+
 }
 
 @mixin sidenav{
