@@ -62,3 +62,45 @@
     font-weight: 200;
   }
 }
+
+
+@mixin tooltip ($pos: center){
+  
+  position: absolute;
+  
+  background-color: #323338;
+  color: #f8f8f8;
+  padding: em(5px) em(10px);
+  border-radius: 4px;
+  font-size: em(14px, 40px);
+  z-index: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  @if $pos == center{
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if $pos == right{
+    // TODO: fix positioning
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @include tooltip-arrow()
+}
+
+@mixin tooltip-arrow{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: em(5px) solid transparent;
+  border-right: em(5px) solid transparent;
+  border-top: em(5px) solid black;
+}
