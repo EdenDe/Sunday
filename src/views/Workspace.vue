@@ -6,14 +6,17 @@
       </div>
     </Container>
   </div>
+  <h1>
+    <ToolTip content="hiii">ToolTip</ToolTip>
+  </h1>
 </template>
 
 <script>
 import { Container, Draggable } from "vue3-smooth-dnd";
 import Group from "../components/Group.vue";
-
+import ToolTip from "../components/Cmps/ToolTip.vue";
 export default {
-  name: 'Workspace',
+  name: "Workspace",
   data() {
     return {
       groups: [
@@ -153,7 +156,7 @@ export default {
           ],
         },
       ],
-    }
+    };
   },
   methods: {
     onDrop(dropResult) {
@@ -172,16 +175,16 @@ export default {
         result.splice(addedIndex, 0, itemToAdd);
       }
       return result;
-
-    }, changeIndex(oldIndex, newIndex) {
     },
+    changeIndex(oldIndex, newIndex) {},
   },
   components: {
     Group,
     Container,
     Draggable,
+    ToolTip,
   },
-}
+};
 </script>
 
 <style></style>

@@ -26,15 +26,15 @@
 import { Container, Draggable } from "vue3-smooth-dnd";
 import { VueDraggableNext } from "vue-draggable-next";
 
-import TaskCheckbox from './dynamicCmps/TaskCheckBox.vue';
-import TaskDate from './dynamicCmps/TaskDate.vue';
+import TaskCheckbox from "./dynamicCmps/TaskCheckBox.vue";
+import TaskDate from "./dynamicCmps/TaskDate.vue";
 import TaskMembers from "./dynamicCmps/TaskMembers.vue";
 import TaskPriority from "./dynamicCmps/TaskPriority.vue";
 import TaskStatus from "./dynamicCmps/TaskStatus.vue";
 import TaskTitle from "./dynamicCmps/TaskTitle.vue";
-
+import ToolTip from "./Cmps/ToolTip.vue";
 export default {
-  name: 'group',
+  name: "group",
   props: {
     group: Object,
   },
@@ -42,11 +42,18 @@ export default {
     return {
       labelsPrint: [],
       //TODO: object with cmps names and labels and progress
-      cmpOrder: ["TaskCheckbox", "TaskTitle", "TaskStatus", "TaskPriority", "TaskMembers", "TaskDate"],
+      cmpOrder: [
+        "TaskCheckbox",
+        "TaskTitle",
+        "TaskStatus",
+        "TaskPriority",
+        "TaskMembers",
+        "TaskDate",
+      ],
       labels: ["groupName", null, "status", "members", "priority", "date"],
       // labels: ["groupName", null, "status", "members", "priority", "date"],
       progress: [null, null, "status", null, "priority", null],
-    }
+    };
   },
   methods: {
     onDrop(ev) {
@@ -60,12 +67,8 @@ export default {
       console.log("this.labels:", this.labels);
     },
   },
-  computed: {
-
-  },
-  created() {
-
-  },
+  computed: {},
+  created() {},
   components: {
     DraggableNext: VueDraggableNext,
     TaskCheckbox,
@@ -74,8 +77,9 @@ export default {
     TaskPriority,
     TaskStatus,
     TaskTitle,
+    ToolTip,
   },
-}
+};
 </script>
 
 <style>

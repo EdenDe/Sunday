@@ -10,6 +10,6 @@ export default {
   props: {
     info: String,
   },
+  components: {},
 };
 </script>
-
