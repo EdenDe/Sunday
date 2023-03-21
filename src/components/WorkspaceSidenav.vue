@@ -8,26 +8,22 @@
 </template>
 
 <script>
-export default {
-  name: 'WorkspaceSidenav',
-  data() {
-    return {
+import { svgService } from "../services/svg.service";
 
-    }
+export default {
+  name: "WorkspaceSidenav",
+  data() {
+    return {};
   },
   methods: {
-
+    getSvg(iconName) {
+      return svgService.getSvg(iconName);
+    },
   },
-  computed: {
-
-  },
-  created() {
-
-  },
-  components: {
-
-  },
-}
+  computed: {},
+  created() {},
+  components: {},
+};
 </script>
 
 <style></style>

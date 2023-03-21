@@ -1,7 +1,6 @@
 <template>
   <section class="group-list">
     <!-- //TODO:check if container and draggable needed -->
-
     <!-- <Container orientation="vertical" @drop="onDrop"> -->
     <div v-for="group in groups" :key="group.id">
       <GroupPreview :group="group" />
@@ -40,15 +39,13 @@ export default {
       console.log("this.labels:", this.labels);
     },
   },
-  computed: {
-
-  },
+  computed: {},
   created() {
-    console.log("GroupList", this.groups)
+    console.log("GroupList", this.groups);
   },
   components: {
     DraggableNext: VueDraggableNext,
-    GroupPreview
+    GroupPreview,
   },
 };
 </script>

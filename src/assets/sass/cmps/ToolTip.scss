@@ -3,9 +3,9 @@
   display: inline-block;
   .tooltip {
     position: absolute;
-    bottom: 125%;
     left: 50%;
-    transform: translateX(-50%);
+    bottom: 120%;
+    transform: translateX(-50%) scale(0.8);
     background-color: #323338;
     color: #f8f8f8;
     padding: em(5px) em(10px);
@@ -14,7 +14,7 @@
     z-index: 1;
     white-space: nowrap;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s, transform 0.2s;
     &-arrow {
       position: absolute;
       top: 100%;
@@ -31,4 +31,5 @@
 
 .tooltip-container:hover .tooltip {
   opacity: 1;
+  transform: translateX(-50%) scale(1);
 }

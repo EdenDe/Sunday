@@ -1,7 +1,37 @@
-.app-sidenav{
- @include sidenav;
+.app-sidenav {
+  @include sidenav;
   background-color: $color-surface;
-  // position: absolute;
-  // left:0;
-  // top:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .icon {
+    @include icon;
+  }
+  .monday-icon-wrapper {
+    border-bottom: 1px solid $color-asphalt;
+    margin-bottom: 10px;
+  }
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    width: em(36px);
+    height: em(36px);
+    border-radius: 6px;
+    margin-bottom: em(8px);
+    &.bottom {
+    }
+    .bottom-icon-wrapper {
+      width: em(42px);
+      height: em(42px);
+    }
+  }
+  .top-navigation-items-area {
+    flex-grow: 1;
+  }
+
+  .bottom-navigation-items-area {
+    flex-shrink: 0;
+    border-bottom: 1px solid $color-asphalt;
+    padding-bottom: 1px;
+  }
 }
