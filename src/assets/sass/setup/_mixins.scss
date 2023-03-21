@@ -111,7 +111,22 @@
 }
 
 
-@mixin task-grid-cols{
+@mixin task-cols{
   display:grid;
   grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
+  border: 1px solid $color-board_views_grey_hover;
+  margin-top: -1px;
+  > *{
+    justify-self: center;
+  }
+}
+
+@mixin editableSpan{
+  border-radius: $border-radius;
+  &:hover{
+    border: 1px solid $color-wolf_gray
+  }
+  &:focus-visible{
+    outline: 1px solid $color-dark-blue;
+  }
 }

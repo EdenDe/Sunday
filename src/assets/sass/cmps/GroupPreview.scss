@@ -2,23 +2,37 @@
   margin-bottom: 30px;
 
   .group-title{
+    display:inline-flex;
     font-size: em(18px);
     font-weight: bold;
+    margin:em(5px);
+    padding:em(5px);
+    border:1px solid transparent;
+    @include editableSpan
   }
 
-  .group-title:hover{
-    border:1px solid $color-border_light_gray
+  .group-title:focus-visible{
+    width:200px;
   }
 
-  .group-title:hover::after{
+  .group-title:hover:not(:focus-visible)::after{
     content: ' ' attr(data-tasks-count) ' Tasks';
     color: $color-mud_black;
     font-size: em(12px);
   }
 
-  .group-labels{
-    grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
+  .progress-grid{
+    @include task-cols;
+    margin-top: 5px;
+  }
 
+  .group-labels{
+    @include task-cols;
+    border-left: 5px solid;
+    
+    &:is(:first-of-type,:last-of-type){
+      border-top-left-radius: $border-radius
+    }
   }
 }
 

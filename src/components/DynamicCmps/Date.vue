@@ -10,6 +10,9 @@ export default {
   props: {
     info: String,
   },
+  created() {
+    console.log(this.info)
+  },
   components: {},
 };
 </script>
