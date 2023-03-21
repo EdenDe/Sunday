@@ -1,10 +1,12 @@
 <template>
-  <RouterLink to="/boards"> Board</RouterLink>
+  <section class="app-sidenav">
+
+  </section>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'AppSidenav',
   data() {
     return {
 

@@ -1,0 +1,193 @@
+{
+  "_id": "b101",
+  "taskTitle": "Robot dev proj",
+  "isStarred": false,
+  "archivedAt": 1589983468418,
+  "createdBy": {
+      "_id": "u101",
+      "fullname": "Abi Abambi",
+      "imgUrl": "http://some-img"
+  },
+  "cmpOrder": [
+    "checkbox",
+    "taskTitle",
+    "status",
+    "priority",
+    "TaskMembers",
+    "TaskDate"
+  ],
+  "labels": [
+      {
+          "id": "l101",
+          "taskTitle": "Done",
+          "color": "#61bd4f"
+      },
+      {
+          "id": "l102",
+          "taskTitle": "Progress",
+          "color": "#61bd33"
+      }
+  ],
+  "members": [
+      {
+          "_id": "u101",
+          "fullname": "Tal Tarablus",
+          "imgUrl": "https://www.google.com"
+      }
+  ],
+  "groups": [
+    {
+      "id": "gsfkn11",
+      "color": "red",
+      "tasks": [
+        {
+          "id": "t101",
+          "checkbox": "null",
+          "taskTitle": "learn SCSS",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "IN WORK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t102",
+          "checkbox": "null",
+          "taskTitle": "learn vue",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "Date": "27-02-2022",
+          "status": "STUCK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t103",
+          "checkbox": "null",
+          "taskTitle": "learn js",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "DONE",
+          "priority": "LOW"
+        }
+      ]
+    },
+    {
+      "id": "g22dskgl",
+      "color": "blue",
+      "tasks": [
+        {
+          "id": "t101",
+          "checkbox": "null",
+          "taskTitle": "learn CSS",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "IN WORK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t102",
+          "checkbox": "null",
+          "taskTitle": "learn vue",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "STUCK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t103",
+          "checkbox": "null",
+          "taskTitle": "learn js",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "DONE",
+          "priority": "LOW"
+        }
+      ]
+    },
+    {
+      "id": "g11sdkl",
+      "color": "green",
+      "tasks": [
+        {
+          "id": "t101",
+          "checkbox": "null",
+          "taskTitle": "learn CSS",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "IN WORK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t102",
+          "checkbox": "null",
+          "taskTitle": "learn vue",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "STUCK",
+          "priority": "LOW"
+        },
+        {
+          "id": "t103",
+          "checkbox": "null",
+          "taskTitle": "learn js",
+          "person": [
+            { "name": "tal", "color": "red" },
+            { "name": "bal", "color": "black" },
+            { "name": "shal", "color": "green" }
+          ],
+          "date": "27-02-2022",
+          "status": "DONE",
+          "priority": "LOW"
+        }
+      ]
+    }
+  ],
+  "activities": [
+      {
+          "id": "a101",
+          "txt": "Changed Color",
+          "createdAt": 154514,
+          "byMember": {
+              "_id": "u101",
+              "fullname": "Abi Abambi",
+              "imgUrl": "http://some-img"
+          },
+          "task": {
+              "id": "c101",
+              "taskTitle": "Replace Logo"
+          }
+      }
+  ],
+
+  "cmpsOrder": ["status-picker", "member-picker", "date-picker"]
+}

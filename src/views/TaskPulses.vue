@@ -1,10 +1,7 @@
-<template>
-  <RouterLink to="/boards"> Board</RouterLink>
-</template>
+<template></template>
 
 <script>
 export default {
-  name: '',
   data() {
     return {
 
