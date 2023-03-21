@@ -38,7 +38,8 @@
   "groups": [
     {
       "id": "gsfkn11",
-      "color": "red",
+      "title": "Frontend",
+      "color": "#0086c0",
       "tasks": [
         {
           "id": "t101",
@@ -83,7 +84,8 @@
     },
     {
       "id": "g22dskgl",
-      "color": "blue",
+      "title": "Backend",
+      "color": "#a25ddc",
       "tasks": [
         {
           "id": "t101",
@@ -128,7 +130,8 @@
     },
     {
       "id": "g11sdkl",
-      "color": "green",
+      "title": "Bugs",
+      "color": "#e2445c",
       "tasks": [
         {
           "id": "t101",
