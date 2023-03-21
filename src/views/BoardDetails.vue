@@ -1,12 +1,16 @@
 <template>
   <div class="board-container board-layout">
-    <div></div>
-    <GroupList :groups="groups"></GroupList>
+    <!-- <div></div> -->
+    <div>
+      <BoardHeader></BoardHeader>
+      <GroupList :groups="groups"></GroupList>
+    </div>
   </div>
 </template>
 
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
+import BoardHeader from '../components/BoardHeader.vue'
 import GroupList from '../components/GroupList.vue'
 import ToolTip from '../components/Cmps/ToolTip.vue'
 export default {
@@ -37,6 +41,7 @@ export default {
     },
   },
   components: {
+    BoardHeader,
     GroupList,
     Container,
     Draggable,
