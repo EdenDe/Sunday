@@ -9,10 +9,12 @@
     </VueDraggableNext>
 
     <TaskList :tasks="group.tasks" :groupId="group.id" />
+
     <section class="progress-grid">
       <div v-for="(item, idx) in progress" :key="idx">
         <div v-if="item === 'status'" class="flex status-progress-container">
-          <div v-for="status in groupStatusProgress" :style="{ width: status.width, backgroundColor: status.color }" />
+          <div v-for="status in groupStatusProgress"
+            :style="{ flex: 1, 'flex-basis': status.width, backgroundColor: status.color }" />
         </div>
       </div>
     </section>
@@ -60,11 +62,12 @@ export default {
 
       statusLabel.map(({ taskTitle, color }) => {
         if (res[taskTitle]) {
-          let presentageWidth = ((res[taskTitle] / totalTaskLength) * 100).toFixed(1) + '%'
+          let presentageWidth = (res[taskTitle] / totalTaskLength) * 100
+
           res[taskTitle] = {
-            width: presentageWidth,
+            width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${taskTitle} ${res[taskTitle]}/${totalTaskLength} ${presentageWidth}`
+            title: `${taskTitle} ${res[taskTitle]}/${totalTaskLength} ${presentageWidth.toFixed(1)}%`
           }
         }
       })

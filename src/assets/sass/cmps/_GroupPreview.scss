@@ -1,53 +1,48 @@
 .group-preview{
   margin-bottom: 30px;
-  line-height: 35px;
-  
 
   .group-title{
-    @include editableSpan;
     display:inline-flex;
-    font-size: rem(18px);
+    font-size: em(18px);
     font-weight: bold;
     margin:em(5px);
-    
-    &:focus-visible {
-      width: 200px;
-    }
-    &:hover +.tasks-num{
-       opacity: 1;
-    }
+    padding:em(5px);
+    border:1px solid transparent;
+    @include editableSpan
   }
-  .tasks-num{
-    color: $color-mud_black;
-    font-size: rem(14px);
-    opacity: 0;
- }
 
+  .group-title:focus-visible{
+    width:200px;
+  }
+
+  .group-title:hover:not(:focus-visible)::after{
+    content: ' ' attr(data-tasks-count) ' Tasks';
+    color: $color-mud_black;
+    font-size: em(12px);
+  }
 
   .progress-grid{
     @include task-cols;
     border:none;
 
     >*:not(:first-child,:nth-child(2)){
-      display:block;
-      border: 1px solid $color-board_views_grey_hover;
-      width:100%;
-      margin: 0 -1px;
+      @include task-row;
+      border-bottom: 1px solid $layout-border-color;
     } 
   }
 
   .group-labels{
     @include task-cols;
-
-    &>*{
-      text-transform: capitalize;
-    }
+    border-left: 5px solid;
     
-    
-    &:is(:first-of-type,:last-of-type){
-      border-top-left-radius: $border-radius;
-      width: 100%;
+    >*{
+      @include task-row;
+      text-align: center;
     }
+  //   &:is(:first-of-type,:last-of-type){
+  //     background-color: white;
+  //     width: 100%;
+  //   }
   }
 
   .status-progress-container{
@@ -56,8 +51,6 @@
       scale:1.2
     }
   }
-  }
-
-
+}
 
 

@@ -145,13 +145,19 @@
 
 @mixin task-cols{
   display:grid;
-  grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns:30px 2fr 1fr 1fr 1fr 1fr;
   cursor: pointer;
   border: 1px solid $layout-border-color;
   margin-top: -1px;
   > *{
     justify-self: center;
   }
+}
+
+@mixin task-row{
+  border-right: 1px solid $layout-border-color;
+  margin-right: -1px;
+  width:100%;
 }
 
 @mixin editableSpan{

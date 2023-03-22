@@ -1,6 +1,6 @@
 <template>
-  <div class="Task-checkbox">
-    <p></p>
+  <div class="task-checkbox">
+    <input type="checkbox" />
   </div>
 </template>
 
