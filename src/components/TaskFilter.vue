@@ -27,15 +27,6 @@
 
 <script>
 export default {
-  name: 'TaskFilter',
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  created() {},
-  components: {},
+  name: 'TaskFilter'
 }
 </script>
-
-<style></style>

@@ -5,23 +5,19 @@
 </template>
 
 <script>
-import checkbox from "./DynamicCmps/Checkbox.vue";
-import date from "./DynamicCmps/Date.vue";
-import person from "./DynamicCmps/Person.vue";
-import priority from "./DynamicCmps/Priority.vue";
-import status from "./DynamicCmps/Status.vue";
-import TaskTitle from "./DynamicCmps/Title.vue";
+import checkbox from "./dynamicCmps/Checkbox.vue";
+import date from "./dynamicCmps/Date.vue";
+import person from "./dynamicCmps/Person.vue";
+import priority from "./dynamicCmps/Priority.vue";
+import status from "./dynamicCmps/Status.vue";
+import TaskTitle from "./dynamicCmps/Title.vue";
 
 export default {
   name: 'TaskPreview',
   props: {
     task: Object
   },
-  data() {
-    return {
-
-    }
-  },
+  emits: ['updateProp'],
   methods: {
     updateProp(prop, toUpdate) {
       this.$emit('updateProp', this.task.id, prop, toUpdate)
@@ -32,10 +28,6 @@ export default {
       return this.$store.getters.cmpOrder
     }
   },
-  created() {
-    // console.log("TaskPreview", this.task)
-
-  },
   components: {
     checkbox,
     date,
@@ -44,9 +36,6 @@ export default {
     status,
     TaskTitle
   },
-  emits: ['updateProp']
-
 }
 </script>
 
-<style></style>

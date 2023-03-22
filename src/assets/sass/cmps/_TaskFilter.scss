@@ -2,19 +2,15 @@
   justify-content: start;
   padding: $padding-medium 0;
   &>* {
-      display: flex;
-      align-items: center;
-    }
+    display: flex;
+    align-items: center;
+  }
   .btn {
-    //TODO: use the mixins to make it one mixins
       @include btn(transparent);
-      @include btn-transparent;
       padding: 0;  
-      &:not(.btn-blue):hover {
-        @include btn-hover;
-      }
+   
     &-add-task { 
-      margin-inline-end: 14px;
+      margin-inline-end: em(14px);
       align-self: start;
       
       >:first-child {
@@ -32,30 +28,22 @@
     }
     &-blue{
       @include btn-blue;
-      &:hover {
-         @include btn-blue-hover;
-       }
     }
     &-container{
       height: 32px;
       &:not(.btn-add-task){
-
         padding: $padding-small;
       }
       &:not(.btn-blue){
-        margin: 0 6px 0 0;
+        margin-right: 6px;
       }
       &>:last-child:not(.btn-blue){
-        padding: 0 12px 0 0;
+        padding-right: 12px
       }
     }
   }
 
   &-icon {
     margin-inline-end: $margin-small;
-    svg{
-    @include flex-center;
-    }
   }
-  
 }

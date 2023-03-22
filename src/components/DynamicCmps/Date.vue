@@ -2,8 +2,12 @@
   <section class="date">
     <div class="date-picker">
       <div class="block">
-        <el-date-picker v-model="date" type="date" placeholder="Pick a day" size="small" format="DD/MM"
-          value-format="YYYY-MM-DD" class="date-picker-container" />
+        <label for="date-picker">
+          {{ formattedDate }}
+
+          <el-date-picker id="date-picker" type="date" placeholder="Pick a day" size="small" format="DD/MM"
+            value-format="YYYY-MM-DD" class="date-picker-container" ref="date-picker" />
+        </label>
       </div>
     </div>
   </section>
@@ -30,7 +34,11 @@ export default {
         day: "numeric",
       }).format(this.info);
     },
+    showCalendar() {
+      this.$refs.datePicker.pickerVisible = true;
+    },
   },
+
   components: {},
 };
 </script>

@@ -12,9 +12,13 @@ function query(critiria) {
 }
 
 function save(board) {
+	debugger
 	if (board._id) {
-		const idx = gBoard.findIndex(currBoard => currBoard._id === board._id)
+		const idx = gBoard.findIndex(
+			currBoard => currBoard._id === board._id
+		)
 		if (idx === -1) return Promise.reject('No such gBoard')
+
 		gBoard[idx] = board
 	} else {
 		board._id = _makeId()
@@ -41,14 +45,18 @@ function remove(gBoardId) {
 
 function _makeId(length = 5) {
 	let txt = ''
-	let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+	let possible =
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 	for (let i = 0; i < length; i++) {
-		txt += possible.charAt(Math.floor(Math.random() * possible.length))
+		txt += possible.charAt(
+			Math.floor(Math.random() * possible.length)
+		)
 	}
 	return txt
 }
 
 function _savegBoardsToFile() {
+	debugger
 	return new Promise((resolve, reject) => {
 		var a = document.createElement('a')
 		var file = new Blob([gBoard], { type: 'application/json' })

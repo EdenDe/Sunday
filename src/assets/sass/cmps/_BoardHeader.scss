@@ -8,9 +8,8 @@
   }
   &-title{
     @include editableSpan;
-    font-size: 24px;
+    font-size: em(24px);
     color: $color-mud_black;  
-    padding: em(3px); 
     margin-inline-end: $margin-large;
   }
   .tool-bar{
@@ -20,19 +19,9 @@
     padding-bottom: 4px;
     border-bottom: 1px solid $layout-border-color;
     .btn{
-      @include btn;
-      @include btn-transparent;
-       &:hover{
-        @include btn-hover;
-       }
-      }
-
+      @include btn(transparent);
+    }
       .nav-bar{
-        svg{
-         display: flex;
-        align-items: center; 
-        }
-      
         &>*:not(:last-child){
           position: relative;
           &::after{
@@ -50,5 +39,5 @@
           margin-left: 4px;
         }
       }
-}
+  }
 }
