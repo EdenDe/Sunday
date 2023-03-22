@@ -7,21 +7,18 @@
     <VueDraggableNext class="group-labels" v-model="labels" @change="log">
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
-    <TaskList :tasks="group.tasks" />
+    <TaskList :tasks="group.tasks" @updateProp="updateProp" />
     <form @submit.prevent="onAddTask" class="add-task-input-container">
       <input placeholder="+ Add task" type="text" v-model="newTask" />
     </form>
     <section class="progress-grid">
       <div v-for="(item, idx) in progress" :key="idx">
         <div v-if="item === 'status'" class="flex status-progress-container">
-          <div
-            v-for="status in groupStatusProgress"
-            :style="{
-              flex: 1,
-              'flex-basis': status.width,
-              backgroundColor: status.color,
-            }"
-          />
+          <div v-for="status in groupStatusProgress" :style="{
+            flex: 1,
+            'flex-basis': status.width,
+            backgroundColor: status.color,
+          }" />
         </div>
       </div>
     </section>
@@ -76,6 +73,9 @@ export default {
     start(ev) {
       console.log(":start", ev);
     },
+    updateProp(taskId, prop, toUpdate) {
+      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.group.id, taskId, prop, toUpdate })
+    }
   },
   computed: {
     groupStatusProgress() {
@@ -95,9 +95,8 @@ export default {
           res[taskTitle] = {
             width: Math.round(presentageWidth) + "%",
             color: color,
-            title: `${taskTitle} ${
-              res[taskTitle]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${taskTitle} ${res[taskTitle]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           };
         }
       });

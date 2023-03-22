@@ -18,9 +18,11 @@ export default {
   },
   methods: {
     onType(txt) {
-      this.$emit('changeValue')
+      this.$emit('updateProp', 'taskTitle', txt)
     }
-  }
+  },
+  emits: ['updateProp']
+
 
 }
 </script>
