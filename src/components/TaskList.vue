@@ -28,7 +28,7 @@ export default {
     }
   },
   created() {
-    console.log("TaskList", this.tasks)
+    //console.log("TaskList", this.tasks)
     this.currTasks = this.tasks
   },
   components: {

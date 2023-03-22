@@ -34,6 +34,16 @@
       border-top-left-radius: $border-radius
     }
   }
+
+  .status-progress-container{
+    height:20px;
+    width:100px;
+
+    >*{
+      height: 100%;
+      display:block;
+    }
+  }
 }
 
 

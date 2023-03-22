@@ -29,7 +29,7 @@ export default {
     }
   },
   created() {
-    console.log("TaskPreview", this.task)
+    // console.log("TaskPreview", this.task)
 
   },
   components: {

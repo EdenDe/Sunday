@@ -11,7 +11,7 @@ export default {
     info: String,
   },
   created() {
-    console.log(this.info)
+
   },
   components: {},
 };
