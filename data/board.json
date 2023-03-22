@@ -1,6 +1,6 @@
 [{
   "_id": "b101",
-  "taskTitle": "Robot dev proj",
+  "title": "Robot dev proj",
   "isStarred": false,
   "archivedAt": 1589983468418,
   "createdBy": {
@@ -9,6 +9,7 @@
       "imgUrl": "http://some-img"
   },
   "cmpOrder": [
+    null,
     "checkbox",
     "taskTitle",
     "status",

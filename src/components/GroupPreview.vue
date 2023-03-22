@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       titleEdtiable: false,
-      labels: [null, 'task', 'status', 'priority', 'members', 'date'],
-      progress: [null, null, 'status', 'priority', null, null],
+      labels: [null, null, 'task', 'status', 'priority', 'person', 'date', 'timeline', 'file'],
+      progress: [null, null, null, 'status', 'priority', null, null, null, null],
     }
   },
   methods: {
