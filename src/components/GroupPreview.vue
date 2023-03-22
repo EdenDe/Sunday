@@ -74,7 +74,6 @@ export default {
 
       return res
     }
-
   },
   components: {
     TaskList,
