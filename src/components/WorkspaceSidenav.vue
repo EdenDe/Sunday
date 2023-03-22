@@ -1,5 +1,6 @@
 <template>
   <section class="workspace-sidenav">
+    <h1>hiii</h1>
     <!-- TODO: go to board ! -->
     <!-- <RouterLink to=""/> -->
     <!-- <RouterLink to=""/> -->
