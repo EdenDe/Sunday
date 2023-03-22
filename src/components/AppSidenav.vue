@@ -1,11 +1,12 @@
 <template>
   <section class="app-sidenav flex align-center">
-    <div class="monday-icon-wrapper flex align-center">
+    <h1>hiii</h1>
+    <div class="monday-icon-wrapper align-end flex justify-center">
       <RouterLink to="/">
-        <div class="monday-icon nav-item">
+        <div class="monday-icon nav-item flex align-end">
           <img
-            class="flex center"
-            src="https://cdn.monday.com/images/logos/monday_logo_icon.png"
+            class="flex align-center justify-center"
+            src="../assets/img/logo.png"
             width="40"
             height="40"
             alt=""
@@ -58,7 +59,7 @@
       </div>
       <div class="avatar-wrapper flex align-center justify-center">
         <img
-          src="https://files.monday.com/euc1/photos/40992736/thumb/40992736-user_photo_2023_03_17_07_35_49.png?1679038549"
+          src="../assets/img/avatar-side-nav.png"
           class="avatar-preview"
           title="Lior Doron"
         />

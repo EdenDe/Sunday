@@ -5,6 +5,7 @@
     <div v-for="group in groups" :key="group.id">
       <GroupPreview :group="group" />
     </div>
+
     <!-- </Container> -->
   </section>
 </template>
