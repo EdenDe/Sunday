@@ -23,7 +23,9 @@ export default {
       console.log(event);
       console.log("this.labels:", this.labels);
     },
-    changeIndex() {},
+    changeIndex() {
+
+    },
   },
   created() {
     //console.log("TaskList", this.tasks)

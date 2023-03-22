@@ -1,17 +1,26 @@
 <template>
   <section class="task-title grid">
-    <span contenteditable>{{ info }}</span>
+    <span contenteditable @input="onType($event.target.innerHTML)">{{ txt }}</span>
   </section>
 </template>
 
 <script>
+
 export default {
   name: 'TaskTitle',
   props: {
     info: String,
   },
   data() {
-    return {}
+    return {
+      txt: this.info
+    }
   },
+  methods: {
+    onType(txt) {
+      this.$emit('changeValue')
+    }
+  }
+
 }
 </script>
