@@ -4,8 +4,8 @@ import router from './router'
 import { store } from './store/store.js'
 
 import ElementPlus from 'element-plus'
-
 import { icon } from './directives.js'
+import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 
 const app = createApp(App)

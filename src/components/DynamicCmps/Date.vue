@@ -1,6 +1,11 @@
 <template>
   <section class="date">
-
+    <div class="date-picker">
+      <div class="block">
+        <el-date-picker v-model="date" type="date" placeholder="Pick a day" size="small" format="DD/MM"
+          value-format="YYYY-MM-DD" class="date-picker-container" />
+      </div>
+    </div>
   </section>
 </template>
 
