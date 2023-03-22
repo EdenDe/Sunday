@@ -11,12 +11,6 @@ import AppSideNav from "@/components/AppSidenav.vue";
 import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
 
 export default {
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {},
-  created() {},
   components: {
     AppSideNav,
     WorkspaceSideNav,
@@ -24,4 +18,3 @@ export default {
 };
 </script>
 
-<style></style>
