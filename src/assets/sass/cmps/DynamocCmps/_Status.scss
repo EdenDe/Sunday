@@ -1,0 +1,12 @@
+.status{
+  position: relative;
+}
+.color-picker-container{
+  position: absolute;
+  top: 0;
+  background-color: $color-snow_white;
+  border: 10px solid red;
+  height: 320px;
+  width: 200px;
+}
+

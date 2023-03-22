@@ -1,11 +1,9 @@
 .group-preview{
-  margin-bottom: 30px;
-  // line-height: 35px;
- 
+  margin-bottom: em(30px);
 
   .group-title{
     @include editableSpan;
-    display:inline-flex;
+    display: inline-flex;
     font-size: rem(18px);
     font-weight: bold;
     margin:em(5px);
@@ -26,7 +24,6 @@
 
   .progress-grid{
     @include task-cols;
-    justify-content: center;
     border:none;
 
     >*:not(:first-child,:nth-child(2)){
@@ -47,13 +44,9 @@
       @include task-row;
       text-align: center;
     }
-  //   &:is(:first-of-type,:last-of-type){
-  //     background-color: white;
-  //     width: 100%;
-  //   }
   }
   .status-progress-container{
-        height:35px;
+        height:em(35px);
         align-items: center;
         margin: auto;
         width: 90%;
@@ -63,31 +56,31 @@
             scale:1.2
           }
         }
+       }
+    .add-task-input-container {
+      @include task-cols;
+     padding: em(4px) em(3px);
+      
+     input {
+      grid-column: 3;
+      border-radius: $border-radius;
+      border: 1px solid transparent;
+      padding: em(4px) 0;
+      padding-inline-start: 30px;
+      width: 95%;
+      margin: auto;
+      
+      &:hover {
+         border-color: $ui-border-on-secondary-color;
+      }
+      &:focus-within {
+        outline: 1px solid $color-basic_blue;
+      }
+      }
   }
 }
 
-.add-task-input-container {
-  @include task-cols;
-  padding: 4px 3px;
 
-  input {
-    grid-column: 3;
-    border-radius: 4px;
-    border: 1px solid transparent;
-    padding: em(4px) 0;
-    padding-inline-start: 30px;
-    width: 95%;
-    margin: auto;
-
-    &:hover {
-      border-color: $ui-border-on-secondary-color;
-    }
-
-    &:focus-within {
-      outline: 1px solid $color-basic_blue;
-    }
-  }
-}
 
 
 

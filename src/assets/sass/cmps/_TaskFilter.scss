@@ -7,7 +7,7 @@
     }
   .btn {
     //TODO: use the mixins to make it one mixins
-      @include btn;
+      @include btn(transparent);
       @include btn-transparent;
       padding: 0;  
       &:not(.btn-blue):hover {
