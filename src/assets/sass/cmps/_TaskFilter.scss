@@ -4,15 +4,25 @@
   .btn {
       @include btn;
       @include btn-transparent;
-  
+      padding: 0;  
       &:not(.btn-blue):hover {
         @include btn-hover;
       }
     &-add-task { 
-      >:first-child {
-        border-right: 1px solid $primary-hover-color;
-      }
+      margin-right: 14px;
       
+      >:first-child {
+        height: 100%;
+        line-height: 24px;     
+        padding: 4px $padding-small;
+        border-right: 1px solid $primary-hover-color;
+        border-radius: $border-radius 0 0 $border-radius;
+      }
+      >:last-child{
+        height: 100%;
+        padding: 6px 4px 0 4px;
+        border-radius: 0 $border-radius $border-radius 0;
+      }
     }
     &-blue{
       @include btn-blue;
@@ -20,6 +30,19 @@
          @include btn-blue-hover;
        }
     }
- 
-}
+    &-container{
+      padding: $padding-small;
+      height: 32px;
+      &:not(.btn-blue){
+        margin: 0 6px 0 0;
+      }
+      &>:last-child:not(.btn-blue){
+        padding: 0 12px 0 0;
+      }
+    }
+  }
+  &-icon {
+    margin-inline-end: $margin-small;
+  }
+  
 }

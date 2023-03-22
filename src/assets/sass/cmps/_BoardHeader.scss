@@ -8,8 +8,10 @@
     height: 193px;
   }
   &-title{
+    @include editableSpan;
     font-size: 24px;
     color: $color-mud_black;   
+    margin-inline-end: $margin-large;
   }
   .tool-bar{
     justify-content: start;
