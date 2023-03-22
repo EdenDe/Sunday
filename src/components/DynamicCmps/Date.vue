@@ -42,11 +42,11 @@ export default {
         day: "numeric",
       }).format(this.info);
     },
-    showCalendar() {
-      this.$refs.datePicker.pickerVisible = true;
+  },
+  methods: {
+    onChangeDate(date) {
+      this.$emit("updateProp", "date", date);
     },
   },
-
-  components: {},
 };
 </script>
