@@ -1,10 +1,15 @@
-.date {
-  .date-picker {
-    .date-picker-container {
-      .el-date-editor.el-input,
-      .el-date-editor.el-input__wrapper {
-        display: none;
-      }
-    }
+.el-date-editor.el-input {
+  width: 0px;
+  height: 0px;
+  svg {
+    display: none;
   }
+}
+.el-input__wrapper {
+  background-color: transparent;
+  box-shadow: none;
+  width: 0px;
+}
+.el-input__wrapper.is-focus {
+  box-shadow: none;
 }
