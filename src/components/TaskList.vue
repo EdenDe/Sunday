@@ -12,7 +12,6 @@
 <script>
 import { VueDraggableNext } from "vue-draggable-next";
 import TaskPreview from './TaskPreview.vue';
-import { eventBus } from '../services/event-bus.service'
 
 export default {
   name: 'TaskList',
@@ -30,12 +29,6 @@ export default {
     },
     changeIndex() {
 
-    },
-    onAddTask() {
-      eventBus.emit('addTask', {
-        groupId: this.groupId,
-        newTask: this.newTask
-      })
     },
   },
   created() {

@@ -4,6 +4,7 @@ export const boardStore = {
 	state: {
 		boards: [],
 		currBoard: {},
+		savePrevBoard: {},
 	},
 	mutations: {
 		setBoards(state, { boards }) {
@@ -14,6 +15,7 @@ export const boardStore = {
 		},
 		addBoard(state, { board }) {
 			state.boards.push(board)
+			state.currBoard = board
 		},
 		updateBoard(state, { board }) {
 			const idx = state.boards.findIndex(t => t._id === board._id)
@@ -23,6 +25,12 @@ export const boardStore = {
 			state.boards = state.boards.filter(
 				board => board._id !== boardId
 			)
+		},
+		savePrevBoard(state) {
+			state.savePrevBoard = state.currBoard
+		},
+		undoBoard(state) {
+			state.currBoard = state.savePrevBoard
 		},
 	},
 	getters: {
@@ -92,7 +100,7 @@ export const boardStore = {
 			// optimistic
 			commit({ type: 'updateBoard', board: updatedBoard })
 			try {
-				updatedBoard = await boardService.save(state.currBoard)
+				await boardService.save(state.currBoard)
 			} catch (err) {
 				commit({ type: 'undoBoard' })
 				console.log('boardStore: Error in updateBoard', err)
