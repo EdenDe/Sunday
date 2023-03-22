@@ -9,7 +9,8 @@
         @include btn-hover;
       }
     &-add-task { 
-      margin-right: 14px;
+      margin-inline-end: 14px;
+      align-self: start;
       
       >:first-child {
         height: 100%;
@@ -31,8 +32,11 @@
        }
     }
     &-container{
-      padding: $padding-small;
       height: 32px;
+      &:not(.btn-add-task){
+
+        padding: $padding-small;
+      }
       &:not(.btn-blue){
         margin: 0 6px 0 0;
       }
@@ -41,8 +45,12 @@
       }
     }
   }
+
   &-icon {
     margin-inline-end: $margin-small;
+    svg{
+    @include svg
+    }
   }
   
 }

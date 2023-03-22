@@ -137,10 +137,17 @@
 }
 
 
+@mixin svg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin task-cols{
   display:grid;
   grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
-  border: 1px solid $color-board_views_grey_hover;
+  cursor: pointer;
+  border: 1px solid $layout-border-color;
   margin-top: -1px;
   > *{
     justify-self: center;
@@ -149,11 +156,12 @@
 
 @mixin editableSpan{
   border-radius: $border-radius;
+  padding: 4px;
   &:hover{
     outline: 1px solid $color-wolf_gray
   }
   &:focus-visible{
     outline: 1px solid $color-basic_blue;
-    padding-inline-end: 450px;
+    padding-inline-end: rem(100px);
   }
 }

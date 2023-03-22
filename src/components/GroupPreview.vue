@@ -1,8 +1,9 @@
 <template>
   <section class="group-preview">
-    <span contenteditable class="group-title" :style="{ color: group.color }" :data-tasks-count="group.tasks.length">
+    <span contenteditable class="group-title" :style="{ color: group.color }">
       {{ group.title }}
     </span>
+    <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
     <VueDraggableNext class="group-labels" v-model="labels" @change="log">
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>

@@ -1,6 +1,7 @@
 .board-header{
   grid-column: 2;
   padding: 16px 30px 0 38px;
+  
   height: 125px;
   
   
@@ -10,13 +11,16 @@
   &-title{
     @include editableSpan;
     font-size: 24px;
-    color: $color-mud_black;   
+    color: $color-mud_black;  
+    padding: em(3px); 
     margin-inline-end: $margin-large;
   }
   .tool-bar{
     justify-content: start;
-    border-bottom: 1px solid $layout-border-color;
+    margin-right: $margin-small;
     margin-top: $margin-small;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $layout-border-color;
     .btn{
       @include btn;
       @include btn-transparent;
@@ -24,5 +28,28 @@
         @include btn-hover;
        }
       }
-  }
+
+      .nav-bar{
+        &>:first-child {
+            svg {
+              @include svg;
+            }
+          } 
+        &>*:not(:last-child){
+          position: relative;
+          &::after{
+            content: '|';    
+            position: absolute;
+            right: -5px;
+            color: $layout-border-color;
+          }
+          &:hover::after{
+            opacity: 0;
+          }
+        }
+        &>*:not(:first-child){
+          margin-left: 4px;
+        }
+      }
+}
 }
