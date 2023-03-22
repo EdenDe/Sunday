@@ -4,18 +4,8 @@
 
 <script>
 export default {
-  name: '',
+  name: 'AppHeader',
   props: { boardId: String },
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  created() {
-    // console.log(this.boardId)
-  },
-  components: {},
 }
 </script>
 
-<style></style>

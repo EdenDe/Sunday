@@ -1,11 +1,9 @@
 .app-sidenav {
+  @include sidenav;
   grid-area: app-sidenav;
   position: relative;
-  @include sidenav;
   background-color: $color-surface;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
   .icon {
     @include icon;
   }
@@ -26,9 +24,7 @@
     width: 100%;
     margin-bottom: em(8px);
     .svg {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-center;
     }
     .nav-item {
       height: em(36px);
@@ -48,34 +44,33 @@
     padding-bottom: em(1px);
   }
   .navigation-style-divider {
-    margin: 0 em(8px);
+    margin: 0 em(8px) em(12px);
     width: em(50px);
-    background-color: $color-asphalt;
     height: em(1px);
-    margin-bottom: em(12px);
+    background-color: $color-asphalt;
   }
   .footer-navigation-items-area {
-    .navigation-style-divider {
-      margin: 0;
-      margin-bottom: em(12px);
-    }
     margin-bottom: em(16px);
+
+    .navigation-style-divider {
+      margin: 0 0 em(12px);
+    }
     .avatar-wrapper {
       .avatar-preview {
         border-radius: 50%;
         border: 2px solid $color-snow_white;
-        background-image: url("https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png");
         width: rem(44px);
         height: rem(44px);
       }
     }
   }
   .workspace-arrow-left-div {
-    border-style: solid;
-    border-width: 0.5rem 6px 0.5rem 0;
-    border-color: transparent $grey-background-color transparent transparent;
     position: absolute;
     top: 74px;
     left: 61px;
+
+    border-style: solid;
+    border-width: 0.5rem 6px 0.5rem 0;
+    border-color: transparent $grey-background-color transparent transparent;
   }
 }

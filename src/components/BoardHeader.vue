@@ -15,7 +15,7 @@
         </div>
       </nav>
     </div>
-    <TaskFilter></TaskFilter>
+    <TaskFilter />
   </section>
 </template>
 
@@ -23,16 +23,9 @@
 import TaskFilter from './TaskFilter.vue'
 export default {
   name: 'BoardHeader',
-  data() {
-    return {}
-  },
-  methods: {},
-  computed: {},
-  created() {},
   components: {
     TaskFilter,
   },
 }
 </script>
 
-<style></style>

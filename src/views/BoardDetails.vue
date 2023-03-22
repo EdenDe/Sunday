@@ -1,8 +1,7 @@
 <template>
   <div class="board-container board-layout">
-    <!-- <div></div> -->
     <div>
-      <BoardHeader></BoardHeader>
+      <BoardHeader />
       <GroupList :groups="groups"></GroupList>
     </div>
   </div>
@@ -33,12 +32,10 @@ export default {
       }
       return result
     },
-    changeIndex(oldIndex, newIndex) { },
-
   },
   computed: {
     groups() {
-      // console.log(this.$store.getters.groups)
+      console.log(this.$store.getters.groups)
       return this.$store.getters.groups
     },
   },
@@ -52,4 +49,3 @@ export default {
 }
 </script>
 
-<style></style>

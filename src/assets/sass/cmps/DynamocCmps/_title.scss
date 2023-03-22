@@ -2,11 +2,8 @@
   justify-self: start;
   padding-inline-start: 30px;
 
-  &>span{
+  >span{
     @include editableSpan;
     font-size: rem(16px);
-    
-
-  // width: 100%;
   }
 }

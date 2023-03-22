@@ -55,10 +55,10 @@
 @mixin tooltip($pos: bottom) {
   position: absolute;
 
-  background-color: #323338;
-  color: #f8f8f8;
+  background-color: $color-mud_black;
+  color: $color-riverstone_gray;
   padding: em(5px) em(10px);
-  border-radius: 4px;
+  border-radius: $border-radius;
   font-size: em(14px, 40px);
   z-index: 1;
   white-space: nowrap;
@@ -81,7 +81,7 @@
     transform: translateX(-50%);
   }
 
-  @include tooltip-arrow();
+ // @include tooltip-arrow();
 }
 
 @mixin tooltip-arrow {
@@ -96,34 +96,31 @@
   border-top: em(5px) solid black;
 }
 
-@mixin btn{
+@mixin btn($type: ''){
   padding: $padding-small;
   border: none;
   font-size: rem(14px);
   cursor: pointer;
-  transition: background-color 100ms ease-in
-}
+  transition: background-color 100ms ease-in;
 
+  @if $type == transparent{
+    background-color: transparent;
+    color: $color-mud_black;
 
-@mixin btn-hover {
-  background-color: $primary-background-hover-color;
-  border-radius: $btn-border-radius;
-}
-
-@mixin btn-transparent{
-  background-color: transparent;
-  color: $color-mud_black;
+    &:hover{
+      background-color: $primary-background-hover-color;
+      border-radius: $btn-border-radius;  
+    }
+  }
 }
 
 @mixin btn-blue{
   background-color: $color-blue-btn;
   color: $color-snow_white;
-  border-radius: none;
-  border-radius: $btn-border-radius;
-}
-@mixin btn-blue-hover{
-  background-color: $primary-hover-color;
-  
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
 }
 
 @mixin sidenav {
@@ -135,7 +132,6 @@
   width: 23px;
   fill: $color;
 }
-
 
 @mixin flex-center{
   display: flex;

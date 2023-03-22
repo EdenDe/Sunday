@@ -1,34 +1,43 @@
 <template>
-  <div :style="{ backgroundColor: status.color }" class="status flex justify-center align-center">{{ status.taskTitle }}
+  <div
+    :style="{ backgroundColor: status.color }"
+    class="status flex justify-center align-center"
+    @click="toggleColorPicker"
+  >
+    {{ status.taskTitle }}
+    <div v-if="isPickerOpen" class="color-picker-container"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TaskStatus",
+  name: 'TaskStatus',
   props: {
     info: String,
   },
   data() {
     return {
-      status: null
+      status: null,
+      isPickerOpen: false,
     }
   },
   created() {
     let labels = this.$store.getters.statusLabels
-    this.status = labels.find(label => label.taskTitle === this.info)
+    this.status = labels.find((label) => label.taskTitle === this.info)
     if (!this.status) {
       this.status = {
-        taskTitle: "",
-        color: "#c4c4c4"
+        taskTitle: '',
+        color: '#c4c4c4',
       }
     }
   },
+  methods: {
+    toggleColorPicker() {
+      this.isPickerOpen = !this.isPickerOpen
+    },
+  },
   computed: {
-    statusList() {
-
-    }
-  }
-};
+    statusList() {},
+  },
+}
 </script>
-

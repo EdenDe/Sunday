@@ -1,6 +1,6 @@
 <template>
   <section class="group-preview">
-    <span contenteditable class="group-title" :style="{ color: group.color }">
+    <span contenteditable class="group-title" @focusout="onType($event.target.innerText)" :style="{ color: group.color }">
       {{ group.title }}
     </span>
     <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
@@ -8,21 +8,17 @@
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
     <TaskList :tasks="group.tasks" @updateProp="updateProp" />
-
     <form @submit.prevent="onAddTask" class="add-task-input-container">
       <input placeholder="+ Add task" type="text" v-model="newTask" />
     </form>
-    <section class="progress-grid">
+    <section class="progress-grid justify-center">
       <div v-for="(item, idx) in progress" :key="idx">
         <div v-if="item === 'status'" class="flex status-progress-container">
-          <div
-            v-for="status in groupStatusProgress"
-            :style="{
-              flex: 1,
-              'flex-basis': status.width,
-              backgroundColor: status.color,
-            }"
-          ></div>
+          <div v-for="status in groupStatusProgress" :style="{
+            flex: 1,
+            'flex-basis': status.width,
+            backgroundColor: status.color,
+          }"></div>
         </div>
       </div>
     </section>
@@ -52,7 +48,7 @@ export default {
         'timeline',
         'file',
       ],
-      newTask: {},
+      newTask: '',
       progress: [
         null,
         null,
@@ -71,11 +67,8 @@ export default {
       console.log(event)
       console.log('this.labels:', this.labels)
     },
-    onDrop(ev) {
-      console.log(ev)
-    },
-    start(ev) {
-      console.log(':start', ev)
+    onType(txt) {
+      this.updateProp(null, 'title', txt)
     },
     updateProp(taskId, prop, toUpdate) {
       this.$store.dispatch({
@@ -105,15 +98,19 @@ export default {
           res[taskTitle] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${taskTitle} ${
-              res[taskTitle]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${taskTitle} ${res[taskTitle]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
 
       return res
     },
+  },
+  watch: {
+    group() {
+      console.log(this.group)
+    }
   },
   components: {
     TaskList,
