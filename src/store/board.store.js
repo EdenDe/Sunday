@@ -99,6 +99,7 @@ export const boardStore = {
 				toUpdate
 			)
 			// optimistic
+
 			commit({ type: 'updateBoard', board: updatedBoard })
 			try {
 				await boardService.save(state.currBoard)

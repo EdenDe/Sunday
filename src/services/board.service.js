@@ -1,4 +1,5 @@
-import { storageService } from './storage.service'
+import { storageService } from './async-storage.service'
+import gBoard from '../../data/board.json' assert { type: 'json' }
 
 import { utilService } from './util.service.js'
 
@@ -15,7 +16,7 @@ export const boardService = {
 
 window.boardService = boardService
 
-async function query(filterBy) {
+async function query() {
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -38,7 +39,6 @@ async function save(board) {
 }
 
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
-	debugger
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
 		let group = board.groups.find(group => groupId === group.id)
