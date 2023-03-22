@@ -4,17 +4,22 @@
       <TaskPreview :task="task" />
     </section>
   </DraggableNext>
+  <form @submit.prevent="onAddTask" class="add-task-input-container">
+    <input placeholder="+ Add task" type="text" v-model="newTask" />
+  </form>
 </template>
 
 <script>
 import { VueDraggableNext } from "vue-draggable-next";
 import TaskPreview from './TaskPreview.vue';
+import { eventBus } from '../services/event-bus.service'
 
 export default {
   name: 'TaskList',
-  props: { tasks: Array },
+  props: { tasks: Array, groupId: String },
   data() {
     return {
+      newTask: '',
       currTasks: []
     }
   },
@@ -25,7 +30,13 @@ export default {
     },
     changeIndex() {
 
-    }
+    },
+    onAddTask() {
+      eventBus.emit('addTask', {
+        groupId: this.groupId,
+        newTask: this.newTask
+      })
+    },
   },
   created() {
     //console.log("TaskList", this.tasks)

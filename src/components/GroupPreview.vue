@@ -7,12 +7,11 @@
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
 
-    <TaskList :tasks="group.tasks" />
+    <TaskList :tasks="group.tasks" :groupId="group.id" />
     <section class="progress-grid">
       <div v-for="(item, idx) in progress" :key="idx">
         <div v-if="item === 'status'" class="flex status-progress-container">
-          <div v-for="status in groupStatusProgress" :style="{ width: status.width, backgroundColor: status.color }">
-          </div>
+          <div v-for="status in groupStatusProgress" :style="{ width: status.width, backgroundColor: status.color }" />
         </div>
       </div>
     </section>
