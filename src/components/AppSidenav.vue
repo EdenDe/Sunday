@@ -1,6 +1,5 @@
 <template>
   <section class="app-sidenav flex align-center">
-    <h1>hiii</h1>
     <div class="monday-icon-wrapper align-end flex justify-center">
       <RouterLink to="/">
         <div class="monday-icon nav-item flex align-end">
@@ -14,9 +13,9 @@
         </div>
       </RouterLink>
     </div>
-
     <div class="navigation-style-divider"></div>
 
+    <div class="workspace-arrow-left-div"></div>
     <section class="top-navigation-items-area flex-col align-center">
       <div class="icon-wrapper flex align-center justify-center">
         <i class="svg nav-item" v-icon="'workManagement'"></i>

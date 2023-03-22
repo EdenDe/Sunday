@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import AppSideNav from "../components/AppSideNav.vue";
-import WorkspaceSideNav from "../components/WorkspaceSideNav.vue";
+import AppSideNav from "@/components/AppSidenav.vue";
+import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
 
 export default {
   data() {
@@ -16,9 +16,7 @@ export default {
   },
   methods: {},
   computed: {},
-  created() {
-    console.log("here?");
-  },
+  created() {},
   components: {
     AppSideNav,
     WorkspaceSideNav,

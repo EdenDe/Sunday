@@ -1,4 +1,6 @@
 .app-sidenav {
+  grid-area: app-sidenav;
+  position: relative;
   @include sidenav;
   background-color: $color-surface;
   display: flex;
@@ -11,9 +13,6 @@
     width: em(66px);
     height: em(44px);
     margin-bottom: em(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     img {
       height: 40px;
       overflow: visible;
@@ -44,7 +43,6 @@
   .top-navigation-items-area {
     flex-grow: 1;
   }
-
   .bottom-navigation-items-area {
     flex-shrink: 0;
     padding-bottom: em(1px);
@@ -71,5 +69,13 @@
         height: rem(44px);
       }
     }
+  }
+  .workspace-arrow-left-div {
+    border-style: solid;
+    border-width: 0.5rem 6px 0.5rem 0;
+    border-color: transparent $grey-background-color transparent transparent;
+    position: absolute;
+    top: 74px;
+    left: 61px;
   }
 }
