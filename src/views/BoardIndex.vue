@@ -7,21 +7,23 @@
 </template>
 
 <script>
-import AppSideNav from '../components/AppSideNav.vue'
-import WorkspaceSideNav from '../components/WorkspaceSideNav.vue'
+import AppSideNav from "../components/AppSideNav.vue";
+import WorkspaceSideNav from "../components/WorkspaceSideNav.vue";
 
 export default {
   data() {
-    return {}
+    return {};
   },
   methods: {},
   computed: {},
-  created() {},
+  created() {
+    console.log("here?");
+  },
   components: {
     AppSideNav,
     WorkspaceSideNav,
   },
-}
+};
 </script>
 
 <style></style>

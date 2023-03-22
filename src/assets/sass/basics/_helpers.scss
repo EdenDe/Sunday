@@ -1,29 +1,35 @@
-// Flex 
+// Flex
 .flex {
-    display: flex;
+  display: flex;
 
-    &-col{
-        flex-direction: column;
-    }
-    &.wrap{
-        flex-wrap: wrap;
-    }
-    &.justify-center{
-        justify-content: center;
-    }
-    &.justify-between{
-        justify-content: space-between;
-    }
-    &.align-center{
-        align-items: center;
-    }
+  &-col {
+    flex-direction: column;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-between {
+    justify-content: space-between;
+  }
+  &.align-center {
+    align-items: center;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.align-start {
+    align-items: flex-start;
+  }
 }
 
-.grid{
-    display:grid;
-    &-col{
-        grid-auto-flow: column;
-    }
+.grid {
+  display: grid;
+  &-col {
+    grid-auto-flow: column;
+  }
 }
 
 // TODO: icon-btn class
