@@ -1,6 +1,7 @@
 .main-layout {
   display: grid;
-  grid-template-columns: 66px 29px 1fr;
+  grid-template-columns: 66px auto 1fr;
+  grid-template-areas: "app-sidenav workspace-sidenav board";
   // grid-template-columns: $layoutPadding 1fr $layoutPadding;
 
   // > * {
@@ -19,7 +20,6 @@
   //     @include layoutGTC($break-wide);
   // }
 }
-
 
 // .board-layout{
 //     display: grid;
