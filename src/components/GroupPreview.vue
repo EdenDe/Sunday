@@ -9,7 +9,7 @@
     </VueDraggableNext>
     <TaskList :tasks="group.tasks" @updateProp="updateProp" />
     <form @submit.prevent="onAddTask" class="add-task-input-container">
-      <input placeholder="+ Add task" type="text" v-model="newTask" />
+      <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
     </form>
     <section class="progress-grid justify-center">
       <div v-for="(item, idx) in progress" :key="idx">
@@ -48,7 +48,9 @@ export default {
         'timeline',
         'file',
       ],
-      newTask: '',
+      newTask: {
+        taskTitle: ''
+      },
       progress: [
         null,
         null,
@@ -65,7 +67,6 @@ export default {
   methods: {
     log(event) {
       console.log(event)
-      console.log('this.labels:', this.labels)
     },
     onType(txt) {
       this.updateProp(null, 'title', txt)
@@ -79,6 +80,11 @@ export default {
         toUpdate,
       })
     },
+    onAddTask() {
+      let group = JSON.parse(JSON.stringify(this.group))
+      group.tasks.push(this.newTask)
+      this.updateProp(null, 'tasks', group.tasks)
+    }
   },
   computed: {
     groupStatusProgress() {
