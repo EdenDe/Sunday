@@ -1,15 +1,9 @@
 <template>
-  <section class="app-sidenav flex align-center">
+  <section class="app-sidenav flex align-center flex-col justify-between ">
     <div class="monday-icon-wrapper align-end flex justify-center">
       <RouterLink to="/">
         <div class="monday-icon nav-item flex align-end">
-          <img
-            class="flex align-center justify-center"
-            src="../assets/img/logo.png"
-            width="40"
-            height="40"
-            alt=""
-          />
+          <img class="flex align-center justify-center" src="../assets/img/logo.png" width="40" height="40" alt="" />
         </div>
       </RouterLink>
     </div>
@@ -49,19 +43,13 @@
       </div>
     </section>
 
-    <section
-      class="footer-navigation-items-area flex-col align-center justify-center"
-    >
+    <section class="footer-navigation-items-area flex-col align-center justify-center">
       <div class="navigation-style-divider"></div>
       <div class="icon-wrapper flex justify-center align-center">
         <i class="flex align-center justify-center" v-icon="'dots'"></i>
       </div>
       <div class="avatar-wrapper flex align-center justify-center">
-        <img
-          src="../assets/img/avatar-side-nav.png"
-          class="avatar-preview"
-          title="Lior Doron"
-        />
+        <img src="../assets/img/avatar-side-nav.png" class="avatar-preview" title="Lior Doron" />
       </div>
     </section>
   </section>
@@ -70,14 +58,6 @@
 <script>
 export default {
   name: "AppSidenav",
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {},
-  created() {},
-  components: {},
 };
 </script>
 
-<style></style>

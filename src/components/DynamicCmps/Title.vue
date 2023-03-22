@@ -1,6 +1,6 @@
 <template>
   <section class="task-title grid">
-    <span contenteditable @input="onType($event.target.innerHTML)">{{ txt }}</span>
+    <span contenteditable @focusout="onType($event.target.innerText)">{{ txt }}</span>
   </section>
 </template>
 
@@ -11,6 +11,7 @@ export default {
   props: {
     info: String,
   },
+  emits: ['updateProp'],
   data() {
     return {
       txt: this.info
@@ -18,11 +19,9 @@ export default {
   },
   methods: {
     onType(txt) {
+      this.txt = txt
       this.$emit('updateProp', 'taskTitle', txt)
     }
   },
-  emits: ['updateProp']
-
-
 }
 </script>

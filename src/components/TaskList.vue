@@ -1,6 +1,6 @@
 <template>
-  <DraggableNext v-if="currTasks" v-model="currTasks" @moved="changeIndex">
-    <section class="task-list" v-for="(task, index) in currTasks" :key="index">
+  <DraggableNext v-if="currTasks" v-model="displayTask">
+    <section class="task-list" v-for="(task, index) in displayTask" :key="index">
       <TaskPreview :task="task" @updateProp="updateProp" />
     </section>
   </DraggableNext>
@@ -13,34 +13,40 @@ import TaskPreview from "./TaskPreview.vue";
 export default {
   name: "TaskList",
   props: { tasks: Array },
+  emits: ['updateProp'],
   data() {
     return {
       currTasks: [],
     };
   },
   methods: {
-    log(event) {
-      console.log(event);
-      console.log("this.labels:", this.labels);
-    },
-    changeIndex() {
-
-    },
     updateProp(taskId, prop, toUpdate) {
-
       this.$emit('updateProp', taskId, prop, toUpdate)
     }
   },
-  created() {
-    //console.log("TaskList", this.tasks)
-    this.currTasks = this.tasks;
+  computed: {
+    displayTask:
+    {
+      get() {
+        return this.currTasks
+      },
+      set(value) {
+        this.updateProp(null, 'tasks', value)
+        this.currTasks = value
+      }
+    }
+  },
+  watch: {
+    tasks: {
+      handler(tasks) {
+        this.currTasks = tasks;
+      },
+      immediate: true
+    }
   },
   components: {
     TaskPreview,
     DraggableNext: VueDraggableNext,
   },
-  emits: ['updateProp']
 };
 </script>
-
-<style></style>

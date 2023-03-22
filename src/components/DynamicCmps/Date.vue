@@ -3,18 +3,10 @@
     <div class="date-picker">
       <div class="block">
         <label for="date-picker">
-          {{ date }}
+          {{ formattedDate }}
 
-          <el-date-picker
-            id="date-picker"
-            type="date"
-            placeholder="Pick a day"
-            size="small"
-            format="DD/MM"
-            value-format="YYYY-MM-DD"
-            class="date-picker-container"
-            ref="date-picker"
-          />
+          <el-date-picker id="date-picker" type="date" placeholder="Pick a day" size="small" format="DD/MM"
+            value-format="YYYY-MM-DD" class="date-picker-container" ref="date-picker" />
         </label>
       </div>
     </div>

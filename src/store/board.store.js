@@ -101,6 +101,7 @@ export const boardStore = {
 			// optimistic
 
 			commit({ type: 'updateBoard', board: updatedBoard })
+
 			try {
 				await boardService.save(state.currBoard)
 			} catch (err) {

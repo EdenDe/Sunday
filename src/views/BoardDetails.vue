@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     groups() {
-      // console.log(this.$store.getters.groups)
+      console.log(this.$store.getters.groups)
       return this.$store.getters.groups
     },
   },
