@@ -150,7 +150,7 @@
 @mixin editableSpan{
   border-radius: $border-radius;
   &:hover{
-    border: 1px solid $color-wolf_gray
+    outline: 1px solid $color-wolf_gray
   }
   &:focus-visible{
     outline: 1px solid $color-basic_blue;

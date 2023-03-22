@@ -1,9 +1,7 @@
 <template>
   <section class="board-header">
     <div class="tool-bar grid grid-col">
-      <div class="title-container">
-        <h2 contenteditable="true" class="board-header-title">Sunday</h2>
-      </div>
+      <h2 contenteditable="true" class="board-header-title">Sunday</h2>
       <nav class="">
         <button class="btn">
           <i v-icon="'home'"></i>
