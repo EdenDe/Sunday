@@ -24,6 +24,10 @@
     &-col{
         grid-auto-flow: column;
     }
+    .aling-center{
+        align-content: center;
+        align-items: center;
+    }
 }
 
 // TODO: icon-btn class

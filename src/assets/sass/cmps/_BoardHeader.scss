@@ -7,7 +7,11 @@
   .open{
     height: 193px;
   }
+  .title-container{
+    margin-inline-end: $margin-large;
+  }
   &-title{
+    @include editableSpan;
     font-size: 24px;
     color: $color-mud_black;   
   }
