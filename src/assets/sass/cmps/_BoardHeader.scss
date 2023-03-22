@@ -29,17 +29,19 @@
        }
       }
 
+
       .nav-bar{
-        &>:first-child {
-            svg {
-              @include svg;
-            }
-          } 
+        svg{
+         display: flex;
+        align-items: center;
+        }
+      
         &>*:not(:last-child){
           position: relative;
           &::after{
             content: '|';    
             position: absolute;
+            top:0;
             right: -5px;
             color: $layout-border-color;
           }
