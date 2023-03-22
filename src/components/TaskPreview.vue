@@ -1,6 +1,6 @@
 <template>
   <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
-    <component :is="cmp" :info="task[cmp]" />
+    <component :is="cmp" :info="task[cmp]" @updateProp="updateProp" />
   </section>
 </template>
 
@@ -22,7 +22,11 @@ export default {
 
     }
   },
-
+  methods: {
+    updateProp(prop, toUpdate) {
+      this.$emit('updateProp', this.task.id, prop, toUpdate)
+    }
+  },
   computed: {
     cmpOrder() {
       return this.$store.getters.cmpOrder
@@ -40,6 +44,8 @@ export default {
     status,
     TaskTitle
   },
+  emits: ['updateProp']
+
 }
 </script>
 

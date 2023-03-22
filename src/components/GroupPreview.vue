@@ -7,7 +7,8 @@
     <VueDraggableNext class="group-labels" v-model="labels" @change="log">
       <div v-for="label in labels" :key="label">{{ label }}</div>
     </VueDraggableNext>
-    <TaskList :tasks="group.tasks" />
+    <TaskList :tasks="group.tasks" @updateProp="updateProp" />
+
     <form @submit.prevent="onAddTask" class="add-task-input-container">
       <input placeholder="+ Add task" type="text" v-model="newTask" />
     </form>
@@ -21,7 +22,7 @@
               'flex-basis': status.width,
               backgroundColor: status.color,
             }"
-          />
+          ></div>
         </div>
       </div>
     </section>
@@ -29,11 +30,11 @@
 </template>
 
 <script>
-import { VueDraggableNext } from "vue-draggable-next";
-import TaskList from "./TaskList.vue";
+import { VueDraggableNext } from 'vue-draggable-next'
+import TaskList from './TaskList.vue'
 
 export default {
-  name: "GroupPreview",
+  name: 'GroupPreview',
   props: {
     group: Object,
   },
@@ -43,71 +44,80 @@ export default {
       labels: [
         null,
         null,
-        "task",
-        "status",
-        "priority",
-        "person",
-        "date",
-        "timeline",
-        "file",
+        'task',
+        'status',
+        'priority',
+        'person',
+        'date',
+        'timeline',
+        'file',
       ],
       newTask: {},
       progress: [
         null,
         null,
         null,
-        "status",
-        "priority",
+        'status',
+        'priority',
         null,
         null,
         null,
         null,
       ],
-    };
+    }
   },
   methods: {
     log(event) {
-      console.log(event);
-      console.log("this.labels:", this.labels);
+      console.log(event)
+      console.log('this.labels:', this.labels)
     },
     onDrop(ev) {
-      console.log(ev);
+      console.log(ev)
     },
     start(ev) {
-      console.log(":start", ev);
+      console.log(':start', ev)
+    },
+    updateProp(taskId, prop, toUpdate) {
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: this.group.id,
+        taskId,
+        prop,
+        toUpdate,
+      })
     },
   },
   computed: {
     groupStatusProgress() {
       let res = this.group.tasks.reduce((obj, { status }) => {
-        if (!obj[status]) obj[status] = 0;
-        obj[status] += 1;
-        return obj;
-      }, {});
+        if (!obj[status]) obj[status] = 0
+        obj[status] += 1
+        return obj
+      }, {})
 
-      let statusLabel = this.$store.getters.statusLabels;
-      let totalTaskLength = this.group.tasks.length;
+      let statusLabel = this.$store.getters.statusLabels
+      let totalTaskLength = this.group.tasks.length
 
       statusLabel.map(({ taskTitle, color }) => {
         if (res[taskTitle]) {
-          let presentageWidth = (res[taskTitle] / totalTaskLength) * 100;
+          let presentageWidth = (res[taskTitle] / totalTaskLength) * 100
 
           res[taskTitle] = {
-            width: Math.round(presentageWidth) + "%",
+            width: Math.round(presentageWidth) + '%',
             color: color,
             title: `${taskTitle} ${
               res[taskTitle]
             }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
-          };
+          }
         }
-      });
+      })
 
-      return res;
+      return res
     },
   },
   components: {
     TaskList,
     VueDraggableNext,
   },
-};
+}
 </script>

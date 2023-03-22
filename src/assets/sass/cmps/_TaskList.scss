@@ -11,26 +11,4 @@
   }
 }
 
-.add-task-input-container {
-  @include task-cols;
-  padding: 4px 3px;
 
-  input {
-    grid-column: 3;
-    justify-self: start;
-    border-radius: $border-radius;
-    border: 1px solid transparent;
-    padding: em(4px) 0;
-    padding-inline-start: 30px;
-    border-radius: 4px;
-    width: 100%;
-
-    &:hover {
-      border-color: $ui-border-on-secondary-color;
-    }
-
-    &:focus-within {
-      outline: 1px solid #0073ea;
-    }
-  }
-}

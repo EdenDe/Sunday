@@ -1,4 +1,5 @@
-import { storageService } from './storage.service'
+import { storageService } from './async-storage.service'
+import gBoard from '../../data/board.json' assert { type: 'json' }
 
 import { utilService } from './util.service.js'
 
@@ -15,7 +16,7 @@ export const boardService = {
 
 window.boardService = boardService
 
-async function query(filterBy) {
+async function query() {
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -37,13 +38,14 @@ async function save(board) {
 	return savedBoard
 }
 
-function updateBoard(board, groupId, taskId, prop, toUpdate) {
+function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
+	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
-		let group = board.find(group => groupId === group.id)
+		let group = board.groups.find(group => groupId === group.id)
 		let task = group.tasks.find(task => task.id === taskId)
 		task[prop] = toUpdate
 	} else if (groupId) {
-		let group = board.find(group => groupId === group.id)
+		let group = board.groups.find(group => groupId === group.id)
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
@@ -51,21 +53,6 @@ function updateBoard(board, groupId, taskId, prop, toUpdate) {
 
 	return board
 }
-
-// function updateBoard(board, groupId, taskId, prop, toUpdate) {
-// 	if (!taskId && !groupId) {
-// 		board[prop] = toUpdate
-// 		return board
-// 	}
-// 	let group = board.find(group => groupId === group.id)
-// 	if (!taskId) {
-// 		group[prop] = toUpdate
-// 		return board
-// 	}
-// 	let task = group.tasks.find(task => task.id === taskId)
-// 	task[prop] = toUpdate
-// 	return board
-// }
 
 // function getEmptyBoard() {
 // 	return {

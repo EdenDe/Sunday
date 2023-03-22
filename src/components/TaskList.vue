@@ -1,7 +1,7 @@
 <template>
   <DraggableNext v-if="currTasks" v-model="currTasks" @moved="changeIndex">
     <section class="task-list" v-for="(task, index) in currTasks" :key="index">
-      <TaskPreview :task="task" />
+      <TaskPreview :task="task" @updateProp="updateProp" />
     </section>
   </DraggableNext>
 </template>
@@ -26,6 +26,10 @@ export default {
     changeIndex() {
 
     },
+    updateProp(taskId, prop, toUpdate) {
+
+      this.$emit('updateProp', taskId, prop, toUpdate)
+    }
   },
   created() {
     //console.log("TaskList", this.tasks)
@@ -35,6 +39,7 @@ export default {
     TaskPreview,
     DraggableNext: VueDraggableNext,
   },
+  emits: ['updateProp']
 };
 </script>
 
