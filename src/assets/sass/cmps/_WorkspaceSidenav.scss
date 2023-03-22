@@ -5,7 +5,6 @@
   color: $primary-text-color;
   background-color: $color-riverstone_gray;
   border-right: 1.2px solid $workspace-side-nav;
-
   padding-top: 12px;
   &.workspace-close {
     width: 32px;
@@ -24,11 +23,34 @@
       border-radius: em(4px);
       margin-right: em(4px);
       border: 1px solid $icon-color;
+      .workspace-title {
+        .workspace-icon-wrapper {
+          .icon-text {
+            background-color: #f279f2;
+            color: #fff;
+            font-weight: 600;
+            font-size: rem(14px);
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 8px;
+            margin-inline-end: 6px;
+          }
+        }
+        .workspace-name {
+          font-family: figtree-semiBold;
+          font-weight: 700;
+        }
+      }
+      svg {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+      }
     }
   }
   .action-list {
-    padding-inline-start: 5px;
-    padding-bottom: 16px;
+    padding: 0 16px 16px 14px;
     .action-item {
       width: rem(224px);
       height: rem(32px);

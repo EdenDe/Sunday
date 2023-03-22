@@ -13,6 +13,7 @@ import { Container, Draggable } from 'vue3-smooth-dnd'
 import BoardHeader from '../components/BoardHeader.vue'
 import GroupList from '../components/GroupList.vue'
 import ToolTip from '../components/Cmps/ToolTip.vue'
+
 export default {
   methods: {
     onDrop(dropResult) {
@@ -32,7 +33,8 @@ export default {
       }
       return result
     },
-    changeIndex(oldIndex, newIndex) {},
+    changeIndex(oldIndex, newIndex) { },
+
   },
   computed: {
     groups() {

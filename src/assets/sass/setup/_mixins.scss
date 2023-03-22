@@ -145,7 +145,7 @@
 
 @mixin task-cols{
   display:grid;
-  grid-template-columns: 2% 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns:6px 33px 300px repeat(6,120px);
   cursor: pointer;
   border: 1px solid $layout-border-color;
   margin-top: -1px;
@@ -154,9 +154,15 @@
   }
 }
 
+@mixin task-row{
+  border-right: 1px solid $layout-border-color;
+  margin-right: -1px;
+  width:100%;
+}
+
 @mixin editableSpan{
   border-radius: $border-radius;
-  padding: 4px;
+  padding: em(4px);
   &:hover{
     outline: 1px solid $color-wolf_gray
   }

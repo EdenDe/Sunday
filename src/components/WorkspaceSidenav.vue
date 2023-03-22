@@ -14,13 +14,16 @@
           <i v-icon="'moreDots'"></i>
         </div>
       </div>
-      <div class="dropdown-navigation-button">
-        <div class="workspace-title">
-          <span class="workspace-icon">M</span>
+      <div class="dropdown-navigation-button flex justify-between align-center">
+        <div class="workspace-title flex">
+          <div class="workspace-icon-wrapper flex">
+            <span class="icon-text flex justify-center align-center">M</span>
+            <i v-icon="'home'" class="icon-svg"></i>
+          </div>
           <span class="workspace-name">Main Workspace</span>
         </div>
         <div class="dropdown-arrow">
-          <div class="icon-wrapper">
+          <div class="icon-wrapper flex justify-center">
             <i v-icon="'workManagementArrowDown'"></i>
           </div>
         </div>
@@ -84,5 +87,3 @@ export default {
   components: {},
 };
 </script>
-
-<style></style>

@@ -1,16 +1,17 @@
 .task-preview{
+  @include task-row;
+
   *{
     font-size: em(14px);
+    margin:0
   }
 
-
-
- &:has(.status,.priority){
-  width:100%;
-  height: 100%;
- }
-
+  .date{
+    place-self: center;
+  }
+  
  :is(.status,.priority){
   color: $color-snow_white;
+
  }
 }
