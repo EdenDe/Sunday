@@ -2,13 +2,17 @@
   <section class="board-header">
     <div class="tool-bar grid grid-col">
       <h2 contenteditable="true" class="board-header-title">Sunday</h2>
-      <nav class="">
-        <button class="btn">
-          <i v-icon="'home'"></i>
+      <nav class="nav-bar grid grid-col">
+        <div class="btn btn-container grid grid-col aling-center">
+          <span class="task-filter-icon" v-icon="'home'"></span>
           <span>Main Table</span>
-        </button>
-        <button class="btn">Kaban</button>
-        <button class="btn">+</button>
+        </div>
+        <div class="btn btn-container grid grid-col aling-center">
+          <span>Kaban</span>
+        </div>
+        <div class="btn btn-container grid grid-col aling-center">
+          <span class="task-filter-icon" v-icon="'plusHeader'"></span>
+        </div>
       </nav>
     </div>
     <TaskFilter></TaskFilter>

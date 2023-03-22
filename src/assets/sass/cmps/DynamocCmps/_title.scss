@@ -1,0 +1,10 @@
+ .task-title{
+    
+  &>span{
+    @include editableSpan;
+    font-size: rem(16px);
+    
+
+  // width: 100%;
+  }
+}

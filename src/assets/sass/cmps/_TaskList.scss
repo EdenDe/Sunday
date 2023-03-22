@@ -1,0 +1,40 @@
+.task-list{
+  @include task-cols;
+  border-left: 5px solid;
+  font-size: rem(18px);
+  &:hover{
+    background-color: $dark-background-color;
+  }
+ 
+  
+
+  &:last-child{
+    border-bottom-left-radius: $border-radius 
+  }
+
+}
+
+.add-task-input-container{
+  @include task-cols;
+  padding: 4px 3px;
+
+  input{
+    grid-column: 2;
+    justify-self: start;
+    border-radius:  $border-radius;
+    border: 1px solid transparent;
+    padding: em(4px) em(17px);
+
+    border-radius: 4px;
+    width: 100%;
+
+    &:hover{
+     border-color: $ui-border-on-secondary-color;
+    }
+
+    &:focus-within{
+      outline: 1px solid #0073ea;
+    }
+  }
+
+}

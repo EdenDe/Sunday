@@ -1,16 +1,17 @@
 <template>
-  <p class="title">{{ info }}</p>
+  <section class="task-title grid">
+    <span contenteditable>{{ info }}</span>
+  </section>
 </template>
 
 <script>
 export default {
-  name: "TaskTitle",
+  name: 'TaskTitle',
   props: {
     info: String,
   },
   data() {
-    return {};
+    return {}
   },
-};
+}
 </script>
-

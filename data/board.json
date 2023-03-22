@@ -92,8 +92,8 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
-          "status": "Working on it",
+          "date": 1659561600000,
+          "status": "Done",
           "priority": "Critical"
         },
         {
@@ -105,7 +105,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1659817200000,
           "status": "Stuck",
           "priority": "Low"
         },
@@ -118,7 +118,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1660076400000,
           "status": "Done",
           "priority": "Low"
         }
@@ -138,7 +138,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1660335600000,
           "status": "Working on it",
           "priority": "Low"
         },
@@ -151,7 +151,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1660594800000 ,
           "status": "Finishing soon",
           "priority": "Critical"
         },
@@ -164,7 +164,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1660854000000,
           "status": "Need help",
           "priority": "Medium"
         }
@@ -184,7 +184,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1661113200000,
           "status": "Working on it",
           "priority": "High"
         },
@@ -197,7 +197,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1661372400000,
           "status": "Stuck",
           "priority": ""
         },
@@ -210,7 +210,7 @@
             { "name": "bal", "color": "black" },
             { "name": "shal", "color": "green" }
           ],
-          "date": "27-02-2022",
+          "date": 1661631600000,
           "status": "Done",
           "priority": "High"
         }
