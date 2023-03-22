@@ -11,8 +11,6 @@
 import { Container, Draggable } from "vue3-smooth-dnd";
 import BoardHeader from "../components/BoardHeader.vue";
 import GroupList from "../components/GroupList.vue";
-import ToolTip from "../components/Cmps/ToolTip.vue";
-
 export default {
   methods: {},
   computed: {
@@ -26,7 +24,6 @@ export default {
     GroupList,
     Container,
     Draggable,
-    ToolTip,
   },
 };
 </script>
