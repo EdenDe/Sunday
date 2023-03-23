@@ -1,0 +1,21 @@
+.progress-bar{
+  @include task-cols;
+  
+  >*:not(:first-child,:nth-child(2),:nth-child(3)){
+    @include task-row;
+    border-bottom: 1px solid $layout-border-color;
+  } 
+
+  .progress-container{
+    height:em(35px);
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    >*{
+      height: 24px;
+      &:hover{
+        scale:1.2
+      }
+    }
+  }
+}

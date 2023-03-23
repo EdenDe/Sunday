@@ -1,7 +1,12 @@
 .task-list {
   @include task-cols;
-
+  // border-top-left-radius: $border-radius;
   font-size: rem(18px);
+
+  .first-col-color{
+    @include fullSize;
+    // border-top-left-radius: $border-radius;
+  }
   &:hover {
     background-color: $dark-background-color;
   }

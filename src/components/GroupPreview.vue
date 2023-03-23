@@ -5,32 +5,28 @@
     </span>
     <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
     <VueDraggableNext class="group-labels" v-model="labels" @change="log">
-      <div v-for="label, index in labels" :key="label">
-        <div v-if="index === 0" class="first-col-color" :style="{ backgroundColor: group.color }"> </div>
+      <div v-for="(label, index) in labels" :key="label">
+        <div v-if="index === 0" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
         {{ label }}
       </div>
     </VueDraggableNext>
+
+
     <TaskList :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
-    <form @submit.prevent="onAddTask" class="add-task-input-container">
-      <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
-    </form>
-    <section class="progress-grid justify-center">
-      <div v-for="(item, idx) in progress" :key="idx">
-        <div v-if="item === 'status'" class="flex status-progress-container">
-          <div v-for="status in groupStatusProgress" :style="{
-            flex: 1,
-            'flex-basis': status.width,
-            backgroundColor: status.color,
-          }"></div>
-        </div>
-      </div>
-    </section>
+    <div class="add-task-container">
+      <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
+      <form @submit.prevent="onAddTask" class="add-task-input-container">
+        <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
+      </form>
+    </div>
+    <ProgressBar :tasks="group.tasks" />
   </section>
 </template>
 
 <script>
 import { VueDraggableNext } from 'vue-draggable-next'
 import TaskList from './TaskList.vue'
+import ProgressBar from './ProgressBar.vue'
 
 export default {
   name: 'GroupPreview',
@@ -39,7 +35,6 @@ export default {
   },
   data() {
     return {
-      titleEdtiable: false,
       labels: [
         null,
         null,
@@ -52,19 +47,8 @@ export default {
         'file',
       ],
       newTask: {
-        taskTitle: ''
+        taskTitle: '',
       },
-      progress: [
-        null,
-        null,
-        null,
-        'status',
-        'priority',
-        null,
-        null,
-        null,
-        null,
-      ],
     }
   },
   methods: {
@@ -88,7 +72,7 @@ export default {
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
       this.newTask.taskTitle = ''
-    }
+    },
   },
   computed: {
     groupStatusProgress() {
@@ -108,7 +92,8 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${res[title]}/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${res[title]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
@@ -119,11 +104,12 @@ export default {
   watch: {
     group() {
       console.log(this.group)
-    }
+    },
   },
   components: {
     TaskList,
     VueDraggableNext,
+    ProgressBar
   },
 }
 </script>

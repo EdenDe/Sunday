@@ -5,12 +5,13 @@
       :info="task[cmp]"
       :taskId="task.id"
       @updateProp="updateProp"
-      value-format="x"
     />
   </section>
 </template>
 
 <script>
+import { Container, Draggable } from "vue3-smooth-dnd";
+
 import checkbox from "./dynamicCmps/Checkbox.vue";
 import date from "./dynamicCmps/Date.vue";
 import timeline from "./dynamicCmps/TimelinePicker.vue";
@@ -42,7 +43,6 @@ export default {
     priority,
     status,
     TaskTitle,
-    timeline,
   },
 };
 </script>
