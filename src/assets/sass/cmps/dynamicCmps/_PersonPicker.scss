@@ -18,26 +18,29 @@
   }
 
   .person-picker-container{
-    padding: 16px 16px 0 16px;
+    padding: em(16px) em(16px) 0 em(16px);
     background-color: $color-snow_white;
     width: 360px;
     height: fit-content;
     position: absolute;
     z-index: 100;
-    right: -80%;
-    border-radius: 10px;
-    border: 1px solid #c3c6d4;
-    --el-transition-duration: .1s;
-    box-shadow: 0 0 6px 2px #d0d0d0;
+    border-radius: (10px);
+    border: 1px solid $color-wolf_gray;
+    box-shadow: 0 0 6px 2px $person-picker-hover;
+  
+    .avatar{
+      height: 25px;
+      width: 25px;
+    }
   }
 
-  .task-member{
-    padding-right: 5px;
+  .task-person{
+    padding-right: em(5px);
     width: fit-content;
     background-color: #e5f4ff;
     border-radius: em(15px);
-    margin-left: 15px;
-    margin-top: 5px;
+    margin-left: em(15px);
+    margin-top: em(5px);
   }
 
   .person-picker{
@@ -50,19 +53,12 @@
     margin: 12px 0;
     
     span{
+      @include flex-center;
       position: absolute;
       right:em(5px);
       top:50%;
       transform: translateY(-50%);
-      color:$color-asphalt;
-    
-      width: 18px;
-      height: 18px;
-      
-      svg{
-        width: 16px;
-        height: 16px;
-      }
+  
     }
 
     input{
@@ -82,6 +78,7 @@
         outline: 1px solid $color-basic_blue
       }
     }
+ 
   }
 
   .delete-person {
@@ -128,6 +125,4 @@
       }
     }
   }
-
-
 }

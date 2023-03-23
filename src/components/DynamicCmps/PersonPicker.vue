@@ -1,13 +1,13 @@
 <template>
   <section class="person-list flex align-center justify-center">
     <i v-icon="'plusRound'" class="plus-icon" @click="isPersonPickerOpen = true">+</i>
-    <PersonAvatar v-for="(member, idx) in info" :key="idx" :member="member" />
+    <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
     <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
       v-clickOutside="onClosePicker">
       <div class="flex wrap person-picker">
-        <article class="task-member flex align-center" v-for="(member, idx) in info" :key="idx">
-          <PersonAvatar :member="member" />
-          <span class="person-fullname">{{ member.fullname }}</span>
+        <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">
+          <PersonAvatar :person="person" />
+          <span class="person-fullname">{{ person.fullname }}</span>
           <button class="delete-person" @click="onDelete">X</button>
         </article>
       </div>
@@ -19,7 +19,7 @@
         <h3>Suggested people</h3>
         <ul class="clean-list">
           <li v-for="member in members" class="flex align-center member-picker-suggestions">
-            <PersonAvatar :member="member" />
+            <PersonAvatar :person="member" />
             <span class="person-fullname">{{ member.fullname }}</span>
           </li>
         </ul>
@@ -32,8 +32,8 @@
 import Avatar from '../Avatar.vue'
 
 export default {
-  name: "Person",
-  emits: ["update"],
+  name: "PersonPicker",
+  emits: ['updateProp'],
   props: {
     info: Array,
   },
@@ -44,8 +44,9 @@ export default {
   },
   computed: {
     members() {
-      let board = this.$store.getters.currBoard
-      return board.members
+      let AllMembers = this.$store.getters.currBoard.members
+      return this.info.filter(member => !AllMembers.some(m => member.id === m.id))
+
     }
   },
   methods: {
