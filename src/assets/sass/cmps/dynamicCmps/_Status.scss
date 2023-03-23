@@ -18,19 +18,10 @@
       @include modal-arrow;
     }
     align-items: flex-start;
-<<<<<<< HEAD
     justify-items: center;
-
     z-index: 1;
     position: absolute;
     top: rem(35px);
-
-=======
-    justify-items: center; 
-    z-index:1;
-    position: absolute;
-    top: rem(35px);   
->>>>>>> b4188501c6ba360a7408c4d05661bb90e4391346
     padding-top: rem(18px);
     background-color: $color-snow_white;
     height: rem(320px);

@@ -11,7 +11,7 @@ export const boardService = {
 	save,
 	remove,
 	updateBoard,
-	// getEmptyBoard,
+	getEmptyBoard,
 }
 
 window.boardService = boardService
@@ -40,6 +40,7 @@ async function save(board) {
 }
 
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
+	//q- לעשות שנביא בורד ספציפי לפי איידי?
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
 		let group = board.groups.find(group => groupId === group.id)
@@ -55,8 +56,141 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	return board
 }
 
-// function getEmptyBoard() {
-// 	return {
-
-// 	}
-// }
+function getEmptyBoard() {
+	return {
+		_id: utilService.makeId(),
+		title: 'my first board',
+		isStarred: false,
+		archivedAt: null,
+		createdBy: {
+			_id: 'u101',
+			fullname: 'Abi Abambi',
+			imgUrl: 'http://some-img',
+		},
+		cmpOrder: [
+			'checkbox',
+			'taskTitle',
+			'status',
+			'priority',
+			'person',
+			'date',
+			'timeline',
+			'file',
+		],
+		priorityLabels: [
+			{
+				id: 'pl101',
+				title: 'Critical',
+				color: '#333333',
+			},
+			{
+				id: 'pl102',
+				title: 'High',
+				color: '#401694',
+			},
+			{
+				id: 'pl103',
+				title: 'Medium',
+				color: '#5559df',
+			},
+			{
+				id: 'pl104',
+				title: 'Low',
+				color: '#579bfc',
+			},
+			{
+				id: 'pl105',
+				title: '',
+				color: '#c4c4c4',
+			},
+		],
+		statusLabels: [
+			{
+				id: 'l101',
+				title: 'Done',
+				color: '#00c875',
+			},
+			{
+				id: 'l102',
+				title: 'Working on it',
+				color: '#fdab3d',
+			},
+			{
+				id: 'l103',
+				title: 'Stuck',
+				color: '#e2445c',
+			},
+			{
+				id: 'l104',
+				title: 'Need help',
+				color: '#a25ddc',
+			},
+			{
+				id: 'l105',
+				title: 'Finishing soon',
+				color: '#2b76e5',
+			},
+			{
+				id: 'l106',
+				title: '',
+				color: '#c4c4c4',
+			},
+		],
+		members: [
+			{
+				_id: 'u101',
+				fullname: 'Tal Tarablus',
+				imgUrl: 'https://www.google.com',
+			},
+		],
+		groups: [
+			{
+				id: 'g12',
+				title: 'my first group',
+				color: '#e2445c',
+				tasks: [
+					{
+						id: 't101',
+						checkbox: 'null',
+						taskTitle: 'learn CSS',
+						person: [
+							{ name: 'tal', color: 'red' },
+							{ name: 'bal', color: 'black' },
+							{ name: 'shal', color: 'green' },
+						],
+						date: 1661113200000,
+						status: 'Working on it',
+						priority: 'High',
+					},
+					{
+						id: 't102',
+						checkbox: 'null',
+						taskTitle: 'learn vue',
+						person: [
+							{ name: 'tal', color: 'red' },
+							{ name: 'bal', color: 'black' },
+							{ name: 'shal', color: 'green' },
+						],
+						date: 1661372400000,
+						status: 'Stuck',
+						priority: '',
+					},
+					{
+						id: 't103',
+						checkbox: 'null',
+						taskTitle: 'learn js',
+						person: [
+							{ name: 'tal', color: 'red' },
+							{ name: 'bal', color: 'black' },
+							{ name: 'shal', color: 'green' },
+						],
+						date: 1661631600000,
+						status: 'Done',
+						priority: 'High',
+					},
+				],
+			},
+		],
+		activities: [],
+	}
+}

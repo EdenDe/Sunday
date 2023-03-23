@@ -1,7 +1,6 @@
 .group-preview{
   margin-bottom: em(30px);
-  text-align: center;
-
+  
   .group-title{
     @include editableSpan;
     display: inline-flex;
@@ -29,7 +28,7 @@
 
   .progress-grid{
     @include task-cols;
-
+    
     >*:not(:first-child,:nth-child(2),:nth-child(3)){
       @include task-row;
       border-bottom: 1px solid $layout-border-color;
@@ -41,7 +40,7 @@
     text-transform: capitalize;
     border-top: 1px solid $layout-border-color;
     border-bottom: 1px solid $layout-border-color;
-
+    text-align: center;
     >*:not(:first-child, :nth-child(2)){
       padding: 6px;
     }
