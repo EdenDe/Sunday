@@ -16,9 +16,6 @@
 </template>
 
 <script>
-import { VueDraggableNext } from 'vue-draggable-next'
-import TaskList from './TaskList.vue'
-
 export default {
   name: 'GroupPreview',
   props: {
