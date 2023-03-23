@@ -12,13 +12,19 @@
         </article>
       </div>
       <input placeholder="Search names" />
-
+      <h2>Suggested people</h2>
+      <ul class="clean-list">
+        <li v-for="member in members">
+          <PersonAvatar :member="member" />
+          <span class="person-fullname">{{ member.name }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script>
-//import vClickOutside from 'v-click-outside'
+import { isMemberExpressionNode } from '@vue/compiler-core';
 import Avatar from '../Avatar.vue'
 
 export default {
@@ -32,18 +38,17 @@ export default {
       isPersonPickerOpen: false
     }
   },
+  computed: {
+    members() {
+      let board = this.$store.getters.currBoard
+      return board.members
+    }
+  },
   methods: {
-    //   onClickOutside(event) {
-    //     console.log(event)
-    //     this.isPersonPickerOpen = false
-    //   }
     onClosePicker() {
       this.isPersonPickerOpen = false
     }
   },
-  // directives: {
-  //   clickOutside: vClickOutside.directive
-  // },
   components: {
     PersonAvatar: Avatar,
   },
