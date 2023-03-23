@@ -12,7 +12,6 @@ import { Container, Draggable } from "vue3-smooth-dnd";
 import BoardHeader from "../components/BoardHeader.vue";
 import GroupList from "../components/GroupList.vue";
 export default {
-  methods: {},
   computed: {
     groups() {
       return this.$store.getters.groups;
@@ -26,3 +25,4 @@ export default {
   },
 };
 </script>
+

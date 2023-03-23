@@ -1,0 +1,7 @@
+.group-list{
+  &::before{
+    content:'';
+    width:38px;
+    display:block
+  }
+}

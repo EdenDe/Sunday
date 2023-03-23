@@ -9,7 +9,6 @@
       "imgUrl": "http://some-img"
   },
   "cmpOrder": [
-    null,
     "checkbox",
     "taskTitle",
     "status",
@@ -20,56 +19,61 @@
   "priorityLabels": [
     {
         "id": "pl101",
-        "taskTitle": "Critical",
+        "title": "Critical",
         "color": "#333333"
     },
     {
         "id": "pl102",
-        "taskTitle": "High",
+        "title": "High",
         "color": "#401694"
     },
     {
       "id": "pl103",
-      "taskTitle": "Medium",
+      "title": "Medium",
       "color": "#5559df"
     },
     {
       "id": "pl104",
-      "taskTitle": "Low",
+      "title": "Low",
       "color": "#579bfc"
     },
     {
       "id": "pl105",
-      "taskTitle": "",
+      "title": "",
       "color": "#c4c4c4"
     }
   ],
   "statusLabels": [
       {
           "id": "l101",
-          "taskTitle": "Done",
+          "title": "Done",
           "color": "#00c875"
       },
       {
           "id": "l102",
-          "taskTitle": "Working on it",
+          "title": "Working on it",
           "color": "#fdab3d"
       },
       {
         "id": "l103",
-        "taskTitle": "Stuck",
+        "title": "Stuck",
         "color": "#e2445c"
       },
       {
         "id": "l104",
-        "taskTitle": "Need help",
+        "title": "Need help",
         "color": "#a25ddc"
       },
       {
         "id": "l105",
-        "taskTitle": "Finishing soon",
+        "title": "Finishing soon",
         "color": "#2b76e5"
-      }
+      }, 
+      {
+      "id": "l106",
+      "taskTitle": "",
+      "color": "#c4c4c4"
+    }
   ],
   "members": [
       {

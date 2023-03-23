@@ -5,11 +5,14 @@
     </span>
     <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
     <VueDraggableNext class="group-labels" v-model="labels" @change="log">
-      <div v-for="label in labels" :key="label">{{ label }}</div>
+      <div v-for="label, index in labels" :key="label">
+        <div v-if="index === 0" class="first-col-color" :style="{ backgroundColor: group.color }"> </div>
+        {{ label }}
+      </div>
     </VueDraggableNext>
-    <TaskList :tasks="group.tasks" @updateProp="updateProp" />
+    <TaskList :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
     <form @submit.prevent="onAddTask" class="add-task-input-container">
-      <input placeholder="+ Add task" type="text" v-model="newTask" />
+      <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
     </form>
     <section class="progress-grid justify-center">
       <div v-for="(item, idx) in progress" :key="idx">
@@ -48,7 +51,9 @@ export default {
         'timeline',
         'file',
       ],
-      newTask: '',
+      newTask: {
+        taskTitle: ''
+      },
       progress: [
         null,
         null,
@@ -65,7 +70,6 @@ export default {
   methods: {
     log(event) {
       console.log(event)
-      console.log('this.labels:', this.labels)
     },
     onType(txt) {
       this.updateProp(null, 'title', txt)
@@ -79,6 +83,12 @@ export default {
         toUpdate,
       })
     },
+    onAddTask() {
+      let group = JSON.parse(JSON.stringify(this.group))
+      group.tasks.push({ ...this.newTask })
+      this.updateProp(null, 'tasks', group.tasks)
+      this.newTask.taskTitle = ''
+    }
   },
   computed: {
     groupStatusProgress() {
@@ -91,15 +101,14 @@ export default {
       let statusLabel = this.$store.getters.statusLabels
       let totalTaskLength = this.group.tasks.length
 
-      statusLabel.map(({ taskTitle, color }) => {
-        if (res[taskTitle]) {
-          let presentageWidth = (res[taskTitle] / totalTaskLength) * 100
+      statusLabel.map(({ title, color }) => {
+        if (res[title]) {
+          let presentageWidth = (res[title] / totalTaskLength) * 100
 
-          res[taskTitle] = {
+          res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${taskTitle} ${res[taskTitle]
-              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${res[title]}/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
