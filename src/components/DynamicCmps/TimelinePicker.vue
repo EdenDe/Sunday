@@ -1,24 +1,11 @@
 <template>
   <section class="timeline-picker">
     <div class="timeline-display">
-      <label
-        :data-diff="formattedDaysRange"
-        :for="taskId + 'Timeline'"
-        class="timeline-label"
-        :class="{ 'active-timeline': timeline?.length }"
-      >
+      <label :data-diff="formattedDaysRange" :for="taskId + 'Timeline'" class="timeline-label"
+        :class="{ 'active-timeline': timeline?.length }">
         {{ formattedDates }}
-        <el-date-picker
-          v-model="timeline"
-          @change="onChangeTimeline"
-          type="daterange"
-          format="M D"
-          value-format="x"
-          range-separator=""
-          start-placeholder=""
-          end-placeholder=""
-          :id="taskId + 'Timeline'"
-        />
+        <el-date-picker v-model="timeline" @change="onChangeTimeline" type="daterange" format="M D" value-format="x"
+          range-separator="" start-placeholder="" end-placeholder="" :id="taskId + 'Timeline'" />
       </label>
     </div>
   </section>
@@ -38,7 +25,6 @@ export default {
   data() {
     return {
       timeline: [],
-      isHover: false,
     };
   },
   methods: {
