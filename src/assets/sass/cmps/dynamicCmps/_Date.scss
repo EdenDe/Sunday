@@ -1,16 +1,41 @@
-.el-date-editor.el-input {
-  width: 0px;
-  height: 0px;
-  svg {
+.task-date {
+  width: 100%;
+  .el-date-editor.el-input {
+    width: 100%;
+    height: 100%;
+
+    svg {
+      display: none;
+    }
+  }
+  .el-input__inner {
+    @include flex-center;
+    text-align: center;
+    font-family: $figtree-regular;
+    color: $color-pulse_text_color;
+  }
+  input::placeholder {
+    opacity: 0;
+  }
+  .el-input__prefix-inner {
     display: none;
   }
-}
-.el-input__wrapper {
-  background-color: transparent;
-  box-shadow: none;
-  width: 0px;
-}
-
-.el-input__wrapper.is-focus {
-  box-shadow: none;
+  .el-input__suffix-inner {
+    display: none;
+  }
+  .el-input__wrapper {
+    @include flex-center;
+    background-color: transparent;
+    box-shadow: none;
+    width: 100%;
+    &:hover {
+      box-shadow: none;
+    }
+    &.is-focus {
+      box-shadow: none;
+    }
+  }
+  .el-input__wrapper.is-focus {
+    box-shadow: none;
+  }
 }

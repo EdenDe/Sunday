@@ -1,9 +1,0 @@
- .task-title{
-  justify-self: start;
-  padding-inline-start: 30px;
-
-  >span{
-    @include editableSpan;
-    font-size: rem(16px);
-  }
-}

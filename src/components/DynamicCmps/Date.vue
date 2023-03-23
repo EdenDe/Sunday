@@ -1,15 +1,17 @@
 <template>
-  <section class="date">
-    <div class="date-picker">
-      <div class="block">
-        <label for="date-picker">
-          {{ formattedDate }}
-
-          <el-date-picker id="date-picker" type="date" placeholder="Pick a day" size="small" format="DD/MM"
-            value-format="YYYY-MM-DD" class="date-picker-container" ref="date-picker" />
-        </label>
-      </div>
-    </div>
+  <section class="task-date">
+    <el-date-picker
+      :id="taskId + 'Date'"
+      type="date"
+      placeholder="Pick a day"
+      size="small"
+      format="MMM D"
+      value-format="x"
+      class="date-picker-container"
+      ref="date-picker"
+      v-model="date"
+      @change="onChangeDate"
+    />
   </section>
 </template>
 
@@ -18,6 +20,7 @@ export default {
   name: "Date",
   props: {
     info: Number,
+    taskId: String,
   },
   created() {
     this.date = this.info;
@@ -29,6 +32,7 @@ export default {
   },
   computed: {
     formattedDate() {
+      if (!this.info) return "";
       return new Intl.DateTimeFormat("en-He", {
         month: "short",
         day: "numeric",
@@ -36,8 +40,8 @@ export default {
     },
   },
   methods: {
-    onChangeDate(date) {
-      this.$emit("updateProp", "date", date);
+    onChangeDate() {
+      this.$emit("updateProp", "date", this.date);
     },
   },
 };
