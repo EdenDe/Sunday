@@ -79,9 +79,19 @@
   ],
   "members": [
       {
-          "_id": "u101",
-          "fullname": "Tal Tarablus",
-          "imgUrl": "https://www.google.com"
+        "_id": "u101",
+        "fullname": "Lior Doron",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+      },
+      {
+        "_id": "u102",
+        "fullname": "Eden Derhy",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
+      },
+      {
+        "_id": "u103",
+        "fullname": "Tamar Shalem",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
       }
   ],
   "groups": [
@@ -95,9 +105,9 @@
           "checkbox": "null",
           "taskTitle": "learn SCSS",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
+            { "fullname": "Eden Derhy", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1659561600000,
           "status": "Done",
@@ -108,8 +118,8 @@
           "checkbox": "null",
           "taskTitle": "learn vue",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" }
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
+            { "fullname": "Tamar Shalem", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" }
           ],
           "date": 1659817200000,
           "status": "Stuck",
@@ -120,7 +130,7 @@
           "checkbox": "null",
           "taskTitle": "learn js",
           "person": [
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1660076400000,
           "status": "Done",
@@ -138,9 +148,9 @@
           "checkbox": "null",
           "taskTitle": "learn CSS",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
+            { "fullname": "Eden Derhy", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1660335600000,
           "status": "Working on it",
@@ -151,8 +161,8 @@
           "checkbox": "null",
           "taskTitle": "learn vue",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1660594800000 ,
           "status": "Finishing soon",
@@ -163,8 +173,8 @@
           "checkbox": "null",
           "taskTitle": "learn js",
           "person": [
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Eden Derhy", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1660854000000,
           "status": "Need help",
@@ -182,7 +192,7 @@
           "checkbox": "null",
           "taskTitle": "learn CSS",
           "person": [
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" }
+            { "fullname": "Eden Derhy", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" }
           ],
           "date": 1661113200000,
           "status": "Working on it",
@@ -193,7 +203,7 @@
           "checkbox": "null",
           "taskTitle": "learn vue",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"}
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"}
           ],
           "date": 1661372400000,
           "status": "Stuck",
@@ -204,9 +214,9 @@
           "checkbox": "null",
           "taskTitle": "learn js",
           "person": [
-            { "name": "tal", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
-            { "name": "bal", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
-            { "name": "shal", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
+            { "fullname": "Lior Doron", "color": "red" , "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"},
+            { "fullname": "Eden Derhy", "color": "black", "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png" },
+            { "fullname": "Tamar Shalem", "color": "green", "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png" }
           ],
           "date": 1661631600000,
           "status": "Done",

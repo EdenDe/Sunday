@@ -6,3 +6,19 @@ export const icon = {
 		el.innerHTML = icon
 	},
 }
+
+export const clickOutside = {
+	mounted(el, { value: cb }) {
+		el.clickOutside = ev => {
+			if (!el.contains(ev.target)) {
+				cb()
+			}
+		}
+		setTimeout(() => {
+			document.addEventListener('click', el.clickOutside)
+		}, 0)
+	},
+	unmounted(el) {
+		document.removeEventListener('click', el.clickOutside)
+	},
+}

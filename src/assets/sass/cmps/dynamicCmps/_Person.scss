@@ -1,6 +1,5 @@
 .person-list{
-  padding-left: 10px;
-  align-self:center;
+  padding-left: em(10px);
   position: relative;
 
   &:hover{
@@ -10,11 +9,41 @@
   }
 
   .plus-icon{
+    @include flex-center;
     position: absolute;
-    z-index: 10;
     left: 2px;
     padding-top: 3px;
     opacity: 0;
     transition: opacity .2s ease-in-out;
+  }
+
+  .person-picker-container{
+    padding: 8px 1rem;
+    background-color: #fff;
+    width: 360px;
+    height: fit-content;
+    position: absolute;
+    z-index: 100;
+    right: -80%;
+    border-radius: 10px;
+    border: 1px solid #c3c6d4;
+    --el-transition-duration: .1s;
+    box-shadow: 0 0 6px 2px #d0d0d0;
+  }
+
+  .task-member{
+    align-items: center;
+    padding-right: 5px;
+    width: fit-content;
+    background-color: #e5f4ff;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+
+  .person-picker{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
