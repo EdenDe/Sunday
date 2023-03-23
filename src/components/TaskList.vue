@@ -1,17 +1,14 @@
 <template>
-  <Container @drop="onDrop">
-
-    <section class="task-list" v-for="(task, index) in currTasks" :key="index">
+  <Container>
+    <Draggable class="task-list" @drop="onDrop" v-for="(task, index) in currTasks" :key="index">
       <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
-
-    </section>
-
+    </Draggable>
   </Container>
 </template>
 
 <script>
-import { VueDraggableNext } from 'vue-draggable-next'
+import { Container, Draggable } from "vue3-smooth-dnd";
 import TaskPreview from './TaskPreview.vue'
 
 export default {

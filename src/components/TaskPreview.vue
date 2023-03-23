@@ -1,17 +1,10 @@
 <template>
   <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
-    <component
-      :is="cmp"
-      :info="task[cmp]"
-      :taskId="task.id"
-      @updateProp="updateProp"
-    />
+    <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
   </section>
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-
 import checkbox from "./dynamicCmps/Checkbox.vue";
 import date from "./dynamicCmps/Date.vue";
 import timeline from "./dynamicCmps/TimelinePicker.vue";
