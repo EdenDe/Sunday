@@ -1,15 +1,8 @@
 <template>
-  <div
-    :style="{ backgroundColor: status.color }"
-    class="priority flex justify-center align-center"
-    @click="toggleColorPicker"
-  >
+  <div :style="{ backgroundColor: status.color }" class="priority flex justify-center align-center"
+    @click="toggleColorPicker">
     {{ status.title }}
-    <LabelPicker
-      v-if="isPickerOpen"
-      :labels="priorityLabels"
-      @setLabel="setLabel"
-    ></LabelPicker>
+    <LabelPicker v-if="isPickerOpen" :labels="priorityLabels" @setLabel="updateLabel"></LabelPicker>
   </div>
 </template>
 
@@ -27,20 +20,28 @@ export default {
     }
   },
   created() {
-    let labels = this.$store.getters.priorityLabels
-    this.status = labels.find((label) => label.title === this.info)
-    if (!this.status) {
-      this.status = labels[4]
+    this.setLabels()
+  },
+  watch: {
+    info() {
+      this.setLabels()
     }
   },
   methods: {
     toggleColorPicker() {
       this.isPickerOpen = !this.isPickerOpen
     },
-    setLabel(labelTitle) {
+    updateLabel(labelTitle) {
       this.toggleColorPicker
       this.$emit('updateProp', 'priority', labelTitle)
     },
+    setLabels() {
+      let labels = this.$store.getters.priorityLabels
+      this.status = labels.find((label) => label.title === this.info)
+      if (!this.status) {
+        this.status = labels[4]
+      }
+    }
   },
   computed: {
     priorityLabels() {

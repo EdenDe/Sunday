@@ -18,6 +18,11 @@ export default {
       txt: this.info,
     };
   },
+  watch: {
+    info() {
+      this.txt = this.info
+    }
+  },
   methods: {
     onType(txt) {
       this.txt = txt;

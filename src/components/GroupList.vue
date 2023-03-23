@@ -1,13 +1,15 @@
 <template>
   <section class="group-list">
-    <div v-for="group in groups" :key="group.id">
-      <GroupPreview :group="group" />
-    </div>
+    <Container @drop="onDrop">
+      <Draggable v-for="group in groups" :key="group.id">
+        <GroupPreview :group="group" />
+      </Draggable>
+    </Container>
   </section>
 </template>
 
 <script>
-import { VueDraggableNext } from "vue-draggable-next";
+import { Container, Draggable } from "vue3-smooth-dnd";
 import GroupPreview from "./GroupPreview.vue";
 
 export default {
@@ -15,9 +17,15 @@ export default {
   props: {
     groups: Array,
   },
+  methods: {
+    onDrop(dropResult) {
+      this.$emit('onDrop', dropResult)
+    },
+  },
   components: {
-    DraggableNext: VueDraggableNext,
     GroupPreview,
+    Container,
+    Draggable
   },
 };
 </script>

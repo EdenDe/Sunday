@@ -1,6 +1,6 @@
 <template>
-  <Container>
-    <Draggable class="task-list" @drop="onDrop" v-for="(task, index) in currTasks" :key="index">
+  <Container orientation="horizental" @drop="onDrop">
+    <Draggable class="task-list" v-for="(task, index) in currTasks" :key="index">
       <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
     </Draggable>
@@ -22,27 +22,14 @@ export default {
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
+      console.log('toUpdate', toUpdate)
       this.$emit('updateProp', taskId, prop, toUpdate)
     },
-    onDrop(dropResult) {
-      debugger
-      this.items = this.applyDrag(this.items, dropResult);
+    onDrop({ addedIndex, removedIndex }) {
+      let taskList = JSON.parse(JSON.stringify(this.tasks))
+      taskList.splice(addedIndex, 0, taskList.splice(removedIndex, 1)[0]);
+      this.updateProp(null, 'tasks', taskList)
     },
-    applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-      return result;
-    }
   },
   watch: {
     tasks: {

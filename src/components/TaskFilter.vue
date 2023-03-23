@@ -1,7 +1,7 @@
 <template>
   <section class="task-filter grid grid-col">
     <div class="btn-container btn-add-task grid grid-col aling-center">
-      <span class="btn btn-blue">New Task</span>
+      <button @click="addTask" class="btn btn-blue">New Task</button>
 
       <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
     </div>
@@ -27,6 +27,11 @@
 
 <script>
 export default {
-  name: 'TaskFilter'
+  name: 'TaskFilter',
+  methods: {
+    addTask() {
+      //q- איך להוסיף מפה בצורה הכי טובה
+    }
+  }
 }
 </script>

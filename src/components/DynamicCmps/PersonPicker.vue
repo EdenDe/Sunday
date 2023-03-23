@@ -8,17 +8,18 @@
         <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">
           <PersonAvatar :person="person" />
           <span class="person-fullname">{{ person.fullname }}</span>
-          <button class="delete-person" @click="onDelete">X</button>
+          <button class="delete-person" @click="onDelete(person._id)">X</button>
         </article>
       </div>
       <div class="search-container">
-        <input placeholder="Search names" />
+        <input placeholder="Search names" v-model="search" />
         <span v-icon="'magnifyingGlass'"></span>
       </div>
       <div class="suggested-members">
         <h3>Suggested people</h3>
         <ul class="clean-list">
-          <li v-for="member in members" class="flex align-center member-picker-suggestions">
+          <li v-for="member in members" @click="addPersonToTask(member)"
+            class="flex align-center member-picker-suggestions">
             <PersonAvatar :person="member" />
             <span class="person-fullname">{{ member.fullname }}</span>
           </li>
@@ -39,24 +40,39 @@ export default {
   },
   data() {
     return {
-      isPersonPickerOpen: false
+      isPersonPickerOpen: false,
+      search: ''
     }
   },
   computed: {
     members() {
       let AllMembers = this.$store.getters.currBoard.members
-      return this.info.filter(member => !AllMembers.some(m => member.id === m.id))
+      const regex = new RegExp('^' + this.search, "i")
 
+      return AllMembers.filter(member =>
+        !this.info.some(m => member._id === m._id) && regex.test(member.fullname))
     }
   },
   methods: {
     onClosePicker() {
       this.isPersonPickerOpen = false
+    },
+    onDelete(personId) {
+      let person = this.info.filter(person => person._id !== personId)
+      this.updatePersonList(person)
+    },
+    updatePersonList(person) {
+      this.$emit('updateProp', 'person', person)
+    },
+    addPersonToTask(member) {
+      let personList = [...this.info]
+      personList.push(member)
+      this.updatePersonList(personList)
     }
   },
   components: {
     PersonAvatar: Avatar,
   },
-};
+}
 </script>
 

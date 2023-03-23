@@ -58,7 +58,14 @@
       right:em(5px);
       top:50%;
       transform: translateY(-50%);
-  
+      height: 24px;
+      width: 24px;
+      line-height: 24px;
+      border-radius: $border-radius;
+      
+      &:hover{
+        background-color:$color-ui_grey;
+      }
     }
 
     input{
