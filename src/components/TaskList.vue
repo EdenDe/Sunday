@@ -1,6 +1,6 @@
 <template>
-  <DraggableNext v-if="currTasks" v-model="displayTask">
-    <section class="task-list" v-for="(task, index) in displayTask" :key="index">
+  <DraggableNext v-if="currTasks" v-model="currTasks">
+    <section class="task-list" v-for="(task, index) in currTasks" :key="index">
       <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"> </div>
       <TaskPreview :task="task" @updateProp="updateProp" />
     </section>
@@ -23,7 +23,7 @@ export default {
   methods: {
     updateProp(taskId, prop, toUpdate) {
       this.$emit('updateProp', taskId, prop, toUpdate)
-    }
+    },
   },
   computed: {
     displayTask:

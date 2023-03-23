@@ -140,7 +140,7 @@
   height: 100vh;
   width: 100%;
 }
-@mixin icon($color: #ffffff) {
+@mixin icon($color: $color-snow_white) {
   height: 23px;
   width: 23px;
   fill: $color;
@@ -155,12 +155,9 @@
 @mixin task-cols{
   display:grid;
   grid-template-columns:6px 33px 300px repeat(6,120px);
+
   cursor: pointer;
-  border: 1px solid $layout-border-color;
   margin-top: -1px;
-  > *{
-    justify-self: center;
-  }
 }
 
 @mixin task-row{

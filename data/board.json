@@ -14,7 +14,9 @@
     "status",
     "priority",
     "person",
-    "date"
+    "date",
+    "timeline",
+    "file"
   ],
   "priorityLabels": [
     {
@@ -71,7 +73,7 @@
       }, 
       {
       "id": "l106",
-      "taskTitle": "",
+      "title": "",
       "color": "#c4c4c4"
     }
   ],

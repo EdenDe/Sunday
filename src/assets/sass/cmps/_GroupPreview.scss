@@ -1,5 +1,6 @@
 .group-preview{
   margin-bottom: em(30px);
+  text-align: center;
 
   .group-title{
     @include editableSpan;
@@ -9,10 +10,10 @@
     margin:em(5px);
 
     &:focus-visible {
-        width: 200px;
+      width: 200px;
       }
     &:hover+.tasks-num {
-       opacity: 1;
+      opacity: 1;
     }
   }
 
@@ -28,9 +29,8 @@
 
   .progress-grid{
     @include task-cols;
-    border:none;
 
-    >*:not(:first-child,:nth-child(2)){
+    >*:not(:first-child,:nth-child(2),:nth-child(3)){
       @include task-row;
       border-bottom: 1px solid $layout-border-color;
     } 
@@ -39,29 +39,31 @@
   .group-labels{
     @include task-cols;
     text-transform: capitalize;
-    >:not(:first-child, :nth-child(2)){
+    border-top: 1px solid $layout-border-color;
+    border-bottom: 1px solid $layout-border-color;
+
+    >*:not(:first-child, :nth-child(2)){
       padding: 6px;
     }
     
-    >*{
+    >*:not(:first-child){
       @include task-row;
-      text-align: center;
     }
   }
   .status-progress-container{
-        height:em(35px);
-        align-items: center;
-        margin: auto;
-        width: 90%;
-        >*{
-          height: 24px;
-          &:hover{
-            scale:1.2
-          }
+      height:em(35px);
+      align-items: center;
+      margin: auto;
+      width: 90%;
+      >*{
+        height: 24px;
+        &:hover{
+          scale:1.2
         }
-       }
+      }
+    }
     .add-task-input-container {
-      @include task-cols;
+     @include task-cols;
      padding: em(4px) em(3px);
       
      input {
