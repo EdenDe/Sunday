@@ -1,11 +1,12 @@
 <template>
   <section class="person-list">
-    <!-- <member-preview v-for="(member, idx) in info" :key="idx" :member="member" /> -->
+    <i v-icon="'plusRound'" class="plus-icon">+</i>
+    <PersonAvatar v-for="(member, idx) in info" :key="idx" :member="member" />
   </section>
 </template>
 
 <script>
-// import memberPreview from "./../member-preview";
+import Avatar from '../Avatar.vue'
 export default {
   name: "Person",
   emits: ["update"],
@@ -14,7 +15,7 @@ export default {
   },
 
   components: {
-    // memberPreview,
+    PersonAvatar: Avatar,
   },
 };
 </script>

@@ -1,16 +1,10 @@
 <template>
-  <Draggable>
-    <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
-
-      <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
-
-    </section>
-  </Draggable>
+  <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
+    <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
+  </section>
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-
 import checkbox from "./dynamicCmps/Checkbox.vue";
 import date from "./dynamicCmps/Date.vue";
 import person from "./dynamicCmps/Person.vue";
@@ -41,7 +35,6 @@ export default {
     priority,
     status,
     TaskTitle,
-    Draggable
   },
 };
 </script>

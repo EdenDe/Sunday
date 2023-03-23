@@ -1,0 +1,20 @@
+.person-list{
+  padding-left: 10px;
+  align-self:center;
+  position: relative;
+
+  &:hover{
+    .plus-icon{
+      opacity: 1;
+    }
+  }
+
+  .plus-icon{
+    position: absolute;
+    z-index: 10;
+    left: 2px;
+    padding-top: 3px;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+  }
+}

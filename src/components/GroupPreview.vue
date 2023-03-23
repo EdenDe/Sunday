@@ -4,13 +4,14 @@
       {{ group.title }}
     </span>
     <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
-    <VueDraggableNext class="group-labels" v-model="labels" @change="log">
-      <div v-for="(label, index) in labels" :key="label">
+    <Container class="group-labels">
+
+      <Draggable v-for="(label, index) in labels" :key="label">
         <div v-if="index === 0" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
         {{ label }}
-      </div>
-    </VueDraggableNext>
 
+      </Draggable>
+    </Container>
 
     <TaskList :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
     <div class="add-task-container">
@@ -27,6 +28,7 @@
 import { VueDraggableNext } from 'vue-draggable-next'
 import TaskList from './TaskList.vue'
 import ProgressBar from './ProgressBar.vue'
+import { Container, Draggable } from "vue3-smooth-dnd";
 
 export default {
   name: 'GroupPreview',
@@ -73,6 +75,24 @@ export default {
       this.updateProp(null, 'tasks', group.tasks)
       this.newTask.taskTitle = ''
     },
+    onDrop(dropResult) {
+      this.items = this.applyDrag(this.items, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let itemToAdd = payload;
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      return result;
+    }
   },
   computed: {
     groupStatusProgress() {
@@ -109,7 +129,9 @@ export default {
   components: {
     TaskList,
     VueDraggableNext,
-    ProgressBar
+    ProgressBar,
+    Container,
+    Draggable
   },
 }
 </script>
