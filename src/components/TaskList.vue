@@ -2,8 +2,7 @@
   <Container @drop="onDrop">
 
     <section class="task-list" v-for="(task, index) in currTasks" :key="index">
-      <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"> </div>
-
+      <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
 
     </section>
@@ -12,17 +11,17 @@
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-import TaskPreview from "./TaskPreview.vue";
+import { VueDraggableNext } from 'vue-draggable-next'
+import TaskPreview from './TaskPreview.vue'
 
 export default {
-  name: "TaskList",
+  name: 'TaskList',
   props: { tasks: Array, groupBgColor: String },
   emits: ['updateProp'],
   data() {
     return {
       currTasks: [],
-    };
+    }
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
@@ -51,15 +50,15 @@ export default {
   watch: {
     tasks: {
       handler(tasks) {
-        this.currTasks = tasks;
+        this.currTasks = tasks
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   components: {
     TaskPreview,
     Container,
     Draggable,
   },
-};
+}
 </script>

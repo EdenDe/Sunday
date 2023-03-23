@@ -18,12 +18,28 @@
 
   .first-col-color{
     @include fullSize;
+    // border-top-left-radius: $border-radius;
   }
 
   .tasks-num{
     color: $color-mud_black;
     font-size: rem(14px);
     opacity: 0;
+  }
+
+  .progress-grid{
+    @include task-cols;
+    
+    >*:not(:first-child,:nth-child(2),:nth-child(3)){
+      @include task-row;
+      border: 1px solid $layout-border-color;
+    } 
+    >:nth-child(4){
+      border-radius: 0 0 0 $border-radius-rounder;
+    }
+    >:last-child{
+      border-right: none;
+    }
   }
 
   .group-labels{
@@ -40,26 +56,48 @@
       @include task-row;
     }
   }
-
-    .add-task-input-container {
-     @include task-cols;
-     padding: em(4px) em(3px);
-      
-     input {
-      grid-column: 3;
-      border-radius: $border-radius;
-      border: 1px solid transparent;
-      padding: em(4px) 0;
-      padding-inline-start: 30px;
-      width: 95%;
+  .status-progress-container{
+      height:rem(40px);
+      align-items: center;
       margin: auto;
-      
-      &:hover {
-        border-color: $ui-border-on-secondary-color;
+      width: 90%;
+      >*{
+        height: 24px;
+        &:hover{
+          scale:1.1;
+          border-radius: $border-radius;
+        }
       }
-      &:focus-within {
-        outline: 1px solid $color-basic_blue;
-      }
+    }
+
+    .add-task-container{
+      @include task-cols;
+      border: 1px solid $layout-border-color;
+      border-top: none;
+      border-right: none;
+      border-radius: 0 0 0 $border-radius-rounder;
+      .first-col-color {
+        @include fullSize;
+        opacity: 0.5;
+          border-radius: 0 0 0 $border-radius-rounder;
+        }
+      .add-task-input-container {
+      grid-column: 3;
+        padding: em(4px) em(3px);
+       input {
+        padding: em(4px) 0;
+        padding-inline-start: 30px;
+        margin: auto;
+        width: 95%;
+        border-radius: $border-radius;
+        border: 1px solid transparent;
+        &:hover {
+          border-color: $ui-border-on-secondary-color;
+        }
+        &:focus-within {
+          outline: 1px solid $color-basic_blue;
+        }
+    }
     }
   }
 }
