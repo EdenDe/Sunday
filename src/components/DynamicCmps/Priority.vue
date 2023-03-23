@@ -39,7 +39,7 @@ export default {
     },
     setLabel(labelTitle) {
       this.toggleColorPicker
-      this.$emit('updateProp', 'status', labelTitle)
+      this.$emit('updateProp', 'priority', labelTitle)
     },
   },
   computed: {
