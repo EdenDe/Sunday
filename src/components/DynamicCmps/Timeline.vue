@@ -1,26 +1,20 @@
-<template></template>
+<template>
+  <section class="task-timeline">
+    <div class="timeline-btn">timeline-btn</div>
+  </section>
+</template>
 
 <script>
 export default {
-  name: '',
+  name: "",
   data() {
-    return {
-
-    }
+    return {};
   },
-  methods: {
-
-  },
-  computed: {
-
-  },
-  created() {
-
-  },
-  components: {
-
-  },
-}
+  methods: {},
+  computed: {},
+  created() {},
+  components: {},
+};
 </script>
 
 <style></style>
