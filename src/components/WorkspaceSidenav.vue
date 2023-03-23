@@ -7,6 +7,7 @@
     <div class="toggle-workspace flex align-center" @click="toggleWorkspace">
       <i v-icon="'workspaceArrow'" class="svg workspace-arrow"></i>
     </div>
+
     <section class="navigation-header flex-col justify-between align-center">
       <div class="dropdown-navigation-header flex justify-between">
         <span class="dropdown-header-name">Workspace</span>

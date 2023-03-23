@@ -16,6 +16,7 @@ import timeline from "./dynamicCmps/TimelinePicker.vue";
 import person from "./dynamicCmps/PersonPicker.vue";
 import priority from "./dynamicCmps/PriorityPicker.vue";
 import status from "./dynamicCmps/StatusPicker.vue";
+import file from "./dynamicCmps/FileUpload.vue";
 import TaskTitle from "./dynamicCmps/TitleInput.vue";
 
 export default {
@@ -42,6 +43,7 @@ export default {
     status,
     TaskTitle,
     timeline,
+    file,
   },
 };
 </script>
