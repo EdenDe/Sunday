@@ -4,27 +4,31 @@
     <PersonAvatar v-for="(member, idx) in info" :key="idx" :member="member" />
     <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
       v-clickOutside="onClosePicker">
-      <div class="flex person-picker">
-        <article class="flex task-member" v-for="(member, idx) in info" :key="idx">
+      <div class="flex wrap person-picker">
+        <article class="task-member flex align-center" v-for="(member, idx) in info" :key="idx">
           <PersonAvatar :member="member" />
-          <span class="person-fullname">{{ member.name }}</span>
+          <span class="person-fullname">{{ member.fullname }}</span>
           <button class="delete-person" @click="onDelete">X</button>
         </article>
       </div>
-      <input placeholder="Search names" />
-      <h2>Suggested people</h2>
-      <ul class="clean-list">
-        <li v-for="member in members">
-          <PersonAvatar :member="member" />
-          <span class="person-fullname">{{ member.name }}</span>
-        </li>
-      </ul>
+      <div class="search-container">
+        <input placeholder="Search names" />
+        <span v-icon="'magnifyingGlass'"></span>
+      </div>
+      <div class="suggested-members">
+        <h3>Suggested people</h3>
+        <ul class="clean-list">
+          <li v-for="member in members" class="flex align-center member-picker-suggestions">
+            <PersonAvatar :member="member" />
+            <span class="person-fullname">{{ member.fullname }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import { isMemberExpressionNode } from '@vue/compiler-core';
 import Avatar from '../Avatar.vue'
 
 export default {
