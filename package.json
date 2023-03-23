@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cloudinary": "^1.35.0",
     "element-plus": "^2.3.1",
     "sass": "^1.59.3",
     "vue": "^3.2.47",
