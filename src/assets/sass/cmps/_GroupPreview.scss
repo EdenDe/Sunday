@@ -1,100 +1,103 @@
-.group-preview{
+.group-preview {
   margin-bottom: em(30px);
-  .grid-title{
+  .grid-title {
     @include task-cols;
 
-    .svg-wrapper{
+    .svg-wrapper {
       grid-column: 3;
     }
-
-    .group-title{
-      @include editableSpan;
+    .group-title-wrapper {
       grid-column: 4;
-      display: inline-flex;
-      font-size: rem(18px);
-      font-weight: bold;
-      margin:em(5px);
-  
-      &:focus-visible {
-        width: 200px;
+      .group-title {
+        @include editableSpan;
+        display: inline-flex;
+        font-size: rem(18px);
+        font-weight: bold;
+        margin: em(5px);
+        transition: outline 3s;
+        &:hover {
+          outline: 1px solid #c3c6d4;
+          border-radius: 4px;
         }
-      &:hover+.tasks-num {
-        opacity: 1;
+        &:focus-visible {
+          width: 200px;
+        }
+        &:hover + .tasks-num {
+          opacity: 1;
+        }
       }
     }
+
+    .tasks-num {
+      color: $color-mud_black;
+      font-size: rem(14px);
+      opacity: 0;
+    }
   }
-
-
-  .first-col-color{
+  .first-col-color {
     @include fullSize;
     grid-column: 2;
     // border-top-left-radius: $border-radius;
   }
 
-  .tasks-num{
-    color: $color-mud_black;
-    font-size: rem(14px);
-    opacity: 0;
-  }
-
-  .progress-grid{
+  .progress-grid {
     @include task-cols;
-    
-    >*:not(:first-child,:nth-child(2),:nth-child(3)){
+
+    > *:not(:first-child, :nth-child(2), :nth-child(3)) {
       @include task-row;
       border: 1px solid $layout-border-color;
-    } 
-    >:nth-child(4){
+    }
+    > :nth-child(4) {
       border-radius: 0 0 0 $border-radius-rounder;
     }
-    >:last-child{
+    > :last-child {
       border-right: none;
     }
   }
 
-  .group-labels{
+  .group-labels {
     @include task-cols;
     text-transform: capitalize;
     border-top: 1px solid $layout-border-color;
     border-bottom: 1px solid $layout-border-color;
     text-align: center;
-    >*:not(:first-child, :nth-child(2)){
+    > *:not(:first-child, :nth-child(2)) {
       padding: 6px;
     }
-    
-    >*:not(:first-child){
+
+    > *:not(:first-child) {
       @include task-row;
     }
   }
-  .status-progress-container{
-      height:rem(40px);
-      align-items: center;
-      margin: auto;
-      width: 90%;
-      >*{
-        height: 24px;
-        &:hover{
-          scale:1.1;
-          border-radius: $border-radius;
-        }
+  .status-progress-container {
+    height: rem(40px);
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    > * {
+      height: 24px;
+      &:hover {
+        scale: 1.1;
+        border-radius: $border-radius;
       }
     }
+  }
 
-    .add-task-container{
-      @include task-cols;
-      border: 1px solid $layout-border-color;
-      border-top: none;
-      border-right: none;
+  .add-task-container {
+    @include task-cols;
+    border: 1px solid $layout-border-color;
+    border-top: none;
+    border-right: none;
+    border-radius: 0 0 0 $border-radius-rounder;
+    .first-col-color {
+      @include fullSize;
+      opacity: 0.5;
       border-radius: 0 0 0 $border-radius-rounder;
-      .first-col-color {
-        @include fullSize;
-        opacity: 0.5;
-          border-radius: 0 0 0 $border-radius-rounder;
-        }
-      .add-task-input-container {
-        grid-column: 4;
-        padding: em(4px) em(3px);
-       input {
+    }
+    .add-task-input-container {
+      grid-column: 4;
+      padding: em(4px) em(3px);
+      input {
         padding: em(4px) 0;
         padding-inline-start: 30px;
         margin: auto;
@@ -107,14 +110,7 @@
         &:focus-within {
           outline: 1px solid $color-basic_blue;
         }
-    }
+      }
     }
   }
 }
-
-
-
-
-
-
-
