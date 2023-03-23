@@ -1,12 +1,9 @@
 .task-list {
   @include task-cols;
+
   font-size: rem(18px);
   &:hover {
     background-color: $dark-background-color;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: $border-radius;
   }
 }
 

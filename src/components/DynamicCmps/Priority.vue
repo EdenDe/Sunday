@@ -4,7 +4,7 @@
     class="priority flex justify-center align-center"
     @click="toggleColorPicker"
   >
-    {{ status.taskTitle }}
+    {{ status.title }}
     <LabelPicker
       v-if="isPickerOpen"
       :labels="priorityLabels"
@@ -28,7 +28,7 @@ export default {
   },
   created() {
     let labels = this.$store.getters.priorityLabels
-    this.status = labels.find((label) => label.taskTitle === this.info)
+    this.status = labels.find((label) => label.title === this.info)
     if (!this.status) {
       this.status = labels[4]
     }

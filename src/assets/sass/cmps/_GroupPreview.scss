@@ -9,15 +9,16 @@
     margin:em(5px);
 
     &:focus-visible {
-        width: 200px;
+      width: 200px;
       }
     &:hover+.tasks-num {
-       opacity: 1;
+      opacity: 1;
     }
   }
 
   .first-col-color{
     @include fullSize;
+    border:none;
   }
 
   .tasks-num{
@@ -49,19 +50,19 @@
     }
   }
   .status-progress-container{
-        height:em(35px);
-        align-items: center;
-        margin: auto;
-        width: 90%;
-        >*{
-          height: 24px;
-          &:hover{
-            scale:1.2
-          }
+      height:em(35px);
+      align-items: center;
+      margin: auto;
+      width: 90%;
+      >*{
+        height: 24px;
+        &:hover{
+          scale:1.2
         }
-       }
+      }
+    }
     .add-task-input-container {
-      @include task-cols;
+     @include task-cols;
      padding: em(4px) em(3px);
       
      input {
