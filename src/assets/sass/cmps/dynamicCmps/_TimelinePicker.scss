@@ -18,15 +18,25 @@
       border-radius: 11px;
       line-height: rem(22px);
       font-family: $figtree-regular;
+      text-align: center;
       background-color: $color-explosive;
       cursor: pointer;
       &:hover {
         background-color: $color-timeline-hover;
       }
       &.active-timeline {
+        position: relative;
         background-color: $color-timeline-active;
         &:hover {
           background-color: $color-timeline-active-hover;
+          color: $color-timeline-active-hover;
+          &::after {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            content: attr(data-diff);
+            color: $color-snow_white;
+          }
         }
       }
     }

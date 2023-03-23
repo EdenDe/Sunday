@@ -5,7 +5,9 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage
+    loadFromStorage,
+    formatDateRange,
+    getDaysBetween
 }
 
 function makeId(length = 6) {
@@ -35,6 +37,12 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
+function getDaysBetween(timestamps) {
+    const [startTimestamp, endTimestamp] = timestamps;
+    const diffTime = Math.abs(endTimestamp - startTimestamp);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return `${diffDays}d`;
+}
 
 function randomPastTime() {
     const HOUR = 1000 * 60 * 60
@@ -45,11 +53,11 @@ function randomPastTime() {
     return Date.now() - pastTime
 }
 
-function debounce(func, timeout = 300){
+function debounce(func, timeout = 300) {
     let timer
     return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => { func.apply(this, args) }, timeout)
+        clearTimeout(timer)
+        timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
 
@@ -61,3 +69,35 @@ function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+function formatDateRange(timestamps) {
+    const [startTimestamp, endTimestamp] = timestamps;
+
+    const startDate = new Date(startTimestamp);
+    const endDate = new Date(endTimestamp);
+
+    const startMonth = startDate.toLocaleString('default', { month: 'short' });
+    const endMonth = endDate.toLocaleString('default', { month: 'short' });
+
+    const startYear = startDate.getFullYear().toString().substr(-2);
+    const endYear = endDate.getFullYear().toString().substr(-2);
+
+    let formattedRange = '';
+
+    if (startYear !== endYear) {
+        // Dates span across multiple years
+        formattedRange = `${startMonth} ${startDate.getDate()} '${startYear} - ${endMonth} ${endDate.getDate()} '${endYear}`;
+    } else if (startYear !== new Date().getFullYear().toString().substr(-2)) {
+        // Dates are in the same year but not the current year
+        formattedRange = `${startMonth} ${startDate.getDate()}-${endDate.getDate()} '${startYear}`;
+    } else if (startMonth === endMonth) {
+        // Dates are in the same month and year
+        formattedRange = `${startMonth} ${startDate.getDate()}-${endDate.getDate()}`;
+    } else {
+        // Dates are in different months in the same year
+        formattedRange = `${startMonth} ${startDate.getDate()} - ${endMonth} ${endDate.getDate()}`;
+    }
+
+    return formattedRange;
+}
+
+
