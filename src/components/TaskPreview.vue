@@ -1,6 +1,11 @@
 <template>
   <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
-    <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
+    <component
+      :is="cmp"
+      :info="task[cmp]"
+      :taskId="task.id"
+      @updateProp="updateProp"
+    />
   </section>
 </template>
 
@@ -36,6 +41,7 @@ export default {
     priority,
     status,
     TaskTitle,
+    timeline,
   },
 };
 </script>

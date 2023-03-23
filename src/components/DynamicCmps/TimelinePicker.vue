@@ -1,19 +1,24 @@
 <template>
   <section class="timeline-picker">
     <div class="timeline-display">
-      <div class="timeline-pill">Mar 12</div>
-
-      <!-- <el-date-picker
-        v-model="date"
-        @change="onChangeDate"
-        type="daterange"
-        format="M D"
-        value-format="x"
-        range-separator=""
-        start-placeholder=""
-        end-placeholder=""
-        autosize
-      /> -->
+      <label
+        :for="taskId + 'Timeline'"
+        class="timeline-label"
+        :class="{ 'active-timeline': dates.length }"
+      >
+        <el-date-picker
+          v-model="dates"
+          @change="onChangeDate"
+          type="daterange"
+          format="M D"
+          value-format="x"
+          range-separator=""
+          start-placeholder=""
+          end-placeholder=""
+          :id="taskId + 'Timeline'"
+        />
+        {{ formattedDates }}
+      </label>
     </div>
   </section>
 </template>
@@ -21,11 +26,14 @@
 <script>
 export default {
   name: "Date",
-  props: {},
+  props: {
+    info: Array,
+    taskId: String,
+  },
   created() {},
   data() {
     return {
-      date: null,
+      dates: [],
     };
   },
   methods: {
@@ -34,11 +42,16 @@ export default {
     },
   },
   computed: {
-    rangeSeparator() {
-      return this.date ? "-" : "";
+    formattedDates() {
+      if (!this.info) return "";
+      const formattedDatesArray = this.info.map((info) => {
+        return new Intl.DateTimeFormat("en-He", {
+          month: "short",
+          day: "numeric",
+        }).format(info);
+      });
+      console.log(formattedDatesArray);
     },
   },
 };
 </script>
-
-<style></style>

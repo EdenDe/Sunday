@@ -9,8 +9,8 @@
     width: 100%;
     height: 100%;
     padding: 0 1rem;
-    .timeline-pill {
-      @include flex-center;
+    .timeline-label {
+      z-index: 2023;
       font-size: rem(13px);
       color: $color-snow_white;
       width: 100%;
@@ -19,13 +19,23 @@
       line-height: rem(22px);
       font-family: $figtree-regular;
       background-color: $color-explosive;
+      cursor: pointer;
       &:hover {
+        background-color: $color-timeline-hover;
+      }
+      &.active-timeline {
         background-color: $color-timeline-active;
+        &:hover {
+          background-color: $color-timeline-active-hover;
+        }
       }
     }
   }
   //ELEMENT PLUS Disappear
   .el-input__wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
     @include flex-center;
     padding: 0;
     box-shadow: none;
@@ -38,6 +48,7 @@
   }
   .el-range-editor.is-active:hover {
     box-shadow: none;
+    cursor: pointer;
   }
   .el-input__wrapper:hover .el-range__icon {
     display: none;
@@ -53,6 +64,7 @@
   .el-range-input {
     color: transparent;
     width: 100%;
+    cursor: pointer;
     .el-icon {
       display: none;
     }
