@@ -1,11 +1,12 @@
 <template>
-  <div
-    :style="{ backgroundColor: status.color }"
-    class="status flex justify-center align-center"
-    @click="toggleColorPicker"
-  >
+  <div :style="{ backgroundColor: status.color }" class="status flex justify-center align-center"
+    @click="toggleColorPicker">
     {{ status.taskTitle }}
-    <div v-if="isPickerOpen" class="color-picker-container"></div>
+    <div v-if="isPickerOpen" class="color-picker-container">
+      <div v-for="status in statusList" :style="{ backgroundColor: status.color }">
+        {{ status.taskTitle }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +38,9 @@ export default {
     },
   },
   computed: {
-    statusList() {},
+    statusList() {
+      return this.$store.getters.statusLabels
+    },
   },
 }
 </script>

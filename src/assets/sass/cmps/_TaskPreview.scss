@@ -13,18 +13,13 @@
     justify-content: center;
   }
 
-  //TODO: fix date
-  .date{
-    place-self: center;
-  }
-  
  :is(.status,.priority){
   color: $color-snow_white;
 
  }
  .add-task-input-container{
-  input{
-    width: 50%;
-  }
+    input{
+      width: 50%;
+    }
  }
 }

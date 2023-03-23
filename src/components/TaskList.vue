@@ -1,6 +1,7 @@
 <template>
   <DraggableNext v-if="currTasks" v-model="displayTask">
     <section class="task-list" v-for="(task, index) in displayTask" :key="index">
+      <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"> </div>
       <TaskPreview :task="task" @updateProp="updateProp" />
     </section>
   </DraggableNext>
@@ -12,7 +13,7 @@ import TaskPreview from "./TaskPreview.vue";
 
 export default {
   name: "TaskList",
-  props: { tasks: Array },
+  props: { tasks: Array, groupBgColor: String },
   emits: ['updateProp'],
   data() {
     return {

@@ -12,7 +12,6 @@ function query(critiria) {
 }
 
 function save(board) {
-	debugger
 	if (board._id) {
 		const idx = gBoard.findIndex(
 			currBoard => currBoard._id === board._id
