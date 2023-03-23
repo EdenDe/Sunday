@@ -2,13 +2,15 @@
   <section class="timeline-picker">
     <div class="timeline-display">
       <label
+        :data-diff="formattedDaysRange"
         :for="taskId + 'Timeline'"
         class="timeline-label"
-        :class="{ 'active-timeline': dates.length }"
+        :class="{ 'active-timeline': timeline?.length }"
       >
+        {{ formattedDates }}
         <el-date-picker
-          v-model="dates"
-          @change="onChangeDate"
+          v-model="timeline"
+          @change="onChangeTimeline"
           type="daterange"
           format="M D"
           value-format="x"
@@ -17,40 +19,43 @@
           end-placeholder=""
           :id="taskId + 'Timeline'"
         />
-        {{ formattedDates }}
       </label>
     </div>
   </section>
 </template>
 
 <script>
+import { utilService } from "../../services/util.service";
 export default {
-  name: "Date",
+  name: "Timeline",
   props: {
     info: Array,
     taskId: String,
   },
-  created() {},
+  created() {
+    this.timeline = this.info;
+  },
   data() {
     return {
-      dates: [],
+      timeline: [],
+      isHover: false,
     };
   },
   methods: {
-    onChangeDate() {
-      console.log(this.date);
+    onChangeTimeline() {
+      if (!this.timeline || !this.timeline.length) return;
+      console.log(this.timeline);
+      this.$emit("updateProp", "timeline", this.timeline);
     },
   },
   computed: {
     formattedDates() {
-      if (!this.info) return "";
-      const formattedDatesArray = this.info.map((info) => {
-        return new Intl.DateTimeFormat("en-He", {
-          month: "short",
-          day: "numeric",
-        }).format(info);
-      });
-      console.log(formattedDatesArray);
+      if (!this.timeline || !this.timeline.length) return "-";
+      return utilService.formatDateRange(this.timeline);
+    },
+    formattedDaysRange() {
+      if (!this.timeline || !this.timeline.length) return "-";
+      return utilService.getDaysBetween(this.timeline);
     },
   },
 };

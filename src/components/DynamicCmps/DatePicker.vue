@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     onChangeDate() {
+      if (!this.date) return;
       this.$emit("updateProp", "date", this.date);
     },
   },

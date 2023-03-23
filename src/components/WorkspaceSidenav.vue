@@ -18,7 +18,7 @@
         <div class="workspace-title flex">
           <div class="workspace-icon-wrapper flex">
             <span class="icon-text flex justify-center align-center">M</span>
-            <i v-icon="'home'" class="icon-svg"></i>
+            <i v-icon="'workspaceHome'" class="icon-svg"></i>
           </div>
           <span class="workspace-name">Main Workspace</span>
         </div>
