@@ -12,13 +12,13 @@
         </article>
       </div>
       <input placeholder="Search names" />
+      <h2>Suggested people</h2>
 
     </div>
   </section>
 </template>
 
 <script>
-//import vClickOutside from 'v-click-outside'
 import Avatar from '../Avatar.vue'
 
 export default {
@@ -33,17 +33,10 @@ export default {
     }
   },
   methods: {
-    //   onClickOutside(event) {
-    //     console.log(event)
-    //     this.isPersonPickerOpen = false
-    //   }
     onClosePicker() {
       this.isPersonPickerOpen = false
     }
   },
-  // directives: {
-  //   clickOutside: vClickOutside.directive
-  // },
   components: {
     PersonAvatar: Avatar,
   },
