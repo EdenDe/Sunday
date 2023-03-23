@@ -5,6 +5,7 @@
       :info="task[cmp]"
       :taskId="task.id"
       @updateProp="updateProp"
+      value-format="x"
     />
   </section>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import checkbox from "./dynamicCmps/Checkbox.vue";
 import date from "./dynamicCmps/Date.vue";
+import timeline from "./dynamicCmps/TimelinePicker.vue";
 import person from "./dynamicCmps/Person.vue";
 import priority from "./dynamicCmps/Priority.vue";
 import status from "./dynamicCmps/Status.vue";
@@ -40,6 +42,7 @@ export default {
     priority,
     status,
     TaskTitle,
+    timeline,
   },
 };
 </script>

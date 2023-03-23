@@ -1,5 +1,9 @@
 <template>
-  <section class="workspace-sidenav flex-col" ref="workspaceSidenav" :class="{ 'workspace-close': isWorkspaceClosed }">
+  <section
+    class="workspace-sidenav flex-col"
+    ref="workspaceSidenav"
+    :class="{ 'workspace-close': isWorkspaceClosed }"
+  >
     <div class="toggle-workspace flex align-center" @click="toggleWorkspace">
       <i v-icon="'workspaceArrow'" class="svg workspace-arrow"></i>
     </div>
@@ -28,19 +32,28 @@
     <section class="action-list flex-col">
       <div class="action-item add flex align-center justify-start">
         <div class="icon-wrapper add">
-          <i v-icon="'workspacePlus'" class="flex align-center justify-center"></i>
+          <i
+            v-icon="'workspacePlus'"
+            class="flex align-center justify-center"
+          ></i>
         </div>
         <span class="action-text">Add</span>
       </div>
       <div class="action-item filter flex align-center">
         <div class="icon-wrapper filter">
-          <i v-icon="'workspaceFilter'" class="flex align-center justify-center"></i>
+          <i
+            v-icon="'workspaceFilter'"
+            class="flex align-center justify-center"
+          ></i>
         </div>
         <span>Filter</span>
       </div>
       <div class="action-item search flex align-center">
         <div class="icon-wrapper search">
-          <i v-icon="'searchFilter'" class="flex align-center justify-center"></i>
+          <i
+            v-icon="'searchFilter'"
+            class="flex align-center justify-center"
+          ></i>
         </div>
         <span class="action-text">Search</span>
       </div>
@@ -58,7 +71,7 @@ export default {
   name: "WorkspaceSidenav",
   data() {
     return {
-      isWorkspaceClosed: false,
+      isWorkspaceClosed: true,
     };
   },
   methods: {
