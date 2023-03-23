@@ -14,7 +14,9 @@
     "status",
     "priority",
     "person",
-    "date"
+    "date",
+    "timeline",
+    "file"
   ],
   "priorityLabels": [
     {

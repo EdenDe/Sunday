@@ -1,5 +1,6 @@
 <template>
-  <div :style="{ backgroundColor: status.color }" class="priority flex justify-center align-center">{{ status.taskTitle }}
+  <div :style="{ backgroundColor: status.color }" class="priority flex justify-center align-center">
+    {{ status.title }}
   </div>
 </template>
 
@@ -16,10 +17,10 @@ export default {
   },
   created() {
     let labels = this.$store.getters.priorityLabels
-    this.status = labels.find(label => label.taskTitle === this.info)
+    this.status = labels.find(label => label.title === this.info)
     if (!this.status) {
       this.status = {
-        taskTitle: "",
+        title: "",
         color: "#c4c4c4"
       }
     }
