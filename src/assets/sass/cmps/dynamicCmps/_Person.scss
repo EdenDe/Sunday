@@ -54,4 +54,16 @@
     border: 1px solid #c3c6d4;
     border-radius: 5px;
   }
+
+  .delete-member {
+    border-radius: 50%;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    width: 16px;
+
+    :hover{
+      background-color: #fff;
+    }
+  }
 }

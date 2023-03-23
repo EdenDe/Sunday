@@ -13,12 +13,18 @@
       </div>
       <input placeholder="Search names" />
       <h2>Suggested people</h2>
-
+      <ul class="clean-list">
+        <li v-for="member in members">
+          <PersonAvatar :member="member" />
+          <span class="person-fullname">{{ member.name }}</span>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
 
 <script>
+import { isMemberExpressionNode } from '@vue/compiler-core';
 import Avatar from '../Avatar.vue'
 
 export default {
@@ -30,6 +36,12 @@ export default {
   data() {
     return {
       isPersonPickerOpen: false
+    }
+  },
+  computed: {
+    members() {
+      let board = this.$store.getters.currBoard
+      return board.members
     }
   },
   methods: {
