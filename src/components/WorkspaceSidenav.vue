@@ -21,7 +21,7 @@
             <span class="icon-text flex justify-center align-center">M</span>
             <i v-icon="'workspaceHome'" class="icon-svg"></i>
           </div>
-          <span class="workspace-name">Main Workspace</span>
+          <span class="workspace-name">Main workspace</span>
         </div>
         <div class="dropdown-arrow">
           <div class="icon-wrapper flex justify-center">
@@ -30,44 +30,61 @@
         </div>
       </div>
     </section>
+
     <section class="action-list flex-col">
-      <div class="action-item add flex align-center justify-start">
-        <div class="icon-wrapper add">
+      <div class="action-item add flex align-center justify-between">
+        <div class="item-wrapper add flex align-center">
           <i
             v-icon="'workspacePlus'"
             class="flex align-center justify-center"
           ></i>
+          <span class="action-text">Add</span>
         </div>
-        <span class="action-text">Add</span>
+        <div class="dots-wrapper">
+          <i v-icon="'workspaceDots'"></i>
+        </div>
       </div>
-      <div class="action-item filter flex align-center">
-        <div class="icon-wrapper filter">
+      <div class="action-item filter flex align-center justify-between">
+        <div class="item-wrapper filter flex align-center">
           <i
             v-icon="'workspaceFilter'"
             class="flex align-center justify-center"
           ></i>
+          <span>Filters</span>
         </div>
-        <span>Filter</span>
+        <div class="dots-wrapper">
+          <i v-icon="'workspaceDots'"></i>
+        </div>
       </div>
-      <div class="action-item search flex align-center">
-        <div class="icon-wrapper search">
+      <div class="action-item search flex align-center justify-between">
+        <div class="item-wrapper search flex align-center">
           <i
             v-icon="'searchFilter'"
             class="flex align-center justify-center"
           ></i>
+          <span class="action-text">Search</span>
         </div>
-        <span class="action-text">Search</span>
+
+        <div class="dots-wrapper">
+          <i v-icon="'workspaceDots'"></i>
+        </div>
       </div>
     </section>
     <div class="spacer"></div>
-    <ul class="board-list">
-      <li class="flex space-between active-item fully"></li>
+
+    <ul class="board-list flex-col justify-center">
+      <li
+        v-for="board in boardsToDisplay"
+        class="list-item flex space-between align-center is-active"
+      >
+        <i v-icon="'board'"></i>
+        <span>{{ board.title }}</span>
+      </li>
     </ul>
   </section>
 </template>
 
 <script>
-import { svgService } from "../services/svg.service";
 export default {
   name: "WorkspaceSidenav",
   data() {
@@ -76,11 +93,13 @@ export default {
     };
   },
   methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName);
-    },
     toggleWorkspace() {
       this.isWorkspaceClosed = !this.isWorkspaceClosed;
+    },
+  },
+  computed: {
+    boardsToDisplay() {
+      return this.$store.getters.boardsToDisplay;
     },
   },
 };

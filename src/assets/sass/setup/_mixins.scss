@@ -182,3 +182,10 @@
   width: 100%;
   height: 100%;
 }
+@mixin svgFit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+}
