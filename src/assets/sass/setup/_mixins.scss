@@ -158,9 +158,6 @@
 
   cursor: pointer;
   margin-top: -1px;
-  > *{
-    justify-self: center;
-  }
 }
 
 @mixin task-row{
