@@ -12,11 +12,12 @@
     "cmpOrder": [
       "checkbox",
       "taskTitle",
+      "person",
       "status",
       "priority",
-      "person",
       "date",
       "timeline",
+      "text",
       "file"
     ],
     "priorityLabels": [
@@ -130,6 +131,8 @@
             ],
             "date": 1659561600000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Done",
             "priority": "Critical"
           },
@@ -153,6 +156,8 @@
             ],
             "date": 1659817200000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Stuck",
             "priority": "Low"
           },
@@ -170,6 +175,8 @@
             ],
             "date": 1660076400000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Done",
             "priority": "Low"
           }
@@ -206,6 +213,8 @@
             ],
             "date": 1660335600000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Working on it",
             "priority": "Low"
           },
@@ -229,6 +238,8 @@
             ],
             "date": 1660594800000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Finishing soon",
             "priority": "Critical"
           },
@@ -252,6 +263,8 @@
             ],
             "date": 1660854000000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Need help",
             "priority": "Medium"
           }
@@ -276,6 +289,8 @@
             ],
             "date": 1661113200000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Working on it",
             "priority": "High"
           },
@@ -293,6 +308,8 @@
             ],
             "date": 1661372400000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Stuck",
             "priority": ""
           },
@@ -322,6 +339,8 @@
             ],
             "date": 1661631600000,
             "timeline": [],
+            "text": "bla bla",
+            "file": "",
             "status": "Done",
             "priority": "High"
           }

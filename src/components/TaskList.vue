@@ -1,6 +1,7 @@
 <template>
   <Container orientation="horizental" @drop="onDrop">
     <Draggable class="task-list" v-for="(task, index) in currTasks" :key="index">
+      <div class="task-options"></div>
       <div class="first-col-color" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
     </Draggable>
