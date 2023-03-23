@@ -58,15 +58,14 @@
   .group-labels {
     @include task-cols;
     text-transform: capitalize;
-    border-top: 1px solid $layout-border-color;
-    border-bottom: 1px solid $layout-border-color;
     text-align: center;
     > *:not(:first-child, :nth-child(2)) {
       padding: 6px;
-    }
-
-    > *:not(:first-child) {
       @include task-row;
+    }
+    
+    .first-col-color{
+      border-top-left-radius: $border-radius-rounder;
     }
   }
   .status-progress-container {
@@ -85,18 +84,23 @@
 
   .add-task-container {
     @include task-cols;
-    border: 1px solid $layout-border-color;
-    border-top: none;
-    border-right: none;
     border-radius: 0 0 0 $border-radius-rounder;
+    opacity: 0.5;
+
+    *:not(:first-child,.task-option){
+      border-bottom: 1px solid $layout-border-color;
+    }
+
     .first-col-color {
       @include fullSize;
-      opacity: 0.5;
       border-radius: 0 0 0 $border-radius-rounder;
     }
     .add-task-input-container {
       grid-column: 4;
       padding: em(4px) em(3px);
+      border-left: 1px solid $layout-border-color;
+      margin-left: -1px;
+    
       input {
         padding: em(4px) 0;
         padding-inline-start: 30px;
