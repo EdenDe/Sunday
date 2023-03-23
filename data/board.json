@@ -110,16 +110,19 @@
             "taskTitle": "learn SCSS",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
               {
+                "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -136,11 +139,13 @@
             "taskTitle": "learn vue",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
@@ -157,6 +162,7 @@
             "taskTitle": "learn js",
             "person": [
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -180,16 +186,19 @@
             "taskTitle": "learn CSS",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
               {
+                "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -206,11 +215,13 @@
             "taskTitle": "learn vue",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -227,11 +238,13 @@
             "taskTitle": "learn js",
             "person": [
               {
+                "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -255,6 +268,7 @@
             "taskTitle": "learn CSS",
             "person": [
               {
+                "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
@@ -271,6 +285,7 @@
             "taskTitle": "learn vue",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
@@ -287,16 +302,19 @@
             "taskTitle": "learn js",
             "person": [
               {
+                "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
               {
+                "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
               },
               {
+                "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
@@ -308,169 +326,6 @@
             "priority": "High"
           }
         ]
-      }
-    ],
-    "activities": [
-      {
-        "_id": "u101",
-        "fullname": "Tal Tarablus",
-        "imgUrl": "https://www.google.com"
-      }
-    ],
-    "groups": [
-      {
-        "id": "gsfkn11",
-        "title": "Frontend",
-        "color": "#0086c0",
-        "tasks": [
-          {
-            "id": "t101",
-            "checkbox": "null",
-            "taskTitle": "learn SCSS",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1659561600000,
-            "status": "Done",
-            "priority": "Critical"
-          },
-          {
-            "id": "t102",
-            "checkbox": "null",
-            "taskTitle": "learn vue",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1659817200000,
-            "status": "Stuck",
-            "priority": "Low"
-          },
-          {
-            "id": "t103",
-            "checkbox": "null",
-            "taskTitle": "learn js",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1660076400000,
-            "status": "Done",
-            "priority": "Low"
-          }
-        ]
-      },
-      {
-        "id": "g22dskgl",
-        "title": "Backend",
-        "color": "#a25ddc",
-        "tasks": [
-          {
-            "id": "t101",
-            "checkbox": "null",
-            "taskTitle": "learn CSS",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1660335600000,
-            "status": "Working on it",
-            "priority": "Low"
-          },
-          {
-            "id": "t102",
-            "checkbox": "null",
-            "taskTitle": "learn vue",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1660594800000,
-            "status": "Finishing soon",
-            "priority": "Critical"
-          },
-          {
-            "id": "t103",
-            "checkbox": "null",
-            "taskTitle": "learn js",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1660854000000,
-            "status": "Need help",
-            "priority": "Medium"
-          }
-        ]
-      },
-      {
-        "id": "g11sdkl",
-        "title": "Bugs",
-        "color": "#e2445c",
-        "tasks": [
-          {
-            "id": "t101",
-            "checkbox": "null",
-            "taskTitle": "learn CSS",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1661113200000,
-            "status": "Working on it",
-            "priority": "High"
-          },
-          {
-            "id": "t102",
-            "checkbox": "null",
-            "taskTitle": "learn vue",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1661372400000,
-            "status": "Stuck",
-            "priority": ""
-          },
-          {
-            "id": "t103",
-            "checkbox": "null",
-            "taskTitle": "learn js",
-            "person": [
-              { "name": "tal", "color": "red" },
-              { "name": "bal", "color": "black" },
-              { "name": "shal", "color": "green" }
-            ],
-            "date": 1661631600000,
-            "status": "Done",
-            "priority": "High"
-          }
-        ]
-      }
-    ],
-    "activities": [
-      {
-        "id": "a101",
-        "txt": "Changed Color",
-        "createdAt": 154514,
-        "byMember": {
-          "_id": "u101",
-          "fullname": "Abi Abambi",
-          "imgUrl": "http://some-img"
-        },
-        "task": {
-          "id": "c101",
-          "taskTitle": "Replace Logo"
-        }
       }
     ]
   }

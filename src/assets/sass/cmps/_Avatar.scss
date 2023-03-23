@@ -1,12 +1,10 @@
 .avatar{
-  color: #fff;
+  color: $color-snow_white;
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  outline: 2px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  outline: 2px solid $color-snow_white;
+
   margin-inline-start: -10px;
   background-size: cover;
   background-position: center;
