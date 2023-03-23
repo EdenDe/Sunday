@@ -26,15 +26,6 @@
     opacity: 0;
   }
 
-  .progress-grid{
-    @include task-cols;
-    
-    >*:not(:first-child,:nth-child(2),:nth-child(3)){
-      @include task-row;
-      border-bottom: 1px solid $layout-border-color;
-    } 
-  }
-
   .group-labels{
     @include task-cols;
     text-transform: capitalize;
@@ -49,18 +40,7 @@
       @include task-row;
     }
   }
-  .status-progress-container{
-      height:em(35px);
-      align-items: center;
-      margin: auto;
-      width: 90%;
-      >*{
-        height: 24px;
-        &:hover{
-          scale:1.2
-        }
-      }
-    }
+
     .add-task-input-container {
      @include task-cols;
      padding: em(4px) em(3px);

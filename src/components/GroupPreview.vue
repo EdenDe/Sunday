@@ -14,23 +14,14 @@
     <form @submit.prevent="onAddTask" class="add-task-input-container">
       <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
     </form>
-    <section class="progress-grid justify-center">
-      <div v-for="(item, idx) in progress" :key="idx">
-        <div v-if="item === 'status'" class="flex status-progress-container">
-          <div v-for="status in groupStatusProgress" :style="{
-            flex: 1,
-            'flex-basis': status.width,
-            backgroundColor: status.color,
-          }"></div>
-        </div>
-      </div>
-    </section>
+    <ProgressBar :tasks="group.tasks" />
   </section>
 </template>
 
 <script>
 import { VueDraggableNext } from 'vue-draggable-next'
 import TaskList from './TaskList.vue'
+import ProgressBar from './ProgressBar.vue'
 
 export default {
   name: 'GroupPreview',
@@ -39,7 +30,6 @@ export default {
   },
   data() {
     return {
-      titleEdtiable: false,
       labels: [
         null,
         null,
@@ -54,17 +44,6 @@ export default {
       newTask: {
         taskTitle: ''
       },
-      progress: [
-        null,
-        null,
-        null,
-        'status',
-        'priority',
-        null,
-        null,
-        null,
-        null,
-      ],
     }
   },
   methods: {
@@ -124,6 +103,7 @@ export default {
   components: {
     TaskList,
     VueDraggableNext,
+    ProgressBar
   },
 }
 </script>
