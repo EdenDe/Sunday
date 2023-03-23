@@ -69,7 +69,12 @@
         "id": "l105",
         "taskTitle": "Finishing soon",
         "color": "#2b76e5"
-      }
+      }, 
+      {
+      "id": "l106",
+      "taskTitle": "",
+      "color": "#c4c4c4"
+    }
   ],
   "members": [
       {
