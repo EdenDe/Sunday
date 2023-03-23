@@ -1,12 +1,40 @@
 .status{
   position: relative;
-}
-.color-picker-container{
-  position: absolute;
-  top: 0;
-  background-color: $color-snow_white;
-  border: 10px solid red;
-  height: 320px;
-  width: 200px;
+  .color-picker-container{
+    @include flex-center;
+    ::before {
+        @include modal-arrow;
+      }
+    align-items: flex-start;
+    justify-items: center; 
+
+    z-index:1;
+    position: absolute;
+    top: rem(35px);   
+
+
+
+    padding-top: rem(18px);
+    background-color: $color-snow_white;
+    height: rem(320px);
+    width: rem(200px);
+    border-radius: $border-radius-rounder;
+
+    .color-picker-label{
+     @include flex-center;
+    
+      height: rem(32px);
+      width: rem(153px);
+      
+      margin: rem(4px);
+      border-radius: $border-radius;
+
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+
+  }
+  
 }
 
