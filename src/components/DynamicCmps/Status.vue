@@ -5,7 +5,14 @@
     @click="toggleColorPicker"
   >
     {{ status.taskTitle }}
-    <div v-if="isPickerOpen" class="color-picker-container"></div>
+    <div v-if="isPickerOpen" class="color-picker-container">
+      <div
+        v-for="status in statusList"
+        :style="{ backgroundColor: status.color }"
+      >
+        {{ status.taskTitle }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,25 +26,33 @@ export default {
     return {
       status: null,
       isPickerOpen: false,
+      labels: [],
     }
   },
   created() {
-    let labels = this.$store.getters.statusLabels
-    this.status = labels.find((label) => label.taskTitle === this.info)
+    this.labels = this.$store.getters.statusLabels
+    this.status = this.labels.find((label) => label.taskTitle === this.info)
     if (!this.status) {
       this.status = {
         taskTitle: '',
         color: '#c4c4c4',
       }
     }
+    console.log(this.labels)
   },
   methods: {
     toggleColorPicker() {
       this.isPickerOpen = !this.isPickerOpen
     },
+    setLabel(label) {
+      console.log(label)
+      this.toggleColorPicker
+    },
   },
   computed: {
-    statusList() {},
+    statusList() {
+      return this.$store.getters.statusLabels
+    },
   },
 }
 </script>
