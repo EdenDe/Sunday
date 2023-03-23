@@ -30,15 +30,6 @@ export default {
       date: null,
     };
   },
-  computed: {
-    formattedDate() {
-      if (!this.info) return "";
-      return new Intl.DateTimeFormat("en-He", {
-        month: "short",
-        day: "numeric",
-      }).format(this.info);
-    },
-  },
   methods: {
     onChangeDate() {
       this.$emit("updateProp", "date", this.date);
