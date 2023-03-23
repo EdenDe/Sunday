@@ -19,9 +19,6 @@ export default {
     info: Array,
     taskId: String,
   },
-  created() {
-    this.timeline = this.info;
-  },
   data() {
     return {
       timeline: [],
@@ -30,9 +27,13 @@ export default {
   methods: {
     onChangeTimeline() {
       if (!this.timeline || !this.timeline.length) return;
-      console.log(this.timeline);
       this.$emit("updateProp", "timeline", this.timeline);
     },
+  },
+  watch: {
+    info() {
+      this.timeline = this.info;
+    }
   },
   computed: {
     formattedDates() {

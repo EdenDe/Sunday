@@ -40,7 +40,6 @@ async function save(board) {
 }
 
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
-	//q- לעשות שנביא בורד ספציפי לפי איידי?
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
 		let group = board.groups.find(group => groupId === group.id)

@@ -1,17 +1,7 @@
 <template>
   <section class="task-date">
-    <el-date-picker
-      :id="taskId + 'Date'"
-      type="date"
-      placeholder="Pick a day"
-      size="small"
-      format="MMM D"
-      value-format="x"
-      class="date-picker-container"
-      ref="date-picker"
-      v-model="date"
-      @change="onChangeDate"
-    />
+    <el-date-picker :id="taskId + 'Date'" type="date" placeholder="Pick a day" size="small" format="MMM D"
+      value-format="x" class="date-picker-container" ref="date-picker" v-model="date" @change="onChangeDate" />
   </section>
 </template>
 
@@ -29,6 +19,11 @@ export default {
     return {
       date: null,
     };
+  },
+  watch: {
+    info() {
+      this.date = this.info;
+    }
   },
   methods: {
     onChangeDate() {

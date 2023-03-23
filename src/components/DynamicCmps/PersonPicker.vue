@@ -12,7 +12,7 @@
         </article>
       </div>
       <div class="search-container">
-        <input placeholder="Search names" />
+        <input placeholder="Search names" v-model="search" />
         <span v-icon="'magnifyingGlass'"></span>
       </div>
       <div class="suggested-members">
@@ -40,15 +40,17 @@ export default {
   },
   data() {
     return {
-      isPersonPickerOpen: false
+      isPersonPickerOpen: false,
+      search: ''
     }
   },
   computed: {
     members() {
       let AllMembers = this.$store.getters.currBoard.members
+      const regex = new RegExp('^' + this.search, "i")
+
       return AllMembers.filter(member =>
-        !this.info.some(m => member._id === m._id)
-      )
+        !this.info.some(m => member._id === m._id) && regex.test(member.fullname))
     }
   },
   methods: {
@@ -71,6 +73,6 @@ export default {
   components: {
     PersonAvatar: Avatar,
   },
-};
+}
 </script>
 
