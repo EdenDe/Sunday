@@ -1,15 +1,17 @@
 <template>
   <section class="group-preview">
-    <span contenteditable class="group-title" @focusout="onType($event.target.innerText)" :style="{ color: group.color }">
-      {{ group.title }}
-    </span>
+    <div class="grid-title">
+      <div class="svg-wrapper"></div>
+      <span contenteditable class="group-title" @focusout="onType($event.target.innerText)"
+        :style="{ color: group.color }">
+        {{ group.title }}
+      </span>
+    </div>
     <span class="tasks-num">{{ group.tasks.length }} Tasks</span>
     <Container class="group-labels">
-
       <Draggable v-for="(label, index) in labels" :key="label">
-        <div v-if="index === 0" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
-        {{ label }}
-
+        <div v-if="index === 1" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
+        {{ label === 'taskTitle' ? 'title' : label }}
       </Draggable>
     </Container>
 
@@ -25,7 +27,6 @@
 </template>
 
 <script>
-import { VueDraggableNext } from 'vue-draggable-next'
 import TaskList from './TaskList.vue'
 import ProgressBar from './ProgressBar.vue'
 import { Container, Draggable } from "vue3-smooth-dnd";
@@ -37,17 +38,17 @@ export default {
   },
   data() {
     return {
-      labels: [
-        null,
-        null,
-        'task',
-        'status',
-        'priority',
-        'person',
-        'date',
-        'timeline',
-        'file',
-      ],
+      // labels: [
+      //   null,
+      //   null,
+      //   'task',
+      //   'status',
+      //   'priority',
+      //   'person',
+      //   'date',
+      //   'timeline',
+      //   'file',
+      // ],
       newTask: {
         taskTitle: '',
       },
@@ -78,23 +79,13 @@ export default {
     onDrop(dropResult) {
       this.items = this.applyDrag(this.items, dropResult);
     },
-    applyDrag(arr, dragResult) {
-      const { removedIndex, addedIndex, payload } = dragResult;
-
-      if (removedIndex === null && addedIndex === null) return arr;
-      const result = [...arr];
-      let itemToAdd = payload;
-
-      if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-      }
-      if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-      }
-      return result;
-    }
   },
   computed: {
+    labels() {
+      let labels = [null, null, null]
+      labels.push(...this.$store.getters.cmpOrder.slice(1))
+      return labels
+    },
     groupStatusProgress() {
       let res = this.group.tasks.reduce((obj, { status }) => {
         if (!obj[status]) obj[status] = 0
@@ -128,7 +119,6 @@ export default {
   },
   components: {
     TaskList,
-    VueDraggableNext,
     ProgressBar,
     Container,
     Draggable

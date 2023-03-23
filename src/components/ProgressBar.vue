@@ -1,7 +1,9 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
+    <div v-for="value in Array(2).fill(null)"> </div>
+
     <div v-for="(item, idx) in cmpOrder" :key="idx">
-      <div v-if="item === 'status' || item === 'priority'" class="flex progress-container">
+      <div v-if="item === 'status' || item === 'priority'" class="flex progress-container" :class="item">
         <div v-for="label in groupStatusProgress(item)" :style="{
           flex: 1,
           'flex-basis': label.width,
@@ -9,6 +11,7 @@
         }">
         </div>
       </div>
+      <div v-else :class="item"> </div>
     </div>
   </section>
 </template>
@@ -34,10 +37,11 @@ export default {
           return obj
         }, {})
 
-        let labels = item === 'status' ? this.statusLabels : this.priorityLabels
+        let labels = item === 'status' ? [...this.statusLabels] : [...this.priorityLabels]
+
         let totalTaskLength = this.tasks.length
 
-        labels.map(({ title, color }) => {
+        labels.forEach(({ title, color }) => {
           if (res[title]) {
             let presentageWidth = (res[title] / totalTaskLength) * 100
 
@@ -49,7 +53,6 @@ export default {
             }
           }
         })
-
         return res
       }
     },

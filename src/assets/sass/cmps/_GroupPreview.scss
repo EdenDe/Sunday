@@ -1,23 +1,33 @@
 .group-preview{
   margin-bottom: em(30px);
-  
-  .group-title{
-    @include editableSpan;
-    display: inline-flex;
-    font-size: rem(18px);
-    font-weight: bold;
-    margin:em(5px);
+  .grid-title{
+    @include task-cols;
 
-    &:focus-visible {
-      width: 200px;
+    .svg-wrapper{
+      grid-column: 3;
+    }
+
+    .group-title{
+      @include editableSpan;
+      grid-column: 4;
+      display: inline-flex;
+      font-size: rem(18px);
+      font-weight: bold;
+      margin:em(5px);
+  
+      &:focus-visible {
+        width: 200px;
+        }
+      &:hover+.tasks-num {
+        opacity: 1;
       }
-    &:hover+.tasks-num {
-      opacity: 1;
     }
   }
 
+
   .first-col-color{
     @include fullSize;
+    grid-column: 2;
     // border-top-left-radius: $border-radius;
   }
 
@@ -82,7 +92,7 @@
           border-radius: 0 0 0 $border-radius-rounder;
         }
       .add-task-input-container {
-      grid-column: 3;
+        grid-column: 4;
         padding: em(4px) em(3px);
        input {
         padding: em(4px) 0;
