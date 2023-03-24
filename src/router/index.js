@@ -5,7 +5,7 @@ import BoardIndex from '../views/BoardIndex.vue'
 import BoardDetails from '../views/BoardDetails.vue'
 import TaskPulses from '../views/TaskPulses.vue'
 import KabanDetails from '../views/KabanDetails.vue'
-
+import BoardTable from '../views/BoardTable.vue'
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
@@ -28,12 +28,11 @@ const router = createRouter({
 					path: ':boardId',
 					name: 'board',
 					component: BoardDetails,
-					// params: { boardId: $route.params.boardId},
 					children: [
 						{
-							path: 'pulse/:taskId',
-							name: 'pulse',
-							component: TaskPulses,
+							path: 'main-table',
+							name: 'table',
+							component: BoardTable,
 						},
 						{
 							path: 'kaban',
