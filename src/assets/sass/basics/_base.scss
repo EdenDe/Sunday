@@ -16,7 +16,6 @@ body {
 
   @include for-normal-layout {
     // &.sidebar-open {
-    overflow: hidden;
     // }
   }
 }
@@ -27,11 +26,7 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-.board-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+
 h1,
 h2,
 h3,

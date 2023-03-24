@@ -1,8 +1,9 @@
-.group-list{
-  &::before{
-    content:'';
-    width:38px;
-    display:block
+.group-list {
+  position: absolute;
+  padding-top: rem(20px);
+  &::before {
+    content: "";
+    width: 38px;
+    display: block;
   }
-
 }

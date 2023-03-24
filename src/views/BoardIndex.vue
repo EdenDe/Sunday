@@ -2,18 +2,22 @@
   <section class="board-index main-layout">
     <AppSideNav />
     <WorkspaceSideNav @add-board="addBoard" @change-board="changeBoard" />
-    <RouterView />
+    <div class="board-container board-layout">
+      <BoardHeader />
+      <RouterView />
+    </div>
   </section>
 </template>
 
 <script>
 import AppSideNav from "@/components/AppSidenav.vue";
 import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
-
+import BoardHeader from "../components/BoardHeader.vue";
 export default {
   components: {
     AppSideNav,
     WorkspaceSideNav,
+    BoardHeader,
   },
   methods: {
     addBoard() {

@@ -1,13 +1,10 @@
 <template>
   <div class="board-table">
-    <GroupList :groups="groups" @onDrop="onDrop"></GroupList>
-    <button
-      class="btn-add-group flex justify-center align-center"
-      @click="onAddGroup"
-    >
-      <i v-icon="'workspacePlus'"></i>
-      Add new group
-    </button>
+    <GroupList
+      @on-add-group="onAddGroup"
+      :groups="groups"
+      @onDrop="onDrop"
+    ></GroupList>
   </div>
 </template>
 <script>

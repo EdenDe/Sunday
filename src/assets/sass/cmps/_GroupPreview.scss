@@ -39,7 +39,6 @@
     grid-column: 2;
     // border-top-left-radius: $border-radius;
   }
-
   .progress-grid {
     @include task-cols;
 
@@ -54,7 +53,6 @@
       border-right: none;
     }
   }
-
   .group-labels {
     @include task-cols;
     text-transform: capitalize;
@@ -66,8 +64,8 @@
       border-bottom: 1px solid $layout-border-color;
       margin-bottom: -1px;
     }
-    
-    .first-col-color{
+
+    .first-col-color {
       border-top-left-radius: $border-radius-rounder;
     }
   }
@@ -84,17 +82,16 @@
       }
     }
   }
-
   .add-task-container {
     @include task-cols;
     border-radius: 0 0 0 $border-radius-rounder;
     opacity: 0.5;
 
-    *:not(:first-child,.task-option){
+    *:not(:first-child, .task-option) {
       border-bottom: 1px solid $layout-border-color;
     }
 
-    &:hover{
+    &:hover {
       opacity: 1;
       background-color: $color-border_light_gray;
     }
@@ -108,7 +105,7 @@
       padding: em(4px) em(3px);
       border-left: 1px solid $layout-border-color;
       margin-left: -1px;
-    
+
       input {
         padding: em(4px) 0;
         padding-inline-start: 30px;
@@ -125,4 +122,9 @@
       }
     }
   }
+}
+
+.task-options {
+  width: 40px;
+  background-color: $color-snow_white;
 }
