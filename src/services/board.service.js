@@ -57,7 +57,7 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 
 function getEmptyBoard() {
 	return {
-		_id: utilService.makeId(),
+		_id: '',
 		title: 'My board',
 		isStarred: false,
 		archivedAt: null,
@@ -138,7 +138,7 @@ function getEmptyBoard() {
 		],
 		members: [
 			{
-				id: u101,
+				id: 'u101',
 				fullname: 'Lior Doron',
 				imgUrl:
 					'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',

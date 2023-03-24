@@ -16,16 +16,28 @@ body {
 
   @include for-normal-layout {
     // &.sidebar-open {
-    //     overflow: hidden;
+    overflow: hidden;
     // }
   }
 }
+#app {
+  margin: 0;
+  height: 100vh;
+  max-width: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 
-h1, h2, h3, h4, h5, h6 {
-   // font-weight: 500;
-    // margin: 0 0 1rem;
-    // line-height: lh(40px, 29px);
-    // margin: 0 0 1em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // font-weight: 500;
+  // margin: 0 0 1rem;
+  // line-height: lh(40px, 29px);
+  // margin: 0 0 1em;
 }
 
 a {
