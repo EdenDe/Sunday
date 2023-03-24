@@ -8,26 +8,26 @@
 
 <script>
 export default {
-  name: "TextInput",
+  name: 'TextInput',
   props: {
     info: String,
   },
-  emits: ["updateProp"],
+  emits: ['updateProp'],
   data() {
     return {
       txt: this.info,
-    };
+    }
   },
   watch: {
     info() {
       this.txt = this.info
-    }
+    },
   },
   methods: {
     onType(txt) {
-      this.txt = txt;
-      this.$emit("updateProp", "text", txt);
+      this.txt = txt
+      this.$emit('updateProp', 'text', txt)
     },
   },
-};
+}
 </script>

@@ -4,10 +4,10 @@
     "title": "Sunday",
     "isStarred": false,
     "archivedAt": null,
-    "createdBy": {
-      "_id": "u101",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+    "createdBy": {   
+        "_id": "u101",
+        "fullname": "Lior Doron",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
     },
     "cmpOrder": [
       "checkbox",
@@ -108,38 +108,26 @@
           {
             "id": "t101",
             "checkbox": "null",
-            "taskTitle": "learn SCSS",
+            "taskTitle": "Design the landing page",
             "person": [
-              {
-                "_id": "u101",
-                "fullname": "Lior Doron",
-                "color": "red",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
-              },
               {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
-              },
-              {
-                "_id": "u103",
-                "fullname": "Tamar Shalem",
-                "color": "green",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
-              }
+              }              
             ],
             "date": 1659561600000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Develop a user dashboard",
             "file": "",
-            "status": "Done",
+            "status": "Working on it",
             "priority": "Critical"
           },
           {
             "id": "t102",
             "checkbox": "null",
-            "taskTitle": "learn vue",
+            "taskTitle": "Develop a user dashboard",
             "person": [
               {
                 "_id": "u101",
@@ -156,15 +144,34 @@
             ],
             "date": 1659817200000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Design and implement a user dashboard that provides an overview of the user's tasks, projects, and progress at a glance.",
             "file": "",
-            "status": "Stuck",
-            "priority": "Low"
+            "status": "Working on it",
+            "priority": "Medium"
           },
           {
             "id": "t103",
             "checkbox": "null",
-            "taskTitle": "learn js",
+            "taskTitle": "Implement dark mode",
+            "person": [
+              {
+                "_id": "u102",
+                "fullname": "Eden Derhy",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png",
+                "color": "black"
+              }
+            ],
+            "date": 1660076400000,
+            "timeline": [],
+            "text": "Add a dark mode option for users who prefer a darker color scheme. Ensure smooth transitions and consistency between light and dark modes.",
+            "file": "",
+            "status": "Stuck",
+            "priority": "High"
+          },
+          {
+            "id": "t104",
+            "checkbox": "null",
+            "taskTitle": "Add data visualization",
             "person": [
               {
                 "_id": "u103",
@@ -175,10 +182,66 @@
             ],
             "date": 1660076400000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Design and implement data visualization components, such as charts and graphs, to help users better understand their project progress and team performance.",
+            "file": "",
+            "status": "Need help",
+            "priority": "Critical"
+          },
+          {
+            "id": "t105",
+            "checkbox": "null",
+            "taskTitle": "Implement layout",
+            "person": [
+              {
+                "_id": "u101",
+                "fullname": "Lior Doron",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+                "color": "red"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Eden Derhy",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png",
+                "color": "black"
+              }
+            ],
+            "date": 1660076400000,
+            "timeline": [],
+            "text": "Update the application layout using CSS Grid to create a more flexible and responsive design.",
+            "file": "",
+            "status": "Finishing soon",
+            "priority": "Medium"
+          },
+          {
+            "id": "t106",
+            "checkbox": "null",
+            "taskTitle": "Improve form styling",
+            "person": [
+              {
+                "_id": "u103",
+                "fullname": "Tamar Shalem",
+                "color": "green",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Eden Derhy",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png",
+                "color": "black"
+              },
+              {
+                "_id": "u101",
+                "fullname": "Lior Doron",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png",
+                "color": "red"
+              }
+            ],
+            "date": 1660076400000,
+            "timeline": [],
+            "text": "Enhance the styling of forms, including input fields, buttons, and validation messages, to provide a more polished and user-friendly experience.",
             "file": "",
             "status": "Done",
-            "priority": "Low"
+            "priority": "High"
           }
         ]
       },
@@ -188,16 +251,10 @@
         "color": "#a25ddc",
         "tasks": [
           {
-            "id": "t101",
+            "id": "t201",
             "checkbox": "null",
-            "taskTitle": "learn CSS",
+            "taskTitle": "Fix broken authentication",
             "person": [
-              {
-                "_id": "u101",
-                "fullname": "Lior Doron",
-                "color": "red",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
-              },
               {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
@@ -213,15 +270,15 @@
             ],
             "date": 1660335600000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Fix broken authentication",
             "file": "",
             "status": "Working on it",
             "priority": "Low"
           },
           {
-            "id": "t102",
+            "id": "t202",
             "checkbox": "null",
-            "taskTitle": "learn vue",
+            "taskTitle": "Resolve slow API response times",
             "person": [
               {
                 "_id": "u101",
@@ -229,31 +286,44 @@
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
-              {
-                "_id": "u103",
-                "fullname": "Tamar Shalem",
-                "color": "green",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
-              }
-            ],
-            "date": 1660594800000,
-            "timeline": [],
-            "text": "bla bla",
-            "file": "",
-            "status": "Finishing soon",
-            "priority": "Critical"
-          },
-          {
-            "id": "t103",
-            "checkbox": "null",
-            "taskTitle": "learn js",
-            "person": [
-              {
+             {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
-              },
+              }
+            ],
+            "date": 1660594800000,
+            "timeline": [],
+            "text": "Some API endpoints are experiencing slow response times, leading to a suboptimal user experience. Profile and optimize the affected APIs for better performance.",
+            "file": "",
+            "status": "Stuck",
+            "priority": "Critical"
+          },
+          {
+            "id": "t203",
+            "checkbox": "null",
+            "taskTitle": "Fix incorrect API endpoint behavior",
+            "person": [
+              {
+                "_id": "u101",
+                "fullname": "Lior Doron",
+                "color": "red",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+              }
+            ],
+            "date": 1660854000000,
+            "timeline": [],
+            "text": "The /api/users endpoint is returning all user data instead of just the logged-in user's data. Update the endpoint to return the correct data.",
+            "file": "",
+            "status": "Working on it",
+            "priority": "Medium"
+          },
+          {
+            "id": "t204",
+            "checkbox": "null",
+            "taskTitle": "Resolve data inconsistencies",
+            "person": [
               {
                 "_id": "u103",
                 "fullname": "Tamar Shalem",
@@ -263,9 +333,21 @@
             ],
             "date": 1660854000000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Inconsistent data is being returned from the backend, causing UI issues and incorrect calculations. Identify and fix the issue causing data inconsistency.",
             "file": "",
-            "status": "Need help",
+            "status": "Done",
+            "priority": "Medium"
+          },
+          {
+            "id": "t205",
+            "checkbox": "null",
+            "taskTitle": "Fix database connection issue",
+            "person": [],
+            "date": 1660854000000,
+            "timeline": [],
+            "text": "The application is intermittently losing connection to the database. Investigate and resolve the issue causing connection instability.",
+            "file": "",
+            "status": "",
             "priority": "Medium"
           }
         ]
@@ -276,29 +358,41 @@
         "color": "#e2445c",
         "tasks": [
           {
-            "id": "t101",
+            "id": "t301",
             "checkbox": "null",
-            "taskTitle": "learn CSS",
+            "taskTitle": "Fix login error",
             "person": [
-              {
-                "_id": "u102",
-                "fullname": "Eden Derhy",
-                "color": "black",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
+               {
+                "_id": "u101",
+                "fullname": "Lior Doron",
+                "color": "red",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+              },
+               {
+                "_id": "u103",
+                "fullname": "Tamar Shalem",
+                "color": "green",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
               }
             ],
             "date": 1661113200000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Users are unable to log in with correct credentials.",
             "file": "",
-            "status": "Working on it",
-            "priority": "High"
+            "status": "Stuck",
+            "priority": "Critical"
           },
           {
-            "id": "t102",
+            "id": "t302",
             "checkbox": "null",
-            "taskTitle": "learn vue",
+            "taskTitle": "Resolve broken image links",
             "person": [
+                {
+                "_id": "u102",
+                "fullname": "Eden Derhy",
+                "color": "black",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
+              }, 
               {
                 "_id": "u101",
                 "fullname": "Lior Doron",
@@ -308,22 +402,16 @@
             ],
             "date": 1661372400000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Some images are not displayed correctly due to broken links. Investigate and fix the issue causing broken image paths.",
             "file": "",
             "status": "Stuck",
-            "priority": ""
+            "priority": "High"
           },
           {
-            "id": "t103",
+            "id": "t303",
             "checkbox": "null",
-            "taskTitle": "learn js",
+            "taskTitle": "Address 404 error on the \"About Us\" page",
             "person": [
-              {
-                "_id": "u101",
-                "fullname": "Lior Doron",
-                "color": "red",
-                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
-              },
               {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
@@ -339,10 +427,54 @@
             ],
             "date": 1661631600000,
             "timeline": [],
-            "text": "bla bla",
+            "text": "Users are encountering a 404 error when trying to access the \"About Us\" page. Ensure the page is accessible and the URL is correct.",
+            "file": "",
+            "status": "Working on it",
+            "priority": "Critical"
+          },
+          {
+            "id": "t304",
+            "checkbox": "null",
+            "taskTitle": "Fix duplicate entries in the database",
+            "person": [
+              {
+                "_id": "u103",
+                "fullname": "Tamar Shalem",
+                "color": "green",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/06/30/10/23/icon-5355896_960_720.png"
+              }
+            ],
+            "date": 1661631600000,
+            "timeline": [],
+            "text": "Duplicate records are being created in the database when users submit the registration form. Investigate and prevent duplicate entries.",
             "file": "",
             "status": "Done",
-            "priority": "High"
+            "priority": "Critical"
+          },
+          {
+            "id": "t305",
+            "checkbox": "null",
+            "taskTitle": "Resolve unexpected logouts",
+            "person": [
+              {
+                "_id": "u102",
+                "fullname": "Eden Derhy",
+                "color": "black",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
+              },
+             {
+                "_id": "u101",
+                "fullname": "Lior Doron",
+                "color": "red",
+                "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+              }
+            ],
+            "date": 1661631600000,
+            "timeline": [],
+            "text": "Users are being logged out of the application unexpectedly, even when they are actively using the application. Investigate and fix the issue causing premature session expiration.",
+            "file": "",
+            "status": "Stuck",
+            "priority": "Critical"
           }
         ]
       }
