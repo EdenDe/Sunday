@@ -30,10 +30,6 @@ async function remove(boardId) {
   await storageService.removeBoard(STORAGE_KEY, boardId)
 }
 
-// async function removeTask(taskId, groupId, boardId) {
-//   await storageService.removeTask(STORAGE_KEY, taskId, groupId, boardId)
-// }
-
 async function save(board) {
   var savedBoard
   if (board._id) {

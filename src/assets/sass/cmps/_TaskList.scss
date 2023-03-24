@@ -10,12 +10,14 @@
     @include fullSize;
     // border-top-left-radius: $border-radius;
   }
-  &:hover {
+  &:hover>*:not(:first-child) {
     background-color: $dark-background-color;
-    & > *:first-child {
-      background-color: $color-snow_white;
-    }
   }
+  // TODO: ASK ASI
+  // &:hover :is(.status, .priority){
+  // opacity: 0.8;
+  // }
+
   & > *:nth-child(-n + 3) {
     position: sticky;
     top: 0;

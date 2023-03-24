@@ -41,17 +41,6 @@ function remove(gBoardId) {
   return _savegBoardsToFile()
 }
 
-// function removeTask(taskId, boardId) {
-//   const idx = gBoard.findIndex((gBoard) => gBoard._id === boardId)
-//   if (idx === -1) return Promise.reject('No such gBoard')
-
-//   const taskIdx = gBoard.tasks.findIndex((task) => task.id === taskId)
-//   if (taskIdx === -1) return Promise.reject('No such task')
-//   gBoard.tasks.splice(taskIdx, 1)
-
-//   return _savegBoardsToFile()
-// }
-
 function _makeId(length = 5) {
   let txt = ''
   let possible =
