@@ -13,7 +13,7 @@
     <Container class="group-labels">
       <Draggable v-for="(label, index) in labels" :key="label">
         <div v-if="index === 1" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
-        {{ label === "taskTitle" ? "title" : label }}
+        {{ label }}
       </Draggable>
     </Container>
 
@@ -89,7 +89,13 @@ export default {
     labels() {
       let labels = [null, null, null];
       labels.push(...this.$store.getters.cmpOrder.slice(1));
-      return labels;
+
+      return labels.map(label => {
+        if (label === 'taskTitle') label = 'title'
+        if (label === 'txt') label = 'text'
+        return label
+      })
+
     },
     groupStatusProgress() {
       let res = this.group.tasks.reduce((obj, { status }) => {
