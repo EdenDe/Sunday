@@ -1,5 +1,5 @@
 <template>
-  <section class="task-txt grid">
+  <section class="task-txt">
     <span contenteditable @focusout="onType($event.target.innerText)">{{
       txt
     }}</span>

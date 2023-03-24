@@ -215,7 +215,21 @@
 
 @mixin editableSpan {
   border-radius: $border-radius;
-  padding: 2px;
+  padding: em(2px);
+  line-height:1.5;
+ 
+  white-space: nowrap;
+  overflow: hidden;
+
+  br{
+    display:none;
+  }
+
+  *{
+    display:inline;
+    white-space: nowrap;
+  }
+
   &:hover {
     outline: 1px solid $color-wolf_gray;
   }

@@ -2,6 +2,7 @@
   @include task-row;
   // border-bottom: 1px solid $layout-border-color;
   // margin-bottom:-1px;
+  overflow: hidden;
 
  &:nth-child(3){
   padding: 6px;

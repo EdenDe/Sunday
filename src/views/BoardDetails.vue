@@ -3,7 +3,7 @@
     <div>
       <BoardHeader />
       <GroupList :groups="groups" @onDrop="onDrop"></GroupList>
-      <button class="btn-add-group flex justify-center align-center">
+      <button class="btn-add-group flex justify-center align-center" @click="onAddGroup">
         <i v-icon="'workspacePlus'"></i>
         Add new group
       </button>
@@ -12,9 +12,10 @@
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
 import BoardHeader from "../components/BoardHeader.vue";
 import GroupList from "../components/GroupList.vue";
+import { boardService } from '../services/board.service'
+
 export default {
   computed: {
     groups() {
@@ -25,14 +26,21 @@ export default {
     onDrop({ addedIndex, removedIndex }) {
       let groupList = JSON.parse(JSON.stringify(this.groups))
       groupList.splice(addedIndex, 0, groupList.splice(removedIndex, 1)[0]);
-      this.$store.dispatch({ type: 'updateCurrBoard', groupId: null, taskId: null, prop: 'groups', toUpdate: groupList })
+      this.updateBoard(groupList)
     },
+    onAddGroup() {
+      const groupList = JSON.parse(JSON.stringify(this.groups))
+      const newGroup = boardService.getEmptyGroup()
+      groupList.push(newGroup)
+      this.updateBoard(groupList)
+    },
+    updateBoard(toUpdate) {
+      this.$store.dispatch({ type: 'updateCurrBoard', groupId: null, taskId: null, prop: 'groups', toUpdate })
+    }
   },
   components: {
     BoardHeader,
     GroupList,
-    Container,
-    Draggable,
   },
 };
 </script>

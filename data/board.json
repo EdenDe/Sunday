@@ -17,7 +17,7 @@
       "priority",
       "date",
       "timeline",
-      "text",
+      "txt",
       "file"
     ],
     "priorityLabels": [
@@ -119,7 +119,7 @@
             ],
             "date": 1659561600000,
             "timeline": [],
-            "text": "Develop a user dashboard",
+            "txt": "Develop a user dashboard",
             "file": "",
             "status": "Working on it",
             "priority": "Critical"
@@ -144,7 +144,7 @@
             ],
             "date": 1659817200000,
             "timeline": [],
-            "text": "Design and implement a user dashboard that provides an overview of the user's tasks, projects, and progress at a glance.",
+            "txt": "Design and implement a user dashboard that provides an overview of the user's tasks, projects, and progress at a glance.",
             "file": "",
             "status": "Working on it",
             "priority": "Medium"
@@ -163,7 +163,7 @@
             ],
             "date": 1660076400000,
             "timeline": [],
-            "text": "Add a dark mode option for users who prefer a darker color scheme. Ensure smooth transitions and consistency between light and dark modes.",
+            "txt": "Add a dark mode option for users who prefer a darker color scheme. Ensure smooth transitions and consistency between light and dark modes.",
             "file": "",
             "status": "Stuck",
             "priority": "High"
@@ -182,7 +182,7 @@
             ],
             "date": 1660076400000,
             "timeline": [],
-            "text": "Design and implement data visualization components, such as charts and graphs, to help users better understand their project progress and team performance.",
+            "txt": "Design and implement data visualization components, such as charts and graphs, to help users better understand their project progress and team performance.",
             "file": "",
             "status": "Need help",
             "priority": "Critical"
@@ -207,7 +207,7 @@
             ],
             "date": 1660076400000,
             "timeline": [],
-            "text": "Update the application layout using CSS Grid to create a more flexible and responsive design.",
+            "txt": "Update the application layout using CSS Grid to create a more flexible and responsive design.",
             "file": "",
             "status": "Finishing soon",
             "priority": "Medium"
@@ -238,7 +238,7 @@
             ],
             "date": 1660076400000,
             "timeline": [],
-            "text": "Enhance the styling of forms, including input fields, buttons, and validation messages, to provide a more polished and user-friendly experience.",
+            "txt": "Enhance the styling of forms, including input fields, buttons, and validation messages, to provide a more polished and user-friendly experience.",
             "file": "",
             "status": "Done",
             "priority": "High"
@@ -270,7 +270,7 @@
             ],
             "date": 1660335600000,
             "timeline": [],
-            "text": "Fix broken authentication",
+            "txt": "Fix broken authentication",
             "file": "",
             "status": "Working on it",
             "priority": "Low"
@@ -295,7 +295,7 @@
             ],
             "date": 1660594800000,
             "timeline": [],
-            "text": "Some API endpoints are experiencing slow response times, leading to a suboptimal user experience. Profile and optimize the affected APIs for better performance.",
+            "txt": "Some API endpoints are experiencing slow response times, leading to a suboptimal user experience. Profile and optimize the affected APIs for better performance.",
             "file": "",
             "status": "Stuck",
             "priority": "Critical"
@@ -314,7 +314,7 @@
             ],
             "date": 1660854000000,
             "timeline": [],
-            "text": "The /api/users endpoint is returning all user data instead of just the logged-in user's data. Update the endpoint to return the correct data.",
+            "txt": "The /api/users endpoint is returning all user data instead of just the logged-in user's data. Update the endpoint to return the correct data.",
             "file": "",
             "status": "Working on it",
             "priority": "Medium"
@@ -333,7 +333,7 @@
             ],
             "date": 1660854000000,
             "timeline": [],
-            "text": "Inconsistent data is being returned from the backend, causing UI issues and incorrect calculations. Identify and fix the issue causing data inconsistency.",
+            "txt": "Inconsistent data is being returned from the backend, causing UI issues and incorrect calculations. Identify and fix the issue causing data inconsistency.",
             "file": "",
             "status": "Done",
             "priority": "Medium"
@@ -345,7 +345,7 @@
             "person": [],
             "date": 1660854000000,
             "timeline": [],
-            "text": "The application is intermittently losing connection to the database. Investigate and resolve the issue causing connection instability.",
+            "txt": "The application is intermittently losing connection to the database. Investigate and resolve the issue causing connection instability.",
             "file": "",
             "status": "",
             "priority": "Medium"
@@ -377,7 +377,7 @@
             ],
             "date": 1661113200000,
             "timeline": [],
-            "text": "Users are unable to log in with correct credentials.",
+            "txt": "Users are unable to log in with correct credentials.",
             "file": "",
             "status": "Stuck",
             "priority": "Critical"
@@ -402,7 +402,7 @@
             ],
             "date": 1661372400000,
             "timeline": [],
-            "text": "Some images are not displayed correctly due to broken links. Investigate and fix the issue causing broken image paths.",
+            "txt": "Some images are not displayed correctly due to broken links. Investigate and fix the issue causing broken image paths.",
             "file": "",
             "status": "Stuck",
             "priority": "High"
@@ -427,7 +427,7 @@
             ],
             "date": 1661631600000,
             "timeline": [],
-            "text": "Users are encountering a 404 error when trying to access the \"About Us\" page. Ensure the page is accessible and the URL is correct.",
+            "txt": "Users are encountering a 404 error when trying to access the \"About Us\" page. Ensure the page is accessible and the URL is correct.",
             "file": "",
             "status": "Working on it",
             "priority": "Critical"
@@ -446,7 +446,7 @@
             ],
             "date": 1661631600000,
             "timeline": [],
-            "text": "Duplicate records are being created in the database when users submit the registration form. Investigate and prevent duplicate entries.",
+            "txt": "Duplicate records are being created in the database when users submit the registration form. Investigate and prevent duplicate entries.",
             "file": "",
             "status": "Done",
             "priority": "Critical"
@@ -471,7 +471,7 @@
             ],
             "date": 1661631600000,
             "timeline": [],
-            "text": "Users are being logged out of the application unexpectedly, even when they are actively using the application. Investigate and fix the issue causing premature session expiration.",
+            "txt": "Users are being logged out of the application unexpectedly, even when they are actively using the application. Investigate and fix the issue causing premature session expiration.",
             "file": "",
             "status": "Stuck",
             "priority": "Critical"
