@@ -3,7 +3,8 @@
     @click="toggleColorPicker">
     {{ status.title }}
 
-    <LabelPicker v-if="isPickerOpen" :labels="statusList" @setLabel="setLabel"></LabelPicker>
+    <LabelPicker v-clickOutside="toggleColorPicker" v-if="isPickerOpen" :labels="statusList" @setLabel="setLabel">
+    </LabelPicker>
   </div>
 </template>
 
