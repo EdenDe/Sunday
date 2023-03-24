@@ -12,20 +12,13 @@ export const boardService = {
 	remove,
 	updateBoard,
 	getEmptyBoard,
-<<<<<<< HEAD
 	getEmptyGroup,
-=======
->>>>>>> c797f0715a4dd5c439890286d086a42715621a8f
 }
 
 window.boardService = boardService
 
 async function query() {
-<<<<<<< HEAD
-	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-=======
 	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
->>>>>>> c797f0715a4dd5c439890286d086a42715621a8f
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -50,26 +43,17 @@ async function save(board) {
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
-<<<<<<< HEAD
 		let group = board.groups.find(group => groupId === group.id)
 		let task = group.tasks.find(task => task.id === taskId)
 		task[prop] = toUpdate
 	} else if (groupId) {
 		let group = board.groups.find(group => groupId === group.id)
-=======
-		let group = board.groups.find((group) => groupId === group.id)
-		let task = group.tasks.find((task) => task.id === taskId)
-		task[prop] = toUpdate
-	} else if (groupId) {
-		let group = board.groups.find((group) => groupId === group.id)
->>>>>>> c797f0715a4dd5c439890286d086a42715621a8f
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
 	}
 
 	return board
-<<<<<<< HEAD
 }
 
 function getEmptyGroup() {
@@ -79,8 +63,6 @@ function getEmptyGroup() {
 		color: utilService.getRandomColor(),
 		tasks: [],
 	}
-=======
->>>>>>> c797f0715a4dd5c439890286d086a42715621a8f
 }
 
 function getEmptyBoard() {
