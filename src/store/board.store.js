@@ -54,6 +54,9 @@ export const boardStore = {
 		priorityLabels({ currBoard }) {
 			return currBoard.priorityLabels
 		},
+		emptyBoard() {
+			return boardService.getEmptyBoard()
+		}
 	},
 	actions: {
 		async loadBoards({ commit }, { filterBy = {} }) {
@@ -76,7 +79,6 @@ export const boardStore = {
 		async saveBoard({ commit }, { board }) {
 			try {
 				let boardId = board._id
-
 				const savedBoard = await boardService.save(board)
 				commit({
 					type: boardId ? 'updateBoard' : 'addBoard',

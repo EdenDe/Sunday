@@ -5,11 +5,18 @@
   color: $primary-text-color;
   background-color: $color-riverstone_gray;
   border-right: 1.2px solid $workspace-side-nav;
-  padding-top: 12px;
+  padding-top: rem(12px);
+  transition: width 0.3s ease-out;
   &.workspace-close {
-    width: 32px;
+    width: rem(32px);
+    min-width: rem(32px);
+    transition: width 0.3s ease-in-out;
     & > *:not(.toggle-workspace) {
       display: none;
+    }
+
+    &:not(.workspace-close) {
+      min-width: 254px; // set your desired minimum width here
     }
   }
   .navigation-header {
@@ -68,14 +75,15 @@
           @include svgFit;
         }
       }
-      .dots-wrapper {
-        justify-self: flex-end;
-      }
+
       span {
         margin-inline-start: 8px;
       }
       &.add {
         padding-inline-start: rem(4px);
+      }
+      &:hover {
+        background-color: $primary-background-hover-color;
       }
     }
   }
@@ -97,8 +105,17 @@
       border-radius: 4px;
       font-size: rem(14px);
       color: $primary-text-color;
+      .dots-wrapper {
+        display: none;
+      }
       &.is-active {
         background-color: $color-highlight_blue;
+        &:hover {
+          background-color: $color-highlight_blue;
+          .dots-wrapper {
+            display: block;
+          }
+        }
       }
       span {
         margin-inline-start: rem(8px);
