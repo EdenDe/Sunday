@@ -1,11 +1,5 @@
 <template>
   <section class="task-filter grid grid-col">
-    <div class="btn-container btn-add-task grid grid-col aling-center">
-      <button @click="addTask" class="btn btn-blue">New Task</button>
-
-      <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
-    </div>
-
     <div class="btn btn-container grid grid-col aling-center">
       <input v-if="false" placeholder="Search" />
       <span class="task-filter-icon" v-icon="'searchFilter'"></span>
@@ -31,7 +25,7 @@ export default {
   methods: {
     addTask() {
       //q- איך להוסיף מפה בצורה הכי טובה
-    }
-  }
+    },
+  },
 }
 </script>
