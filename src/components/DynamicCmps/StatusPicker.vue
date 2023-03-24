@@ -22,10 +22,11 @@ export default {
     }
   },
   created() {
-    let labels = this.$store.getters.statusLabels
-    this.status = labels.find((label) => label.title === this.info)
-    if (!this.status) {
-      this.status = labels[5]
+    this.setLabels()
+  },
+  watch: {
+    info() {
+      this.setLabels()
     }
   },
   methods: {
@@ -36,6 +37,13 @@ export default {
       this.toggleColorPicker
       this.$emit('updateProp', 'status', labelTitle)
     },
+    setLabels() {
+      let labels = this.$store.getters.statusLabels
+      this.status = labels.find((label) => label.title === this.info)
+      if (!this.status) {
+        this.status = labels[5]
+      }
+    }
   },
   computed: {
     statusList() {

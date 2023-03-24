@@ -24,11 +24,16 @@
 @import "cmps/GroupList";
 @import "cmps/TaskList";
 @import "cmps/TaskPreview";
+@import "cmps/ProgressBar";
+@import "cmps/Avatar";
+@import "cmps/GroupDetails";
+
 
 // DYNAMIC CMPS
-@import "cmps/dynamicCmps/Title";
 @import "cmps/dynamicCmps/Checkbox";
-@import "cmps/dynamicCmps/Date";
-@import "cmps/dynamicCmps/Timeline";
-@import "cmps/dynamicCmps/Status";
-@import "cmps/dynamicCmps/Priority";
+@import "cmps/dynamicCmps/TitleInput";
+@import "cmps/dynamicCmps/DatePicker";
+@import "cmps/dynamicCmps/TimelinePicker";
+@import "cmps/dynamicCmps/StatusPicker";
+@import "cmps/dynamicCmps/PriorityPicker";
+@import "cmps/dynamicCmps/PersonPicker";

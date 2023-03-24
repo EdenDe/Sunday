@@ -1,0 +1,32 @@
+.progress-bar{
+  @include task-cols;
+  // >*:not(:first-child){
+  //   border-top: 1px solid $layout-border-color;
+  // } 
+
+  >*:not(:nth-child(-n+4)){
+    @include task-row;
+    border-top: 1px solid #d0d4e4;
+    margin-top: -1px;
+    border-right: 1px solid #d0d4e4;
+    border-bottom: 1px solid #d0d4e4;
+  } 
+
+  >:nth-child(5){
+    border-left: 1px solid #d0d4e4;
+    border-bottom-left-radius: $border-radius-rounder;
+  } 
+
+  .progress-container{
+    height:em(35px);
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    >*{
+      height: 24px;
+      &:hover{
+        scale:1.2
+      }
+    }
+  }
+}

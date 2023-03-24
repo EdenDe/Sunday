@@ -14,7 +14,13 @@
   }
   .navigation-header {
     padding: 0;
-    margin: rem(12px) rem(16px) rem(18px);
+    margin: rem(9px) rem(14px) rem(18px);
+    display: grid;
+    grid-template-rows: 36.5 38px;
+    .dropdown-header-name {
+      font-size: rem(14px);
+      color: $color-asphalt;
+    }
     .dropdown-navigation-button {
       width: 100%;
       padding: rem(6px);
@@ -38,8 +44,8 @@
           svg {
             @include flex-center;
             position: absolute;
-            right: -6px;
-            left: -4px;
+            right: 2px;
+            bottom: -2px;
           }
         }
         .workspace-name {
@@ -57,6 +63,17 @@
       padding-inline-start: rem(6px);
       font-size: rem(14px);
       border-radius: $border-radius-rounder;
+      .item-wrapper {
+        svg {
+          @include svgFit;
+        }
+      }
+      .dots-wrapper {
+        justify-self: flex-end;
+      }
+      span {
+        margin-inline-start: 8px;
+      }
       &.add {
         padding-inline-start: rem(4px);
       }
@@ -66,6 +83,30 @@
     border-bottom: 1px solid;
     border-color: $layout-border-color;
     margin: 0 20px;
+  }
+  .board-list {
+    @include flex-center;
+    padding: 22.5px 16px 0px 12px;
+    .list-item {
+      align-items: center;
+      background-color: inherit;
+      width: 100%;
+      height: rem(32px);
+      margin-bottom: rem(4px);
+      padding: 0 8px;
+      border-radius: 4px;
+      font-size: rem(14px);
+      color: $primary-text-color;
+      &.is-active {
+        background-color: $color-highlight_blue;
+      }
+      span {
+        margin-inline-start: rem(8px);
+      }
+      i {
+        height: rem(19px);
+      }
+    }
   }
   & > * {
     cursor: pointer;

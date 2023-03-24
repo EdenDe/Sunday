@@ -4,7 +4,7 @@ import router from './router'
 import { store } from './store/store.js'
 
 import ElementPlus from 'element-plus'
-import { icon } from './directives.js'
+import { icon, clickOutside } from './directives.js'
 import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 
@@ -14,5 +14,6 @@ app.use(router)
 app.use(store)
 app.use(ElementPlus)
 app.directive('icon', icon)
+app.directive('clickOutside', clickOutside)
 
 app.mount('#app')

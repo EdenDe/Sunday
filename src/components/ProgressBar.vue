@@ -1,115 +1,61 @@
 <template>
-  <section class="progress-grid justify-center">
-    <div v-for="(item, idx) in progress" :key="idx">
-      <div v-if="item === 'status'" class="flex status-progress-container">
-        <div
-          v-for="status in groupStatusProgress"
-          :style="{
-            flex: 1,
-            'flex-basis': status.width,
-            backgroundColor: status.color,
-          }"
-        ></div>
+  <section class="progress-bar justify-center" v-if="tasks">
+    <div v-for="value in Array(2).fill(null)"> </div>
+
+    <div v-for="(item, idx) in cmpOrder" :key="idx">
+      <div v-if="item === 'status' || item === 'priority'" class="flex progress-container" :class="item">
+        <div v-for="label in groupStatusProgress(item)" :style="{
+          flex: 1,
+          'flex-basis': label.width,
+          backgroundColor: label.color,
+        }">
+        </div>
       </div>
+      <div v-else :class="item"> </div>
     </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'GroupPreview',
+  name: 'ProgressBar',
   props: {
-    group: Object,
-  },
-  data() {
-    return {
-      titleEdtiable: false,
-      labels: [
-        null,
-        null,
-        'task',
-        'status',
-        'priority',
-        'person',
-        'date',
-        'timeline',
-        'file',
-      ],
-      newTask: {
-        taskTitle: '',
-      },
-      progress: [
-        null,
-        null,
-        null,
-        'status',
-        'priority',
-        null,
-        null,
-        null,
-        null,
-      ],
-    }
-  },
-  methods: {
-    log(event) {
-      console.log(event)
-    },
-    onType(txt) {
-      this.updateProp(null, 'title', txt)
-    },
-    updateProp(taskId, prop, toUpdate) {
-      this.$store.dispatch({
-        type: 'updateCurrBoard',
-        groupId: this.group.id,
-        taskId,
-        prop,
-        toUpdate,
-      })
-    },
-    onAddTask() {
-      let group = JSON.parse(JSON.stringify(this.group))
-      group.tasks.push({ ...this.newTask })
-      this.updateProp(null, 'tasks', group.tasks)
-      this.newTask.taskTitle = ''
-    },
+    tasks: Array,
   },
   computed: {
+    ...mapGetters([
+      'cmpOrder',
+      'statusLabels',
+      'priorityLabels',
+    ]),
     groupStatusProgress() {
-      let res = this.group.tasks.reduce((obj, { status }) => {
-        if (!obj[status]) obj[status] = 0
-        obj[status] += 1
-        return obj
-      }, {})
+      return item => {
+        let res = this.tasks.reduce((obj, task) => {
+          if (!obj[task[item]]) obj[task[item]] = 0
+          obj[task[item]] += 1
+          return obj
+        }, {})
 
-      let statusLabel = this.$store.getters.statusLabels
-      let totalTaskLength = this.group.tasks.length
+        let labels = item === 'status' ? [...this.statusLabels] : [...this.priorityLabels]
 
-      statusLabel.map(({ title, color }) => {
-        if (res[title]) {
-          let presentageWidth = (res[title] / totalTaskLength) * 100
+        let totalTaskLength = this.tasks.length
 
-          res[title] = {
-            width: Math.round(presentageWidth) + '%',
-            color: color,
-            title: `${title} ${
-              res[title]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+        labels.forEach(({ title, color }) => {
+          if (res[title]) {
+            let presentageWidth = (res[title] / totalTaskLength) * 100
+
+            res[title] = {
+              width: Math.round(presentageWidth) + '%',
+              color: color,
+              title: `${title} ${res[title]
+                }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            }
           }
-        }
-      })
-
-      return res
+        })
+        return res
+      }
     },
-  },
-  watch: {
-    group() {
-      console.log(this.group)
-    },
-  },
-  components: {
-    TaskList,
-    VueDraggableNext,
   },
 }
 </script>

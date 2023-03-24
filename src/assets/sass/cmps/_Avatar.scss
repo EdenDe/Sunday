@@ -1,0 +1,11 @@
+.avatar{
+  color: $color-snow_white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  outline: 2px solid $color-snow_white;
+
+  margin-inline-start: -10px;
+  background-size: cover;
+  background-position: center;
+}

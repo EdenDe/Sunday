@@ -1,6 +1,8 @@
 .task-list {
   @include task-cols;
-  // border-top-left-radius: $border-radius;
+  &:last-child >*:not(:first-child){
+    border-bottom: 1px solid $layout-border-color;
+  }
   font-size: rem(18px);
 
   .first-col-color{
