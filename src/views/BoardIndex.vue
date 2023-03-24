@@ -7,14 +7,13 @@
 </template>
 
 <script>
-import AppSideNav from "@/components/AppSidenav.vue";
-import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
+import AppSideNav from '@/components/AppSidenav.vue'
+import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
 
 export default {
   components: {
     AppSideNav,
     WorkspaceSideNav,
   },
-};
+}
 </script>
-

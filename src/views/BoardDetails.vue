@@ -12,14 +12,12 @@
 </template>
 
 <script>
-import BoardHeader from "../components/BoardHeader.vue";
-import GroupList from "../components/GroupList.vue";
-import { boardService } from '../services/board.service'
-
+import BoardHeader from '../components/BoardHeader.vue'
+import GroupList from '../components/GroupList.vue'
 export default {
   computed: {
     groups() {
-      return this.$store.getters.groups;
+      return this.$store.getters.groups
     },
   },
   methods: {
@@ -42,6 +40,5 @@ export default {
     BoardHeader,
     GroupList,
   },
-};
+}
 </script>
-
