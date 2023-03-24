@@ -4,6 +4,9 @@
   // border-bottom: 1px solid $layout-border-color;
   // margin-bottom:-1px;
   
+  &:has(.task-txt, .task-title){
+    overflow: hidden;
+  }
 
   &:nth-child(3) {
     padding: 6px;

@@ -11,35 +11,35 @@
   </section>
 </template>
 <script>
-import { svgService } from "../../services/svg.service";
-import { uploadFile } from "../../services/upload.service";
+import { svgService } from '../../services/svg.service'
+import { uploadFile } from '../../services/upload.service'
 
 export default {
-  name: "",
+  name: '',
   data() {
     return {
       file: null,
-    };
+    }
   },
   methods: {
     async handleFile(ev) {
       const fileToUpload =
-        ev.type === "change" ? ev.target.files[0] : ev.dataTransfer.files[0];
-      // const { url } = await uploadFile(fileToUpload);
-      // console.log(url);
+        ev.type === 'change' ? ev.target.files[0] : ev.dataTransfer.files[0]
+      const { url } = await uploadFile(fileToUpload)
+      console.log(url)
     },
     getSvg(iconName) {
-      return svgService.getMainMondaySvg(iconName);
+      return svgService.getMainMondaySvg(iconName)
     },
   },
   computed: {
     fileUrl() {
-      return this.file ? this.file : this.getSvg("emptyFile");
+      return this.file ? this.file : this.getSvg('emptyFile')
     },
   },
   created() {},
   components: {},
-};
+}
 </script>
 
 <style></style>

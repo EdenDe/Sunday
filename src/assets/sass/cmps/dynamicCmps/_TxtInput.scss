@@ -3,7 +3,7 @@
   padding-inline-start: em(5px);
   align-self: center;
   height: 80%;
-  overflow: hidden;
+  
 
   > span {
     @include editableSpan;

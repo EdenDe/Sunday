@@ -1,6 +1,5 @@
 .task-filter{
   justify-content: start;
-  padding: $padding-medium 0;
   &>* {
     display: flex;
     align-items: center;
@@ -8,39 +7,6 @@
   .btn {
       @include btn(transparent);
       padding: 0;  
-   
-    &-add-task { 
-      margin-inline-end: em(14px);
-      align-self: start;
-      
-      >:first-child {
-        height: 100%;
-        line-height: 24px;     
-        padding: 4px $padding-small;
-        border-right: 1px solid $primary-hover-color;
-        border-radius: $border-radius 0 0 $border-radius;
-      }
-      >:last-child{
-        height: 100%;
-        padding: 6px 4px 0 4px;
-        border-radius: 0 $border-radius $border-radius 0;
-      }
-    }
-    &-blue{
-      @include btn-blue;
-    }
-    &-container{
-      height: 32px;
-      &:not(.btn-add-task){
-        padding: $padding-small;
-      }
-      &:not(.btn-blue){
-        margin-right: 6px;
-      }
-      &>:last-child:not(.btn-blue){
-        padding-right: 12px
-      }
-    }
   }
 
   &-icon {
