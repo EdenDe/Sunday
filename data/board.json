@@ -4,10 +4,10 @@
     "title": "Sunday",
     "isStarred": false,
     "archivedAt": null,
-    "createdBy": {
-      "_id": "u101",
-      "fullname": "Abi Abambi",
-      "imgUrl": "http://some-img"
+    "createdBy": {   
+        "_id": "u101",
+        "fullname": "Lior Doron",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
     },
     "cmpOrder": [
       "checkbox",
