@@ -59,9 +59,12 @@
     @include task-cols;
     text-transform: capitalize;
     text-align: center;
+
     > *:not(:first-child, :nth-child(2)) {
       padding: 6px;
       @include task-row;
+      border-bottom: 1px solid $layout-border-color;
+      margin-bottom: -1px;
     }
     
     .first-col-color{
@@ -89,6 +92,11 @@
 
     *:not(:first-child,.task-option){
       border-bottom: 1px solid $layout-border-color;
+    }
+
+    &:hover{
+      opacity: 1;
+      background-color: $color-border_light_gray;
     }
 
     .first-col-color {

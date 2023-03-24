@@ -8,6 +8,7 @@ export const utilService = {
 	loadFromStorage,
 	formatDateRange,
 	getDaysBetween,
+	getRandomColor,
 }
 
 function makeId(length = 6) {
@@ -22,6 +23,15 @@ function makeId(length = 6) {
 	}
 
 	return txt
+}
+
+function getRandomColor() {
+	var letters = '0123456789ABCDEF'
+	var color = '#'
+	for (var i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 14)]
+	}
+	return color
 }
 
 function makeLorem(size = 100) {

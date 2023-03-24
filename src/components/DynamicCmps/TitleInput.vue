@@ -1,8 +1,11 @@
 <template>
   <section class="task-title grid">
-    <span contenteditable @focusout="onType($event.target.innerText)">{{
-      txt
-    }}</span>
+    <span contenteditable @focusout="onType($event.target.innerText)">
+      {{ txt }}
+    </span>
+
+    <RouterLink v-icon="'chatBubble'" :to="$router.currentRoute.value.fullPath + '/pulse/' + taskId" />
+
   </section>
 </template>
 
@@ -11,6 +14,7 @@ export default {
   name: "TaskTitle",
   props: {
     info: String,
+    taskId: String
   },
   emits: ["updateProp"],
   data() {

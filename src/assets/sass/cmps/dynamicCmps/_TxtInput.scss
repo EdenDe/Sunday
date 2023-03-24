@@ -1,0 +1,13 @@
+.task-txt{
+  justify-self: start;
+  padding-inline-start: em(5px);
+  align-self: center;
+  height: 80%;
+
+  > span {
+    @include editableSpan;
+    font-size: rem(16px);
+    width: 100%;
+    overflow-x: auto;
+  }
+}

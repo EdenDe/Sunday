@@ -23,7 +23,7 @@ import priority from "./dynamicCmps/PriorityPicker.vue";
 import status from "./dynamicCmps/StatusPicker.vue";
 import file from "./dynamicCmps/FileUpload.vue";
 import TaskTitle from "./dynamicCmps/TitleInput.vue";
-import txt from "./dynamicCmps/TextInput.vue";
+import txt from "./dynamicCmps/TxtInput.vue";
 
 export default {
   name: "TaskPreview",

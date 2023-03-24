@@ -12,6 +12,7 @@ export const boardService = {
 	remove,
 	updateBoard,
 	getEmptyBoard,
+	getEmptyGroup,
 }
 
 window.boardService = boardService
@@ -42,17 +43,26 @@ async function save(board) {
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
-		let group = board.groups.find((group) => groupId === group.id)
-		let task = group.tasks.find((task) => task.id === taskId)
+		let group = board.groups.find(group => groupId === group.id)
+		let task = group.tasks.find(task => task.id === taskId)
 		task[prop] = toUpdate
 	} else if (groupId) {
-		let group = board.groups.find((group) => groupId === group.id)
+		let group = board.groups.find(group => groupId === group.id)
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
 	}
 
 	return board
+}
+
+function getEmptyGroup() {
+	return {
+		id: utilService.makeId(),
+		title: 'New Group',
+		color: utilService.getRandomColor(),
+		tasks: [],
+	}
 }
 
 function getEmptyBoard() {
