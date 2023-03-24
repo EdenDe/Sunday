@@ -1,4 +1,6 @@
-.btn-add-group {
+.board-container{
+  position: relative;
+  .btn-add-group {
   position: sticky;
   color:$color-mud_black;
 
@@ -14,4 +16,5 @@
   &:hover{
     background-color: $color-ui_grey
   }
+}
 }

@@ -7,6 +7,7 @@
         <i v-icon="'workspacePlus'"></i>
         Add new group
       </button>
+      <RouterView />
     </div>
   </div>
 </template>

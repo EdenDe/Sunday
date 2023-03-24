@@ -1,10 +1,7 @@
 .task-preview {
   @include task-row;
   background-color: $color-snow_white;
-  // border-bottom: 1px solid $layout-border-color;
-  // margin-bottom:-1px;
-  overflow: hidden;
-
+  
   &:nth-child(3) {
     padding: 6px;
   }

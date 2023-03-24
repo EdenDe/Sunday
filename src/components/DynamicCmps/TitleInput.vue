@@ -4,7 +4,7 @@
       {{ txt }}
     </span>
 
-    <RouterLink v-icon="'chatBubble'" :to="$router.currentRoute.value.fullPath + '/pulse/' + taskId" />
+    <RouterLink v-icon="'chatBubble'" :to="'/board/b101/pulse/' + taskId" />
 
   </section>
 </template>
@@ -26,6 +26,9 @@ export default {
     info() {
       this.txt = this.info
     }
+  },
+  created() {
+    console.log(this.$router)
   },
   methods: {
     onType(txt) {
