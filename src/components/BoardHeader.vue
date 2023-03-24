@@ -3,13 +3,17 @@
     <div class="tool-bar grid grid-col">
       <h2 contenteditable="true" class="board-header-title">Sunday</h2>
       <nav class="nav-bar grid grid-col">
-        <div class="btn btn-container grid grid-col">
-          <span class="task-filter-icon" v-icon="'homeHeader'"></span>
-          <span>Main Table</span>
-        </div>
-        <div class="btn btn-container grid grid-col">
-          <span>Kaban</span>
-        </div>
+        <RouterLink :to="'/board/' + currBoardId">
+          <div class="btn btn-container grid grid-col">
+            <span class="task-filter-icon" v-icon="'homeHeader'"></span>
+            <span>Main Table</span>
+          </div>
+        </RouterLink>
+        <RouterLink :to="'/board/' + currBoardId + '/kaban'">
+          <div class="btn btn-container grid grid-col">
+            <span>Kaban</span>
+          </div>
+        </RouterLink>
         <div class="btn btn-container grid grid-col">
           <span class="task-filter-icon plus-icon" v-icon="'plusHeader'"></span>
         </div>
@@ -30,6 +34,11 @@
 import TaskFilter from './TaskFilter.vue'
 export default {
   name: 'BoardHeader',
+  computed: {
+    currBoardId() {
+      return this.$store.getters.currBoard._id
+    },
+  },
   components: {
     TaskFilter,
   },

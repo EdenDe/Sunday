@@ -4,6 +4,7 @@ import LoginSignup from '../views/LoginSignup.vue'
 import BoardIndex from '../views/BoardIndex.vue'
 import BoardDetails from '../views/BoardDetails.vue'
 import TaskPulses from '../views/TaskPulses.vue'
+import KabanDetails from '../views/KabanDetails.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
               path: '/:boardId/pulses/:taskId',
               name: 'pulses',
               component: TaskPulses,
+            },
+            {
+              path: 'kaban',
+              name: 'kaban',
+              component: KabanDetails,
             },
           ],
         },
