@@ -2,6 +2,7 @@
   justify-self: start;
   padding-inline-start: 30px;
   align-self: center;
+  overflow: hidden;
 
   > span {
     @include editableSpan;
