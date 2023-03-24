@@ -15,7 +15,14 @@
         </div>
       </nav>
     </div>
-    <TaskFilter />
+    <div class="seconde-row-container grid grid-col">
+      <div class="btn-container btn-add-task grid grid-col aling-center">
+        <button @click="addTask" class="btn btn-blue">New Task</button>
+
+        <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
+      </div>
+      <TaskFilter />
+    </div>
   </section>
 </template>
 

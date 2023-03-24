@@ -1,27 +1,27 @@
-.task-preview{
+.task-preview {
   @include task-row;
+  background-color: $color-snow_white;
   // border-bottom: 1px solid $layout-border-color;
   // margin-bottom:-1px;
 
- &:nth-child(3){
-  padding: 6px;
- }
- 
-  >*{
+  &:nth-child(3) {
+    padding: 6px;
+  }
+
+  > * {
     font-size: em(14px);
-    margin:0;
+    margin: 0;
     display: flex;
     flex: 1 1 auto;
     justify-content: center;
   }
 
- :is(.status,.priority){
-  color: $color-snow_white;
-
- }
- .add-task-input-container{
-    input{
+  :is(.status, .priority) {
+    color: $color-snow_white;
+  }
+  .add-task-input-container {
+    input {
       width: 50%;
     }
- }
+  }
 }

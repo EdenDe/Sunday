@@ -72,6 +72,16 @@
         <div class="dots-wrapper">
           <i v-icon="'workspaceDots'"></i>
         </div>
+        =======
+      </li>
+
+      <li
+        v-for="board in boardsToDisplay"
+        class="list-item flex space-between align-center is-active"
+      >
+        <i v-icon="'workspaceBoard'"></i>
+        <span>{{ board.title }}</span>
+        >>>>>>> 017fc152f381730bb30cbff20831d007298c75f9
       </li>
     </ul>
   </section>

@@ -1,8 +1,9 @@
 <template>
-  <section class="person-list flex align-center justify-center" v-clickOutside="onClosePicker">
+  <section class="person-list flex align-center justify-center">
     <i v-icon="'plusRound'" class="plus-icon" @click="isPersonPickerOpen = true">+</i>
     <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
-    <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between">
+    <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
+      v-clickOutside="onClosePicker">
 
       <div class="flex wrap person-picker">
         <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">

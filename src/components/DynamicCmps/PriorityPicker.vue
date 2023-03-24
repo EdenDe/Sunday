@@ -2,7 +2,8 @@
   <div :style="{ backgroundColor: status.color }" class="priority flex justify-center align-center"
     @click="toggleColorPicker">
     {{ status.title }}
-    <LabelPicker v-if="isPickerOpen" :labels="priorityLabels" @setLabel="updateLabel"></LabelPicker>
+    <LabelPicker v-clickOutside="toggleColorPicker" v-if="isPickerOpen" :labels="priorityLabels" @setLabel="updateLabel">
+    </LabelPicker>
   </div>
 </template>
 

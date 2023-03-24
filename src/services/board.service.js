@@ -17,7 +17,7 @@ export const boardService = {
 window.boardService = boardService
 
 async function query() {
-	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -42,11 +42,11 @@ async function save(board) {
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
-		let group = board.groups.find(group => groupId === group.id)
-		let task = group.tasks.find(task => task.id === taskId)
+		let group = board.groups.find((group) => groupId === group.id)
+		let task = group.tasks.find((task) => task.id === taskId)
 		task[prop] = toUpdate
 	} else if (groupId) {
-		let group = board.groups.find(group => groupId === group.id)
+		let group = board.groups.find((group) => groupId === group.id)
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
@@ -57,14 +57,15 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 
 function getEmptyBoard() {
 	return {
-		_id: '',
-		title: 'my first board',
+		_id: utilService.makeId(),
+		title: 'My board',
 		isStarred: false,
 		archivedAt: null,
 		createdBy: {
 			_id: 'u101',
-			fullname: 'Abi Abambi',
-			imgUrl: 'http://some-img',
+			fullname: 'Lior Doron',
+			imgUrl:
+				'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
 		},
 		cmpOrder: [
 			'checkbox',
@@ -137,57 +138,52 @@ function getEmptyBoard() {
 		],
 		members: [
 			{
-				_id: 'u101',
-				fullname: 'Tal Tarablus',
-				imgUrl: 'https://www.google.com',
+				id: u101,
+				fullname: 'Lior Doron',
+				imgUrl:
+					'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
 			},
 		],
 		groups: [
 			{
-				id: 'g12',
-				title: 'my first group',
+				id: utilService.makeId(),
+				title: 'My first group',
 				color: '#e2445c',
 				tasks: [
 					{
-						id: 't101',
+						id: utilService.makeId(),
 						checkbox: 'null',
-						taskTitle: 'learn CSS',
-						person: [
-							{ name: 'tal', color: 'red' },
-							{ name: 'bal', color: 'black' },
-							{ name: 'shal', color: 'green' },
-						],
+						taskTitle: 'Task 1',
+						person: [],
 						date: 1661113200000,
-						status: 'Working on it',
-						priority: 'High',
-					},
-					{
-						id: 't102',
-						checkbox: 'null',
-						taskTitle: 'learn vue',
-						person: [
-							{ name: 'tal', color: 'red' },
-							{ name: 'bal', color: 'black' },
-							{ name: 'shal', color: 'green' },
-						],
-						date: 1661372400000,
-						status: 'Stuck',
+						status: '',
 						priority: '',
 					},
 					{
-						id: 't103',
+						id: utilService.makeId(),
 						checkbox: 'null',
-						taskTitle: 'learn js',
-						person: [
-							{ name: 'tal', color: 'red' },
-							{ name: 'bal', color: 'black' },
-							{ name: 'shal', color: 'green' },
-						],
+						taskTitle: 'Task 2',
+						person: [],
+						date: 1661372400000,
+						status: '',
+						priority: '',
+					},
+					{
+						id: utilService.makeId(),
+						checkbox: 'null',
+						taskTitle: 'Task 3',
+						person: [],
 						date: 1661631600000,
-						status: 'Done',
-						priority: 'High',
+						status: '',
+						priority: '',
 					},
 				],
+				date: 1661631600000,
+				timeline: [],
+				text: '',
+				file: '',
+				status: '',
+				priority: '',
 			},
 		],
 		activities: [],
