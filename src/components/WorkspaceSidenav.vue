@@ -61,27 +61,18 @@
     <ul class="board-list flex-col justify-center">
       <li
         v-for="board in boardsToDisplay"
-        class="list-item flex justify-between align-center is-active"
+        class="list-item flex justify-between align-center"
         :class="{ 'is-active': board._id === $route.params.boardId }"
         :id="board._id"
+        @click="onPickBoard(board._id)"
       >
         <section class="board-name flex align-center">
-          <i v-icon="'board'"></i>
+          <i v-icon="'workspaceBoard'"></i>
           <span>{{ board.title }}</span>
         </section>
         <div class="dots-wrapper">
           <i v-icon="'workspaceDots'"></i>
         </div>
-        =======
-      </li>
-
-      <li
-        v-for="board in boardsToDisplay"
-        class="list-item flex space-between align-center is-active"
-      >
-        <i v-icon="'workspaceBoard'"></i>
-        <span>{{ board.title }}</span>
-        >>>>>>> 017fc152f381730bb30cbff20831d007298c75f9
       </li>
     </ul>
   </section>
@@ -101,6 +92,9 @@ export default {
     },
     onAddBoard() {
       this.$emit("add-board");
+    },
+    onChangeBoard(boardId) {
+      this.$emit("add-board", boardId);
     },
   },
   computed: {

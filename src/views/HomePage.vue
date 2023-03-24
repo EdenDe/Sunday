@@ -8,7 +8,9 @@
       <h4 class="home-page-body-sub-header">
         What would you like to mange with sunday.com Work OS?
       </h4>
-      <RouterLink :to="'/board/' + firstBoardId" class="btn-get-started"
+      <RouterLink
+        :to="'/board/' + firstBoardId + '/main-table'"
+        class="btn-get-started"
         >Get Started</RouterLink
       >
 
@@ -29,16 +31,16 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader.vue'
+import AppHeader from "../components/AppHeader.vue";
 export default {
   components: {
     AppHeader,
   },
   computed: {
     firstBoardId() {
-      const board = this.$store.getters.currBoard
-      if (board) return board._id
+      const board = this.$store.getters.currBoard;
+      if (board) return board._id;
     },
   },
-}
+};
 </script>

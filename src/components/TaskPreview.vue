@@ -1,6 +1,16 @@
 <template>
-  <section class="task-preview grid" v-for="(cmp, idx) in cmpOrder" :key="idx">
-    <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
+  <section
+    class="task-preview grid"
+    :class="{ sticky: cmp === 'taskTitle' || cmp === 'checkbox' }"
+    v-for="(cmp, idx) in cmpOrder"
+    :key="idx"
+  >
+    <component
+      :is="cmp"
+      :info="task[cmp]"
+      :taskId="task.id"
+      @updateProp="updateProp"
+    />
   </section>
 </template>
 
@@ -40,7 +50,7 @@ export default {
     TaskTitle,
     timeline,
     file,
-    txt
+    txt,
   },
 };
 </script>
