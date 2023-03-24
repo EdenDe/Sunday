@@ -10,39 +10,46 @@
         class="first-col-color sticky"
         :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
       ></div>
-      <TaskPreview :task="task" @updateProp="updateProp" />
+      <TaskPreview
+        :task="task"
+        @updateProp="updateProp"
+        @removeTask="removeTask"
+      />
     </Draggable>
   </Container>
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-import TaskPreview from "./TaskPreview.vue";
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import TaskPreview from './TaskPreview.vue'
 
 export default {
-  name: "TaskList",
+  name: 'TaskList',
   props: { tasks: Array, groupBgColor: String },
-  emits: ["updateProp"],
+  emits: ['updateProp'],
   data() {
     return {
       currTasks: [],
-    };
+    }
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
-      console.log("toUpdate", toUpdate);
-      this.$emit("updateProp", taskId, prop, toUpdate);
+      console.log('toUpdate', toUpdate)
+      this.$emit('updateProp', taskId, prop, toUpdate)
+    },
+    removeTask(taskId) {
+      this.$emit('removeTask', taskId)
     },
     onDrop({ addedIndex, removedIndex }) {
-      let taskList = JSON.parse(JSON.stringify(this.tasks));
-      taskList.splice(addedIndex, 0, taskList.splice(removedIndex, 1)[0]);
-      this.updateProp(null, "tasks", taskList);
+      let taskList = JSON.parse(JSON.stringify(this.tasks))
+      taskList.splice(addedIndex, 0, taskList.splice(removedIndex, 1)[0])
+      this.updateProp(null, 'tasks', taskList)
     },
   },
   watch: {
     tasks: {
       handler(tasks) {
-        this.currTasks = tasks;
+        this.currTasks = tasks
       },
       immediate: true,
     },
@@ -52,5 +59,5 @@ export default {
     Container,
     Draggable,
   },
-};
+}
 </script>

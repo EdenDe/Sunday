@@ -22,9 +22,18 @@ export const boardStore = {
       state.boards.splice(idx, 1, board)
       state.currBoard = state.boards[idx]
     },
-    removeBoard(state, { boardId }) {
+    remove(state, { boardId }) {
       state.boards = state.boards.filter((board) => board._id !== boardId)
     },
+    // removeTask(state, { taskId, groupId }) {
+    //   const groups = state.currBoard.groups
+    //   const currBoardIdx = state.boards.findIndex(
+    //     (b) => (b._id = state.currBoard)._id
+    //   )
+    //   const groupIdx = groups.findIndex((g) => g.id === groupId)
+    //   const taskIdx = groups[groupIdx].tasks.findIndex((t) => t.id === taskId)
+    //   state.boards =
+    // },
     savePrevBoard(state) {
       state.savePrevBoard = state.currBoard
     },
@@ -66,14 +75,22 @@ export const boardStore = {
         console.log(err)
       }
     },
-    async removeBoard({ commit }, { boardId }) {
+    async remove({ commit }, { boardId }) {
       try {
-        await boardService.remove(boardId)
+        await boardService.removeBoard(boardId)
         commit({ type: 'removeBoard', boardId })
       } catch (err) {
         console.log(err)
       }
     },
+    // async removeTask({ commit }, { taskId, groupId }) {
+    //   try {
+    //     await boardService.removeTask(taskId, groupId, currBoard._id)
+    //     commit({ type: 'removeTask', taskId, groupId })
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // },
     async saveBoard({ commit }, { board }) {
       try {
         let boardId = board._id

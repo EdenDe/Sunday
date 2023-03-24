@@ -12,8 +12,12 @@
       @updateProp="updateProp"
       @toggleActionBar="toggleActionBar"
     />
-    <TaskActionBar v-if="isActionBarOpen"></TaskActionBar>
   </section>
+  <TaskActionBar
+    v-if="isActionBarOpen"
+    @toggleActionBar="toggleActionBar"
+    @remove="remove"
+  ></TaskActionBar>
 </template>
 
 <script>
@@ -32,15 +36,29 @@ export default {
   name: 'TaskPreview',
   props: {
     task: Object,
-    isActionBarOpen: false,
   },
   emits: ['updateProp'],
+  data() {
+    return {
+      isActionBarOpen: false,
+      selectedTasksNum: 0,
+    }
+  },
   methods: {
     updateProp(prop, toUpdate) {
       this.$emit('updateProp', this.task.id, prop, toUpdate)
     },
-    toggleActionBar() {
-      this.isActionBarOpen = !this.isActionBarOpen
+    toggleActionBar(isActionBarOpen) {
+      // console.log(isActionBarOpen)
+      // if (!isActionBarOpen) this.selectedTasksNum = 0
+      // this.selectedTasksNum++
+      // console.log(this.selectedTasksNum)
+      if (this.isActionBarOpen && isActionBarOpen) return
+      this.isActionBarOpen = isActionBarOpen
+    },
+    remove() {
+      // console.log('remove', this.task.id)
+      this.$emit('removeTask', this.task.id)
     },
   },
   computed: {
