@@ -1,0 +1,17 @@
+.btn-add-group {
+  position: sticky;
+  color:$color-mud_black;
+
+  border: 1px solid $workspace-side-nav;
+  border-radius: 5px;
+  padding: 4px 10px;
+  padding-inline-start: 3px;
+  margin-bottom: 20px;
+  width: fit-content;
+  background-color: transparent;
+  margin-left: 40px;
+
+  &:hover{
+    background-color: $color-ui_grey
+  }
+}

@@ -1,6 +1,7 @@
 .task-title {
   justify-self: start;
   padding-inline-start: 30px;
+  align-self: center;
 
   > span {
     @include editableSpan;

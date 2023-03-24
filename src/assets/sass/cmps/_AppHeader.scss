@@ -1,0 +1,33 @@
+.app-header{
+  align-content: center;
+  height: 72px;
+  background-color: $color-snow_white;
+
+  .logo{
+    @include flex-center;
+    justify-self: start;
+    font-family: $figtree-bold;
+    font-size: 1.5rem;
+    color: $color-blackish;
+    &-link{
+      @include flex-center;
+      width: 170px;
+      letter-spacing: 0.48px;
+    }
+    &-img{
+      height: 40px;
+      width: 40px;
+    }
+    span{
+      font-family: $figtree-regular;
+      font-size: 1rem;
+    }
+  }
+
+  .btn-get-started{
+    @include btn-get-started(40px, 100px);
+    justify-self: end;
+    background-color: $color-blue-get-started;
+  }
+
+}

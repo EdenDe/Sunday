@@ -14,7 +14,6 @@
   }
   .tool-bar{
     justify-content: start;
-    margin-right: $margin-small;
     margin-top: $margin-small;
     padding-bottom: 4px;
     border-bottom: 1px solid $layout-border-color;
@@ -27,8 +26,8 @@
           &::after{
             content: '|';    
             position: absolute;
-            top:0;
-            right: -5px;
+            top:7px;
+            right: -4px;
             color: $layout-border-color;
           }
           &:hover::after{
@@ -37,6 +36,11 @@
         }
         &>*:not(:first-child){
           margin-left: 4px;
+        }
+        &>*:last-child{
+          padding: 3px;
+          align-self: center;
+          justify-self: center;
         }
       }
   }

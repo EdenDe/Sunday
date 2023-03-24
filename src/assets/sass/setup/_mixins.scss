@@ -1,4 +1,5 @@
 /* Media queries Breakpoint mixins */
+
 @mixin for-mobile-layout {
   @media (max-width: $break-narrow) {
     @content;
@@ -23,7 +24,10 @@
   }
 }
 
-/* Media  Mixins */
+@mixin layoutGTC($max) {
+  grid-template-columns:
+    minmax($layoutPadding, 1fr) minmax(auto, $max) minmax($layoutPadding, 1fr);
+}
 
 // Mixin for removing hover effects on iphone screen
 @mixin hover-supported {
@@ -125,6 +129,15 @@
       border-radius: $btn-border-radius;
     }
   }
+
+  @if $type == 'login'{
+    background-color: $primary-on-secondary-color;
+    color: $color-snow_white;
+    border-radius: $btn-border-radius;
+     &:hover{
+      background-color: $primary-hover-on-secondary-color;
+     }
+  }
 }
 
 @mixin btn-blue {
@@ -136,10 +149,39 @@
   }
 }
 
+@mixin btn-get-started($hight, $width){
+  @include flex-center;
+  position: relative;
+  width: $width;
+  height: $hight;
+  border: none;
+  border-radius: 50px;
+  padding: 20px;
+  color: $color-snow_white;
+ 
+ @include arrow-after;
+}
+
+@mixin arrow-after{
+  &::after {
+      content: '  →';
+      position: absolute;
+      top: 28%;
+      right: 15%;
+      color: inherit;
+      transition: all .5s ease-in-out;
+    }
+  
+    &:hover::after {
+      right: 10%;
+    }
+}
+
 @mixin sidenav {
   height: 100vh;
   width: 100%;
 }
+
 @mixin icon($color: $color-snow_white) {
   height: 23px;
   width: 23px;
@@ -157,14 +199,18 @@
   grid-template-columns:40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px;
 
   cursor: pointer;
-  margin-top: -1px;
+
+  //margin-top: -1px;
 }
 
 @mixin task-row {
-  border-right: 1px solid $layout-border-color;
-  margin-right: -1px;
+  // border-right: 1px solid $layout-border-color;
+  // margin-right: -1px;
   width: 100%;
   height:36px;
+  border-top: 1px solid $layout-border-color;
+  border-right: 1px solid $layout-border-color;
+  
 }
 
 @mixin editableSpan {

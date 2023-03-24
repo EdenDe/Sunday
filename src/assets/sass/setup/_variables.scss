@@ -1,9 +1,9 @@
 // LAYOUT
-$layoutPadding: 20px;
+$layoutPadding: 30px;
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 750px;
-$break-normal: 1000px;
+$break-narrow: 1200px;
+$break-normal: 1360px;
 $break-wide: 1920px;
 
 $padded-break-narrow: $break-narrow + $layoutPadding * 2;
@@ -32,6 +32,7 @@ $margin-large: 32px;
 //PADDIND
 $padding-small: 8px;
 $padding-medium: 16px;
+$padding-large: 40px;
 
 // BORDER RADIUS
 $border-radius: 3px;
@@ -320,4 +321,4 @@ $color-lipstick-light: #f27af3;
 $color-timeline-active: #569bfc;
 $color-timeline-active-hover: #257dfc;
 $color-timeline-hover: #ababab;
-$person-picker-hover: #d0d0d0;
+$person-picker-hover: #d0d0d0;$color-blue-get-started: #6161ff;

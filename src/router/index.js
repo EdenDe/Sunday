@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
+import LoginSignup from '../views/LoginSignup.vue'
 import BoardIndex from '../views/BoardIndex.vue'
 import BoardDetails from '../views/BoardDetails.vue'
 import TaskPulses from '../views/TaskPulses.vue'
@@ -11,6 +12,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage,
+    },
+    {
+      path: '/login-signup',
+      name: 'loginSignup',
+      component: LoginSignup,
     },
     {
       path: '/board',
