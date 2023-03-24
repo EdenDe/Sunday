@@ -57,7 +57,7 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 
 function getEmptyBoard() {
 	return {
-		_id: utilService.makeId(),
+		_id: '',
 		title: 'my first board',
 		isStarred: false,
 		archivedAt: null,
