@@ -1,10 +1,10 @@
 .task-preview {
   @include task-row;
-  background-color: $color-snow_white;
   // border-bottom: 1px solid $layout-border-color;
   // margin-bottom:-1px;
-  
-  &:has(.task-txt, .task-title){
+  background-color: $color-snow_white;
+
+  &:has(.task-txt, .task-title) {
     overflow: hidden;
   }
 

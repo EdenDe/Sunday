@@ -1,17 +1,24 @@
 .task-list {
+  background-color: $color-snow_white;
   @include task-cols;
-  &:last-child >*:not(:first-child){
+  &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }
   font-size: rem(18px);
 
-  .first-col-color{
+  .first-col-color {
     @include fullSize;
     // border-top-left-radius: $border-radius;
   }
   &:hover {
     background-color: $dark-background-color;
+    & > *:first-child {
+      background-color: $color-snow_white;
+    }
+  }
+  & > *:nth-child(-n + 3) {
+    position: sticky;
+    top: 0;
+    left: 0;
   }
 }
-
-

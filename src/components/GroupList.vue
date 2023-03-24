@@ -5,6 +5,13 @@
         <GroupPreview :group="group" />
       </Draggable>
     </Container>
+    <button
+      class="btn-add-group flex justify-center align-center"
+      @click="onAddGroup"
+    >
+      <i v-icon="'workspacePlus'"></i>
+      Add new group
+    </button>
   </section>
 </template>
 
@@ -19,14 +26,16 @@ export default {
   },
   methods: {
     onDrop(dropResult) {
-      this.$emit('onDrop', dropResult)
+      this.$emit("onDrop", dropResult);
+    },
+    onAddGroup() {
+      this.$emit("on-add-group");
     },
   },
   components: {
     GroupPreview,
     Container,
-    Draggable
+    Draggable,
   },
 };
 </script>
-

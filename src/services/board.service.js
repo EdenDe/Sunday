@@ -18,8 +18,13 @@ export const boardService = {
 window.boardService = boardService
 
 async function query() {
+<<<<<<< HEAD
   // localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
   return storageService.query(STORAGE_KEY)
+=======
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	return storageService.query(STORAGE_KEY)
+>>>>>>> 62aa1bc519243ad8237a1e4b62394dc3684c2452
 }
 
 function getById(boardId) {

@@ -26,6 +26,9 @@
 }
 .sticky {
   position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2023;
 }
 
 .grid {
@@ -41,8 +44,7 @@
 // TODO: icon-btn class
 // TODO: classic btn
 
-
-.smooth-dnd-container{
+.smooth-dnd-container {
   min-width: 0;
   min-height: 0;
 }
