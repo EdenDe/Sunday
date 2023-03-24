@@ -28,10 +28,11 @@ const router = createRouter({
 					path: ':boardId',
 					name: 'board',
 					component: BoardDetails,
+					// params: { boardId: $route.params.boardId},
 					children: [
 						{
-							path: '/:boardId/pulses/:taskId',
-							name: 'pulses',
+							path: 'pulse/:taskId',
+							name: 'pulse',
 							component: TaskPulses,
 						},
 						{
