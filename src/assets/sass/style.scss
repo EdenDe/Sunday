@@ -12,6 +12,7 @@
 // VIEWS
 @import "cmps/HomePage";
 @import "cmps/LoginSignup";
+@import "views/BoardTable";
 
 // CMPS
 @import "cmps/AppHeader";
@@ -27,7 +28,6 @@
 @import "cmps/ProgressBar";
 @import "cmps/Avatar";
 @import "cmps/GroupDetails";
-
 
 // DYNAMIC CMPS
 @import "cmps/dynamicCmps/Checkbox";

@@ -43,11 +43,11 @@ async function save(board) {
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
 	if (taskId) {
-		let group = board.groups.find(group => groupId === group.id)
-		let task = group.tasks.find(task => task.id === taskId)
+		let group = board.groups.find((group) => groupId === group.id)
+		let task = group.tasks.find((task) => task.id === taskId)
 		task[prop] = toUpdate
 	} else if (groupId) {
-		let group = board.groups.find(group => groupId === group.id)
+		let group = board.groups.find((group) => groupId === group.id)
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
@@ -67,7 +67,7 @@ function getEmptyGroup() {
 
 function getEmptyBoard() {
 	return {
-		_id: utilService.makeId(),
+		_id: '',
 		title: 'My board',
 		isStarred: false,
 		archivedAt: null,

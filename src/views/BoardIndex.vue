@@ -1,7 +1,7 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @add-board="addBoard" />
+    <WorkspaceSideNav @add-board="addBoard" @change-board="changeBoard" />
     <RouterView />
   </section>
 </template>
@@ -19,6 +19,9 @@ export default {
     addBoard() {
       const newBoard = this.$store.getters.emptyBoard;
       this.$store.dispatch({ type: "saveBoard", board: newBoard });
+    },
+    changeBoard(boardId) {
+      console.log(boardId);
     },
   },
 };

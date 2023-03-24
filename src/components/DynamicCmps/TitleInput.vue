@@ -4,8 +4,12 @@
       {{ txt }}
     </span>
 
+<<<<<<< HEAD
     <RouterLink v-icon="'chatBubble'" :to="'/board/b101/pulse/' + taskId" />
 
+=======
+    <!-- <RouterLink v-icon="'chatBubble'" /> -->
+>>>>>>> 9071431f3c7209eb6156c8afbf9057bff2cc44b5
   </section>
 </template>
 
@@ -14,7 +18,7 @@ export default {
   name: "TaskTitle",
   props: {
     info: String,
-    taskId: String
+    taskId: String,
   },
   emits: ["updateProp"],
   data() {
@@ -24,8 +28,8 @@ export default {
   },
   watch: {
     info() {
-      this.txt = this.info
-    }
+      this.txt = this.info;
+    },
   },
   created() {
     console.log(this.$router)
