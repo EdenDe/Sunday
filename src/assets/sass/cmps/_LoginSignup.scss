@@ -1,0 +1,45 @@
+.login-signup{
+  .app-header{
+    border-bottom: $ui-border-color solid 1px;
+    margin-bottom: $margin-large;
+    .btn-get-started{
+      display: none;
+    }
+  }
+  
+  .singup-form-container{
+        justify-content: center;
+        justify-items: center;
+        gap: $margin-medium;
+        h2{
+          font-size: 3em;
+        }
+        p{
+          font-size: 1.5em;
+        }
+        form{
+          gap: $margin-medium;
+          &>*{
+            
+            width: 360px;
+          }
+          input{
+            height: 40px;
+            padding: $padding-small;
+            border-radius: $btn-border-radius;
+            border:1px solid $ui-border-color;
+            &:focus-visible{
+              outline: 1px solid $primary-on-secondary-color;
+            }
+           
+          }
+          button{
+            @include btn("login");
+            height: 48px;
+          }
+        }
+    a{
+      color: $color-blue-btn;
+    }
+  }
+}

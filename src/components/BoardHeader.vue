@@ -3,15 +3,15 @@
     <div class="tool-bar grid grid-col">
       <h2 contenteditable="true" class="board-header-title">Sunday</h2>
       <nav class="nav-bar grid grid-col">
-        <div class="btn btn-container grid grid-col aling-center">
-          <span class="task-filter-icon" v-icon="'home'"></span>
+        <div class="btn btn-container grid grid-col">
+          <span class="task-filter-icon" v-icon="'homeHeader'"></span>
           <span>Main Table</span>
         </div>
-        <div class="btn btn-container grid grid-col aling-center">
+        <div class="btn btn-container grid grid-col">
           <span>Kaban</span>
         </div>
-        <div class="btn btn-container grid grid-col aling-center">
-          <span class="task-filter-icon" v-icon="'plusHeader'"></span>
+        <div class="btn btn-container grid grid-col">
+          <span class="task-filter-icon plus-icon" v-icon="'plusHeader'"></span>
         </div>
       </nav>
     </div>
@@ -28,4 +28,3 @@ export default {
   },
 }
 </script>
-

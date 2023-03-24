@@ -2,26 +2,39 @@
   display: grid;
   grid-template-columns: 66px auto 1fr;
   grid-template-areas: "app-sidenav workspace-sidenav board";
-  // grid-template-columns: $layoutPadding 1fr $layoutPadding;
-
-  // > * {
-  //     grid-column: 2;
-  // }
-
-  // @include for-narrow-layout {
-  //     @include layoutGTC($break-narrow);
-  // }
-
-  // @include for-normal-layout {
-  //     @include layoutGTC($break-normal);
-  // }
-
-  // @include for-wide-layout {
-  //     @include layoutGTC($break-wide);
-  // }
 }
 
-// .board-layout{
-//     display: grid;
-//     grid-template-columns: 1fr;
-// }
+
+.home-page-layout{
+  display: grid;
+  grid-template-columns: $layoutPadding 1fr $layoutPadding;
+  
+    >* {
+      grid-column: 2;
+    }
+  
+    >*.full {
+      grid-column: 1 / -1;
+    }
+  
+    >*:not(.full) {
+      display: grid;
+      grid-auto-flow: column;
+      &:is(.app-header){
+        justify-content: space-between;
+      }
+    }
+
+  
+    @include for-narrow-layout {
+      @include layoutGTC($break-narrow);
+    }
+  
+    @include for-normal-layout {
+      @include layoutGTC($break-normal);
+    }
+  
+    @include for-wide-layout {
+      @include layoutGTC($break-wide);
+    }
+}

@@ -9,7 +9,12 @@
 @import "basics/base";
 @import "basics/layout";
 
+// VIEWS
+@import "cmps/HomePage";
+@import "cmps/LoginSignup";
+
 // CMPS
+@import "cmps/AppHeader";
 @import "cmps/ToolTip";
 @import "cmps/BoardHeader";
 @import "cmps/TaskFilter";

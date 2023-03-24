@@ -1,0 +1,178 @@
+.home-page{
+  align-content: center;
+  position: relative;
+  &-body{
+    padding-top: $padding-large;
+    &>*:not(.el-carousel){
+      justify-self: center;
+      margin-bottom: $margin-medium;
+    }
+    min-height: 577px;
+    background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
+    color: $color-snow_white;
+    font-family: $figtree-regular;
+    text-align: center;
+    &-header{
+      font-weight: 200;
+      font-size: 4.5em;
+    }
+    &-sub-header{
+      font-weight: 200;
+      font-size: 2em;
+    }
+    .btn-get-started{
+      @include btn-get-started(50px, 175px);
+      background: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
+  }
+}
+
+    .el-carousel__item{
+      h3 {
+      color: #475669;
+      opacity: 0.75;
+      line-height: 200px;
+      margin: 0;
+      text-align: center;
+    }
+
+    img{
+      width: 100%;
+    }
+
+    &:nth-child(2n) {
+      background-color: #99a9bf;
+    }
+
+    &:nth-child(2n + 1) {
+      background-color: #d3dce6;
+    }
+
+  }
+
+  .star{
+    background-image: url(https://dapulse-res.cloudinary.com/image/upload/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/parallax/integrations/star.svg);
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 500px;
+      background-size: cover;
+      width: 8.55173px;
+      height: 8.55173px;
+      animation-duration: 3s;
+      border-radius: 50%;
+      animation-delay: 6s;
+      will-change: transform;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: none;
+      animation-play-state: running;
+      animation-name: twinkle;
+      &1{
+        top:20%;
+        left:30%;
+        width:10px;
+        height:10px;
+      }
+      &2{
+        top: 40%;
+        left: 15%;
+      }
+      &3{
+        top:30%;
+        left: 30%;
+      }
+      &4{
+        top: 60%;
+        left: 80%;
+        width: 10px;
+          height: 10px;
+      }
+      &5{
+        top:45%;
+        left:50%;
+      }
+      &6{
+        top:60%;
+        left:35%;
+        width: 10px;
+        height: 10px;
+      }
+      &7{
+        top:98%;
+        left:33%;
+      }
+      &8{
+        top:15%;
+        left:70%;
+      }
+      &9{
+        top:30%;
+        left:42%;
+      }
+      &10{
+        top:62%;
+        left:63%
+      }
+      &11{
+        top: 40%;
+        left: 90%;
+        width: 10px;
+        height: 10px;
+      }
+      &12{
+        top:35%;
+        left:80%;
+        width: 5px;
+        height: 5px;
+      }
+      &13{
+        top:56%;
+        left:8%;
+        width: 12px;
+        height: 12px;
+      }
+      &14{
+        top:53%;
+        left:84%;
+        width: 5px;
+        height: 5px;
+      }
+      &15{
+        top:63%;
+        left:42%;
+      }
+      &16{
+        top:16%;
+        left:3%;
+        width: 5px;
+        height: 5px;
+      }
+      &17{
+        top: 35%;
+        left:10%;
+        width: 5px;
+        height: 5px;
+      }
+      &18{
+        top: 65%;
+        left: 2%;
+      }
+      &19{
+        top:52%;
+        left:24%;
+      }
+      &20{
+        top: 13%;
+        left:93%;
+        width: 5px;
+        height: 5px;
+      }
+  }
+}
+
+@keyframes twinkle{
+  0%{
+    transform: scale(.3);
+    opacity: .5;
+  }
+}
