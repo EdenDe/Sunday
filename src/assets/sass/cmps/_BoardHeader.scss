@@ -19,7 +19,6 @@
     justify-content: start;
     margin-top: $margin-small;
     border-bottom: 1px solid $layout-border-color;
-    // grid-template-columns: 45px 1fr;
     .btn{
       @include btn(transparent);
     }

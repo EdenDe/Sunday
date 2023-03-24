@@ -1,15 +1,14 @@
 <template>
   <div class="task-checkbox flex align-center justify-center">
-    <input type="checkbox" />
+    <input type="checkbox" @change="$emit('toggleActionBar')" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "TaskCheckbox",
+  name: 'TaskCheckbox',
   props: {
     info: null,
   },
-};
+}
 </script>
-
