@@ -1,10 +1,9 @@
 const UPLOAD_PRESET = import.meta.env.VITE_UPLOAD_PRESET
 const CLOUD_NAME = import.meta.env.VITE_CLOUD_NAME
 const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
-console.log(UPLOAD_PRESET, CLOUD_NAME)
 export const uploadFile = async (file) => {
-
   const FORM_DATA = new FormData()
+  console.log('upload', UPLOAD_PRESET, CLOUD_NAME)
 
   FORM_DATA.append('file', file)
   FORM_DATA.append('upload_preset', UPLOAD_PRESET)
@@ -15,8 +14,7 @@ export const uploadFile = async (file) => {
       body: FORM_DATA,
     })
     return res.json()
-  }
-  catch (err) {
+  } catch (err) {
     console.dir(err)
   }
 }

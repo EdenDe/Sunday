@@ -1,21 +1,25 @@
 .board-header{
-  padding: 16px 30px 0 38px;
+  padding: $padding-medium 30px 0 38px;
   height: 125px;
+ 
     
   .open{
     height: 193px;
   }
+ 
   &-title{
     @include editableSpan;
+   
+    padding: 0;
     font-size: em(24px);
     color: $color-mud_black;  
-    margin-inline-end: $margin-large;
+    margin-inline-end: 42px;
   }
   .tool-bar{
     justify-content: start;
     margin-top: $margin-small;
-    padding-bottom: 4px;
     border-bottom: 1px solid $layout-border-color;
+    // grid-template-columns: 45px 1fr;
     .btn{
       @include btn(transparent);
     }
@@ -47,9 +51,8 @@
   .seconde-row-container{
     justify-content: start;
     justify-items: start;
-    &>:first-child{
-      padding: $padding-medium 0;
-    } 
+    padding: $padding-medium 0;
+    
 
   .btn{
       @include btn(transparent);

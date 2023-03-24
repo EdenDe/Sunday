@@ -1,5 +1,5 @@
 <template>
-  <div class="color-picker-container">
+  <div class="label-picker-container">
     <div class="grid">
       <div
         v-for="(label, index) in labels"

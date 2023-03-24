@@ -1,9 +1,6 @@
-.board-container{
-  position: relative;
-  .btn-add-group {
-  position: sticky;
-  color:$color-mud_black;
-
+.btn-add-group {
+  bottom: 0;
+  color: $color-mud_black;
   border: 1px solid $workspace-side-nav;
   border-radius: 5px;
   padding: 4px 10px;
@@ -13,8 +10,7 @@
   background-color: transparent;
   margin-left: 40px;
 
-  &:hover{
-    background-color: $color-ui_grey
+  &:hover {
+    background-color: $color-ui_grey;
   }
-}
 }
