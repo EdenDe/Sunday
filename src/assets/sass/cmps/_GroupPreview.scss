@@ -1,4 +1,5 @@
 .group-preview {
+  margin-top: rem(2px);
   margin-bottom: em(30px);
   .grid-title {
     @include task-cols;
@@ -8,7 +9,7 @@
     }
     .group-title-wrapper {
       position: sticky;
-      left: 78px;
+      left: 79px;
       grid-column: 4;
       .group-title {
         @include editableSpan;

@@ -80,33 +80,33 @@
 
 <script>
 export default {
-  name: "WorkspaceSidenav",
+  name: 'WorkspaceSidenav',
   data() {
     return {
       isWorkspaceClosed: true,
-    };
+    }
   },
   methods: {
     toggleWorkspace() {
-      this.isWorkspaceClosed = !this.isWorkspaceClosed;
+      this.isWorkspaceClosed = !this.isWorkspaceClosed
     },
     onAddBoard() {
-      this.$emit("add-board");
+      this.$emit('addBoard')
     },
     onChangeBoard(boardId) {
-      this.$emit("add-board", boardId);
+      this.$emit('changeBoard', boardId)
     },
   },
   computed: {
     boardsToDisplay() {
-      return this.$store.getters.boardsToDisplay;
+      return this.$store.getters.boardsToDisplay
     },
     isActive() {
       return (boardId) => {
-        // console.log(boardId, this.$route);
-        return true;
-      };
+        console.log(boardId, this.$route)
+        return true
+      }
     },
   },
-};
+}
 </script>

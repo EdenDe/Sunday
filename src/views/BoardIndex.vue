@@ -1,7 +1,7 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @add-board="addBoard" @change-board="changeBoard" />
+    <WorkspaceSideNav @addBoard="addBoard" @changeBoard="changeBoard" />
     <div class="board-container board-layout">
       <BoardHeader />
       <RouterView />
@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import AppSideNav from "@/components/AppSidenav.vue";
-import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
-import BoardHeader from "../components/BoardHeader.vue";
+import AppSideNav from '@/components/AppSidenav.vue'
+import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
+import BoardHeader from '../components/BoardHeader.vue'
 export default {
   components: {
     AppSideNav,
@@ -21,12 +21,12 @@ export default {
   },
   methods: {
     addBoard() {
-      const newBoard = this.$store.getters.emptyBoard;
-      this.$store.dispatch({ type: "saveBoard", board: newBoard });
+      const newBoard = this.$store.getters.emptyBoard
+      this.$store.dispatch({ type: 'saveBoard', board: newBoard })
     },
     changeBoard(boardId) {
-      console.log(boardId);
+      console.log(boardId)
     },
   },
-};
+}
 </script>

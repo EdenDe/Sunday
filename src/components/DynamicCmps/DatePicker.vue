@@ -1,35 +1,45 @@
 <template>
   <section class="task-date">
-    <el-date-picker :id="taskId + 'Date'" type="date" placeholder="Pick a day" size="small" format="MMM D"
-      value-format="x" class="date-picker-container" ref="date-picker" v-model="date" @change="onChangeDate" />
+    <el-date-picker
+      :id="taskId + 'Date'"
+      type="date"
+      placeholder="Pick a day"
+      size="small"
+      format="MMM D"
+      value-format="x"
+      class="date-picker-container"
+      ref="date-picker"
+      v-model="date"
+      @change="onChangeDate"
+    />
   </section>
 </template>
 
 <script>
 export default {
-  name: "Date",
+  name: 'Date',
   props: {
     info: Number,
     taskId: String,
   },
   created() {
-    this.date = this.info;
+    this.date = this.info
   },
   data() {
     return {
       date: null,
-    };
+    }
   },
   watch: {
     info() {
-      this.date = this.info;
-    }
+      this.date = this.info
+    },
   },
   methods: {
     onChangeDate() {
-      if (!this.date) return;
-      this.$emit("updateProp", "date", this.date);
+      if (!this.date) return
+      this.$emit('updateProp', 'date', this.date)
     },
   },
-};
+}
 </script>
