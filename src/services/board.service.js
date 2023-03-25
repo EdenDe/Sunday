@@ -18,7 +18,7 @@ export const boardService = {
 window.boardService = boardService
 
 async function query() {
-	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	return storageService.query(STORAGE_KEY)
 }
 

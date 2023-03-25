@@ -49,12 +49,7 @@ export default {
     },
     toggleTask(isChecked) {
       this.$emit('toggleTask', this.task.id, isChecked)
-      // if (this.isActionBarOpen && isActionBarOpen) return
-      // this.isActionBarOpen = isActionBarOpen
     },
-    // remove() {
-    //   this.$emit('removeTask', this.task.id)
-    // },
   },
   computed: {
     cmpOrder() {

@@ -1,4 +1,5 @@
 import { boardService } from '../services/board.service.js'
+import { utilService } from '../services/util.service.js'
 
 export const boardStore = {
   state: {
@@ -89,7 +90,7 @@ export const boardStore = {
     async updateActivity({ commit }, { groupId, taskId, prop, toUpdate }) {
       console.log({ groupId, taskId, prop, toUpdate })
       const activity = {
-        id: makeId(),
+        id: utilService.makeId(),
         txt: prop,
         createdAt: Date.now(),
         byMember: userService.getLoggedinUser(),
@@ -102,7 +103,7 @@ export const boardStore = {
       { groupId, taskId, prop, toUpdate }
     ) {
       commit({ type: 'savePrevBoard' })
-      dispatch({ type: 'updateActivity', groupId, taskId, prop, toUpdate })
+      // dispatch({ type: 'updateActivity', groupId, taskId, prop, toUpdate })
 
       var updatedBoard = boardService.updateBoard(
         state.currBoard,

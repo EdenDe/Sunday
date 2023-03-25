@@ -72,15 +72,22 @@ export default {
     closeActionBar() {
       this.isActionBarOpen = false
       this.selectedTasks = []
+      this.unCheckedTasks()
+    },
+    unCheckedTasks() {
+      this.currTasks.forEach((t) => (t.checkbox = false))
+      this.updateProp(null, 'tasks', this.currTasks)
     },
   },
   watch: {
     tasks: {
       handler(tasks) {
         this.currTasks = tasks
+        console.log(this.currTasks)
       },
       immediate: true,
     },
+    currTasks() {},
   },
   computed: {
     selectedTasksNum() {

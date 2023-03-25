@@ -7,6 +7,8 @@
       grid-column: 3;
     }
     .group-title-wrapper {
+      position: sticky;
+      left: 78px;
       grid-column: 4;
       .group-title {
         @include editableSpan;
@@ -38,6 +40,9 @@
     @include fullSize;
     grid-column: 2;
     left: 40px;
+    position: sticky;
+    left: 40px;
+    top: 0px;
     // border-top-left-radius: $border-radius;
   }
   .progress-grid {
@@ -65,9 +70,36 @@
       border-bottom: 1px solid $layout-border-color;
       margin-bottom: -1px;
     }
+    &:nth-child(4) {
+      background-color: red;
+    }
+    & > *:nth-child(-n + 3) {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
 
     .first-col-color {
       border-top-left-radius: $border-radius-rounder;
+    }
+    .group-label {
+      background-color: $color-snow_white;
+      &.title {
+        z-index: 1;
+        position: sticky;
+        left: 79px;
+      }
+      &:first-of-type {
+        position: sticky;
+        left: 0;
+      }
+      &:nth-of-type(3) {
+        left: 46px;
+        z-index: 1;
+      }
+      &:nth-of-type(2) {
+        left: 40px;
+      }
     }
   }
   .status-progress-container {
@@ -96,12 +128,18 @@
       opacity: 1;
       background-color: $color-border_light_gray;
     }
-
+    & :nth-child(3) {
+      position: sticky;
+      left: 46px;
+    }
     .first-col-color {
       @include fullSize;
       border-radius: 0 0 0 $border-radius-rounder;
     }
     .add-task-input-container {
+      position: sticky;
+      left: 78px;
+      top: 0px;
       grid-column: 4;
       padding: em(4px) em(3px);
       border-left: 1px solid $layout-border-color;

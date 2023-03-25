@@ -12,12 +12,17 @@
           {{ group.title }}
         </span>
         <span class="tasks-num flex align-items justify-start"
-          >{{ group.tasks.length }} Tasks</span
+          >{{ tasksNumber }} Tasks</span
         >
       </div>
     </div>
     <Container class="group-labels">
-      <Draggable v-for="(label, index) in labels" :key="label">
+      <Draggable
+        v-for="(label, index) in labels"
+        :key="label"
+        class="group-label"
+        :class="label"
+      >
         <div
           v-if="index === 1"
           class="first-col-color"
@@ -142,6 +147,10 @@ export default {
       })
 
       return res
+    },
+    tasksNumber() {
+      if (this.group.tasks?.length) return this.group.tasks.length
+      else return 'No '
     },
   },
   watch: {
