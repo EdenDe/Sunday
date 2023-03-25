@@ -59,13 +59,7 @@ export default {
     }
   },
   methods: {
-    onAddTask(txt) {
-      this.updateProp(null, 'title', txt)
-    },
     updateProp(taskId, prop, toUpdate) {
-      if (prop === 'checkbox') {
-        this.onToggleCheckbox(taskId, toUpdate)
-      }
       this.$store.dispatch({
         type: 'updateCurrBoard',
         groupId: this.group.id,
@@ -76,13 +70,10 @@ export default {
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
+      this.newTask.id = utilService.makeId()
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
       this.newTask.taskTitle = ''
-    },
-    onToggleCheckbox(taskId, isChecked) {
-      if (isChecked) this.selectedTasks.push(taskId)
-      else this.selectedTasks = this.selectedTasks.filter((t) => t !== taskId)
     },
     removeTasks() {
       this.group.tasks = this.group.tasks.filter(
@@ -95,11 +86,15 @@ export default {
       this.group.tasks.forEach(task => this.updateProp(task.id, prop, value))
     },
     copyTasks() {
-      const tasks = this.group.tasks.filter((task) => {
+      const tasks = []
+      this.group.tasks.forEach((task) => {
         if (this.selectedTasks.includes(task.id)) {
-          task.id = utilService.makeId()
+          let newTask = { ...task }
+          newTask.id = utilService.makeId()
+          tasks.push(newTask)
         }
       })
+
       this.group.tasks.push(...tasks)
       this.updateProp(null, 'tasks', this.group.tasks)
       this.closeActionBar()
@@ -156,6 +151,7 @@ export default {
     group: {
       handler() {
         this.selectedTasks = this.group.tasks.filter(t => t.checkbox).map(t => t.id)
+        console.log('yoyo', this.selectedTasks)
         if (!this.selectedTasks.length) {
           this.isActionBarOpen = false
           this.groupCheckbox = false
