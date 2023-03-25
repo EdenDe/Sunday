@@ -105,6 +105,7 @@
         "id": "gsfkn11",
         "title": "Frontend",
         "color": "#0086c0",
+        "checkbox": false,
         "tasks": [
           {
             "id": "t101",
@@ -250,6 +251,7 @@
         "id": "g22dskgl",
         "title": "Backend",
         "color": "#a25ddc",
+        "checkbox": false,
         "tasks": [
           {
             "id": "t201",
@@ -357,6 +359,7 @@
         "id": "g11sdkl",
         "title": "Bugs",
         "color": "#e2445c",
+        "checkbox": false,
         "tasks": [
           {
             "id": "t301",

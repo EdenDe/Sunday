@@ -28,6 +28,13 @@
           class="first-col-color"
           :style="{ backgroundColor: group.color }"
         ></div>
+        <div v-if="index === 2" class="group-checkbox">
+          <Checkbox
+            :info="group.checkbox"
+            @updateProp="updateProp"
+            @toggleCheckbox="onToggleCheckbox"
+          />
+        </div>
         {{ label }}
       </Draggable>
     </Container>
@@ -53,6 +60,12 @@
       </form>
     </div>
     <ProgressBar :tasks="group.tasks" />
+    <TaskActionBar
+      v-if="isActionBarOpen"
+      :selectedTasksNum="selectedTasksNum"
+      @closeActionBar="closeActionBar"
+      @remove="removeTasks"
+    ></TaskActionBar>
   </section>
 </template>
 
@@ -60,6 +73,7 @@
 import TaskList from './TaskList.vue'
 import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
+import TaskActionBar from './TaskActionBar.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 
 export default {
@@ -69,17 +83,8 @@ export default {
   },
   data() {
     return {
-      // labels: [
-      //   null,
-      //   null,
-      //   'task',
-      //   'status',
-      //   'priority',
-      //   'person',
-      //   'date',
-      //   'timeline',
-      //   'file',
-      // ],
+      isActionBarOpen: false,
+      selectedTasks: [],
       newTask: {
         taskTitle: '',
       },
@@ -110,6 +115,22 @@ export default {
     onDrop(dropResult) {
       this.items = this.applyDrag(this.items, dropResult)
     },
+    onToggleCheckbox(taskId, isChecked) {
+      if (isChecked) this.selectedTasks.push(taskId)
+      else {
+        const idx = this.selectedTasks.findIndex((t) => t === taskId)
+        this.selectedTasks.splice(idx, 1)
+      }
+
+      if (!this.selectedTasks.length) this.closeActionBar()
+      else if (this.isActionBarOpen) return
+      else this.isActionBarOpen = true
+    },
+    closeActionBar() {
+      this.isActionBarOpen = false
+      this.selectedTasks = []
+      this.unCheckedTasks()
+    },
   },
   computed: {
     labels() {
@@ -117,7 +138,7 @@ export default {
       labels.push(...this.$store.getters.cmpOrder.slice(1))
 
       return labels.map((label) => {
-        if (label === 'taskTitle') label = 'title'
+        if (label === 'taskTitle') label = 'task'
         if (label === 'txt') label = 'text'
         return label
       })
@@ -164,6 +185,7 @@ export default {
     Container,
     Draggable,
     Checkbox,
+    TaskActionBar,
   },
 }
 </script>
