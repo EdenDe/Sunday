@@ -41,8 +41,8 @@ import TaskFilter from './TaskFilter.vue'
 export default {
   name: 'BoardHeader',
   computed: {
-    currBoardId() {
-      return this.$store.getters.currBoard._id
+    currBoard() {
+      return { ...this.$store.getters.currBoard }
     },
   },
   methods: {
