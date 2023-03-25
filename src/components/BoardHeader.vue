@@ -1,6 +1,6 @@
 <template>
   <section class="board-header">
-    <div class="tool-bar grid grid-col">
+    <div class="tool-bar grid">
       <h2 contenteditable="true" class="board-header-title">Sunday</h2>
       <nav class="nav-bar grid grid-col">
         <RouterLink :to="'/board/' + currBoardId + '/main-table'">
@@ -21,7 +21,7 @@
     </div>
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
-        <button @click="addTask" class="btn btn-blue">New Task</button>
+        <button @click="addTask" class="btn btn-blue">New Item</button>
 
         <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
       </div>
@@ -31,16 +31,16 @@
 </template>
 
 <script>
-import TaskFilter from "./TaskFilter.vue";
+import TaskFilter from './TaskFilter.vue'
 export default {
-  name: "BoardHeader",
+  name: 'BoardHeader',
   computed: {
     currBoardId() {
-      return this.$store.getters.currBoard._id;
+      return this.$store.getters.currBoard._id
     },
   },
   components: {
     TaskFilter,
   },
-};
+}
 </script>

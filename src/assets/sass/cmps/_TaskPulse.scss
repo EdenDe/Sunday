@@ -1,89 +1,71 @@
 .task-pulse{
-  background-color: #fff;
-  position: fixed;
-  height: 100vh;
-  width: 700px;
   z-index: 2023;
+  position: fixed;
   right: 0;
   top: 0;
-  box-shadow: 0 15px 50px #0000004d;
+  height: 100vh;
+  width: em(700px);
+  box-shadow: $box-shadow-large;
+  background-color: $color-snow_white;
   overflow-y: auto;
  
-
   header{
-    gap:10px;
-    border-bottom: 0.5px solid #d0d4e6;
+    gap:5px;
+    border-bottom: 0.5px solid $workspace-side-nav;
     padding: em(14px) em(14px) 0;
 
-  .btn{
-    @include btn(transparent);
-    @include flex-center;
-    width: 100%;
-    margin-bottom:em(2px);
-    height:32px;
-  }
-
-  .btn-close{
-    padding:0;
-    height: em(24px);
-    width: em(24px);
-  }
-
-  .task-title{
-    @include editableSpan;
-    font-size:em(18px);
-
-    font-family: $figtree-bold;
-    line-height: lh(22.5px);
-    color:$color-mud_black
-  }
-
-  .tabs-wrapper{
-    .task-update-icon{
-      padding-inline-end: 4px;
+    .btn{
+      @include btn(transparent);
+      @include flex-center;
+      width: 100%;
+      height:em(32px);
+      &-close {
+          padding: 0;
+          height: em(24px);
+          width: em(24px);
+        }
     }
 
-    //  .btn-container:hover + .border{
-    //   opacity: 0;
-    //  }
-
-    // .btn-container:hover{
-    //     & + .border{
-    //       opacity: 0;
-    //     }
-    //  }
-
-    .btn-tab-wrapper{
-      border-bottom: 2px solid transparent;
-    }
-   
-     .border{
-      width:1px;
-      height:15px;
-      background-color: $layout-border-color;
-      padding:0;
-     }
-
-
-    &:has(.btn-tab:hover) .border{
-      opacity: 0;
+    .task-title{
+      @include editableSpan;
+      font-size:em(18px);
+      font-family: $figtree-bold;
+      line-height: lh(22.5px);
+      color:$color-mud_black
     }
 
-    .btn-tab-wrapper.active-tab{
-      border-color: $primary-on-secondary-color;
-    }
-  
-   }
+    .tabs-wrapper{
+      margin-inline-start: em(8px);
+      .task-update-icon{
+        padding-inline-end: em(4px);
+      }
+      .btn-tab-wrapper{
+        border-bottom: 2px solid transparent;
+      }
 
-  
+      .border{
+        width:1px;
+        height:15px;
+        background-color: $layout-border-color;
+        padding:0;
+      }
+
+      &:has(.btn-tab:hover) .border{
+        opacity: 0;
+      }
+
+      .btn-tab-wrapper.active-tab{
+        border-color: $primary-on-secondary-color;
+      }
+    
+    }
   }
 
   .content-wrapper{
-    padding: em(20px);
-
+    padding: em(20px) em(26px) em(20px);
 
     .update-log{
-      gap:5px;
+      gap:em(5px);
 
       .btn-update{
         @include btn;
@@ -97,7 +79,7 @@
       border-radius: $border-radius-rounder;
       border: 1px solid $color-link_color;
       line-height: normal;
-      padding: 10px 20px;
+      padding: em(10px) em(20px);
       font-size: em(16px);
       resize: none;
 
@@ -108,13 +90,12 @@
       &:focus{
         outline:none;
       }
+      }
     }
-    }
-  
    }
   
   img{
-    width: 300px;
+    width: em(300px);
     margin-top: auto;
   }
 

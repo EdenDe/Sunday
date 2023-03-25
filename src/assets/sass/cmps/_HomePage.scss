@@ -7,18 +7,18 @@
       justify-self: center;
       margin-bottom: $margin-medium;
     }
-    min-height: 577px;
+    height: 90vh;
     background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
     color: $color-snow_white;
     font-family: $figtree-regular;
     text-align: center;
     &-header{
       font-weight: 200;
-      font-size: 4.5em;
+      font-size: 4em;
     }
     &-sub-header{
       font-weight: 200;
-      font-size: 2em;
+      font-size: 1.8em;
     }
     .btn-get-started{
       @include btn-get-started(50px, 175px);
@@ -68,7 +68,7 @@
       animation-play-state: running;
       animation-name: twinkle;
       &1{
-        top:20%;
+        top:15%;
         left:30%;
         width:10px;
         height:10px;

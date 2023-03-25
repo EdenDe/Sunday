@@ -16,7 +16,7 @@
 
       <el-carousel :interval="4000" type="card" height="200px">
         <el-carousel-item v-for="item in 6" :key="item">
-          <img src="../assets/img/logo.png" />
+          <img src="../assets/img/homePageImg/1.png" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import AppHeader from "../components/AppHeader.vue";
+import AppHeader from '../components/AppHeader.vue'
 export default {
   components: {
     AppHeader,
@@ -39,10 +39,10 @@ export default {
 
   computed: {
     firstBoardId() {
-      const board = this.$store.getters.currBoard;
-      if (board) return board._id;
+      const board = this.$store.getters.currBoard
+      if (board) return board._id
       //changetothefirst
     },
   },
-};
+}
 </script>
