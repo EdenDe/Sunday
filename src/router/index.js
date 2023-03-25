@@ -5,7 +5,7 @@ import BoardIndex from '../views/BoardIndex.vue'
 import BoardKanban from '../views/BoardKanban.vue'
 import BoardTable from '../views/BoardTable.vue'
 import TaskPulse from '../views/TaskPulse.vue'
-
+import Dashboard from '../views/Dashboard.vue'
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
@@ -41,6 +41,11 @@ const router = createRouter({
 					path: 'kanban',
 					name: 'kanban',
 					component: BoardKanban,
+				},
+				{
+					path: 'dashboard',
+					name: 'dashboard',
+					component: Dashboard,
 				},
 			],
 		},
