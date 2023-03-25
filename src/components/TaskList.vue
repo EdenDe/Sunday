@@ -50,9 +50,8 @@ export default {
       this.currTasks = this.currTasks.filter(
         (t) => !this.selectedTasks.includes(t.id)
       )
-      console.log('on remove', this.currTasks)
-      // this.updateProp(null, 'tasks', this.currTasks)
-      // this.closeActionBar()
+      this.updateProp(null, 'tasks', this.currTasks)
+      this.closeActionBar()
     },
     onDrop({ addedIndex, removedIndex }) {
       let taskList = JSON.parse(JSON.stringify(this.tasks))
@@ -76,7 +75,7 @@ export default {
       this.unCheckedTasks()
     },
     unCheckedTasks() {
-      this.currTasks = this.currTasks.forEach((t) => (t.checkbox = false))
+      this.currTasks.forEach((t) => (t.checkbox = false))
       this.updateProp(null, 'tasks', this.currTasks)
     },
   },
