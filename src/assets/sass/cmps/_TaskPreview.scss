@@ -2,13 +2,13 @@
   @include task-row;
   background-color: $color-snow_white;
 
-  &:not(:has(.task-title)){
-    display:grid;
+  &:not(:has(.task-title)) {
+    display: grid;
   }
 
   &:has(.task-txt, .task-title) {
     overflow: hidden;
-    display:flex;
+    display: flex;
     justify-content: start;
   }
   &:has(.task-title) {
@@ -22,7 +22,7 @@
     padding: 6px;
   }
 
-  > *:not(.pulse-bubble,.task-title,.task-action-bar-container) {
+  > *:not(.pulse-bubble, .task-title, .task-action-bar-container) {
     font-size: em(14px);
     margin: 0;
     display: flex;
@@ -30,27 +30,27 @@
     justify-content: center;
   }
 
-  .pulse-bubble{
+  .pulse-bubble {
     @include flex-center;
-    margin-left:auto;
+    margin-left: auto;
     height: 100%;
     min-width: em(65px);
     border-left: 1px solid $layout-border-color;
 
-    *{
+    * {
       height: 100%;
     }
 
-     a{
-      display:inline-block;
+    a {
+      display: inline-block;
       width: em(24px);
       height: em(24px);
     }
 
-    svg{
-      color:$layout-border-color;
-      &:hover{
-        color: $primary-on-secondary-color
+    svg {
+      color: $layout-border-color;
+      &:hover {
+        color: $primary-on-secondary-color;
       }
     }
   }
@@ -63,4 +63,11 @@
       width: 50%;
     }
   }
+}
+.remove-btn {
+  position: absolute;
+  background-color: $color-explosive;
+  border-radius: 50%;
+  height: rem(14px);
+  width: rem(14px);
 }

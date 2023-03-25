@@ -3,69 +3,35 @@
     <div class="grid-title flex align-items">
       <div class="svg-wrapper"></div>
       <div class="group-title-wrapper flex align-center">
-        <span
-          contenteditable
-          class="group-title"
-          @focusout="onType($event.target.innerText)"
-          :style="{ color: group.color }"
-        >
+        <span contenteditable class="group-title" @focusout="onAddTask($event.target.innerText)"
+          :style="{ color: group.color }">
           {{ group.title }}
         </span>
-        <span class="tasks-num flex align-items justify-start"
-          >{{ tasksNumber }} Tasks</span
-        >
+        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
       </div>
     </div>
     <Container class="group-labels">
-      <Draggable
-        v-for="(label, index) in labels"
-        :key="label"
-        class="group-label"
-        :class="label"
-      >
-        <div
-          v-if="index === 1"
-          class="first-col-color"
-          :style="{ backgroundColor: group.color }"
-        ></div>
+      <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label">
+        <div v-if="index === 1" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
         <div v-if="index === 2" class="group-checkbox">
-          <Checkbox
-            :info="group.checkbox"
-            @updateProp="updateProp"
-            @toggleCheckbox="onToggleCheckbox"
-          />
+          <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
         </div>
         {{ label }}
       </Draggable>
     </Container>
 
-    <TaskList
-      :tasks="group.tasks"
-      :groupBgColor="group.color"
-      @updateProp="updateProp"
-    />
+    <TaskList :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
     <div class="add-task-container sticky">
       <div class="task-option"></div>
-      <div
-        class="first-col-color"
-        :style="{ backgroundColor: group.color }"
-      ></div>
+      <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
       <Checkbox />
       <form @submit.prevent="onAddTask" class="add-task-input-container">
-        <input
-          placeholder="+ Add task"
-          type="text"
-          v-model="newTask.taskTitle"
-        />
+        <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
       </form>
     </div>
     <ProgressBar :tasks="group.tasks" />
-    <TaskActionBar
-      v-if="isActionBarOpen"
-      :selectedTasksNum="selectedTasksNum"
-      @closeActionBar="closeActionBar"
-      @remove="removeTasks"
-    ></TaskActionBar>
+    <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
+      @remove="removeTasks" @copy="copyTasks"></TaskActionBar>
   </section>
 </template>
 
@@ -75,6 +41,7 @@ import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
 import TaskActionBar from './TaskActionBar.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
+import { utilService } from '../services/util.service'
 
 export default {
   name: 'GroupPreview',
@@ -88,16 +55,17 @@ export default {
       newTask: {
         taskTitle: '',
       },
+      groupCheckbox: false
     }
   },
   methods: {
-    log(event) {
-      console.log(event)
-    },
-    onType(txt) {
+    onAddTask(txt) {
       this.updateProp(null, 'title', txt)
     },
     updateProp(taskId, prop, toUpdate) {
+      if (prop === 'checkbox') {
+        this.onToggleCheckbox(taskId, toUpdate)
+      }
       this.$store.dispatch({
         type: 'updateCurrBoard',
         groupId: this.group.id,
@@ -112,31 +80,40 @@ export default {
       this.updateProp(null, 'tasks', group.tasks)
       this.newTask.taskTitle = ''
     },
-    onDrop(dropResult) {
-      this.items = this.applyDrag(this.items, dropResult)
-    },
     onToggleCheckbox(taskId, isChecked) {
       if (isChecked) this.selectedTasks.push(taskId)
-      else {
-        const idx = this.selectedTasks.findIndex((t) => t === taskId)
-        this.selectedTasks.splice(idx, 1)
-      }
-
-      if (!this.selectedTasks.length) this.closeActionBar()
-      else if (this.isActionBarOpen) return
-      else this.isActionBarOpen = true
+      else this.selectedTasks = this.selectedTasks.filter((t) => t !== taskId)
+    },
+    removeTasks() {
+      this.group.tasks = this.group.tasks.filter(
+        (t) => !this.selectedTasks.includes(t.id)
+      )
+      console.log(this.group.tasks)
+      this.updateProp(null, 'tasks', this.group.tasks)
+    },
+    toggleSelectGroup(prop, value) {
+      this.group.tasks.forEach(task => this.updateProp(task.id, prop, value))
+    },
+    copyTasks() {
+      const tasks = this.group.tasks.filter((task) => {
+        if (this.selectedTasks.includes(task.id)) {
+          task.id = utilService.makeId()
+        }
+      })
+      this.group.tasks.push(...tasks)
+      this.updateProp(null, 'tasks', this.group.tasks)
+      this.closeActionBar()
     },
     closeActionBar() {
-      this.isActionBarOpen = false
-      this.selectedTasks = []
-      this.unCheckedTasks()
-    },
+      this.toggleSelectGroup('checkbox', false)
+    }
   },
   computed: {
     labels() {
       let labels = [null, null, null]
-      labels.push(...this.$store.getters.cmpOrder.slice(1))
-
+      labels.push(
+        ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
+      )
       return labels.map((label) => {
         if (label === 'taskTitle') label = 'task'
         if (label === 'txt') label = 'text'
@@ -160,14 +137,16 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${
-              res[title]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${res[title]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
 
       return res
+    },
+    selectedTasksNum() {
+      return this.selectedTasks.length
     },
     tasksNumber() {
       if (this.group.tasks?.length) return this.group.tasks.length
@@ -175,9 +154,20 @@ export default {
     },
   },
   watch: {
-    group() {
-      // console.log(this.group);
-    },
+    group: {
+      handler() {
+        this.selectedTasks = this.group.tasks.filter(t => t.checkbox).map(t => t.id)
+        if (!this.selectedTasks.length) {
+          this.isActionBarOpen = false
+          this.groupCheckbox = false
+        } else {
+          this.isActionBarOpen = true
+          this.groupCheckbox = this.group.tasks.length === this.selectedTasks.length
+        }
+      },
+      immediate: true,
+      deep: true
+    }
   },
   components: {
     TaskList,

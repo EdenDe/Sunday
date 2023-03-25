@@ -12,6 +12,7 @@
       v-model="date"
       @change="onChangeDate"
     />
+    <i v-if="date" v-icon="'closeSmall'" @click.prevent="onRemoveDate"></i>
   </section>
 </template>
 
@@ -39,6 +40,9 @@ export default {
     onChangeDate() {
       if (!this.date) return
       this.$emit('updateProp', 'date', this.date)
+    },
+    onRemoveDate() {
+      this.$emit('updateProp', 'date', null)
     },
   },
 }

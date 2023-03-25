@@ -1,6 +1,17 @@
 .task-date {
+  position: relative;
   width: 100%;
-
+  .remove-btn {
+    display: none;
+    top: 50%;
+    right: 2%;
+    transform: translate(0%, -50%);
+  }
+  &:hover {
+    .remove-btn {
+      display: block;
+    }
+  }
   //ELEMENT PLUS DISSAPEAR
   .el-date-editor.el-input {
     width: 100%;

@@ -3,7 +3,7 @@
     <AppSideNav />
     <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" />
     <div class="board-container board-layout">
-      <BoardHeader />
+      <BoardHeader @updateBoard="updateBoard" />
       <RouterView />
     </div>
   </section>
@@ -18,7 +18,6 @@ export default {
   watch: {
     '$route.params.boardId': {
       handler() {
-        console.log(this.$route.params.boardId)
         this.loadBoard(this.$route.params.boardId)
       },
       immediate: true,
@@ -47,6 +46,16 @@ export default {
     updateParams() {
       const boardId = this.$store.getters.currBoardId
       this.$router.push({ params: { boardId: boardId } })
+    },
+
+    updateBoard(prop, toUpdate) {
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: null,
+        taskId: null,
+        prop: prop,
+        toUpdate,
+      })
     },
   },
 }

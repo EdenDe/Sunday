@@ -11,12 +11,12 @@
       <RouterLink
         :to="'/board/' + firstBoardId + '/main-table'"
         class="btn-get-started"
-        >Get Started</RouterLink
-      >
+        >Get Started
+      </RouterLink>
 
       <el-carousel :interval="4000" type="card" height="200px">
         <el-carousel-item v-for="item in 6" :key="item">
-          <img src="../assets/img/homePageImg/1.png" />
+          <img src="@/assets/img/logo.png" />
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -36,12 +36,10 @@ export default {
   components: {
     AppHeader,
   },
-
   computed: {
     firstBoardId() {
-      const board = this.$store.getters.currBoard
-      if (board) return board._id
-      //changetothefirst
+      const boards = this.$store.getters.boardsToDisplay
+      if (boards.length) return boards[0]._id
     },
   },
 }

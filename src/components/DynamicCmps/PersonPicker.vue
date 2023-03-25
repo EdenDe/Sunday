@@ -4,7 +4,6 @@
     <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
     <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
       v-clickOutside="onClosePicker">
-
       <div class="flex wrap person-picker">
         <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">
           <PersonAvatar :person="person" />

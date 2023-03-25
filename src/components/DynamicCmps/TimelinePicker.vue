@@ -19,15 +19,20 @@
           end-placeholder=""
           :id="taskId + 'Timeline'"
         />
+        <i
+          v-if="timeline.length"
+          v-icon="'closeSmall'"
+          @click.prevent="onRemoveTimeline"
+        ></i>
       </label>
     </div>
   </section>
 </template>
 
 <script>
-import { utilService } from "../../services/util.service";
+import { utilService } from '../../services/util.service'
 export default {
-  name: "Timeline",
+  name: 'Timeline',
   props: {
     info: Array,
     taskId: String,
@@ -35,34 +40,37 @@ export default {
   data() {
     return {
       timeline: [],
-    };
+    }
   },
   created() {
-    this.setTimeline();
+    this.setTimeline()
   },
   methods: {
     onChangeTimeline() {
-      if (!this.timeline || !this.timeline.length) return;
-      this.$emit("updateProp", "timeline", this.timeline);
+      if (!this.timeline || !this.timeline.length) return
+      this.$emit('updateProp', 'timeline', this.timeline)
     },
     setTimeline() {
-      this.timeline = this.info;
+      this.timeline = this.info
+    },
+    onRemoveTimeline() {
+      this.$emit('updateProp', 'timeline', [])
     },
   },
   watch: {
     info() {
-      this.setTimeline();
+      this.setTimeline()
     },
   },
   computed: {
     formattedDates() {
-      if (!this.timeline || !this.timeline.length) return "-";
-      return utilService.formatDateRange(this.timeline);
+      if (!this.timeline || !this.timeline.length) return '-'
+      return utilService.formatDateRange(this.timeline)
     },
     formattedDaysRange() {
-      if (!this.timeline || !this.timeline.length) return "-";
-      return utilService.getDaysBetween(this.timeline);
+      if (!this.timeline || !this.timeline.length) return '-'
+      return utilService.getDaysBetween(this.timeline)
     },
   },
-};
+}
 </script>
