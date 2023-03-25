@@ -3,42 +3,62 @@
   height: 193px;
   display: flex;
   flex-direction: column;
+
   .router-link-active {
     border-bottom: 2px solid $primary-color;
   }
-  .desc-wrapper {
-    .desc {
-      font-size: rem(14px);
-      color: $color-asphalt;
-    }
-  }
-  .board-header-top-wrapper {
-    justify-content: start;
-    margin-top: $margin-small;
+  .btn {
+       @include btn(transparent);
 
+     }
+  
+  .board-header-top-wrapper {
+    margin-top: $margin-small;
+    
     height: 50px;
     font-size: 22px;
     font-family: $poppins-light;
-    > *:not(:first-child) {
-      margin-inline-start: rem(14px);
-
-      .board-title {
-        @include editableSpan;
-        padding: 0;
-        font-size: em(52px);
-        color: $color-mud_black;
-        margin-bottom: $margin-small;
-      }
+    >*{
+      margin-inline-end: 5px;
     }
+    .board-title {
+      @include editableSpan;
+      padding: 0;
+      font-size: em(16px);
+      color: $color-mud_black;
+      letter-spacing: em(0.75px);
+      padding: 0 4px;
+    }
+      
+      .btn-container{        
+        padding: 0;
+        &>*{
+          @include flex-center;
+          @include fullSize;
+          color: $color-wolf_gray;
+      } 
+        .info-icon{
+          padding: 5px;
+      }
+        .star-icon{
+          padding: 0;
+      }
+    }           
   }
+     .desc-wrapper {
+       .desc {
+         font-size: rem(14px);
+         color: $color-asphalt;
+       }
+     }
 
-  border-bottom: 1px solid $layout-border-color;
-  .btn {
-    @include btn(transparent);
-  }
-  .nav-bar {
+
+      .nav-bar {
+        margin-top: $padding-small;
+        border-bottom: 1px solid $layout-border-color;
     & > *:not(:last-child) {
       position: relative;
+     
       &::after {
         content: '|';
         position: absolute;
@@ -68,8 +88,6 @@
   background-color: $color-snow_white;
 
   .btn {
-    @include btn(transparent);
-
     padding: 0;
     &-add-task {
       margin-inline-end: em(14px);

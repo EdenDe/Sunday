@@ -9,10 +9,10 @@
         >
           {{ currBoard.title }}
         </h2>
-        <div class="btn-container">
+        <div class="btn btn-container">
           <i class="info-icon" v-icon="'headerInfo'"></i>
         </div>
-        <div class="btn-container">
+        <div class="btn btn-container">
           <i class="star-icon" v-icon="'headerStar'"></i>
         </div>
       </div>
