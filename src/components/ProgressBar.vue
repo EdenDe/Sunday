@@ -44,9 +44,10 @@ export default {
   },
   methods: {
     setProgressTimeline() {
+      if (!this.tasks) return
       let timeline = this.tasks.reduce(
         (acc, task) => {
-          if (task['timeline'].length > 0) {
+          if (task['timeline']?.length > 0) {
             let timestamps = [...task['timeline']]
             let minTimestamp = Math.min(...timestamps)
             let maxTimestamp = Math.max(...timestamps)
@@ -63,7 +64,7 @@ export default {
       )
       if (
         !timeline ||
-        !timeline.length ||
+        !timeline?.length ||
         timeline[0] === Infinity ||
         timeline[1] === -Infinity
       ) {
@@ -77,6 +78,7 @@ export default {
   computed: {
     ...mapGetters(['cmpOrder', 'statusLabels', 'priorityLabels']),
     groupStatusProgress() {
+      if (!this.tasks) return
       return (item) => {
         let res = this.tasks.reduce((obj, task) => {
           if (!obj[task[item]]) obj[task[item]] = 0

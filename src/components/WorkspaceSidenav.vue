@@ -64,7 +64,7 @@
         class="list-item flex justify-between align-center"
         :class="{ 'is-active': board._id === $route.params.boardId }"
         :id="board._id"
-        @click="onPickBoard(board._id)"
+        @click="onSetBoard(board._id)"
       >
         <section class="board-name flex align-center">
           <i v-icon="'workspaceBoard'"></i>
@@ -80,33 +80,33 @@
 
 <script>
 export default {
-  name: "WorkspaceSidenav",
+  name: 'WorkspaceSidenav',
   data() {
     return {
       isWorkspaceClosed: true,
-    };
+    }
   },
   methods: {
     toggleWorkspace() {
-      this.isWorkspaceClosed = !this.isWorkspaceClosed;
+      this.isWorkspaceClosed = !this.isWorkspaceClosed
     },
     onAddBoard() {
-      this.$emit("add-board");
+      this.$emit('addBoard')
     },
-    onChangeBoard(boardId) {
-      this.$emit("add-board", boardId);
+    onSetBoard(boardId) {
+      this.$emit('setBoard', boardId)
     },
   },
   computed: {
     boardsToDisplay() {
-      return this.$store.getters.boardsToDisplay;
+      return this.$store.getters.boardsToDisplay
     },
     isActive() {
       return (boardId) => {
-        // console.log(boardId, this.$route);
-        return true;
-      };
+        console.log(boardId, this.$route)
+        return true
+      }
     },
   },
-};
+}
 </script>

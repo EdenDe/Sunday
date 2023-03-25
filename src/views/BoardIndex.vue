@@ -1,7 +1,7 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @add-board="addBoard" @change-board="changeBoard" />
+    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" />
     <div class="board-container board-layout">
       <BoardHeader />
       <RouterView />
@@ -10,23 +10,44 @@
 </template>
 
 <script>
-import AppSideNav from "@/components/AppSidenav.vue";
-import WorkspaceSideNav from "@/components/WorkspaceSidenav.vue";
-import BoardHeader from "../components/BoardHeader.vue";
+import AppSideNav from '@/components/AppSidenav.vue'
+import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
+import BoardHeader from '../components/BoardHeader.vue'
+import { boardService } from '../services/board.service.js'
 export default {
+  watch: {
+    '$route.params.boardId': {
+      handler() {
+        console.log(this.$route.params.boardId)
+        this.loadBoard(this.$route.params.boardId)
+      },
+      immediate: true,
+    },
+  },
   components: {
     AppSideNav,
     WorkspaceSideNav,
     BoardHeader,
   },
   methods: {
-    addBoard() {
-      const newBoard = this.$store.getters.emptyBoard;
-      this.$store.dispatch({ type: "saveBoard", board: newBoard });
+    async addBoard() {
+      const newBoard = boardService.getEmptyBoard()
+      await this.$store.dispatch({
+        type: 'saveBoard',
+        board: newBoard,
+      })
+      this.updateParams()
     },
-    changeBoard(boardId) {
-      console.log(boardId);
+
+    async loadBoard(boardId) {
+      await this.$store.dispatch({ type: 'loadBoard', boardId })
+      this.updateParams()
+    },
+
+    updateParams() {
+      const boardId = this.$store.getters.currBoardId
+      this.$router.push({ params: { boardId: boardId } })
     },
   },
-};
+}
 </script>
