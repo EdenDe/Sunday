@@ -13,16 +13,16 @@
       <TaskPreview
         :task="task"
         @updateProp="updateProp"
-        @toggleTask="onToggleTask"
+        @toggleCheckbox="onToggleCheckbox"
       />
     </Draggable>
   </Container>
-  <TaskActionBar
+  <!-- <TaskActionBar
     v-if="isActionBarOpen"
     :selectedTasksNum="selectedTasksNum"
     @closeActionBar="closeActionBar"
     @remove="removeTasks"
-  ></TaskActionBar>
+  ></TaskActionBar> -->
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
       taskList.splice(addedIndex, 0, taskList.splice(removedIndex, 1)[0])
       this.updateProp(null, 'tasks', taskList)
     },
-    onToggleTask(taskId, isChecked) {
+    onToggleCheckbox(taskId, isChecked) {
       if (isChecked) this.selectedTasks.push(taskId)
       else {
         const idx = this.selectedTasks.findIndex((t) => t === taskId)
@@ -83,7 +83,6 @@ export default {
     tasks: {
       handler(tasks) {
         this.currTasks = tasks
-        console.log(this.currTasks)
       },
       immediate: true,
     },

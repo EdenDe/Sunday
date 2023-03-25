@@ -34,7 +34,7 @@
     @include flex-center;
     margin-left: auto;
     height: 100%;
-    width: em(65px);
+    min-width: em(65px);
     border-left: 1px solid $layout-border-color;
 
     * {

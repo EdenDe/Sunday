@@ -1,11 +1,16 @@
 .task-title {
+  @include flex-center;
   padding-inline-start: 30px;
+  padding-inline-end: 2px;
   align-self: center;
   justify-content:flex-start;
+  overflow: hidden;
+  height: 100%;
 
   > span {
     @include editableSpan;
+    height: 80%;
+    margin-right: 2px;
     font-size: rem(16px);
-    justify-self: start;
   }
 }

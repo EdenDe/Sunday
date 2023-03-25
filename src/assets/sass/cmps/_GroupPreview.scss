@@ -83,6 +83,10 @@
     .first-col-color {
       border-top-left-radius: $border-radius-rounder;
     }
+    .group-checkbox{
+      @include flex-center;
+     height: 100%;
+    }
     .group-label {
       background-color: $color-snow_white;
       &.title {

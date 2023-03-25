@@ -3,7 +3,7 @@
     <span
       contenteditable
       @focusin="onFocusIn"
-      @focusout="onType($event.target.innerText)"
+      @focusout="onFocusout($event.target.innerText)"
       >{{ displayedTxt }}</span
     >
   </section>
@@ -28,7 +28,7 @@ export default {
     },
   },
   methods: {
-    onType(txt) {
+    onFocusout(txt) {
       this.txt = txt
       this.$emit('updateProp', 'text', txt)
       this.isFocused = false

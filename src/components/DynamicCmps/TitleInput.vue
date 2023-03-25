@@ -1,10 +1,12 @@
 <template>
-  <section class="task-title grid">
-    <span contenteditable @focusout="onType($event.target.innerText)">
-      {{ txt }}
+  <section class="task-title">
+    <span
+      contenteditable
+      @focusin="onFocusIn"
+      @focusout="onFocusout($event.target.innerText)"
+    >
+      {{ displayedTxt }}
     </span>
-
-    <!-- <RouterLink v-icon="'chatBubble'" /> -->
   </section>
 </template>
 
@@ -19,6 +21,7 @@ export default {
   data() {
     return {
       txt: this.info,
+      isFocused: false,
     }
   },
   watch: {
@@ -27,9 +30,29 @@ export default {
     },
   },
   methods: {
-    onType(txt) {
+    onFocusout(txt) {
       this.txt = txt
       this.$emit('updateProp', 'taskTitle', txt)
+      this.isFocused = false
+    },
+    onFocusIn() {
+      this.isFocused = true
+    },
+    getShortTxt() {
+      let shortTxt = this.txt.split('')
+      if (shortTxt.length > 25) {
+        shortTxt = shortTxt.splice(0, 25).join('')
+        shortTxt += '...'
+      } else {
+        shortTxt = shortTxt.join('')
+      }
+      return shortTxt
+    },
+  },
+  computed: {
+    displayedTxt() {
+      // return this.getShortTxt()
+      return this.isFocused ? this.txt : this.getShortTxt()
     },
   },
 }

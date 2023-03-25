@@ -1,14 +1,19 @@
 .task-txt{
+  @include flex-center;
   justify-self: start;
   padding-inline-start: em(5px);
   align-self: center;
-  height: 80%;
+  padding-inline-end: 2px;
+  overflow: hidden;
+  height: 100%;
   
 
   > span {
     @include editableSpan;
+    height: 80%;
+    margin-right: 2px;
     font-size: rem(16px);
     width: 100%;
-    overflow-x: auto;
+    // overflow-x: auto;
   }
 }
