@@ -1,8 +1,13 @@
 <template>
   <section class="board-header">
     <div class="tool-bar grid grid-col">
-      <h2 contenteditable class="board-header-title" @focusout="onChangeTitle($event.target.innerText)">{{ currBoard.title
-      }}</h2>
+      <h2
+        contenteditable
+        class="board-header-title"
+        @focusout="onChangeTitle($event.target.innerText)"
+      >
+        {{ currBoard.title }}
+      </h2>
       <nav class="nav-bar grid grid-col">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
           <div class="btn btn-container grid grid-col">
@@ -23,6 +28,7 @@
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
         <button @click="addTask" class="btn btn-blue">New Task</button>
+
         <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
       </div>
       <TaskFilter />
@@ -31,9 +37,9 @@
 </template>
 
 <script>
-import TaskFilter from "./TaskFilter.vue";
+import TaskFilter from './TaskFilter.vue'
 export default {
-  name: "BoardHeader",
+  name: 'BoardHeader',
   computed: {
     currBoard() {
       return { ...this.$store.getters.currBoard }
@@ -42,10 +48,10 @@ export default {
   methods: {
     onChangeTitle(txt) {
       this.$emit('updateBoard', 'title', txt)
-    }
+    },
   },
   components: {
     TaskFilter,
   },
-};
+}
 </script>

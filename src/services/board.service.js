@@ -45,11 +45,11 @@ async function save(board) {
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
   const board = JSON.parse(JSON.stringify(currBoard))
   if (taskId) {
-    let group = board.groups.find(group => groupId === group.id)
-    let task = group.tasks.find(task => task.id === taskId)
+    let group = board.groups.find((group) => groupId === group.id)
+    let task = group.tasks.find((task) => task.id === taskId)
     task[prop] = toUpdate
   } else if (groupId) {
-    let group = board.groups.find(group => groupId === group.id)
+    let group = board.groups.find((group) => groupId === group.id)
     group[prop] = toUpdate
   } else {
     board[prop] = toUpdate
@@ -80,15 +80,15 @@ function getEmptyBoard() {
         'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
     },
     cmpOrder: [
-      { name: "checkbox", width: "30px" },
-      { name: "taskTitle", width: "1fr" },
-      { name: "person", width: "80px" },
-      { name: "status", width: "80px" },
-      { name: "priority", width: "80px" },
-      { name: "date", width: "120px" },
-      { name: "timeline", width: "1fr" },
-      { name: "txt", width: "1fr" },
-      { name: "file", width: "80px" }
+      { name: 'checkbox', width: '30px' },
+      { name: 'taskTitle', width: '1fr' },
+      { name: 'person', width: '80px' },
+      { name: 'status', width: '80px' },
+      { name: 'priority', width: '80px' },
+      { name: 'date', width: '120px' },
+      { name: 'timeline', width: '1fr' },
+      { name: 'txt', width: '1fr' },
+      { name: 'file', width: '80px' },
     ],
     priorityLabels: [
       {
