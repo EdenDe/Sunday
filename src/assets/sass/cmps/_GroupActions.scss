@@ -1,0 +1,15 @@
+.group-actions-list{
+  z-index: 200;
+  position: absolute;
+  top:35px;
+  left: 20px;
+  height: 435px;
+  width: 264px;
+  background-color: $color-snow_white;
+  box-shadow: $box-shadow-large;
+  border-radius: $border-radius-rounder;
+
+  .group-action{
+    
+  }
+}

@@ -1,17 +1,31 @@
 <template>
   <section class="board-header">
     <div class="tool-bar grid">
-      <h2
-        contenteditable
-        class="board-header-title"
-        @focusout="onChangeTitle($event.target.innerText)"
-      >
-        {{ currBoard.title }}
-      </h2>
+      <div class="board-header-top-wrapper grid grid-col">
+        <h2
+          contenteditable
+          class="board-header-title"
+          @focusout="onChangeTitle($event.target.innerText)"
+        >
+          {{ currBoard.title }}
+        </h2>
+        <div class="btn-container">
+          <i class="info-icon" v-icon="'headerInfo'"></i>
+        </div>
+        <div class="btn-container">
+          <i class="star-icon" v-icon="'headerStar'"></i>
+        </div>
+      </div>
+      <div class="desc-wrapper">
+        <p class="desc">
+          Sunday app is a project <br />
+          management and team collaboration...
+        </p>
+      </div>
       <nav class="nav-bar grid grid-col">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
           <div class="btn btn-container grid grid-col">
-            <span class="task-filter-icon" v-icon="'homeHeader'"></span>
+            <i class="task-filter-icon" v-icon="'homeHeader'"></i>
             <span>Main Table</span>
           </div>
         </RouterLink>
