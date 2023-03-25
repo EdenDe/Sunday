@@ -10,27 +10,27 @@
 
 <script>
 export default {
-  name: "TaskTitle",
+  name: 'TaskTitle',
   props: {
     info: String,
     taskId: String,
   },
-  emits: ["updateProp"],
+  emits: ['updateProp'],
   data() {
     return {
       txt: this.info,
-    };
+    }
   },
   watch: {
     info() {
-      this.txt = this.info;
+      this.txt = this.info
     },
   },
   methods: {
     onType(txt) {
-      this.txt = txt;
-      this.$emit("updateProp", "taskTitle", txt);
+      this.txt = txt
+      this.$emit('updateProp', 'taskTitle', txt)
     },
   },
-};
+}
 </script>

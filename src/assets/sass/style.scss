@@ -28,7 +28,11 @@
 @import "cmps/ProgressBar";
 @import "cmps/Avatar";
 @import "cmps/GroupDetails";
+<<<<<<< HEAD
 @import "cmps/TaskPulse";
+=======
+@import "cmps/TaskActionBar";
+>>>>>>> b206ce341d78984c988c4601ae9f0e71d0eae608
 
 // DYNAMIC CMPS
 @import "cmps/dynamicCmps/Checkbox";
@@ -39,3 +43,4 @@
 @import "cmps/dynamicCmps/PriorityPicker";
 @import "cmps/dynamicCmps/PersonPicker";
 @import "cmps/dynamicCmps/TxtInput";
+@import "cmps/dynamicCmps/FileUpload";

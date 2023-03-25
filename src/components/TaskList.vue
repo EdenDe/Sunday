@@ -10,7 +10,11 @@
         class="first-col-color sticky"
         :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
       ></div>
-      <TaskPreview :task="task" @updateProp="updateProp" />
+      <TaskPreview
+        :task="task"
+        @updateProp="updateProp"
+        @removeTask="removeTask"
+      />
     </Draggable>
   </Container>
 </template>
@@ -30,7 +34,7 @@ export default {
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
-      console.log("toUpdate", toUpdate);
+      // console.log("toUpdate", toUpdate);
       this.$emit("updateProp", taskId, prop, toUpdate);
     },
     onDrop({ addedIndex, removedIndex }) {

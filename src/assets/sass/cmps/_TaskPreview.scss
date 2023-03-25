@@ -11,12 +11,18 @@
     display:flex;
     justify-content: start;
   }
+  &:has(.task-title) {
+    left: 79px;
+  }
+  &:has(.task-checkbox) {
+    left: 46px;
+  }
 
   &:nth-child(3) {
     padding: 6px;
   }
 
-  > *:not(.pulse-bubble,.task-title) {
+  > *:not(.pulse-bubble,.task-title,.task-action-bar-container) {
     font-size: em(14px);
     margin: 0;
     display: flex;
