@@ -108,7 +108,7 @@
         "tasks": [
           {
             "id": "t101",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Design the landing page",
             "person": [
               {
@@ -127,7 +127,7 @@
           },
           {
             "id": "t102",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Develop a user dashboard",
             "person": [
               {
@@ -152,7 +152,7 @@
           },
           {
             "id": "t103",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Implement dark mode",
             "person": [
               {
@@ -171,7 +171,7 @@
           },
           {
             "id": "t104",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Add data visualization",
             "person": [
               {
@@ -190,7 +190,7 @@
           },
           {
             "id": "t105",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Implement layout",
             "person": [
               {
@@ -215,7 +215,7 @@
           },
           {
             "id": "t106",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Improve form styling",
             "person": [
               {
@@ -253,7 +253,7 @@
         "tasks": [
           {
             "id": "t201",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Fix broken authentication",
             "person": [
               {
@@ -278,7 +278,7 @@
           },
           {
             "id": "t202",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Resolve slow API response times",
             "person": [
               {
@@ -303,7 +303,7 @@
           },
           {
             "id": "t203",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Fix incorrect API endpoint behavior",
             "person": [
               {
@@ -322,7 +322,7 @@
           },
           {
             "id": "t204",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Resolve data inconsistencies",
             "person": [
               {
@@ -341,7 +341,7 @@
           },
           {
             "id": "t205",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Fix database connection issue",
             "person": [],
             "date": 1660854000000,
@@ -360,7 +360,7 @@
         "tasks": [
           {
             "id": "t301",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Fix login error",
             "person": [
                {
@@ -385,7 +385,7 @@
           },
           {
             "id": "t302",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Resolve broken image links",
             "person": [
                 {
@@ -410,7 +410,7 @@
           },
           {
             "id": "t303",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Address 404 error on the \"About Us\" page",
             "person": [
               {
@@ -435,7 +435,7 @@
           },
           {
             "id": "t304",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Fix duplicate entries in the database",
             "person": [
               {
@@ -454,7 +454,7 @@
           },
           {
             "id": "t305",
-            "checkbox": "null",
+            "checkbox": false,
             "taskTitle": "Resolve unexpected logouts",
             "person": [
               {
