@@ -1,21 +1,4 @@
 .board-header {
-<<<<<<< HEAD
-  padding: $padding-medium 30px 0 38px;
-  height: 193px; 
- 
- 
-
- 
-  .router-link-active {
-    border-bottom: 2px solid $primary-color;
-  
-
-  &-title {
-    height: 20px;
-
-    .router-link-active {
-      border-bottom: 2px solid $primary-color;
-=======
   padding: 8px 30px 0 38px;
   height: 193px;
   display: flex;
@@ -27,7 +10,6 @@
     .desc {
       font-size: rem(14px);
       color: $color-asphalt;
->>>>>>> abbbfbc84b8e6b6171902f4777100505f999259b
     }
   }
   .board-header-top-wrapper {
@@ -129,4 +111,4 @@
       }
     }
   }
-} }
+} 
