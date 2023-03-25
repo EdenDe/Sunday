@@ -10,7 +10,7 @@
       :info="task[cmp]"
       :taskId="task.id"
       @updateProp="updateProp"
-      @toggleActionBar="toggleActionBar"
+      @toggleTask="toggleTask"
     />
     <div class="pulse-bubble" v-if="cmp === 'taskTitle'">
       <RouterLink
