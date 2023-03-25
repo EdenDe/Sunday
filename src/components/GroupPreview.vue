@@ -1,7 +1,15 @@
 <template>
   <section class="group-preview">
     <div class="grid-title flex align-items">
-      <div class="svg-wrapper"></div>
+      <div class="svg-wrapper">
+        <span
+          class="dots-icon"
+          v-icon="'threeDots'"
+          @click="toggleGroupActions"
+          :class="{ active: isGroupActionsOpen }"
+        ></span>
+        <GroupActions v-if="isGroupActionsOpen" />
+      </div>
       <div class="group-title-wrapper flex align-center">
         <span
           contenteditable
@@ -72,8 +80,10 @@ import TaskList from './TaskList.vue'
 import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
 import TaskActionBar from './TaskActionBar.vue'
+import GroupActions from './GroupActions.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
+import { boardService } from '../services/board.service'
 
 export default {
   name: 'GroupPreview',
@@ -84,9 +94,7 @@ export default {
     return {
       isActionBarOpen: false,
       selectedTasks: [],
-      newTask: {
-        taskTitle: '',
-      },
+      newTask: boardService.getEmptyTask(),
       groupCheckbox: false,
     }
   },
@@ -102,9 +110,10 @@ export default {
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
-      this.newTask.id = utilService.makeId()
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
+
+      this.newTask.id = utilService.makeId()
       this.newTask.taskTitle = ''
     },
     removeTasks() {
@@ -207,6 +216,7 @@ export default {
     Draggable,
     Checkbox,
     TaskActionBar,
+    GroupActions,
   },
 }
 </script>
