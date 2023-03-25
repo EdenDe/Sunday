@@ -2,15 +2,25 @@
   <section class="progress-bar justify-center" v-if="tasks">
     <div v-for="value in Array(2).fill(null)"></div>
     <div v-for="(item, idx) in cmpOrder" :key="idx">
-      <div v-if="item === 'status' || item === 'priority'" class="flex progress-container" :class="item">
-        <div v-for="label in groupStatusProgress(item)" :style="{
-          flex: 1,
-          'flex-basis': label.width,
-          backgroundColor: label.color,
-        }"></div>
+      <div
+        v-if="item.name === 'status' || item.name === 'priority'"
+        class="flex progress-container"
+        :class="item"
+      >
+        <div
+          v-for="label in groupStatusProgress(item.name)"
+          :style="{
+            flex: 1,
+            'flex-basis': label.width,
+            backgroundColor: label.color,
+          }"
+        ></div>
       </div>
-      <div v-else-if="item === 'timeline'" class="flex timeline-display">
-        <label :data-diff="groupTimelineProgressRange" class="timeline-label active-timeline">
+      <div v-else-if="item.name === 'timeline'" class="flex timeline-display">
+        <label
+          :data-diff="groupTimelineProgressRange"
+          class="timeline-label active-timeline"
+        >
           {{ groupTimelineProgressDates }}
         </label>
       </div>
@@ -38,12 +48,12 @@ export default {
         this.setProgressTimeline()
       },
       deep: true,
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     setProgressTimeline() {
-      const timestamps = this.tasks.map(task => [...task['timeline']]).flat()
+      const timestamps = this.tasks.map((task) => [...task['timeline']]).flat()
       if (!timestamps.length) return
 
       let minTimestamp = Math.min(...timestamps)
@@ -75,8 +85,9 @@ export default {
             res[title] = {
               width: Math.round(presentageWidth) + '%',
               color: color,
-              title: `${title} ${res[title]
-                }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+              title: `${title} ${
+                res[title]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
             }
           }
         })
