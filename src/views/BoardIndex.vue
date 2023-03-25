@@ -44,8 +44,8 @@ export default {
     },
 
     updateParams() {
-      const boardId = this.$store.getters.currBoardId
-      this.$router.push({ params: { boardId: boardId } })
+      const board = this.$store.getters.currBoard
+      this.$router.push({ params: { boardId: board._id } })
     },
 
     updateBoard(prop, toUpdate) {
