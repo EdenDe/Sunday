@@ -8,7 +8,7 @@ import { RouterView } from "vue-router";
 
 export default {
   created() {
-    this.$store.dispatch({ type: "loadBoards" });
+    this.$store.dispatch({ type: "loadBoards" })
   },
 };
 </script>
