@@ -16,7 +16,10 @@
           </div>
         </RouterLink>
         <RouterLink :to="'/board/' + currBoard._id + '/kanban'">
-          <div class="btn btn-container grid grid-col">
+          <div
+            class="btn btn-container grid grid-col"
+            :class="{ 'is-active': $route.params.kanban }"
+          >
             <span>Kanban</span>
           </div>
         </RouterLink>

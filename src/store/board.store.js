@@ -18,15 +18,13 @@ export const boardStore = {
 			state.currBoard = board
 		},
 		updateBoard(state, { board }) {
-			const idx = state.boards.findIndex(t => t._id === board._id)
+			const idx = state.boards.findIndex((t) => t._id === board._id)
 			state.boards.splice(idx, 1, board)
 
 			state.currBoard = state.boards[idx]
 		},
 		remove(state, { boardId }) {
-			state.boards = state.boards.filter(
-				board => board._id !== boardId
-			)
+			state.boards = state.boards.filter((board) => board._id !== boardId)
 		},
 		savePrevBoard(state) {
 			state.savePrevBoard = state.currBoard
@@ -37,7 +35,7 @@ export const boardStore = {
 	},
 	getters: {
 		boardsToDisplay({ boards }) {
-			return boards.map(({ _id, title }) => ({ _id, title }))
+			return boards.map(({ _id, title }) => ({ _id, title }));
 		},
 		currBoard({ currBoard }) {
 			return currBoard
@@ -60,6 +58,7 @@ export const boardStore = {
 			try {
 				const boards = await boardService.query(filterBy)
 				commit({ type: 'setBoards', boards })
+				commit({ type: 'setBoard', board: boards[0] })
 			} catch (err) {
 				console.log(err)
 			}
@@ -110,13 +109,7 @@ export const boardStore = {
 			{ groupId, taskId, prop, toUpdate }
 		) {
 			commit({ type: 'savePrevBoard' })
-			dispatch({
-				type: 'updateActivity',
-				groupId,
-				taskId,
-				prop,
-				toUpdate,
-			})
+			dispatch({ type: 'updateActivity', groupId, taskId, prop, toUpdate })
 
 			var updatedBoard = boardService.updateBoard(
 				state.currBoard,

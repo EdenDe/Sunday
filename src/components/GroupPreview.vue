@@ -82,7 +82,7 @@ export default {
       this.updateProp(null, 'tasks', this.group.tasks)
     },
     toggleSelectGroup(prop, value) {
-      this.group.tasks.forEach(task => this.updateProp(task.id, prop, value))
+      this.group.tasks.forEach((task) => this.updateProp(task.id, prop, value))
     },
     copyTasks() {
       const tasks = []
@@ -100,7 +100,7 @@ export default {
     },
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
-    }
+    },
   },
   computed: {
     labels() {
@@ -151,18 +151,21 @@ export default {
   watch: {
     group: {
       handler() {
-        this.selectedTasks = this.group.tasks.filter(t => t.checkbox).map(t => t.id)
+        this.selectedTasks = this.group.tasks
+          .filter((t) => t.checkbox)
+          .map((t) => t.id)
         if (!this.selectedTasks.length) {
           this.isActionBarOpen = false
           this.groupCheckbox = false
         } else {
           this.isActionBarOpen = true
-          this.groupCheckbox = this.group.tasks.length === this.selectedTasks.length
+          this.groupCheckbox =
+            this.group.tasks.length === this.selectedTasks.length
         }
       },
       immediate: true,
-      deep: true
-    }
+      deep: true,
+    },
   },
   components: {
     TaskList,
