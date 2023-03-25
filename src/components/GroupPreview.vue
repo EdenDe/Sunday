@@ -12,7 +12,7 @@
           {{ group.title }}
         </span>
         <span class="tasks-num flex align-items justify-start"
-          >{{ group.tasks.length }} Tasks</span
+          >{{ tasksNumber }} Tasks</span
         >
       </div>
     </div>
@@ -147,6 +147,10 @@ export default {
       })
 
       return res
+    },
+    tasksNumber() {
+      if (this.group.tasks?.length) return this.group.tasks.length
+      else return 'No '
     },
   },
   watch: {

@@ -20,7 +20,7 @@
 export default {
   name: 'TaskActionBar',
   props: { selectedTasksNum: Number },
-  emits: ['remove'],
+  emits: ['remove', 'closeActionBar'],
   computed: {},
 }
 </script>
