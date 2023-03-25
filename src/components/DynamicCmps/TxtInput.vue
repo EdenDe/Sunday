@@ -1,11 +1,6 @@
 <template>
   <section class="task-txt">
-    <span
-      contenteditable
-      @focusin="onFocusIn"
-      @focusout="onFocusout($event.target.innerText)"
-      >{{ displayedTxt }}</span
-    >
+    <span contenteditable @focusin="onFocusIn" @focusout="onFocusout($event.target.innerText)">{{ displayedTxt }}</span>
   </section>
 </template>
 
@@ -13,7 +8,7 @@
 export default {
   name: 'TextInput',
   props: {
-    info: String,
+    info: String || null,
   },
   emits: ['updateProp'],
   data() {
@@ -37,6 +32,7 @@ export default {
       this.isFocused = true
     },
     getShortTxt() {
+      if (!this.txt) return
       let shortTxt = this.txt.split('')
       if (shortTxt.length > 33) {
         shortTxt = shortTxt.splice(0, 33).join('')

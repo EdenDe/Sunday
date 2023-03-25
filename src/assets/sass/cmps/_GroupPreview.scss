@@ -1,6 +1,7 @@
 .group-preview {
   margin-top: rem(2px);
   margin-bottom: em(30px);
+  font-size: 14px;
   .grid-title {
     @include task-cols;
 

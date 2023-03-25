@@ -13,6 +13,7 @@ export const boardService = {
   updateBoard,
   getEmptyBoard,
   getEmptyGroup,
+  getEmptyTask,
 }
 
 window.boardService = boardService
@@ -60,10 +61,24 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 
 function getEmptyGroup() {
   return {
-    id: utilService.makeId(),
+    id: 'g' + utilService.makeId(),
     title: 'New Group',
     color: utilService.getRandomColor(),
     tasks: [],
+  }
+}
+
+function getEmptyTask() {
+  return {
+    id: 't' + utilService.makeId(),
+    checkbox: false,
+    person: [],
+    taskTitle: '',
+    date: 1661113200000,
+    status: '',
+    timeline: [],
+    txt: '',
+    priority: '',
   }
 }
 
@@ -159,44 +174,44 @@ function getEmptyBoard() {
     ],
     groups: [
       {
-        id: utilService.makeId(),
+        id: 'g' + utilService.makeId(),
         title: 'My first group',
         color: '#e2445c',
         tasks: [
           {
-            id: utilService.makeId(),
+            id: 't' + utilService.makeId(),
             checkbox: false,
             taskTitle: 'Task 1',
             person: [],
             date: 1661113200000,
             status: '',
+            timeline: [],
+            txt: '',
             priority: '',
           },
           {
-            id: utilService.makeId(),
+            id: 't' + utilService.makeId(),
             checkbox: false,
             taskTitle: 'Task 2',
             person: [],
             date: 1661372400000,
             status: '',
+            timeline: [],
+            txt: '',
             priority: '',
           },
           {
-            id: utilService.makeId(),
+            id: 't' + utilService.makeId(),
             checkbox: false,
             taskTitle: 'Task 3',
             person: [],
             date: 1661631600000,
             status: '',
+            timeline: [],
+            txt: '',
             priority: '',
           },
         ],
-        date: 1661631600000,
-        timeline: [],
-        text: '',
-        file: '',
-        status: '',
-        priority: '',
       },
     ],
     activities: [],

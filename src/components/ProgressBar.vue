@@ -54,7 +54,7 @@ export default {
   methods: {
     setProgressTimeline() {
       const timestamps = this.tasks.map((task) => [...task['timeline']]).flat()
-      if (!timestamps.length) return
+      if (!timestamps?.length) return
 
       let minTimestamp = Math.min(...timestamps)
       let maxTimestamp = Math.max(...timestamps)
@@ -76,7 +76,7 @@ export default {
         let labels =
           item === 'status' ? [...this.statusLabels] : [...this.priorityLabels]
 
-        let totalTaskLength = this.tasks.length
+        let totalTaskLength = this.tasks?.length
 
         labels.forEach(({ title, color }) => {
           if (res[title]) {

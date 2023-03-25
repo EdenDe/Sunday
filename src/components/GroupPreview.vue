@@ -82,6 +82,7 @@ import TaskActionBar from './TaskActionBar.vue'
 import GroupActions from './GroupActions.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
+import { boardService } from '../services/board.service'
 
 export default {
   name: 'GroupPreview',
@@ -92,21 +93,12 @@ export default {
     return {
       isActionBarOpen: false,
       selectedTasks: [],
-      newTask: {
-        taskTitle: '',
-      },
+      newTask: boardService.getEmptyTask(),
       groupCheckbox: false,
-      isGroupActionsOpen: false,
     }
   },
   methods: {
-    onAddTask(txt) {
-      this.updateProp(null, 'title', txt)
-    },
     updateProp(taskId, prop, toUpdate) {
-      if (prop === 'checkbox') {
-        this.onToggleCheckbox(taskId, toUpdate)
-      }
       this.$store.dispatch({
         type: 'updateCurrBoard',
         groupId: this.group.id,
@@ -119,37 +111,35 @@ export default {
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
+
+      this.newTask.id = utilService.makeId()
       this.newTask.taskTitle = ''
-    },
-    onToggleCheckbox(taskId, isChecked) {
-      if (isChecked) this.selectedTasks.push(taskId)
-      else this.selectedTasks = this.selectedTasks.filter((t) => t !== taskId)
     },
     removeTasks() {
       this.group.tasks = this.group.tasks.filter(
         (t) => !this.selectedTasks.includes(t.id)
       )
-      console.log(this.group.tasks)
       this.updateProp(null, 'tasks', this.group.tasks)
     },
     toggleSelectGroup(prop, value) {
       this.group.tasks.forEach((task) => this.updateProp(task.id, prop, value))
     },
     copyTasks() {
-      const tasks = this.group.tasks.filter((task) => {
+      const tasks = []
+      this.group.tasks.forEach((task) => {
         if (this.selectedTasks.includes(task.id)) {
-          task.id = utilService.makeId()
+          let newTask = { ...task }
+          newTask.id = utilService.makeId()
+          tasks.push(newTask)
         }
       })
+
       this.group.tasks.push(...tasks)
       this.updateProp(null, 'tasks', this.group.tasks)
       this.closeActionBar()
     },
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
-    },
-    toggleGroupActions() {
-      this.isGroupActionsOpen = !this.isGroupActionsOpen
     },
   },
   computed: {
@@ -158,6 +148,7 @@ export default {
       labels.push(
         ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
       )
+
       return labels.map((label) => {
         if (label === 'taskTitle') label = 'task'
         if (label === 'txt') label = 'text'
