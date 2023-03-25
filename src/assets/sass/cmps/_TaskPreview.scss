@@ -7,6 +7,12 @@
   &:has(.task-txt, .task-title) {
     overflow: hidden;
   }
+  &:has(.task-title) {
+    left: 79px;
+  }
+  &:has(.task-checkbox) {
+    left: 46px;
+  }
 
   &:nth-child(3) {
     padding: 6px;

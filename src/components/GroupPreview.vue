@@ -146,7 +146,7 @@ export default {
   },
   watch: {
     group() {
-      console.log(this.group);
+      // console.log(this.group);
     },
   },
   components: {
