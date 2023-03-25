@@ -3,13 +3,22 @@
   position: absolute;
   top:35px;
   left: 20px;
-  height: 435px;
+  height: 230px;
   width: 264px;
+  padding: $padding-small;
   background-color: $color-snow_white;
   box-shadow: $box-shadow-large;
   border-radius: $border-radius-rounder;
 
   .group-action{
-    
+    padding: 4px $padding-small;
+    font-size: rem(14px);
+    &>:first-child{
+      margin-inline-end: $margin-small;
+    }
+    &:hover{
+      background-color: $primary-background-hover-color;
+      border-radius: $btn-border-radius;
+    }
   }
 }
