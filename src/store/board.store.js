@@ -20,6 +20,7 @@ export const boardStore = {
 		updateBoard(state, { board }) {
 			const idx = state.boards.findIndex(t => t._id === board._id)
 			state.boards.splice(idx, 1, board)
+
 			state.currBoard = state.boards[idx]
 		},
 		remove(state, { boardId }) {
@@ -53,9 +54,6 @@ export const boardStore = {
 		priorityLabels({ currBoard }) {
 			return currBoard.priorityLabels
 		},
-		currBoardId({ currBoard }) {
-			return currBoard._id
-		},
 	},
 	actions: {
 		async loadBoards({ commit }, { filterBy = {} }) {
@@ -66,9 +64,12 @@ export const boardStore = {
 				console.log(err)
 			}
 		},
-		async loadBoard({ commit }, { boardId }) {
+		async loadBoard({ state, commit }, { boardId }) {
 			const board = await boardService.getById(boardId)
-			commit({ type: 'setBoard', board })
+			//const board = state.boards.find(board => board._id === boardId)
+			if (board) {
+				commit({ type: 'setBoard', board })
+			}
 		},
 		async remove({ commit }, { boardId }) {
 			try {
@@ -90,7 +91,10 @@ export const boardStore = {
 				console.log(err)
 			}
 		},
-		async updateActivity({ commit }, { groupId, taskId, prop, toUpdate }) {
+		async updateActivity(
+			{ commit },
+			{ groupId, taskId, prop, toUpdate }
+		) {
 			// console.log({ groupId, taskId, prop, toUpdate })
 			// const activity = {
 			// 	id: utilService.makeId(),

@@ -16,7 +16,6 @@
       { "name": "status", "width": "80px" },
       { "name": "priority", "width": "80px" },
       { "name": "date", "width": "120px" },
-      { "name": "timeline", "width": "1fr" },
       { "name": "txt", "width": "1fr" },
       { "name": "file", "width": "80px" }
     ],

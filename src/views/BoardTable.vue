@@ -1,10 +1,6 @@
 <template>
   <div class="board-table">
-    <GroupList
-      @on-add-group="onAddGroup"
-      :groups="groups"
-      @onDrop="onDrop"
-    ></GroupList>
+    <GroupList @on-add-group="onAddGroup" :groups="groups" @onDrop="onDrop"></GroupList>
   </div>
   <RouterView />
 </template>
@@ -13,7 +9,7 @@ import GroupList from '../components/GroupList.vue'
 export default {
   computed: {
     groups() {
-      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard))
+      const board = JSON.parse(JSON.stringify(this.$store.getters.currBoard || {}))
       return board.groups
     },
   },

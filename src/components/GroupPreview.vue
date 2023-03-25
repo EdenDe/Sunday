@@ -79,7 +79,6 @@ export default {
       this.group.tasks = this.group.tasks.filter(
         (t) => !this.selectedTasks.includes(t.id)
       )
-      console.log(this.group.tasks)
       this.updateProp(null, 'tasks', this.group.tasks)
     },
     toggleSelectGroup(prop, value) {
@@ -109,6 +108,7 @@ export default {
       labels.push(
         ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
       )
+
       return labels.map((label) => {
         if (label === 'taskTitle') label = 'task'
         if (label === 'txt') label = 'text'
@@ -152,7 +152,6 @@ export default {
     group: {
       handler() {
         this.selectedTasks = this.group.tasks.filter(t => t.checkbox).map(t => t.id)
-        console.log('yoyo', this.selectedTasks)
         if (!this.selectedTasks.length) {
           this.isActionBarOpen = false
           this.groupCheckbox = false
