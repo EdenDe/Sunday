@@ -30,10 +30,9 @@
       }
       &.active-timeline {
         position: relative;
-        background-color: $color-timeline-active;
         &:hover {
-          background-color: $color-timeline-active-hover;
-          color: $color-timeline-active-hover;
+          filter: brightness(1.2);
+          color: transparent;
           &::after {
             position: absolute;
             left: 50%;

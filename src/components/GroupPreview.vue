@@ -22,6 +22,7 @@
         :key="label"
         class="group-label"
         :class="label"
+        :groupColor="group.color"
       >
         <div
           v-if="index === 1"
@@ -55,7 +56,7 @@
         />
       </form>
     </div>
-    <ProgressBar :tasks="group.tasks" />
+    <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
     <TaskActionBar
       v-if="isActionBarOpen"
       :selectedTasksNum="selectedTasksNum"

@@ -1,9 +1,17 @@
 <template>
-  <div :style="{ backgroundColor: status.color }" class="status flex justify-center align-center"
-    @click="toggleColorPicker">
+  <div
+    :style="{ backgroundColor: status.color, fontSize: '14px' }"
+    class="status flex justify-center align-center"
+    @click="toggleColorPicker"
+  >
     {{ status.title }}
 
-    <LabelPicker v-clickOutside="toggleColorPicker" v-if="isPickerOpen" :labels="statusList" @setLabel="setLabel">
+    <LabelPicker
+      v-clickOutside="toggleColorPicker"
+      v-if="isPickerOpen"
+      :labels="statusList"
+      @setLabel="setLabel"
+    >
     </LabelPicker>
   </div>
 </template>
@@ -28,7 +36,7 @@ export default {
   watch: {
     info() {
       this.setLabels()
-    }
+    },
   },
   methods: {
     toggleColorPicker() {
@@ -44,7 +52,7 @@ export default {
       if (!this.status) {
         this.status = labels[5]
       }
-    }
+    },
   },
   computed: {
     statusList() {

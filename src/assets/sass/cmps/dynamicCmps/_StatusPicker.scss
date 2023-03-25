@@ -2,7 +2,6 @@
   position: relative;
   .label-picker-container {
     @include label-picker-container;
-
     .color-picker-label {
       @include color-picker-label;
     }
