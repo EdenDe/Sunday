@@ -18,7 +18,7 @@
     padding: 6px;
   }
 
-  > * {
+  > *:not(.task-action-bar-container) {
     font-size: em(14px);
     margin: 0;
     display: flex;

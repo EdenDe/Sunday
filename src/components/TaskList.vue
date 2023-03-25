@@ -10,7 +10,11 @@
         class="first-col-color sticky"
         :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
       ></div>
-      <TaskPreview :task="task" @updateProp="updateProp" />
+      <TaskPreview
+        :task="task"
+        @updateProp="updateProp"
+        @removeTask="removeTask"
+      />
     </Draggable>
   </Container>
 </template>
