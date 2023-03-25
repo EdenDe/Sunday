@@ -1,4 +1,4 @@
-.task-pulse{
+.task-pulse {
   z-index: 2023;
   position: fixed;
   right: 0;
@@ -8,96 +8,92 @@
   box-shadow: $box-shadow-large;
   background-color: $color-snow_white;
   overflow-y: auto;
- 
-  header{
-    gap:5px;
+
+  header {
+    gap: 5px;
     border-bottom: 0.5px solid $workspace-side-nav;
     padding: em(14px) em(14px) 0;
 
-    .btn{
+    .btn {
       @include btn(transparent);
       @include flex-center;
       width: 100%;
-      height:em(32px);
+      height: em(32px);
       &-close {
-          padding: 0;
-          height: em(24px);
-          width: em(24px);
-        }
+        padding: 0;
+        height: em(24px);
+        width: em(24px);
+      }
     }
 
-    .task-title{
+    .task-title {
       @include editableSpan;
-      font-size:em(18px);
-      font-family: $figtree-bold;
+      font-family: $figtree-regular;
       line-height: lh(22.5px);
-      color:$color-mud_black
+      color: $color-mud_black;
     }
 
-    .tabs-wrapper{
+    .tabs-wrapper {
       margin-inline-start: em(8px);
-      .task-update-icon{
+      .task-update-icon {
         padding-inline-end: em(4px);
       }
-      .btn-tab-wrapper{
+      .btn-tab-wrapper {
         border-bottom: 2px solid transparent;
       }
 
-      .border{
-        width:1px;
-        height:15px;
+      .border {
+        width: 1px;
+        height: 15px;
         background-color: $layout-border-color;
-        padding:0;
+        padding: 0;
       }
 
-      &:has(.btn-tab:hover) .border{
+      &:has(.btn-tab:hover) .border {
         opacity: 0;
       }
 
-      .btn-tab-wrapper.active-tab{
+      .btn-tab-wrapper.active-tab {
         border-color: $primary-on-secondary-color;
       }
-    
     }
   }
 
-  .content-wrapper{
+  .content-wrapper {
     padding: em(20px) em(26px) em(20px);
 
-    .update-log{
-      gap:em(5px);
+    .update-log {
+      gap: em(5px);
 
-      .btn-update{
+      .btn-update {
         @include btn;
         @include btn-blue;
         border-radius: $btn-border-radius;
         justify-self: end;
       }
-      
-    .textarea-update-log{
-      width: 100%;
-      border-radius: $border-radius-rounder;
-      border: 1px solid $color-link_color;
-      line-height: normal;
-      padding: em(10px) em(20px);
-      font-size: em(16px);
-      resize: none;
 
-      &:not(:focus):hover{
-        background-color: $color-ui_grey;
-      }
+      .textarea-update-log {
+        width: 100%;
+        border-radius: $border-radius-rounder;
+        border: 1px solid $color-link_color;
+        line-height: normal;
+        padding: em(10px) em(20px);
+        font-size: em(16px);
+        resize: none;
 
-      &:focus{
-        outline:none;
-      }
+        &:not(:focus):hover {
+          background-color: $color-ui_grey;
+        }
+
+        &:focus {
+          outline: none;
+        }
       }
     }
-   }
-  
-  img{
+  }
+
+  img {
     width: em(300px);
     margin-top: auto;
   }
-
 }
-

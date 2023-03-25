@@ -1,10 +1,10 @@
 <template>
-  <section class="board-header">
-    <div class="tool-bar grid">
-      <div class="board-header-top-wrapper grid grid-col">
+  <section class="board-header flex-col align-start">
+    <div class="board-header-wrapper flex-col align-start">
+      <div class="board-header-top-wrapper flex align-center">
         <h2
           contenteditable
-          class="board-header-title"
+          class="board-title"
           @focusout="onChangeTitle($event.target.innerText)"
         >
           {{ currBoard.title }}
@@ -17,12 +17,9 @@
         </div>
       </div>
       <div class="desc-wrapper">
-        <p class="desc">
-          Sunday app is a project <br />
-          management and team collaboration...
-        </p>
+        <p class="desc">Sunday app is a project management...</p>
       </div>
-      <nav class="nav-bar grid grid-col">
+      <nav class="nav-bar flex align-start">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
           <div class="btn btn-container grid grid-col">
             <i class="task-filter-icon" v-icon="'homeHeader'"></i>
