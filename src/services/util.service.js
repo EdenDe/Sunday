@@ -9,6 +9,7 @@ export const utilService = {
 	formatDateRange,
 	getDaysBetween,
 	getRandomColor,
+	getDaysBetweenNumber,
 }
 
 function makeId(length = 6) {
@@ -88,6 +89,13 @@ function getDaysBetween(timestamps) {
 	const diffTime = Math.abs(endTimestamp - startTimestamp)
 	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 	return `${diffDays}d`
+}
+
+function getDaysBetweenNumber(timestamps) {
+	const [startTimestamp, endTimestamp] = timestamps
+	const diffTime = endTimestamp - startTimestamp
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+	return diffDays
 }
 
 function randomPastTime() {
