@@ -1,16 +1,10 @@
 <template>
-  <section
-    class="task-preview grid"
-    :class="{ sticky: cmp === 'taskTitle' || cmp === 'checkbox' }"
-    v-for="(cmp, idx) in cmpOrder"
-    :key="idx"
-  >
-    <component
-      :is="cmp"
-      :info="task[cmp]"
-      :taskId="task.id"
-      @updateProp="updateProp"
-    />
+  <section class="task-preview" :class="{ sticky: cmp === 'taskTitle' || cmp === 'checkbox' }"
+    v-for="(cmp, idx) in cmpOrder" :key="idx">
+    <component :is="cmp" :info="task[cmp]" :taskId="task.id" @updateProp="updateProp" />
+    <div class="pulse-bubble" v-if="cmp === 'taskTitle'">
+      <RouterLink :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`" v-icon="'pulseBubble'"></RouterLink>
+    </div>
   </section>
 </template>
 
