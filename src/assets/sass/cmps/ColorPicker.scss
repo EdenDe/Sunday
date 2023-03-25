@@ -1,9 +1,23 @@
 .color-picker{
   border: 1px solid;
   border-color: $ui-border-color;
-  position: relative;
+  position: absolute;
   padding: 5px;
   background-color: $secondary-background-color;
   width: 142px;
   line-height: 0px;
+  border-radius: $border-radius;
+  top: 0;
+  z-index: 500000000000000000000000000000;
+  //transform: translateY(50px);
+
+  .color-picker-colors{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: em(3px);
+    border:none;
+  }
 }
