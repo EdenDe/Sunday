@@ -17,7 +17,12 @@
       </div>
     </div>
     <Container class="group-labels">
-      <Draggable v-for="(label, index) in labels" :key="label">
+      <Draggable
+        v-for="(label, index) in labels"
+        :key="label"
+        class="group-label"
+        :class="label"
+      >
         <div
           v-if="index === 1"
           class="first-col-color"
