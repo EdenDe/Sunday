@@ -42,6 +42,7 @@ import ProgressBar from './ProgressBar.vue'
 import TaskActionBar from './TaskActionBar.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
+import { boardService } from '../services/board.service'
 
 export default {
   name: 'GroupPreview',
@@ -52,9 +53,7 @@ export default {
     return {
       isActionBarOpen: false,
       selectedTasks: [],
-      newTask: {
-        taskTitle: '',
-      },
+      newTask: boardService.getEmptyTask(),
       groupCheckbox: false
     }
   },
@@ -70,9 +69,10 @@ export default {
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
-      this.newTask.id = utilService.makeId()
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
+
+      this.newTask.id = utilService.makeId()
       this.newTask.taskTitle = ''
     },
     removeTasks() {

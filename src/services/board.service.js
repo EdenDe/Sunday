@@ -13,12 +13,13 @@ export const boardService = {
 	updateBoard,
 	getEmptyBoard,
 	getEmptyGroup,
+	getEmptyTask,
 }
 
 window.boardService = boardService
 
 async function query() {
-	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -60,10 +61,24 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 
 function getEmptyGroup() {
 	return {
-		id: utilService.makeId(),
+		id: 'g' + utilService.makeId(),
 		title: 'New Group',
 		color: utilService.getRandomColor(),
 		tasks: [],
+	}
+}
+
+function getEmptyTask() {
+	return {
+		id: 't' + utilService.makeId(),
+		checkbox: false,
+		person: [],
+		taskTitle: '',
+		date: 1661113200000,
+		status: '',
+		timeline: [],
+		txt: '',
+		priority: '',
 	}
 }
 
