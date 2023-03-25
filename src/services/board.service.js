@@ -18,8 +18,8 @@ export const boardService = {
 window.boardService = boardService
 
 async function query() {
-	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-	return storageService.query(STORAGE_KEY)
+  // localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+  return storageService.query(STORAGE_KEY)
 }
 
 function getById(boardId) {
@@ -150,7 +150,7 @@ function getEmptyBoard() {
     ],
     members: [
       {
-        id: u101,
+        id: 'u101',
         fullname: 'Lior Doron',
         imgUrl:
           'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
@@ -164,7 +164,7 @@ function getEmptyBoard() {
         tasks: [
           {
             id: utilService.makeId(),
-            checkbox: 'null',
+            checkbox: false,
             taskTitle: 'Task 1',
             person: [],
             date: 1661113200000,
@@ -173,7 +173,7 @@ function getEmptyBoard() {
           },
           {
             id: utilService.makeId(),
-            checkbox: 'null',
+            checkbox: false,
             taskTitle: 'Task 2',
             person: [],
             date: 1661372400000,
@@ -182,7 +182,7 @@ function getEmptyBoard() {
           },
           {
             id: utilService.makeId(),
-            checkbox: 'null',
+            checkbox: false,
             taskTitle: 'Task 3',
             person: [],
             date: 1661631600000,

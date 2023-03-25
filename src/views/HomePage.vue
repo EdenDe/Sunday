@@ -36,10 +36,12 @@ export default {
   components: {
     AppHeader,
   },
+
   computed: {
     firstBoardId() {
       const board = this.$store.getters.currBoard;
       if (board) return board._id;
+      //changetothefirst
     },
   },
 };

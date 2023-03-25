@@ -64,7 +64,7 @@
         class="list-item flex justify-between align-center"
         :class="{ 'is-active': board._id === $route.params.boardId }"
         :id="board._id"
-        @click="onPickBoard(board._id)"
+        @click="onSetBoard(board._id)"
       >
         <section class="board-name flex align-center">
           <i v-icon="'workspaceBoard'"></i>
@@ -93,8 +93,8 @@ export default {
     onAddBoard() {
       this.$emit('addBoard')
     },
-    onChangeBoard(boardId) {
-      this.$emit('changeBoard', boardId)
+    onSetBoard(boardId) {
+      this.$emit('setBoard', boardId)
     },
   },
   computed: {
