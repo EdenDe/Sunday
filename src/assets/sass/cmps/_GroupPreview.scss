@@ -30,7 +30,7 @@
     }
     .open-list {
       grid-column: 3;
-      background-color: red;
+      @include flex-center;
     }
     .group-title-wrapper {
       position: sticky;
