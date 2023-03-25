@@ -27,7 +27,6 @@ export default {
   methods: {
     toggleCheckbox() {
       this.$emit('updateProp', 'checkbox', this.isChecked)
-      //this.$emit('toggleCheckbox', this.isChecked)
     },
   },
 }

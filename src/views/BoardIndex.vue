@@ -14,40 +14,34 @@ import AppSideNav from '@/components/AppSidenav.vue'
 import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
 import BoardHeader from '../components/BoardHeader.vue'
 import { boardService } from '../services/board.service.js'
+
 export default {
+  created() {
+    this.loadBoard(this.$route.params.boardId)
+  },
   watch: {
-    '$route.params.boardId': {
+    currBoardId: {
       handler() {
-        this.loadBoard(this.$route.params.boardId)
-      },
-      immediate: true,
+        this.$router.push({ params: { boardId: this.currBoardId } })
+      }
     },
   },
-  components: {
-    AppSideNav,
-    WorkspaceSideNav,
-    BoardHeader,
+  computed: {
+    currBoardId() {
+      return this.$store.getters.currBoard._id
+    }
   },
   methods: {
-    async addBoard() {
+    addBoard() {
       const newBoard = boardService.getEmptyBoard()
-      await this.$store.dispatch({
+      this.$store.dispatch({
         type: 'saveBoard',
         board: newBoard,
       })
-      this.updateParams()
     },
-
-    async loadBoard(boardId) {
-      await this.$store.dispatch({ type: 'loadBoard', boardId })
-      this.updateParams()
+    loadBoard(boardId) {
+      this.$store.dispatch({ type: 'loadBoard', boardId })
     },
-
-    updateParams() {
-      const board = this.$store.getters.currBoard
-      this.$router.push({ params: { boardId: board._id } })
-    },
-
     updateBoard(prop, toUpdate) {
       this.$store.dispatch({
         type: 'updateCurrBoard',
@@ -57,6 +51,11 @@ export default {
         toUpdate,
       })
     },
+  },
+  components: {
+    AppSideNav,
+    WorkspaceSideNav,
+    BoardHeader,
   },
 }
 </script>
