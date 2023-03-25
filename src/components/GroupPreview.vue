@@ -10,6 +10,14 @@
         ></span>
         <GroupActions v-if="isGroupActionsOpen" />
       </div>
+      <div class="open-list">
+        <i
+          class="open-list-icon"
+          v-icon="'arrowDownGroup'"
+          @click="toggleOpenList"
+          :class="{ active: isGroupActionsOpen }"
+        ></i>
+      </div>
       <div class="group-title-wrapper flex align-center">
         <span
           contenteditable
@@ -30,6 +38,7 @@
         :key="label"
         class="group-label"
         :class="label"
+        :groupColor="group.color"
       >
         <div
           v-if="index === 1"
@@ -44,6 +53,7 @@
     </Container>
 
     <TaskList
+      v-if="isListOpen"
       :tasks="group.tasks"
       :groupBgColor="group.color"
       @updateProp="updateProp"
@@ -63,7 +73,7 @@
         />
       </form>
     </div>
-    <ProgressBar :tasks="group.tasks" />
+    <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
     <TaskActionBar
       v-if="isActionBarOpen"
       :selectedTasksNum="selectedTasksNum"
@@ -95,6 +105,7 @@ export default {
       selectedTasks: [],
       newTask: boardService.getEmptyTask(),
       groupCheckbox: false,
+      isListOpen: true,
     }
   },
   methods: {
@@ -123,6 +134,9 @@ export default {
     },
     toggleSelectGroup(prop, value) {
       this.group.tasks.forEach((task) => this.updateProp(task.id, prop, value))
+    },
+    toggleOpenList() {
+      this.isListOpen = !this.isListOpen
     },
     copyTasks() {
       const tasks = []

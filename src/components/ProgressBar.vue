@@ -20,6 +20,7 @@
         <label
           :data-diff="groupTimelineProgressRange"
           class="timeline-label active-timeline"
+          :style="{ backgroundColor: groupColor }"
         >
           {{ groupTimelineProgressDates }}
         </label>
@@ -36,6 +37,7 @@ export default {
   name: 'ProgressBar',
   props: {
     tasks: Array,
+    groupColor: String,
   },
   data() {
     return {

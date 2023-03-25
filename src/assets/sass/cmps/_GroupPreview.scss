@@ -9,26 +9,29 @@
       @include flex-center;
       grid-column: 1;
       position: relative;
-      .dots-icon{
+      .dots-icon {
         @include flex-center;
         opacity: 0;
         border-radius: $btn-border-radius;
-        &:hover{
+        &:hover {
           background-color: $primary-background-hover-color;
         }
         &.active {
-            opacity: 1;
-            background-color: $color-highlight_blue;
-            &:hover{
-              opacity: 0.8;
-            }
+          opacity: 1;
+          background-color: $color-highlight_blue;
+          &:hover {
+            opacity: 0.8;
           }
+        }
       }
     }
-    &:hover .dots-icon{
+    &:hover .dots-icon {
       opacity: 1;
     }
-
+    .open-list {
+      grid-column: 3;
+      @include flex-center;
+    }
     .group-title-wrapper {
       position: sticky;
       left: 79px;
