@@ -15,7 +15,7 @@ export default {
   props: {
     info: Boolean,
   },
-  emits: ['toggleTask'],
+  emits: ['toggleTask', 'updateProp'],
   created() {
     this.isChecked = this.info
   },
@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     toggleTask() {
+      this.$emit('updateProp', 'checkbox', this.isChecked)
       this.$emit('toggleTask', this.isChecked)
     },
   },
