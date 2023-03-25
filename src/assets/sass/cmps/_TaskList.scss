@@ -9,19 +9,20 @@
   .first-col-color {
     @include fullSize;
   }
-  &:hover:not(:has(a.router-link-active))>*:not(:first-child) {
+  &:not(:has(a.router-link-active)) > *:not(:first-child) {
+    background-color: $color-snow_white;
+  }
+  &:hover:not(:has(a.router-link-active)) > *:not(:first-child) {
     background-color: $dark-background-color;
   }
 
-  &:has(a.router-link-active){
+  &:has(a.router-link-active) {
     background-color: $color-highlight_blue;
-    .task-preview{
+    .task-preview {
       border-top-color: $color-basic_blue;
       border-bottom: 1px solid $color-basic_blue;
     }
   }
-
-
 
   // TODO: ASK ASI
   // &:hover :is(.status, .priority){
@@ -32,6 +33,4 @@
     position: sticky;
     top: 0;
   }
-
-
 }
