@@ -1,11 +1,8 @@
 <template>
   <div class="board-table">
-    <GroupList
-      @on-add-group="onAddGroup"
-      :groups="groups"
-      @onDrop="onDrop"
-    ></GroupList>
+    <GroupList @on-add-group="onAddGroup" :groups="groups" @onDrop="onDrop"></GroupList>
   </div>
+  <RouterView />
 </template>
 <script>
 import GroupList from "../components/GroupList.vue";

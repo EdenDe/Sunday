@@ -36,7 +36,6 @@
       :tasks="group.tasks"
       :groupBgColor="group.color"
       @updateProp="updateProp"
-      @removeTask="onRemoveTask"
     />
     <div class="add-task-container sticky">
       <div class="task-option"></div>
@@ -101,14 +100,6 @@ export default {
         prop,
         toUpdate,
       })
-    },
-    onRemoveTask(taskId) {
-      let group = JSON.parse(JSON.stringify(this.group))
-      const idx = group.tasks.findIndex((t) => t.id === taskId)
-      console.log(this.group.tasks)
-      group.tasks.splice(idx, 1)
-      console.log(this.group.tasks)
-      this.updateProp(null, 'tasks', group.tasks)
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))

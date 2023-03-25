@@ -1,6 +1,6 @@
 <template>
   <div class="task-checkbox flex align-center justify-center">
-    <input type="checkbox" @change="toggleActionBar" v-model="isChecked" />
+    <input type="checkbox" @change="toggleTask" v-model="isChecked" />
   </div>
 </template>
 
@@ -13,12 +13,20 @@ export default {
     }
   },
   props: {
-    info: null,
+    info: Boolean,
   },
-  emits: ['toggleActionBar'],
+  emits: ['toggleTask'],
+  created() {
+    this.isChecked = this.info
+  },
+  watch: {
+    info() {
+      this.isChecked = this.info
+    },
+  },
   methods: {
-    toggleActionBar() {
-      this.$emit('toggleActionBar', this.isChecked)
+    toggleTask() {
+      this.$emit('toggleTask', this.isChecked)
     },
   },
 }

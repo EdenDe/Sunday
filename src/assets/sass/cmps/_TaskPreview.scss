@@ -1,11 +1,15 @@
 .task-preview {
   @include task-row;
-  // border-bottom: 1px solid $layout-border-color;
-  // margin-bottom:-1px;
   background-color: $color-snow_white;
+
+  &:not(:has(.task-title)){
+    display:grid;
+  }
 
   &:has(.task-txt, .task-title) {
     overflow: hidden;
+    display:flex;
+    justify-content: start;
   }
   &:has(.task-title) {
     left: 79px;
@@ -18,12 +22,37 @@
     padding: 6px;
   }
 
-  > *:not(.task-action-bar-container) {
+  > *:not(.pulse-bubble,.task-title,.task-action-bar-container) {
     font-size: em(14px);
     margin: 0;
     display: flex;
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  .pulse-bubble{
+    @include flex-center;
+    margin-left:auto;
+    height: 100%;
+    width: em(65px);
+    border-left: 1px solid $layout-border-color;
+
+    *{
+      height: 100%;
+    }
+
+     a{
+      display:inline-block;
+      width: em(24px);
+      height: em(24px);
+    }
+
+    svg{
+      color:$layout-border-color;
+      &:hover{
+        color: $primary-on-secondary-color
+      }
+    }
   }
 
   :is(.status, .priority) {

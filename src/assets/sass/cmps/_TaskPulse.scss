@@ -1,9 +1,9 @@
 .task-pulse{
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 654px;
-  z-index: 150;
+  z-index: 2023;
   right: 0;
   top: 0;
   box-shadow: 0 15px 50px #0000004d;
@@ -13,4 +13,9 @@
   img{
     width: 50px;
   }
+
+  .btn-close{
+    @include btn(transparent)
+  }
 }
+
