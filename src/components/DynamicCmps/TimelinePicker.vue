@@ -6,6 +6,7 @@
         :for="taskId + 'Timeline'"
         class="timeline-label"
         :class="{ 'active-timeline': timeline?.length }"
+        :style="timeline?.length ? { backgroundColor: groupColor } : null"
       >
         {{ formattedDates }}
         <el-date-picker
@@ -70,6 +71,18 @@ export default {
     formattedDaysRange() {
       if (!this.timeline || !this.timeline.length) return '-'
       return utilService.getDaysBetween(this.timeline)
+    },
+    groupColor() {
+      const groups = this.$store.getters.groups
+      if (groups) {
+        const containingGroup = groups.find((group) =>
+          group.tasks.some((task) => task.id === this.taskId)
+        )
+        if (containingGroup) {
+          return containingGroup.color
+        }
+      }
+      return null // Return null if the task is not found in any group
     },
   },
 }

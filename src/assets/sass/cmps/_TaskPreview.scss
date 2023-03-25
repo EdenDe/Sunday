@@ -1,6 +1,6 @@
 .task-preview {
   @include task-row;
-  background-color: $color-snow_white;
+  //background-color: $color-snow_white;
 
   &:not(:has(.task-title)) {
     display: grid;

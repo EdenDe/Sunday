@@ -8,97 +8,105 @@
   .router-link-active {
     border-bottom: 2px solid $primary-color;
   
+
   &-title {
-    @include editableSpan;
+    height: 20px;
 
-    padding: 0;
-    font-size: em(24px);
-    color: $color-mud_black;
-    margin-inline-end: 42px;
-    margin-bottom: $margin-small;
-  }
-  .tool-bar {
-    justify-content: start;
-    margin-top: $margin-small;
-
-    border-bottom: 1px solid $layout-border-color;
-    .btn {
-      @include btn(transparent);
+    .router-link-active {
+      border-bottom: 2px solid $primary-color;
     }
-    .nav-bar {
-      & > *:not(:last-child) {
-        position: relative;
-        &::after {
-          content: '|';
-          position: absolute;
-          top: 7px;
-          right: -4px;
-          color: $layout-border-color;
-        }
-        &:hover::after {
-          opacity: 0;
-        }
-      }
-      & > *:not(:first-child) {
-        margin-left: 4px;
-      }
-      & > *:last-child {
-        padding: 3px;
-        align-self: center;
-        justify-self: center;
-      }
-    }
-  }
-
-  .seconde-row-container {
-    justify-content: start;
-    justify-items: start;
-    padding: $padding-medium 0;
-    background-color: $color-snow_white;
-
-    .btn {
-      @include btn(transparent);
+    &-title {
+      @include editableSpan;
 
       padding: 0;
-      &-add-task {
-        margin-inline-end: em(14px);
-        align-self: start;
+      font-size: em(24px);
+      color: $color-mud_black;
+      margin-inline-end: 42px;
+      margin-bottom: $margin-small;
+    }
+    .tool-bar {
+      justify-content: start;
+      margin-top: $margin-small;
 
-        > :first-child {
-          height: 100%;
-          line-height: 24px;
-          padding: 4px $padding-small;
-          border-right: 1px solid $primary-hover-color;
-          border-radius: $border-radius 0 0 $border-radius;
+      border-bottom: 1px solid $layout-border-color;
+      .btn {
+        @include btn(transparent);
+      }
+      .nav-bar {
+        & > *:not(:last-child) {
+          position: relative;
+          &::after {
+            content: '|';
+            position: absolute;
+            top: 7px;
+            right: -4px;
+            color: $layout-border-color;
+          }
+          &:hover::after {
+            opacity: 0;
+          }
         }
-
-        > :last-child {
-          height: 100%;
-          padding: 6px 4px 0 4px;
-          border-radius: 0 $border-radius $border-radius 0;
+        & > *:not(:first-child) {
+          margin-left: 4px;
+        }
+        & > *:last-child {
+          padding: 3px;
+          align-self: center;
+          justify-self: center;
         }
       }
+    }
 
-      &-blue {
-        @include btn-blue;
-      }
+    .seconde-row-container {
+      justify-content: start;
+      justify-items: start;
+      padding: $padding-medium 0;
+      background-color: $color-snow_white;
 
-      &-container {
-        // justify-items: start;
-        height: 32px;
+      .btn {
+        @include btn(transparent);
 
-        &:not(.btn-add-task) {
-          padding: $padding-small;
+        padding: 0;
+        &-add-task {
+          margin-inline-end: em(14px);
+          align-self: start;
+
+          > :first-child {
+            height: 100%;
+            line-height: 24px;
+            padding: 4px $padding-small;
+            border-right: 1px solid $primary-hover-color;
+            border-radius: $border-radius 0 0 $border-radius;
+          }
+
+          > :last-child {
+            height: 100%;
+            padding: 6px 4px 0 4px;
+            border-radius: 0 $border-radius $border-radius 0;
+          }
         }
 
-        &:not(.btn-blue) {
-          margin-right: 6px;
+        &-blue {
+          @include btn-blue;
         }
 
-        & > :last-child:not(.btn-blue) {
-          padding-right: 12px;
+        &-container {
+          // justify-items: start;
+          height: 32px;
+
+          &:not(.btn-add-task) {
+            padding: $padding-small;
+          }
+
+          &:not(.btn-blue) {
+            margin-right: 6px;
+          }
+
+          & > :last-child:not(.btn-blue) {
+            padding-right: 12px;
+          }
         }
       }
     }
   }
-  }}
+} }

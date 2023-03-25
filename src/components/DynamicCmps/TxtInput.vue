@@ -1,6 +1,12 @@
 <template>
   <section class="task-txt">
-    <span contenteditable @focusin="onFocusIn" @focusout="onFocusout($event.target.innerText)">{{ displayedTxt }}</span>
+    <span
+      contenteditable
+      @focusin="onFocusIn"
+      @focusout="onFocusout($event.target.innerText)"
+      :style="{ fontSize: '14px' }"
+      >{{ displayedTxt }}</span
+    >
   </section>
 </template>
 

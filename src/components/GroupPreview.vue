@@ -2,40 +2,34 @@
   <section class="group-preview">
     <div class="grid-title flex align-items">
       <div class="svg-wrapper">
-        <span
-          class="dots-icon"
-          v-icon="'threeDots'"
-          @click="toggleGroupActions"
-          :class="{ active: isGroupActionsOpen }"
-        ></span>
+        <span class="dots-icon" v-icon="'threeDots'" @click="toggleGroupActions"
+          :class="{ active: isGroupActionsOpen }"></span>
         <GroupActions v-if="isGroupActionsOpen" />
       </div>
+      <div class="open-list">
+        <i class="open-list-icon" v-icon="'arrowDownGroup'" @click="toggleOpenList"
+          :class="{ active: isGroupActionsOpen }"></i>
+      </div>
       <div class="group-title-wrapper flex align-center">
-        <span
-          contenteditable
-          class="group-title"
-          @focusout="onAddTask($event.target.innerText)"
-          :style="{ color: group.color }"
-        >
+
+        <button class="btn-color" :style="{ backgroundColor: group.color }" @click="onOpenColorPicker"
+          @changeColor="onChangeGroupProp"> </button>
+        <span contenteditable class="group-title" @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
+          :style="{ color: group.color }">
           {{ group.title }}
         </span>
-        <span class="tasks-num flex align-items justify-start"
-          >{{ tasksNumber }} Tasks</span
-        >
+
+
+        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
+      </div>
+      <div v-if="isColorModalOpen" class="color-picker-wrapper">
+        <ColorPicker />
       </div>
     </div>
     <Container class="group-labels">
-      <Draggable
-        v-for="(label, index) in labels"
-        :key="label"
-        class="group-label"
-        :class="label"
-      >
-        <div
-          v-if="index === 1"
-          class="first-col-color"
-          :style="{ backgroundColor: group.color }"
-        ></div>
+      <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
+        :groupColor="group.color">
+        <div v-if="index === 1" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
         <div v-if="index === 2" class="group-checkbox">
           <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
         </div>
@@ -43,34 +37,18 @@
       </Draggable>
     </Container>
 
-    <TaskList
-      :tasks="group.tasks"
-      :groupBgColor="group.color"
-      @updateProp="updateProp"
-    />
+    <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
     <div class="add-task-container sticky">
       <div class="task-option"></div>
-      <div
-        class="first-col-color"
-        :style="{ backgroundColor: group.color }"
-      ></div>
+      <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
       <Checkbox />
       <form @submit.prevent="onAddTask" class="add-task-input-container">
-        <input
-          placeholder="+ Add task"
-          type="text"
-          v-model="newTask.taskTitle"
-        />
+        <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
       </form>
     </div>
-    <ProgressBar :tasks="group.tasks" />
-    <TaskActionBar
-      v-if="isActionBarOpen"
-      :selectedTasksNum="selectedTasksNum"
-      @closeActionBar="closeActionBar"
-      @remove="removeTasks"
-      @copy="copyTasks"
-    ></TaskActionBar>
+    <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
+    <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
+      @remove="removeTasks" @copy="copyTasks"></TaskActionBar>
   </section>
 </template>
 
@@ -83,6 +61,7 @@ import GroupActions from './GroupActions.vue'
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
+import ColorPicker from '../components/ColorPicker.vue'
 
 export default {
   name: 'GroupPreview',
@@ -95,6 +74,8 @@ export default {
       selectedTasks: [],
       newTask: boardService.getEmptyTask(),
       groupCheckbox: false,
+      isListOpen: true,
+      isColorModalOpen: false
     }
   },
   methods: {
@@ -106,6 +87,9 @@ export default {
         prop,
         toUpdate,
       })
+    },
+    onOpenColorPicker() {
+      this.isColorModalOpen = !this.isColorModalOpen
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
@@ -124,6 +108,9 @@ export default {
     toggleSelectGroup(prop, value) {
       this.group.tasks.forEach((task) => this.updateProp(task.id, prop, value))
     },
+    toggleOpenList() {
+      this.isListOpen = !this.isListOpen
+    },
     copyTasks() {
       const tasks = []
       this.group.tasks.forEach((task) => {
@@ -141,6 +128,10 @@ export default {
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
     },
+    onChangeGroupProp(prop, value) {
+      if (prop === 'color') this.onOpenColorPicker()
+      this.updateProp(null, prop, value)
+    }
   },
   computed: {
     labels() {
@@ -172,9 +163,8 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${
-              res[title]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${res[title]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
@@ -216,6 +206,7 @@ export default {
     Checkbox,
     TaskActionBar,
     GroupActions,
+    ColorPicker
   },
 }
 </script>

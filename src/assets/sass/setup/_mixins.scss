@@ -25,8 +25,10 @@
 }
 
 @mixin layoutGTC($max) {
-  grid-template-columns:
-    minmax($layoutPadding, 1fr) minmax(auto, $max) minmax($layoutPadding, 1fr);
+  grid-template-columns: minmax($layoutPadding, 1fr) minmax(auto, $max) minmax(
+      $layoutPadding,
+      1fr
+    );
 }
 
 // Mixin for removing hover effects on iphone screen
@@ -101,7 +103,7 @@
 }
 
 @mixin modal-arrow {
-  content: "";
+  content: '';
   position: absolute;
   top: -10px;
   left: 50%;
@@ -113,7 +115,7 @@
   border-bottom: solid 25px $color-snow_white;
 }
 
-@mixin btn($type: "") {
+@mixin btn($type: '') {
   padding: $padding-small;
   border: none;
   font-size: rem(14px);
@@ -130,13 +132,13 @@
     }
   }
 
-  @if $type == 'login'{
+  @if $type == 'login' {
     background-color: $primary-on-secondary-color;
     color: $color-snow_white;
     border-radius: $btn-border-radius;
-     &:hover{
+    &:hover {
       background-color: $primary-hover-on-secondary-color;
-     }
+    }
   }
 }
 
@@ -149,7 +151,7 @@
   }
 }
 
-@mixin btn-get-started($hight, $width){
+@mixin btn-get-started($hight, $width) {
   @include flex-center;
   position: relative;
   width: $width;
@@ -158,23 +160,23 @@
   border-radius: 50px;
   padding: 20px;
   color: $color-snow_white;
- 
- @include arrow-after;
+
+  @include arrow-after;
 }
 
-@mixin arrow-after{
+@mixin arrow-after {
   &::after {
-      content: '  →';
-      position: absolute;
-      top: 28%;
-      right: 15%;
-      color: inherit;
-      transition: all .5s ease-in-out;
-    }
-  
-    &:hover::after {
-      right: 10%;
-    }
+    content: '  →';
+    position: absolute;
+    top: 28%;
+    right: 15%;
+    color: inherit;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover::after {
+    right: 10%;
+  }
 }
 
 @mixin sidenav {
@@ -196,7 +198,7 @@
 
 @mixin task-cols {
   display: grid;
-  grid-template-columns:40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px;
+  grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px;
 
   cursor: pointer;
 
@@ -207,26 +209,25 @@
   // border-right: 1px solid $layout-border-color;
   // margin-right: -1px;
   width: 100%;
-  height:36px;
+  height: 36px;
   border-top: 1px solid $layout-border-color;
   border-right: 1px solid $layout-border-color;
-  
 }
 
 @mixin editableSpan {
   border-radius: $border-radius;
   padding: em(2px);
-  line-height:1.5;
- 
+  line-height: 1.5;
+  font-size: rem(14px);
   white-space: nowrap;
   overflow: hidden;
 
-  br{
-    display:none;
+  br {
+    display: none;
   }
 
-  *{
-    display:inline;
+  * {
+    display: inline;
     white-space: nowrap;
   }
 
@@ -251,25 +252,24 @@
   width: fit-content;
 }
 
+@mixin label-picker-container {
+  @include flex-center;
 
-@mixin label-picker-container{
-    @include flex-center;
-    
-      ::before {
-        @include modal-arrow;
-      }
-    
-      align-items: flex-start;
-      justify-items: center;
-      z-index: 1;
-      position: absolute;
-      top: rem(35px);
-      padding-top: rem(18px);
-      background-color: $color-snow_white;
-      height: rem(320px);
-      width: rem(200px);
-      border-radius: $border-radius-rounder;
-      box-shadow: $shadow;
+  ::before {
+    @include modal-arrow;
+  }
+
+  align-items: flex-start;
+  justify-items: center;
+  z-index: 1;
+  position: absolute;
+  top: rem(35px);
+  padding-top: rem(18px);
+  background-color: $color-snow_white;
+  height: rem(320px);
+  width: rem(200px);
+  border-radius: $border-radius-rounder;
+  box-shadow: $shadow;
 }
 
 @mixin color-picker-label {
