@@ -1,6 +1,6 @@
 <template>
   <section class="board-header">
-    <div class="tool-bar grid grid-col">
+    <div class="tool-bar grid">
       <h2
         contenteditable
         class="board-header-title"
