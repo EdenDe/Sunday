@@ -11,7 +11,7 @@
   .plus-icon{
     @include flex-center;
     position: absolute;
-    left: 2px;
+    left: 10px;
     padding-top: 3px;
     opacity: 0;
     transition: opacity .2s ease-in-out;

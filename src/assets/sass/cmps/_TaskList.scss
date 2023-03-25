@@ -8,11 +8,21 @@
 
   .first-col-color {
     @include fullSize;
-    // border-top-left-radius: $border-radius;
   }
-  &:hover>*:not(:first-child) {
+  &:hover:not(:has(a.router-link-active))>*:not(:first-child) {
     background-color: $dark-background-color;
   }
+
+  &:has(a.router-link-active){
+    background-color: $color-highlight_blue;
+    .task-preview{
+      border-top-color: $color-basic_blue;
+      border-bottom: 1px solid $color-basic_blue;
+    }
+  }
+
+
+
   // TODO: ASK ASI
   // &:hover :is(.status, .priority){
   // opacity: 0.8;
@@ -22,4 +32,6 @@
     position: sticky;
     top: 0;
   }
+
+
 }
