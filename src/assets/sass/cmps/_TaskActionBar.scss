@@ -2,7 +2,8 @@
   z-index:140;
   position: fixed;
   bottom: 5vh;
-  left: 27vh;
+  left:50%;
+  transform: translateX(-50%);
   height: 63px;
   width: 800px;
   margin: auto;

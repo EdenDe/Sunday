@@ -2,7 +2,7 @@
   <section class="task-action-bar-container grid grid-col">
     <div class="selected-tasks-num grid">{{ selectedTasksNum }}</div>
     <div class="selected-tasks-num-txt">Task Selected</div>
-    <div class="btn btn-container grid">
+    <div class="btn btn-container grid" @click="$emit('copy')">
       <span v-icon="'duplicate'"></span>
       <span>Duplicate</span>
     </div>
@@ -20,7 +20,7 @@
 export default {
   name: 'TaskActionBar',
   props: { selectedTasksNum: Number },
-  emits: ['remove', 'closeActionBar'],
+  emits: ['remove', 'closeActionBar', 'copy'],
   computed: {},
 }
 </script>
