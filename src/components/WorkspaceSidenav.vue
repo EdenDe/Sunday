@@ -103,7 +103,7 @@ export default {
     },
     isActive() {
       return (boardId) => {
-        console.log(boardId, this.$route);
+        // console.log(boardId, this.$route);
         return true;
       };
     },

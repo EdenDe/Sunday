@@ -1,0 +1,57 @@
+.fileUpload {
+  position: relative;
+  .file-container {
+    @include flex-center;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .default-img-wrapper {
+        display: flex;
+      }
+    }
+  }
+  .default-img-wrapper {
+    @include flex-center;
+    display: none;
+    img {
+      @include flex-center;
+    }
+    i {
+      position: absolute;
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      background-color: $color-blue-btn;
+      border-radius: 50%;
+      height: rem(14px);
+      width: rem(14px);
+    }
+  }
+  &.is-loading {
+    .loader {
+      display: block;
+    }
+    img {
+      display: none;
+    }
+  }
+  .loader {
+    display: none;
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    border-top-color: #333;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

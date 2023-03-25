@@ -37,6 +37,7 @@
   .first-col-color {
     @include fullSize;
     grid-column: 2;
+    left: 40px;
     // border-top-left-radius: $border-radius;
   }
   .progress-grid {
@@ -127,4 +128,5 @@
 .task-options {
   width: 40px;
   background-color: $color-snow_white;
+  left: 0;
 }

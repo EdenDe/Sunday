@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
-      console.log('toUpdate', toUpdate)
+      // console.log('toUpdate', toUpdate)
       this.$emit('updateProp', taskId, prop, toUpdate)
     },
     removeTasks() {

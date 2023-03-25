@@ -10,15 +10,15 @@
       :info="task[cmp]"
       :taskId="task.id"
       @updateProp="updateProp"
-      @toggleTask="toggleTask"
+      @toggleActionBar="toggleActionBar"
     />
+    <div class="pulse-bubble" v-if="cmp === 'taskTitle'">
+      <RouterLink
+        :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
+        v-icon="'pulseBubble'"
+      ></RouterLink>
+    </div>
   </section>
-  <!-- <TaskActionBar
-    v-if="isActionBarOpen"
-    @toggleActionBar="toggleActionBar"
-    @toggleTask="toggleTask"
-    @remove="remove"
-  ></TaskActionBar> -->
 </template>
 
 <script>

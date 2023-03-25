@@ -1,12 +1,11 @@
 .task-title {
-  justify-self: start;
   padding-inline-start: 30px;
   align-self: center;
-
-  
+  justify-content:flex-start;
 
   > span {
     @include editableSpan;
     font-size: rem(16px);
+    justify-self: start;
   }
 }
