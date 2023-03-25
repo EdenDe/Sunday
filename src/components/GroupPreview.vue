@@ -114,8 +114,9 @@ export default {
   computed: {
     labels() {
       let labels = [null, null, null]
-      labels.push(...this.$store.getters.cmpOrder.slice(1))
-
+      labels.push(
+        ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
+      )
       return labels.map((label) => {
         if (label === 'taskTitle') label = 'title'
         if (label === 'txt') label = 'text'

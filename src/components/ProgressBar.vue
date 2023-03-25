@@ -3,12 +3,12 @@
     <div v-for="value in Array(2).fill(null)"></div>
     <div v-for="(item, idx) in cmpOrder" :key="idx">
       <div
-        v-if="item === 'status' || item === 'priority'"
+        v-if="item['name'] === 'status' || item['name'] === 'priority'"
         class="flex progress-container"
-        :class="item"
+        :class="item['name']"
       >
         <div
-          v-for="label in groupStatusProgress(item)"
+          v-for="label in groupStatusProgress(item['name'])"
           :style="{
             flex: 1,
             'flex-basis': label.width,
@@ -16,7 +16,10 @@
           }"
         ></div>
       </div>
-      <div v-else-if="item === 'timeline'" class="flex timeline-display">
+      <div
+        v-else-if="item['name'] === 'timeline'"
+        class="flex timeline-display"
+      >
         <label
           :data-diff="groupTimelineProgressRange"
           class="timeline-label active-timeline"
@@ -24,7 +27,7 @@
           {{ groupTimelineProgressDates }}
         </label>
       </div>
-      <div v-else :class="item"></div>
+      <div v-else :class="item['name']"></div>
     </div>
   </section>
 </template>

@@ -1,5 +1,5 @@
 import { boardService } from '../services/board.service.js'
-import { utilService } from '../services/util.service.js'
+
 export const boardStore = {
 	state: {
 		boards: [],
@@ -90,15 +90,15 @@ export const boardStore = {
 			}
 		},
 		async updateActivity({ commit }, { groupId, taskId, prop, toUpdate }) {
-			console.log({ groupId, taskId, prop, toUpdate })
-			const activity = {
-				id: utilService.makeId(),
-				txt: prop,
-				createdAt: Date.now(),
-				byMember: userService.getLoggedinUser(),
-				group: group, // optional
-				task: task, // optional
-			}
+			// console.log({ groupId, taskId, prop, toUpdate })
+			// const activity = {
+			// 	id: utilService.makeId(),
+			// 	txt: prop,
+			// 	createdAt: Date.now(),
+			// 	byMember: userService.getLoggedinUser(),
+			// 	group: group, // optional
+			// 	task: task, // optional
+			// }
 		},
 		async updateCurrBoard(
 			{ dispatch, commit, state },

@@ -80,14 +80,15 @@ function getEmptyBoard() {
         'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
     },
     cmpOrder: [
-      'checkbox',
-      'taskTitle',
-      'status',
-      'priority',
-      'person',
-      'date',
-      'timeline',
-      'file',
+      { name: "checkbox", width: "30px" },
+      { name: "taskTitle", width: "1fr" },
+      { name: "person", width: "80px" },
+      { name: "status", width: "80px" },
+      { name: "priority", width: "80px" },
+      { name: "date", width: "120px" },
+      { name: "timeline", width: "1fr" },
+      { name: "txt", width: "1fr" },
+      { name: "file", width: "80px" }
     ],
     priorityLabels: [
       {
