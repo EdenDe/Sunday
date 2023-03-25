@@ -4,21 +4,21 @@
     "title": "Sunday",
     "isStarred": false,
     "archivedAt": null,
-    "createdBy": {   
-        "_id": "u101",
-        "fullname": "Lior Doron",
-        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
+    "createdBy": {
+      "_id": "u101",
+      "fullname": "Lior Doron",
+      "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
     },
     "cmpOrder": [
-      "checkbox",
-      "taskTitle",
-      "person",
-      "status",
-      "priority",
-      "date",
-      "timeline",
-      "txt",
-      "file"
+      { "name": "checkbox", "width": "30px" },
+      { "name": "taskTitle", "width": "1fr" },
+      { "name": "person", "width": "80px" },
+      { "name": "status", "width": "80px" },
+      { "name": "priority", "width": "80px" },
+      { "name": "date", "width": "120px" },
+      { "name": "timeline", "width": "1fr" },
+      { "name": "txt", "width": "1fr" },
+      { "name": "file", "width": "80px" }
     ],
     "priorityLabels": [
       {
@@ -99,7 +99,7 @@
         "color": "green"
       }
     ],
-    
+
     "groups": [
       {
         "id": "gsfkn11",
@@ -117,10 +117,10 @@
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
-              }              
+              }
             ],
             "date": 1659561600000,
-            "timeline": [],
+            "timeline": [1664674800000, 1668015600000],
             "txt": "Develop a user dashboard",
             "file": "",
             "status": "Working on it",
@@ -145,7 +145,7 @@
               }
             ],
             "date": 1659817200000,
-            "timeline": [],
+            "timeline": [1668284400000, 1671265200000],
             "txt": "Design and implement a user dashboard that provides an overview of the user's tasks, projects, and progress at a glance.",
             "file": "",
             "status": "Working on it",
@@ -164,7 +164,7 @@
               }
             ],
             "date": 1660076400000,
-            "timeline": [],
+            "timeline": [1673497200000, 1677553200000],
             "txt": "Add a dark mode option for users who prefer a darker color scheme. Ensure smooth transitions and consistency between light and dark modes.",
             "file": "",
             "status": "Stuck",
@@ -183,7 +183,7 @@
               }
             ],
             "date": 1660076400000,
-            "timeline": [],
+            "timeline": [1789122800000, 1792895600000],
             "txt": "Design and implement data visualization components, such as charts and graphs, to help users better understand their project progress and team performance.",
             "file": "",
             "status": "Need help",
@@ -208,7 +208,7 @@
               }
             ],
             "date": 1660076400000,
-            "timeline": [],
+            "timeline": [1688209200000, 1691055600000],
             "txt": "Update the application layout using CSS Grid to create a more flexible and responsive design.",
             "file": "",
             "status": "Finishing soon",
@@ -239,7 +239,7 @@
               }
             ],
             "date": 1660076400000,
-            "timeline": [],
+            "timeline": [1694742000000, 1700770800000],
             "txt": "Enhance the styling of forms, including input fields, buttons, and validation messages, to provide a more polished and user-friendly experience.",
             "file": "",
             "status": "Done",
@@ -272,7 +272,7 @@
               }
             ],
             "date": 1660335600000,
-            "timeline": [],
+            "timeline": [1701814000000, 1705890000000],
             "txt": "Fix broken authentication",
             "file": "",
             "status": "Working on it",
@@ -289,7 +289,7 @@
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
-             {
+              {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
@@ -297,7 +297,7 @@
               }
             ],
             "date": 1660594800000,
-            "timeline": [],
+            "timeline": [1707596400000, 1712012400000],
             "txt": "Some API endpoints are experiencing slow response times, leading to a suboptimal user experience. Profile and optimize the affected APIs for better performance.",
             "file": "",
             "status": "Stuck",
@@ -316,7 +316,7 @@
               }
             ],
             "date": 1660854000000,
-            "timeline": [],
+            "timeline": [1719246000000, 1724702000000],
             "txt": "The /api/users endpoint is returning all user data instead of just the logged-in user's data. Update the endpoint to return the correct data.",
             "file": "",
             "status": "Working on it",
@@ -335,7 +335,7 @@
               }
             ],
             "date": 1660854000000,
-            "timeline": [],
+            "timeline": [1725260400000, 1728942000000],
             "txt": "Inconsistent data is being returned from the backend, causing UI issues and incorrect calculations. Identify and fix the issue causing data inconsistency.",
             "file": "",
             "status": "Done",
@@ -347,7 +347,7 @@
             "taskTitle": "Fix database connection issue",
             "person": [],
             "date": 1660854000000,
-            "timeline": [],
+            "timeline": [1734831600000, 1738794800000],
             "txt": "The application is intermittently losing connection to the database. Investigate and resolve the issue causing connection instability.",
             "file": "",
             "status": "",
@@ -366,13 +366,13 @@
             "checkbox": false,
             "taskTitle": "Fix login error",
             "person": [
-               {
+              {
                 "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png"
               },
-               {
+              {
                 "_id": "u103",
                 "fullname": "Tamar Shalem",
                 "color": "green",
@@ -380,7 +380,7 @@
               }
             ],
             "date": 1661113200000,
-            "timeline": [],
+            "timeline": [1743106800000, 1747897200000],
             "txt": "Users are unable to log in with correct credentials.",
             "file": "",
             "status": "Stuck",
@@ -391,12 +391,12 @@
             "checkbox": false,
             "taskTitle": "Resolve broken image links",
             "person": [
-                {
+              {
                 "_id": "u102",
                 "fullname": "Eden Derhy",
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
-              }, 
+              },
               {
                 "_id": "u101",
                 "fullname": "Lior Doron",
@@ -405,7 +405,7 @@
               }
             ],
             "date": 1661372400000,
-            "timeline": [],
+            "timeline": [1753278000000, 1758322800000],
             "txt": "Some images are not displayed correctly due to broken links. Investigate and fix the issue causing broken image paths.",
             "file": "",
             "status": "Stuck",
@@ -430,7 +430,7 @@
               }
             ],
             "date": 1661631600000,
-            "timeline": [],
+            "timeline": [1760700400000, 1764706800000],
             "txt": "Users are encountering a 404 error when trying to access the \"About Us\" page. Ensure the page is accessible and the URL is correct.",
             "file": "",
             "status": "Working on it",
@@ -449,7 +449,7 @@
               }
             ],
             "date": 1661631600000,
-            "timeline": [],
+            "timeline": [1769302000000, 1774378800000],
             "txt": "Duplicate records are being created in the database when users submit the registration form. Investigate and prevent duplicate entries.",
             "file": "",
             "status": "Done",
@@ -466,7 +466,7 @@
                 "color": "black",
                 "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359554_960_720.png"
               },
-             {
+              {
                 "_id": "u101",
                 "fullname": "Lior Doron",
                 "color": "red",
@@ -474,7 +474,7 @@
               }
             ],
             "date": 1661631600000,
-            "timeline": [],
+            "timeline": [1777618800000, 1782006000000],
             "txt": "Users are being logged out of the application unexpectedly, even when they are actively using the application. Investigate and fix the issue causing premature session expiration.",
             "file": "",
             "status": "Stuck",

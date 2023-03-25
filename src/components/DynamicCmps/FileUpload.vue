@@ -6,15 +6,16 @@
       @drop.prevent="handleFile"
       @dragover.prevent
     >
-      <img
-        v-if="file"
-        :src="file"
-        alt=""
-        :style="{ height: '20px', width: '100%' }"
-      />
-      <div class="default-img-wrapper">
+      <div class="img-wrapper" v-if="file">
+        <i
+          v-icon="'closeSmall'"
+          class="removeBtn"
+          @click.prevent="onRemoveFile"
+        ></i>
+        <img :src="file" alt="" :style="{ height: '20px', width: '100%' }" />
+      </div>
+      <div class="default-img-wrapper" v-if="!file">
         <img
-          v-if="!file"
           src="https://cdn.monday.com/images/file-types/empty.svg"
           :style="{ height: '20px', width: '100%' }"
           class="default-img"
@@ -27,11 +28,10 @@
   </section>
 </template>
 <script>
-import { svgService } from "../../services/svg.service";
-import { uploadFile } from "../../services/upload.service";
+import { uploadFile } from '../../services/upload.service'
 
 export default {
-  name: "",
+  name: '',
   props: {
     info: String,
   },
@@ -39,35 +39,38 @@ export default {
     return {
       fileUrl: null,
       isLoading: false,
-    };
+    }
   },
   methods: {
     async handleFile(ev) {
-      this.isLoading = true;
+      this.isLoading = true
       const fileToUpload =
-        ev.type === "change" ? ev.target.files[0] : ev.dataTransfer.files[0];
+        ev.type === 'change' ? ev.target.files[0] : ev.dataTransfer.files[0]
       try {
-        const { url } = await uploadFile(fileToUpload);
-        this.fileUrl = url;
-        this.isLoading = false;
+        const { url } = await uploadFile(fileToUpload)
+        this.fileUrl = url
+        this.isLoading = false
+        this.$emit('updateProp', 'file', this.fileUrl)
       } catch {
-        console.log("cannot upload file");
-        this.isLoading = false;
+        console.log('cannot upload file')
+        this.isLoading = false
       }
     },
-    getSvg(iconName) {
-      return svgService.getMainMondaySvg(iconName);
+    onRemoveFile() {
+      this.fileUrl = ''
+      this.$emit('updateProp', 'file', this.fileUrl)
     },
   },
+
   computed: {
     file() {
-      return this.fileUrl ? this.fileUrl : "";
+      return this.fileUrl ? this.fileUrl : ''
     },
   },
   created() {
-    this.fileUrl = this.info;
+    this.fileUrl = this.info
   },
-};
+}
 </script>
 
 <style></style>

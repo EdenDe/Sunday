@@ -10,6 +10,7 @@
     height: 100%;
     padding: 0 1rem;
     .timeline-label {
+      position: relative;
       z-index: 50;
       font-size: rem(13px);
       color: $color-snow_white;
@@ -23,6 +24,9 @@
       cursor: pointer;
       &:hover {
         background-color: $color-timeline-hover;
+        .remove-btn {
+          display: block;
+        }
       }
       &.active-timeline {
         position: relative;
@@ -38,6 +42,14 @@
             color: $color-snow_white;
           }
         }
+      }
+
+      .remove-btn {
+        display: none;
+        right: -5%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        background-color: lighten($color-explosive, 20%);
       }
     }
   }
@@ -83,6 +95,12 @@
     input {
       width: fit-content;
       color: transparent;
+    }
+  }
+
+  &:hover {
+    .remove-btn {
+      display: block;
     }
   }
   svg {

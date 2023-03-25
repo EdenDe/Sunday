@@ -1,5 +1,5 @@
 import { boardService } from '../services/board.service.js'
-import { utilService } from '../services/util.service.js'
+
 export const boardStore = {
 	state: {
 		boards: [],
@@ -90,11 +90,8 @@ export const boardStore = {
 				console.log(err)
 			}
 		},
-		async updateActivity(
-			{ commit },
-			{ groupId, taskId, prop, toUpdate }
-		) {
-			console.log({ groupId, taskId, prop, toUpdate })
+		async updateActivity({ commit }, { groupId, taskId, prop, toUpdate }) {
+			// console.log({ groupId, taskId, prop, toUpdate })
 			// const activity = {
 			// 	id: utilService.makeId(),
 			// 	txt: prop,
