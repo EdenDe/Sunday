@@ -1,8 +1,8 @@
 // Flex
 .flex {
   display: flex;
-
   &-col {
+    display: flex;
     flex-direction: column;
   }
   &.wrap {

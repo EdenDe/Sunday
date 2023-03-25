@@ -5,7 +5,12 @@
         X
       </button>
       <div>
-        <span contenteditable v-if="task" class="task-title">
+        <span
+          contenteditable
+          v-if="task"
+          class="task-title"
+          :style="{ fontSize: '24px' }"
+        >
           {{ task.taskTitle }}
         </span>
       </div>
