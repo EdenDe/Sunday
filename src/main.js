@@ -8,6 +8,9 @@ import { icon, clickOutside } from './directives.js'
 import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
+
 const app = createApp(App)
 
 app.use(router)
@@ -15,5 +18,6 @@ app.use(store)
 app.use(ElementPlus)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
+app.component('QuillEditor', QuillEditor)
 
 app.mount('#app')

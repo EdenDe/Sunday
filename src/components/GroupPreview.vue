@@ -1,15 +1,14 @@
 <template>
   <section class="group-preview">
     <div class="grid-title flex align-items">
-      <div class="group-actions-wrapper sticky" v-clickOutside="toggleGroupActions">
+      <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
           <span class="dots-icon" v-icon="'threeDots'" @click="toggleGroupActions(!isGroupActionsOpen)"
             :class="{ active: isGroupActionsOpen }"></span>
 
-          <div class="group-actions">
+          <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
             <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
-              @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)"
-              v-if="isGroupActionsOpen" />
+              @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)" />
           </div>
         </div>
       </div>
@@ -140,7 +139,7 @@ export default {
       if (prop === 'color') this.onOpenColorPicker()
       this.updateProp(null, prop, value)
     },
-    toggleGroupActions(value) {
+    toggleGroupActions(value = false) {
       this.isGroupActionsOpen = value
     },
     copyGroup() {
