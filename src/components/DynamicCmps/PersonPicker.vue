@@ -1,8 +1,8 @@
 <template>
   <section class="person-list flex align-center justify-center">
-    <i v-icon="'plusRound'" class="plus-icon" @click="isPersonPickerOpen = true"
-      >+</i
-    >
+    <div class="plus-icon" @click="isPersonPickerOpen = true">
+      <AddIcon class="add-icon icon" />
+    </div>
     <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
     <div
       v-if="isPersonPickerOpen"
@@ -17,12 +17,14 @@
         >
           <PersonAvatar :person="person" />
           <span class="person-fullname">{{ person.fullname }}</span>
-          <button class="delete-person" @click="onDelete(person._id)">X</button>
+          <button class="delete-person" @click="onDelete(person._id)">
+            <CloseIcon class="close-icon icon" />
+          </button>
         </article>
       </div>
       <div class="search-container">
         <input placeholder="Search names" v-model="search" />
-        <span class="search-icon" v-icon="'magnifyingGlass'"></span>
+        <SearchIcon class="search-icon icon" />
       </div>
       <div class="suggested-members">
         <h3>Suggested people</h3>
@@ -43,7 +45,9 @@
 
 <script>
 import Avatar from '../Avatar.vue'
-
+import SearchIcon from '../../assets/icons/Search.svg'
+import CloseIcon from '../../assets/icons/Close.svg'
+import AddIcon from '../../assets/icons/Add.svg'
 export default {
   name: 'PersonPicker',
   emits: ['updateProp'],
@@ -87,6 +91,9 @@ export default {
   },
   components: {
     PersonAvatar: Avatar,
+    SearchIcon,
+    CloseIcon,
+    AddIcon,
   },
 }
 </script>

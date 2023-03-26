@@ -65,7 +65,7 @@ import InfoIcon from '../assets/icons/Info.svg'
 import StarIcon from '../assets/icons/Favorite.svg'
 import FilterIcon from '../assets/icons/Filter.svg'
 import HomeIcon from '../assets/icons/Home.svg'
-import ArrowDownIcon from '../assets/icons/NavigationChevronDown.svg'
+import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
 
 export default {
   name: 'BoardHeader',

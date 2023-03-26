@@ -5,8 +5,15 @@
       @click="emitFunction(action)"
       class="group-action flex align-center justify-start"
     >
-      <div class="svg-wrapper">
-        <i v-icon="action.svg"></i>
+      <div class="icon-wrapper">
+        <component
+          :is="action.icon"
+          class="icon"
+          :style="{
+            fill:
+              action.title === 'Change group color' ? groupColor : '#676879',
+          }"
+        ></component>
       </div>
       <p>{{ action.title }}</p>
     </div>
@@ -14,6 +21,13 @@
 </template>
 
 <script>
+import AddIcon from '../assets/icons/Add.svg'
+import DuplicateIcon from '../assets/icons/Duplicate.svg'
+import RenameIcon from '../assets/icons/Edit.svg'
+import ColorIcon from '../assets/icons/Color.svg'
+import TrashIcon from '../assets/icons/Delete.svg'
+import CollapseIcon from '../assets/icons/CollapseRound.svg'
+
 export default {
   name: 'actions',
   props: {
@@ -25,49 +39,49 @@ export default {
       groupActions: [
         {
           title: 'Collapse this group',
-          svg: 'actionsCollapse',
+          icon: 'CollapseIcon',
           emit: 'Header',
         },
         {
           title: 'Add group',
-          svg: 'addAction',
+          icon: 'AddIcon',
           emit: 'add',
         },
         {
           title: 'Duplicate this group',
-          svg: 'duplicateAction',
+          icon: 'DuplicateIcon',
           emit: 'copy',
         },
         {
           title: 'Rename group',
-          svg: 'actionsRename',
+          icon: 'RenameIcon',
           emit: 'renameTitle',
         },
         {
           title: 'Change group color',
-          svg: 'ColorAction',
+          icon: 'ColorIcon',
           emit: 'openColorPicker',
         },
         {
           title: 'Delete',
-          svg: 'actionsTrash',
+          icon: 'TrashIcon',
           emit: 'remove',
         },
       ],
       taskActions: [
         {
           title: 'Create new task below',
-          svg: '',
+          icon: '',
           emit: 'add',
         },
         {
           title: 'Delete',
-          svg: '',
+          icon: '',
           emit: 'remove',
         },
         {
           title: 'Duplicate',
-          svg: '',
+          icon: '',
           emit: 'copy',
         },
       ],
@@ -84,6 +98,14 @@ export default {
       if (this.taskId) return this.$emit(action.emit, this.taskId)
       return this.$emit(action.emit)
     },
+  },
+  components: {
+    AddIcon,
+    DuplicateIcon,
+    RenameIcon,
+    ColorIcon,
+    TrashIcon,
+    CollapseIcon,
   },
 }
 </script>
