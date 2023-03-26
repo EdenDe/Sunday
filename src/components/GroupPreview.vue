@@ -1,7 +1,7 @@
 <template>
   <section class="group-preview">
     <div class="grid-title flex align-items">
-      <div class="group-actions-wrapper">
+      <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
           <span
             class="dots-icon"
@@ -9,7 +9,9 @@
             @click="toggleGroupActions"
             :class="{ active: isGroupActionsOpen }"
           ></span>
-          <GroupActions v-if="isGroupActionsOpen" />
+        </div>
+        <div class="group-actions">
+          <GroupActions :groupColor="group.color" v-if="isGroupActionsOpen" />
         </div>
       </div>
       <div class="open-list">
@@ -25,8 +27,7 @@
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
-          @click="onOpenColorPicker"
-          @changeColor="onChangeGroupProp"
+          @click.prevent="onOpenColorPicker"
         ></button>
         <span
           contenteditable
@@ -42,7 +43,7 @@
         >
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
-        <ColorPicker />
+        <ColorPicker @changeColor="onChangeGroupProp" />
       </div>
     </div>
     <Container class="group-labels">
@@ -71,14 +72,14 @@
       :groupBgColor="group.color"
       @updateProp="updateProp"
     />
-    <div class="add-task-container sticky">
+    <div class="add-task-container">
       <div class="task-option"></div>
       <div
         class="first-col-color"
         :style="{ backgroundColor: group.color }"
       ></div>
       <Checkbox />
-      <form @submit.prevent="onAddTask" class="add-task-input-container">
+      <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
         <input
           placeholder="+ Add task"
           type="text"
@@ -135,6 +136,8 @@ export default {
       })
     },
     onOpenColorPicker() {
+      console.log('hi')
+      console.log(this.isColorModalOpen)
       this.isColorModalOpen = !this.isColorModalOpen
     },
     onAddTask() {

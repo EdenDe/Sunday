@@ -20,7 +20,7 @@ export default {
       actions: [
         {
           title: 'Collapse this group',
-          svg: 'collapseAction',
+          svg: 'actionsCollapse',
         },
         {
           title: 'Add group',
@@ -32,7 +32,7 @@ export default {
         },
         {
           title: 'Rename group',
-          svg: 'renameAction',
+          svg: 'actionsRename',
         },
         {
           title: 'Change group color',
@@ -40,7 +40,7 @@ export default {
         },
         {
           title: 'Delete',
-          svg: 'deleteAction',
+          svg: 'actionsTrash',
         },
       ],
     }
