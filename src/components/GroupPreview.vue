@@ -8,10 +8,11 @@
         <div class="svg-wrapper">
           <span
             class="dots-icon"
-            v-icon="'threeDots'"
             @click="toggleGroupActions(!isGroupActionsOpen)"
             :class="{ active: isGroupActionsOpen }"
-          ></span>
+          >
+            <MenuIcon class="menu-icon icon" />
+          </span>
 
           <div class="group-actions">
             <GroupActions
@@ -27,13 +28,16 @@
         </div>
       </div>
       <div class="open-list">
-        <i
+        <span
           class="open-list-icon"
-          v-icon="'arrowDownGroup'"
           @click="toggleOpenList"
           :class="{ active: isGroupActionsOpen }"
-          :style="{ fill: group.color }"
-        ></i>
+        >
+          <ArrowDownIcon
+            class="arrow-down-icon icon"
+            :style="{ fill: group.color }"
+          />
+        </span>
       </div>
       <div class="group-title-wrapper flex align-center">
         <button
@@ -122,7 +126,9 @@ import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
 import ColorPicker from '../components/ColorPicker.vue'
-
+//ICONS
+import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
+import MenuIcon from '../assets/icons/Menu.svg'
 export default {
   name: 'GroupPreview',
   props: {
@@ -290,6 +296,8 @@ export default {
     TaskActionBar,
     GroupActions,
     ColorPicker,
+    ArrowDownIcon,
+    MenuIcon,
   },
 }
 </script>

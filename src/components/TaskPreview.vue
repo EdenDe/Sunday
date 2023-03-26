@@ -17,8 +17,9 @@
     <div class="pulse-bubble" v-if="cmp.name === 'taskTitle'">
       <RouterLink
         :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
-        v-icon="'pulseBubble'"
-      ></RouterLink>
+      >
+        <PulseIcon class="pulse-icon icon" />
+      </RouterLink>
     </div>
   </section>
 </template>
@@ -33,7 +34,8 @@ import status from './dynamicCmps/StatusPicker.vue'
 import file from './dynamicCmps/FileUpload.vue'
 import TaskTitle from './dynamicCmps/TitleInput.vue'
 import txt from './dynamicCmps/TxtInput.vue'
-
+//ICONS
+import PulseIcon from '../assets/icons/Pulse.svg'
 export default {
   name: 'TaskPreview',
   props: {
@@ -68,6 +70,7 @@ export default {
     timeline,
     file,
     txt,
+    PulseIcon,
   },
 }
 </script>

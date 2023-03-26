@@ -14,7 +14,6 @@
     <div class="btn btn-container grid grid-col aling-center">
       <FilterIcon class="filter-icon icon" />
       <span>Filter</span>
-      <!-- <span class="task-filter-icon" v-icon="'arrowDownGrey'"></span> -->
     </div>
   </section>
 </template>

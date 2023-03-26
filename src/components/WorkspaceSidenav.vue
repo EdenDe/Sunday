@@ -9,25 +9,22 @@
     </button>
 
     <section class="navigation-header flex-col justify-between align-center">
-      <div class="dropdown-navigation-header flex justify-between">
+      <div class="dropdown-navigation-header flex justify-between align-center">
         <span class="dropdown-header-name">Workspace</span>
         <div class="more-menu flex">
-          <i v-icon="'moreDots'"></i>
+          <MenuIcon class="menu-icon icon" />
         </div>
       </div>
       <div class="dropdown-navigation-button flex justify-between align-center">
         <div class="workspace-title flex">
           <div class="workspace-icon-wrapper flex">
             <span class="icon-text flex justify-center align-center">M</span>
-            <i v-icon="'workspaceHome'" class="icon-svg"></i>
+            <HomeIcon class="home-icon icon" />
           </div>
           <span class="workspace-name">Main workspace</span>
         </div>
-        <div class="dropdown-arrow">
-          <div class="icon-wrapper flex justify-center">
-            <i v-icon="'workManagementArrowDown'"></i>
-          </div>
-        </div>
+
+        <ArrowDownIcon class="arrow-down-icon icon" />
       </div>
     </section>
 
@@ -37,22 +34,16 @@
         role="button"
         @click="onAddBoard"
       >
-        <i
-          v-icon="'workspacePlus'"
-          class="flex align-center justify-center"
-        ></i>
+        <AddIcon class="add-icon icon" />
         <span class="action-text">Add</span>
       </div>
 
       <div class="action-item filter flex align-center">
-        <i
-          v-icon="'workspaceFilter'"
-          class="flex align-center justify-center"
-        ></i>
+        <FilterIcon class="filter-icon icon" />
         <span>Filters</span>
       </div>
       <div class="action-item search flex align-center">
-        <i v-icon="'searchFilter'" class="flex align-center justify-center"></i>
+        <SearchIcon class="search-icon icon" />
         <span class="action-text">Search</span>
       </div>
     </section>
@@ -67,7 +58,7 @@
         @click="onSetBoard(board._id)"
       >
         <section class="board-name flex align-center">
-          <i v-icon="'workspaceBoard'"></i>
+          <BoardIcon class="board-icon icon" />
           <span>{{ board.title }}</span>
         </section>
         <div
@@ -76,18 +67,18 @@
             updateModalBoardId(openModalBoardId === null ? board._id : null)
           "
         >
-          <i v-icon="'workspaceDots'"></i>
+          <MenuIcon class="menu-icon icon" />
         </div>
         <ul
           class="group-actions-list"
-          :class="{ 'modal-open': openModalBoardId === board._id }"
+          :class="{ 'is-modal-open': openModalBoardId === board._id }"
         >
           <li
             class="group-action flex align-center justify-start"
             @click.prevent="onCopyBoard(board._id)"
           >
             <div class="svg-wrapper">
-              <i v-icon="'duplicateAction'"></i>
+              <DuplicateIcon class="duplicate-icon icon" />
             </div>
             <p>Duplicate Board</p>
           </li>
@@ -96,7 +87,7 @@
             @click.prevent="onDeleteBoard(board._id)"
           >
             <div class="svg-wrapper">
-              <i v-icon="'deleteAction'"></i>
+              <DeleteIcon class="delete-icon icon" />
             </div>
             <p>Delete Board</p>
           </li>
@@ -114,12 +105,11 @@ import SearchIcon from '../assets/icons/Search.svg'
 import HomeIcon from '../assets/icons/HomeFill.svg'
 import InfoIcon from '../assets/icons/Info.svg'
 import MenuIcon from '../assets/icons/Menu.svg'
-import ArrowDownIcon from '../assets/icons/NavigationChevronDown.svg'
-import ArrowRightIcon from '../assets/icons/NavigationChevronRight.svg'
-import ArrowLeftIcon from '../assets/icons/NavigationChevronLeft.svg'
+import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
+import ArrowRightIcon from '../assets/icons/ArrowRight.svg'
+import ArrowLeftIcon from '../assets/icons/ArrowLeft.svg'
 import DuplicateIcon from '../assets/icons/Duplicate.svg'
 import DeleteIcon from '../assets/icons/Delete.svg'
-
 export default {
   name: 'WorkspaceSidenav',
   data() {
@@ -162,9 +152,19 @@ export default {
       }
     },
   },
-  component: {
+  components: {
+    AddIcon,
+    BoardIcon,
+    FilterIcon,
+    HomeIcon,
+    InfoIcon,
+    SearchIcon,
+    MenuIcon,
     ArrowDownIcon,
+    ArrowRightIcon,
     ArrowLeftIcon,
+    DuplicateIcon,
+    DeleteIcon,
   },
 }
 </script>

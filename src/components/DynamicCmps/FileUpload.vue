@@ -7,11 +7,7 @@
       @dragover.prevent
     >
       <div class="img-wrapper" v-if="file">
-        <i
-          v-icon="'closeSmall'"
-          class="removeBtn"
-          @click.prevent="onRemoveFile"
-        ></i>
+        <div class="removeBtn" @click.prevent="onRemoveFile"></div>
         <img :src="file" alt="" />
       </div>
       <div class="default-img-wrapper" v-if="!file">
@@ -20,7 +16,7 @@
           :style="{ height: '20px', width: '100%' }"
           class="default-img"
         />
-        <i v-icon="'filePlus'"></i>
+        <FileIcon class="file-icon icon" />
       </div>
       <input type="file" @change="handleFile" hidden />
     </label>
@@ -29,11 +25,15 @@
 </template>
 <script>
 import { uploadFile } from '../../services/upload.service'
-
+import FileIcon from '../../assets/icons/Page.svg'
+import CloseIcon from '../../assets/icons/Close.svg'
 export default {
   name: '',
   props: {
     info: String,
+  },
+  created() {
+    this.fileUrl = this.info
   },
   data() {
     return {
@@ -67,8 +67,10 @@ export default {
       return this.fileUrl ? this.fileUrl : ''
     },
   },
-  created() {
-    this.fileUrl = this.info
+
+  components: {
+    FileIcon,
+    CloseIcon,
   },
 }
 </script>
