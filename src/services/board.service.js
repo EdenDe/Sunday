@@ -28,7 +28,7 @@ function getById(boardId) {
 }
 
 async function remove(boardId) {
-	await storageService.removeBoard(STORAGE_KEY, boardId)
+	await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {

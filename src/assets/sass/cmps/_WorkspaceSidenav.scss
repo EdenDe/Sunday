@@ -96,6 +96,7 @@
     @include flex-center;
     padding: 22.5px 16px 0px 12px;
     .list-item {
+      position: relative;
       align-items: center;
       background-color: inherit;
       width: 100%;
@@ -105,6 +106,7 @@
       border-radius: 4px;
       font-size: rem(14px);
       color: $primary-text-color;
+      
       .dots-wrapper {
         display: none;
       }
@@ -123,6 +125,15 @@
       i {
         height: rem(19px);
       }
+    }
+
+    .group-actions-list{
+      display:none;
+      height: fit-content;
+    }
+
+    .group-actions-list.is-modal-open{
+      display:grid;
     }
   }
   & > * {
