@@ -2,6 +2,7 @@
   {
     "_id": "b101",
     "title": "Sunday",
+    "description": "Sunday app is a project management and team collaboration tool that streamlines task organization and team activities.",
     "isStarred": false,
     "archivedAt": null,
     "createdBy": {
