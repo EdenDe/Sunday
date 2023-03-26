@@ -1,12 +1,12 @@
 <template>
   <section
-    class="workspace-sidenav flex-col"
+    class="workspace-sidenav flex-col justify-start"
     ref="workspaceSidenav"
     :class="{ 'workspace-close': isWorkspaceClosed }"
   >
-    <div class="toggle-workspace flex align-center" @click="toggleWorkspace">
-      <i v-icon="'workspaceArrow'" class="svg workspace-arrow"></i>
-    </div>
+    <button class="toggle-workspace flex align-center" @click="toggleWorkspace">
+      <ArrowRightIcon class="arrow-right-icon icon" />
+    </button>
 
     <section class="navigation-header flex-col justify-between align-center">
       <div class="dropdown-navigation-header flex justify-between">

@@ -69,6 +69,7 @@ function getEmptyGroup() {
 }
 
 function getEmptyTask() {
+<<<<<<< HEAD
   return {
     id: 't' + utilService.makeId(),
     checkbox: false,
@@ -80,6 +81,19 @@ function getEmptyTask() {
     txt: '',
     priority: '',
   }
+=======
+	return {
+		id: 't' + utilService.makeId(),
+		checkbox: false,
+		person: [],
+		taskTitle: '',
+		date: null,
+		status: '',
+		timeline: [],
+		txt: '',
+		priority: '',
+	}
+>>>>>>> 14d3d97904ca5dd8ad0d240ac27bbce7b0f80f72
 }
 
 function getEmptyBoard() {

@@ -1,11 +1,11 @@
 .workspace-sidenav {
-  @include sidenav;
   grid-area: workspace-sidenav;
+  @include sidenav;
   position: relative;
   color: $primary-text-color;
   background-color: $color-riverstone_gray;
   border-right: 1.2px solid $workspace-side-nav;
-  padding-top: rem(12px);
+
   transition: width 0.3s ease-out;
   &.workspace-close {
     width: rem(32px);
@@ -38,10 +38,13 @@
       font-size: rem(14px);
       color: $color-asphalt;
     }
+    .dropdown-navigation-header {
+      height: 36px;
+      width: 222px;
+    }
     .dropdown-navigation-button {
-      width: 100%;
+      height: 38px;
       padding: rem(6px);
-      margin-right: rem(4px);
       border-radius: $border-radius;
       border: 1px solid $icon-color;
       .workspace-title {
@@ -116,7 +119,7 @@
       border-radius: 4px;
       font-size: rem(14px);
       color: $primary-text-color;
-      
+
       .dots-wrapper {
         display: none;
       }
@@ -137,13 +140,13 @@
       }
     }
 
-    .group-actions-list{
-      display:none;
+    .group-actions-list {
+      display: none;
       height: fit-content;
     }
 
-    .group-actions-list.modal-open{
-      display:grid;
+    .group-actions-list.is-modal-open {
+      display: grid;
     }
   }
   & > * {
@@ -182,5 +185,24 @@
     svg{
       @include flex-center;
     }
+  }
+  //ICONS
+  .icon {
+    height: 20px;
+    width: 20px;
+  }
+  .arrow-down-icon {
+    width: 16px;
+  }
+  .arrow-right-icon {
+    width: 12px;
+  }
+  .home-icon {
+    width: 12px;
+    height: 12px;
+  }
+  .menu-icon {
+    width: 16px;
+    height: 16px;
   }
 }

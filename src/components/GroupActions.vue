@@ -1,10 +1,6 @@
 <template>
   <section class="group-actions-list grid">
-    <div
-      v-for="action in actions"
-      class="group-action flex align-center justify-start"
-      v-focus="action.focus"
-    >
+    <div v-for="action in actions" @click="emitFunction(action)" class="group-action flex align-center justify-start">
       <div class="svg-wrapper">
         <i v-icon="action.svg"></i>
       </div>
@@ -22,35 +18,40 @@ export default {
         {
           title: 'Collapse this group',
           svg: 'actionsCollapse',
-          focus: 'Header',
+          emit: 'Header',
         },
         {
           title: 'Add group',
           svg: 'addAction',
-          focus: 'Header',
+          emit: 'add',
         },
         {
           title: 'Duplicate this group',
           svg: 'duplicateAction',
-          focus: 'Header',
+          emit: 'copy',
         },
         {
           title: 'Rename group',
           svg: 'actionsRename',
-          focus: 'Header',
+          emit: 'renameTitle',
         },
         {
           title: 'Change group color',
           svg: 'ColorAction',
-          focus: 'Header',
+          emit: 'openColorPicker',
         },
         {
           title: 'Delete',
           svg: 'actionsTrash',
-          focus: 'Header',
+          emit: 'remove',
         },
       ],
     }
   },
+  methods: {
+    emitFunction(action) {
+      this.$emit(action.emit)
+    }
+  }
 }
 </script>

@@ -15,6 +15,5 @@ app.use(store)
 app.use(ElementPlus)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
-app.directive('focus', focus)
 
 app.mount('#app')
