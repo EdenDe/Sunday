@@ -107,6 +107,19 @@
 </template>
 
 <script>
+import AddIcon from '../assets/icons/Add.svg'
+import BoardIcon from '../assets/icons/Board.svg'
+import FilterIcon from '../assets/icons/Filter.svg'
+import SearchIcon from '../assets/icons/Search.svg'
+import HomeIcon from '../assets/icons/HomeFill.svg'
+import InfoIcon from '../assets/icons/Info.svg'
+import MenuIcon from '../assets/icons/Menu.svg'
+import ArrowDownIcon from '../assets/icons/NavigationChevronDown.svg'
+import ArrowRightIcon from '../assets/icons/NavigationChevronRight.svg'
+import ArrowLeftIcon from '../assets/icons/NavigationChevronLeft.svg'
+import DuplicateIcon from '../assets/icons/Duplicate.svg'
+import DeleteIcon from '../assets/icons/Delete.svg'
+
 export default {
   name: 'WorkspaceSidenav',
   data() {

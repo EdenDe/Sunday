@@ -2,23 +2,32 @@
   <section class="group-list">
     <Container @drop="onDrop">
       <Draggable v-for="group in groups" :key="group.id">
-        <GroupPreview :group="group" @addGroup="addGroup" @removeGroup="removeGroup" @copyGroup="copyGroup" />
+        <GroupPreview
+          :group="group"
+          @addGroup="addGroup"
+          @removeGroup="removeGroup"
+          @copyGroup="copyGroup"
+        />
       </Draggable>
     </Container>
-    <button class="btn-add-group flex justify-center align-center" @click="onAddGroup">
-      <i v-icon="'workspacePlus'"></i>
+    <button
+      class="btn-add-group flex justify-center align-center"
+      @click="onAddGroup"
+    >
+      <AddIcon class="add-icon icon" />
       Add new group
     </button>
   </section>
 </template>
 
 <script>
-import { Container, Draggable } from "vue3-smooth-dnd";
-import { boardService } from "../services/board.service";
-import GroupPreview from "./GroupPreview.vue";
+import { Container, Draggable } from 'vue3-smooth-dnd'
+import { boardService } from '../services/board.service'
+import GroupPreview from './GroupPreview.vue'
+import AddIcon from '../assets/icons/Add.svg'
 
 export default {
-  name: "GroupList",
+  name: 'GroupList',
   props: {
     groups: Array,
   },
@@ -35,17 +44,18 @@ export default {
       this.updateBoard(groups)
     },
     removeGroup(groupId) {
-      const groups = this.groups.filter(group => group.id !== groupId)
+      const groups = this.groups.filter((group) => group.id !== groupId)
       this.updateBoard(groups)
     },
     updateBoard(groups) {
       this.$emit('updateBoard', 'groups', groups)
-    }
+    },
   },
   components: {
     GroupPreview,
     Container,
     Draggable,
+    AddIcon,
   },
-};
+}
 </script>

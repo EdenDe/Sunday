@@ -1,6 +1,10 @@
 <template>
   <section class="group-actions-list grid">
-    <div v-for="action in actions" @click="emitFunction(action)" class="group-action flex align-center justify-start">
+    <div
+      v-for="action in actions"
+      @click="emitFunction(action)"
+      class="group-action flex align-center justify-start"
+    >
       <div class="svg-wrapper">
         <i v-icon="action.svg"></i>
       </div>
@@ -11,10 +15,14 @@
 
 <script>
 export default {
-  name: 'GroupActions',
+  name: 'actions',
+  props: {
+    taskId: String,
+    groupColor: String,
+  },
   data() {
     return {
-      actions: [
+      groupActions: [
         {
           title: 'Collapse this group',
           svg: 'actionsCollapse',
@@ -46,11 +54,39 @@ export default {
           emit: 'remove',
         },
       ],
+      taskActions: [
+        {
+          title: 'Create new task below',
+          svg: '',
+          emit: 'add',
+        },
+        {
+          title: 'Delete',
+          svg: '',
+          emit: 'remove',
+        },
+        {
+          title: 'Duplicate',
+          svg: '',
+          emit: 'copy',
+        },
+      ],
     }
+  },
+  computed: {
+    actions() {
+      if (this.taskId) return this.taskActions
+      return this.groupActions
+    },
   },
   methods: {
     emitFunction(action) {
       this.$emit(action.emit)
+    },
+  },
+      if (this.taskId) return this.$emit(action.emit, this.taskId)
+      return this.$emit(action.emit)
+
     }
   }
 }
