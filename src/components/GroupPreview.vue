@@ -27,12 +27,12 @@
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
-          @click.prevent="onOpenColorPicker"
+          @focusout.prevent="onOpenColorPicker"
         ></button>
         <span
           contenteditable
           class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
+          @click="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
         >
           {{ group.title }}
