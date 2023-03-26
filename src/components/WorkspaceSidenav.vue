@@ -55,7 +55,7 @@
         class="list-item flex justify-between align-center"
         :class="{ 'is-active': board._id === $route.params.boardId }"
         :id="board._id"
-        @click="onSetBoard(board._id)"
+        @click.stop="onSetBoard(board._id)"
       >
         <section class="board-name flex align-center">
           <BoardIcon class="board-icon icon" />
@@ -75,7 +75,7 @@
         >
           <li
             class="group-action flex align-center justify-start"
-            @click.prevent="onCopyBoard(board._id)"
+            @click.stop="onCopyBoard(board._id)"
           >
             <div class="svg-wrapper">
               <DuplicateIcon class="duplicate-icon icon" />
@@ -84,7 +84,7 @@
           </li>
           <li
             class="group-action flex align-center justify-start"
-            @click.prevent="onDeleteBoard(board._id)"
+            @click.stop="onDeleteBoard(board._id)"
           >
             <div class="svg-wrapper">
               <DeleteIcon class="delete-icon icon" />
@@ -133,7 +133,7 @@ export default {
       this.openModalBoardId = value
     },
     onDeleteBoard(boardId) {
-      //this.$emit('removeBoard', boardId)
+      this.$emit('removeBoard', boardId)
       this.updateModalBoardId(null)
     },
     onCopyBoard(boardId) {
