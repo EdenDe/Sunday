@@ -81,13 +81,9 @@ export default {
   },
   methods: {
     emitFunction(action) {
-      this.$emit(action.emit)
-    },
-  },
       if (this.taskId) return this.$emit(action.emit, this.taskId)
       return this.$emit(action.emit)
-
-    }
-  }
+    },
+  },
 }
 </script>
