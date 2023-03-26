@@ -11,10 +11,14 @@
 
 <script>
 export default {
-  name: 'GroupActions',
+  name: 'actions',
+  props: {
+    'taskId': String,
+    'groupColor': String
+  },
   data() {
     return {
-      actions: [
+      groupActions: [
         {
           title: 'Collapse this group',
           svg: 'actionsCollapse',
@@ -46,11 +50,36 @@ export default {
           emit: 'remove',
         },
       ],
+      taskActions: [
+        {
+          title: 'Create new task below',
+          svg: '',
+          emit: 'add',
+        },
+        {
+          title: 'Delete',
+          svg: '',
+          emit: 'remove',
+        },
+        {
+          title: 'Duplicate',
+          svg: '',
+          emit: 'copy',
+        },
+      ]
+    }
+  },
+  computed: {
+    actions() {
+      if (this.taskId) return this.taskActions
+      return this.groupActions
     }
   },
   methods: {
     emitFunction(action) {
-      this.$emit(action.emit)
+      if (this.taskId) return this.$emit(action.emit, this.taskId)
+      return this.$emit(action.emit)
+
     }
   }
 }

@@ -1,6 +1,11 @@
 .task-list {
   background-color: $color-snow_white;
   @include task-cols;
+
+  .group-actions-wrapper{
+    height: fit-content;
+  }
+
   &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }
