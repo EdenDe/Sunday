@@ -110,6 +110,7 @@ import ArrowRightIcon from '../assets/icons/NavigationChevronRight.svg'
 import ArrowLeftIcon from '../assets/icons/NavigationChevronLeft.svg'
 import DuplicateIcon from '../assets/icons/Duplicate.svg'
 import DeleteIcon from '../assets/icons/Delete.svg'
+
 export default {
   name: 'WorkspaceSidenav',
   data() {
