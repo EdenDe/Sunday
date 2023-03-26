@@ -21,7 +21,7 @@ export default {
       actions: [
         {
           title: 'Collapse this group',
-          svg: 'collapseAction',
+          svg: 'actionsCollapse',
           focus: 'Header',
         },
         {
@@ -36,7 +36,7 @@ export default {
         },
         {
           title: 'Rename group',
-          svg: 'renameAction',
+          svg: 'actionsRename',
           focus: 'Header',
         },
         {
@@ -46,7 +46,7 @@ export default {
         },
         {
           title: 'Delete',
-          svg: 'deleteAction',
+          svg: 'actionsTrash',
           focus: 'Header',
         },
       ],

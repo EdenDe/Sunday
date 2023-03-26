@@ -4,7 +4,12 @@
   font-size: 14px;
   .grid-title {
     @include task-cols;
-
+    .group-actions-wrapper {
+      @include flex-center;
+      position: sticky;
+      z-index: 101;
+      left: 0;
+    }
     .svg-wrapper {
       @include flex-center;
       grid-column: 1;
@@ -29,30 +34,37 @@
       opacity: 1;
     }
     .open-list {
+      @include flex-center;
+      position: sticky;
+      z-index: 100;
+      left: 46px;
       grid-column: 3;
       @include flex-center;
+      &-icon {
+        @include flex-center;
+      }
     }
     .group-title-wrapper {
       position: sticky;
+      z-index: 100;
       left: 79px;
       grid-column: 4;
 
-    &:has(.group-title:focus-visible) .btn-color{
-        display:inline-block;
+      &:has(.group-title:focus-visible) .btn-color {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
       }
 
-      .color-picker-wrapper{
-        position: relative;
-      }
-
-      .btn-color{
+      .btn-color {
+        position: absolute;
+        z-index: 100;
         width: em(27px);
         height: em(27px);
         border-radius: 50%;
         margin-inline-end: em(5px);
         display: none;
-        border:none;
-        position: absolute;
+        border: none;
         left: 10px;
         top: 50%;
         transform: translateY(-50%);
@@ -75,7 +87,7 @@
           border-radius: 4px;
         }
         &:focus-visible {
-          width: 200px; 
+          width: 200px;
           padding-left: 30px;
         }
         &:hover + .tasks-num {
@@ -199,12 +211,6 @@
       @include fullSize;
       border-radius: 0 0 0 $border-radius-rounder;
     }
-
-    &:has(.add-task-input-container input:focus-within) {
-      background-color: $color-highlight_blue;
-
-    }
-
     .add-task-input-container {
       position: sticky;
       left: 78px;
@@ -236,4 +242,12 @@
   width: 40px;
   background-color: $color-snow_white;
   left: 0;
+}
+.color-picker-wrapper {
+  position: relative;
+  .color-picker {
+    position: absolute;
+    top: 70%;
+    right: 300px;
+  }
 }
