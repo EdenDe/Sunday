@@ -23,6 +23,10 @@ export const icon = {
 // 	},
 // }
 
+export const focus = {
+	mounted: el => el.focus(),
+}
+
 export const clickOutside = {
 	mounted(el, { value: cb }) {
 		el.clickOutside = ({ clientX, clientY }) => {

@@ -74,7 +74,7 @@ function getEmptyTask() {
 		checkbox: false,
 		person: [],
 		taskTitle: '',
-		date: 1661113200000,
+		date: null,
 		status: '',
 		timeline: [],
 		txt: '',
