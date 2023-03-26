@@ -71,7 +71,7 @@ export default {
       const [startDate, endDate] = this.timeline
 
       let fullDiff = utilService.getDaysBetweenNumber(this.timeline)
-      let startToToday = utilService.getDaysBetweenNumber([startDate, Date.now()])
+      let startToToday = utilService.getDaysBetweenNumber([startDate, Date.now()]) - 1
       let todayToEnd = utilService.getDaysBetweenNumber([Date.now(), endDate])
 
       if (todayToEnd < 0 || startToToday < 0) {

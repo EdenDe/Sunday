@@ -2,26 +2,16 @@
   <section class="progress-bar justify-center" v-if="tasks">
     <div v-for="value in Array(2).fill(null)"></div>
     <div v-for="(item, idx) in cmpOrder" :key="idx">
-      <div
-        v-if="item.name === 'status' || item.name === 'priority'"
-        class="flex progress-container"
-        :class="item"
-      >
-        <div
-          v-for="label in groupStatusProgress(item.name)"
-          :style="{
-            flex: 1,
-            'flex-basis': label.width,
-            backgroundColor: label.color,
-          }"
-        ></div>
+      <div v-if="item.name === 'status' || item.name === 'priority'" class="flex progress-container" :class="item">
+        <div v-for="label in groupStatusProgress(item.name)" :style="{
+          flex: 1,
+          'flex-basis': label.width,
+          backgroundColor: label.color,
+        }"></div>
       </div>
       <div v-else-if="item.name === 'timeline'" class="flex timeline-display">
-        <label
-          :data-diff="groupTimelineProgressRange"
-          class="timeline-label active-timeline"
-          :style="{ backgroundColor: groupColor }"
-        >
+        <label :data-diff="groupTimelineProgressRange" class="timeline-label active-timeline"
+          :style="progressTimeline?.length ? { background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})` } : null">
           {{ groupTimelineProgressDates }}
         </label>
       </div>
@@ -87,13 +77,30 @@ export default {
             res[title] = {
               width: Math.round(presentageWidth) + '%',
               color: color,
-              title: `${title} ${
-                res[title]
-              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+              title: `${title} ${res[title]
+                }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
             }
           }
         })
         return res
+      }
+    },
+    gridientColor() {
+      const [startDate, endDate] = this.progressTimeline
+
+      let fullDiff = utilService.getDaysBetweenNumber(this.progressTimeline)
+      let startToToday = utilService.getDaysBetweenNumber([startDate, Date.now()]) - 1
+      let todayToEnd = utilService.getDaysBetweenNumber([Date.now(), endDate])
+
+      if (todayToEnd < 0 || startToToday < 0) {
+        return {
+          start: todayToEnd < 0 ? '100%' : '0%',
+        }
+      }
+      let presentageStart = Math.round((startToToday / fullDiff) * 100) + '%'
+
+      return {
+        start: presentageStart,
       }
     },
     groupTimelineProgressDates() {

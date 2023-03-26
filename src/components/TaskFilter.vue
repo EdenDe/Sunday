@@ -22,10 +22,5 @@
 <script>
 export default {
   name: 'TaskFilter',
-  methods: {
-    addTask() {
-      //q- איך להוסיף מפה בצורה הכי טובה
-    },
-  },
 }
 </script>
