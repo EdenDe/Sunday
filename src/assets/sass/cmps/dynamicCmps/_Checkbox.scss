@@ -1,0 +1,9 @@
+.task-checkbox{
+  input{
+    appearance: none;
+    border: 1px solid $ui-border-color;
+    border-radius: $border-radius;
+    height: 16px;
+    width: 16px;
+  }
+}

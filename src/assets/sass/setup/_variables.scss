@@ -41,12 +41,17 @@ $border-radius-rounder: 6px;
 
 // BOX SHADOW
 $shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+$box-shadow-xs: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+$box-shadow-small: 0px 4px 8px rgba(0, 0, 0, 0.2);
+$box-shadow-medium: 0px 6px 20px rgba(0, 0, 0, 0.2);
+$box-shadow-large: 0px 15px 50px rgba(0, 0, 0, 0.3);
 
 //COLOR PALETTE
 $color-highlight_blue: #cce5ff;
 $color-basic_blue: #0073ea;
 $color-dark_blue: #0060b9;
 $color-blue-btn: #0071d9;
+$color-blue-focus: #cbe4ff;
 $color-bazooka: #f65f7c;
 $color-snow_white: #ffffff;
 $color-riverstone_gray: #f6f7fb;
@@ -93,10 +98,6 @@ $private-color: #f65f7c;
 $shareable-color: #a25ddc;
 $ui-border-color: #c3c6d4;
 $layout-border-color: #d0d4e4;
-$box-shadow-xs: 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
-$box-shadow-small: 0px 4px 8px rgba(0, 0, 0, 0.2);
-$box-shadow-medium: 0px 6px 20px rgba(0, 0, 0, 0.2);
-$box-shadow-large: 0px 15px 50px rgba(0, 0, 0, 0.3);
 $color-grass_green: #037f4c;
 $color-grass_green-hover: #116846;
 $color-grass_green-selected: #81bfa5;

@@ -1,8 +1,5 @@
 .progress-bar {
   @include task-cols;
-  // >*:not(:first-child){
-  //   border-top: 1px solid $layout-border-color;
-  // }
 
   > *:not(:nth-child(-n + 4)) {
     @include task-row;
@@ -14,6 +11,7 @@
     border-right: 1px solid #d0d4e4;
     border-bottom: 1px solid #d0d4e4;
     background-color: $color-snow_white;
+    box-shadow: $box-shadow-xs;
   }
 
   > :nth-child(5) {

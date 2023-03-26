@@ -12,7 +12,7 @@
           class="removeBtn"
           @click.prevent="onRemoveFile"
         ></i>
-        <img :src="file" alt="" :style="{ height: '20px', width: '100%' }" />
+        <img :src="file" alt="" />
       </div>
       <div class="default-img-wrapper" v-if="!file">
         <img

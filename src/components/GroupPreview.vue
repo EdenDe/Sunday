@@ -79,6 +79,7 @@
         :style="{ backgroundColor: group.color }"
       ></div>
       <Checkbox />
+
       <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
         <input
           placeholder="+ Add task"

@@ -11,6 +11,11 @@
     width: rem(32px);
     min-width: rem(32px);
     transition: width 0.3s ease-in-out;
+    .workspace-arrow > svg {
+          transform: rotate(180deg);
+          transition: transform .3s ease-in;
+        }
+      
     & > *:not(.toggle-workspace) {
       display: none;
     }
@@ -18,8 +23,13 @@
     &:not(.workspace-close) {
       min-width: 254px; // set your desired minimum width here
     }
+
+    .toggle-workspace:hover svg {
+          margin-left: 10px;
+      
+    }
   }
-  .navigation-header {
+   .navigation-header {
     padding: 0;
     margin: rem(9px) rem(14px) rem(18px);
     display: grid;
@@ -132,16 +142,16 @@
       height: fit-content;
     }
 
-    .group-actions-list.is-modal-open{
+    .group-actions-list.modal-open{
       display:grid;
     }
   }
   & > * {
     cursor: pointer;
   }
-  &.workspace-open {
-    display: inherit;
-  }
+  // &.workspace-open {
+  //   display: inherit;
+  // }
   .toggle-workspace {
     position: absolute;
     background-color: $color-snow_white;
@@ -154,14 +164,23 @@
     right: rem(-26px);
     width: rem(26px);
     height: rem(26px);
-    transition: width 0.15s ease, padding-inline-end 0.15s ease,
-      padding-inline-start 0.15s ease, background-color 0.15s ease;
-    .workspace-arrow {
-      transform: rotate(180deg);
-      transition: transform 100ms ease;
-      svg {
-        @include flex-center;
-      }
+    transition: all 0.15s ease-in-out;
+
+    &:hover {       
+      width: 33px;
+      height: 22px;
+      border-radius: 20px;
+      justify-content: end;
+      padding-inline-start: 9px;
+      background-color: $color-blue-btn;
+        svg{
+          margin-right: 10px; 
+          fill: $color-snow_white;
+       }
+    }
+    
+    svg{
+      @include flex-center;
     }
   }
 }
