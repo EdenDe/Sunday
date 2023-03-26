@@ -1,7 +1,8 @@
 <template>
   <section class="update-log grid">
-    <textarea @focus="changeSize" :rows="rowsNum" class="textarea-update-log" v-model="content"
-      placeholder="Write an update..."></textarea>
+    <QuillEditor :toolbar="['strike', 'bold', 'italic', 'underline']" />
+    <!-- <textarea @focus="changeSize" :rows="rowsNum" class="textarea-update-log" v-model="content"
+      placeholder="Write an update..."></textarea> -->
     <button class="btn-update">Update</button>
   </section>
 </template>

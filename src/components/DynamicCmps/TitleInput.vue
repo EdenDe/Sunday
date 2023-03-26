@@ -1,12 +1,8 @@
 <template>
   <section class="task-title">
-    <span
-      contenteditable
-      @focusin="onFocusIn"
-      @focusout="onFocusout($event.target.innerText)"
-      :style="{ fontSize: '14px' }"
-    >
-      {{ displayedTxt }}
+    <span contenteditable @focusin="onFocusIn" @focusout="onFocusout($event.target.innerText)"
+      :style="{ fontSize: '14px' }">
+      {{ txt }}
     </span>
   </section>
 </template>
@@ -39,22 +35,6 @@ export default {
     onFocusIn() {
       this.isFocused = true
     },
-    getShortTxt() {
-      let shortTxt = this.txt.split('')
-      if (shortTxt.length > 25) {
-        shortTxt = shortTxt.splice(0, 25).join('')
-        shortTxt += '...'
-      } else {
-        shortTxt = shortTxt.join('')
-      }
-      return shortTxt
-    },
-  },
-  computed: {
-    displayedTxt() {
-      // return this.getShortTxt()
-      return this.isFocused ? this.txt : this.getShortTxt()
-    },
-  },
+  }
 }
 </script>
