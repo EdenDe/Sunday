@@ -6,12 +6,6 @@
       <TaskPreview :task="task" @updateProp="updateProp" />
     </Draggable>
   </Container>
-  <!-- <TaskActionBar
-    v-if="isActionBarOpen"
-    :selectedTasksNum="selectedTasksNum"
-    @closeActionBar="closeActionBar"
-    @remove="removeTasks"
-  ></TaskActionBar> -->
 </template>
 
 <script>

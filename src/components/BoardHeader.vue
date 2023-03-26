@@ -34,6 +34,14 @@
             <span>Kanban</span>
           </div>
         </RouterLink>
+        <RouterLink :to="'/board/' + currBoard._id + '/dashboard'">
+          <div
+            class="btn btn-container grid grid-col"
+            :class="{ 'is-active': $route.params.kanban }"
+          >
+            <span>Dashboard</span>
+          </div>
+        </RouterLink>
         <div class="btn btn-container grid grid-col">
           <span class="task-filter-icon plus-icon" v-icon="'plusHeader'"></span>
         </div>

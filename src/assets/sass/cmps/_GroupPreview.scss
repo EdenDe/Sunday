@@ -203,6 +203,12 @@
       @include fullSize;
       border-radius: 0 0 0 $border-radius-rounder;
     }
+
+    &:has(.add-task-input-container input:focus-within) {
+      background-color: $color-highlight_blue;
+
+    }
+
     .add-task-input-container {
       position: sticky;
       left: 78px;

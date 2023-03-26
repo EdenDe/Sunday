@@ -8,17 +8,26 @@
       <h4 class="home-page-body-sub-header">
         What would you like to mange with sunday.com Work OS?
       </h4>
-      <RouterLink v-if="firstBoardId" :to="'/board/' + firstBoardId + '/main-table'" class="btn-get-started">Get Started
+      <RouterLink
+        v-if="firstBoardId"
+        :to="'/board/' + firstBoardId + '/main-table'"
+        class="btn-get-started"
+        >Get Started
       </RouterLink>
 
       <el-carousel :interval="4000" type="card" height="200px">
         <el-carousel-item v-for="item in 6" :key="item">
-          <img src="@/assets/img/logo.png" />
+          <img src="../assets/img/homePageImg/1.png" />
         </el-carousel-item>
       </el-carousel>
     </div>
 
-    <div v-for="(star, index) in 20" :key="star" class="star" :class="`star${index + 1}`"></div>
+    <div
+      v-for="(star, index) in 20"
+      :key="star"
+      class="star"
+      :class="`star${index + 1}`"
+    ></div>
   </section>
 </template>
 
