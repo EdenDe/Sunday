@@ -1,8 +1,8 @@
 <template>
   <section class="task-pulse">
     <header class="grid">
-      <button class="btn btn-close" v-icon="'closePulse'" @click="onBack">
-        X
+      <button class="btn btn-close" @click="onBack">
+        <CloseIcon class="close-icon icon" />
       </button>
       <div>
         <span
@@ -20,7 +20,9 @@
           :class="{ 'active-tab': activeTab === 'updateLog' }"
         >
           <button class="btn btn-tab" @click="activeTab = 'updateLog'">
-            <i class="task-update-icon" v-icon="'homeHeader'"></i>
+            <div class="task-update-icon">
+              <HomeIcon class="home-icon icon" />
+            </div>
             Updates
           </button>
         </div>
@@ -45,7 +47,8 @@
 <script>
 import UpdateLog from '../components/UpdateLog.vue'
 import ActivityLog from '../components/ActivityLog.vue'
-
+import CloseIcon from '../assets/icons/Close.svg'
+import HomeIcon from '../assets/icons/Home.svg'
 export default {
   data() {
     return {
@@ -87,6 +90,8 @@ export default {
   components: {
     UpdateLog,
     ActivityLog,
+    CloseIcon,
+    HomeIcon,
   },
 }
 </script>

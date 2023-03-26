@@ -12,11 +12,14 @@
       v-model="date"
       @change="onChangeDate"
     />
-    <i v-if="date" v-icon="'closeSmall'" @click.prevent="onRemoveDate"></i>
+    <div v-if="date" @click.prevent="onRemoveDate">
+      <CloseIcon class="close-icon icon" />
+    </div>
   </section>
 </template>
 
 <script>
+import CloseIcon from '../../assets/icons/Close.svg'
 export default {
   name: 'Date',
   props: {
@@ -44,6 +47,9 @@ export default {
     onRemoveDate() {
       this.$emit('updateProp', 'date', null)
     },
+  },
+  components: {
+    CloseIcon,
   },
 }
 </script>
