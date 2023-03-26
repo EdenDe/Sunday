@@ -18,9 +18,23 @@
           :class="{ active: isGroupActionsOpen }" :style="{ fill: group.color }"></i>
       </div>
       <div class="group-title-wrapper flex align-center">
+<<<<<<< HEAD
         <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
         <span contenteditable ref="groupTitle" class="group-title"
           @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
+=======
+        <button
+          class="btn-color"
+          :style="{ backgroundColor: group.color }"
+          @focusout.prevent="onOpenColorPicker"
+        ></button>
+        <span
+          contenteditable
+          class="group-title"
+          @click="onChangeGroupProp('title', $event.target.innerHTML)"
+          :style="{ color: group.color }"
+        >
+>>>>>>> 4b3b4506afa9fc8a5eb405f998f149405e7098c8
           {{ group.title }}
         </span>
 
