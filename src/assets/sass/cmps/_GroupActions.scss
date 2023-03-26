@@ -22,3 +22,29 @@
     }
   }
 }
+
+  .group-actions-wrapper {
+      @include flex-center;
+      position: sticky;
+      z-index: 101;
+      left: 0;
+    }
+    .svg-wrapper {
+      @include flex-center;
+      grid-column: 1;
+      position: relative;
+      .dots-icon {
+        @include flex-center;
+        border-radius: $btn-border-radius;
+        &:hover {
+          background-color: $primary-background-hover-color;
+        }
+        &.active {
+          opacity: 1;
+          background-color: $color-highlight_blue;
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
