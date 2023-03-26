@@ -1,6 +1,6 @@
 <template>
   <div class="board-table">
-    <GroupList @on-add-group="onAddGroup" :groups="groups" @onDrop="onDrop"></GroupList>
+    <GroupList @updateBoard="updateBoard" :groups="groups"></GroupList>
   </div>
   <RouterView />
 </template>
@@ -14,23 +14,12 @@ export default {
     },
   },
   methods: {
-    onDrop({ addedIndex, removedIndex }) {
-      let groupList = JSON.parse(JSON.stringify(this.groups))
-      groupList.splice(addedIndex, 0, groupList.splice(removedIndex, 1)[0])
-      this.updateBoard(groupList)
-    },
-    onAddGroup() {
-      const groupList = JSON.parse(JSON.stringify(this.groups))
-      const newGroup = boardService.getEmptyGroup()
-      groupList.push(newGroup)
-      this.updateBoard(groupList)
-    },
-    updateBoard(toUpdate) {
+    updateBoard(prop, toUpdate) {
       this.$store.dispatch({
         type: 'updateCurrBoard',
         groupId: null,
         taskId: null,
-        prop: 'groups',
+        prop: prop,
         toUpdate,
       })
     },

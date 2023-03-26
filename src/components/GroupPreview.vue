@@ -3,27 +3,26 @@
     <div class="grid-title flex align-items">
       <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
-          <span
-            class="dots-icon"
-            v-icon="'threeDots'"
-            @click="toggleGroupActions"
-            :class="{ active: isGroupActionsOpen }"
-          ></span>
-        </div>
-        <div class="group-actions">
-          <GroupActions :groupColor="group.color" v-if="isGroupActionsOpen" />
+          <span class="dots-icon" v-icon="'threeDots'" @click="toggleGroupActions(!isGroupActionsOpen)"
+            :class="{ active: isGroupActionsOpen }"></span>
+
+          <div class="group-actions">
+            <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
+              @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)"
+              v-if="isGroupActionsOpen" />
+          </div>
         </div>
       </div>
       <div class="open-list">
-        <i
-          class="open-list-icon"
-          v-icon="'arrowDownGroup'"
-          @click="toggleOpenList"
-          :class="{ active: isGroupActionsOpen }"
-          :style="{ fill: group.color }"
-        ></i>
+        <i class="open-list-icon" v-icon="'arrowDownGroup'" @click="toggleOpenList"
+          :class="{ active: isGroupActionsOpen }" :style="{ fill: group.color }"></i>
       </div>
       <div class="group-title-wrapper flex align-center">
+<<<<<<< HEAD
+        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
+        <span contenteditable ref="groupTitle" class="group-title"
+          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
+=======
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
@@ -35,30 +34,20 @@
           @click="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
         >
+>>>>>>> 4b3b4506afa9fc8a5eb405f998f149405e7098c8
           {{ group.title }}
         </span>
 
-        <span class="tasks-num flex align-items justify-start"
-          >{{ tasksNumber }} Tasks</span
-        >
+        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
         <ColorPicker @changeColor="onChangeGroupProp" />
       </div>
     </div>
     <Container class="group-labels">
-      <Draggable
-        v-for="(label, index) in labels"
-        :key="label"
-        class="group-label"
-        :class="label"
-        :groupColor="group.color"
-      >
-        <div
-          v-if="index === 1"
-          class="first-col-color"
-          :style="{ backgroundColor: group.color }"
-        ></div>
+      <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
+        :groupColor="group.color">
+        <div v-if="index === 1" class="first-col-color" :style="{ backgroundColor: group.color }"></div>
         <div v-if="index === 2" class="group-checkbox">
           <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
         </div>
@@ -66,35 +55,18 @@
       </Draggable>
     </Container>
 
-    <TaskList
-      v-if="isListOpen"
-      :tasks="group.tasks"
-      :groupBgColor="group.color"
-      @updateProp="updateProp"
-    />
+    <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
     <div class="add-task-container">
       <div class="task-option"></div>
-      <div
-        class="first-col-color"
-        :style="{ backgroundColor: group.color }"
-      ></div>
+      <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
       <Checkbox />
       <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
-        <input
-          placeholder="+ Add task"
-          type="text"
-          v-model="newTask.taskTitle"
-        />
+        <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
       </form>
     </div>
     <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
-    <TaskActionBar
-      v-if="isActionBarOpen"
-      :selectedTasksNum="selectedTasksNum"
-      @closeActionBar="closeActionBar"
-      @remove="removeTasks"
-      @copy="copyTasks"
-    ></TaskActionBar>
+    <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
+      @remove="removeTasks" @copy="copySelectedTasks"></TaskActionBar>
   </section>
 </template>
 
@@ -145,7 +117,7 @@ export default {
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
 
-      this.newTask.id = utilService.makeId()
+      this.newTask.id = 't' + utilService.makeId()
       this.newTask.taskTitle = ''
     },
     removeTasks() {
@@ -160,7 +132,7 @@ export default {
     toggleOpenList() {
       this.isListOpen = !this.isListOpen
     },
-    copyTasks() {
+    copySelectedTasks() {
       const tasks = []
       this.group.tasks.forEach((task) => {
         if (this.selectedTasks.includes(task.id)) {
@@ -181,9 +153,25 @@ export default {
       if (prop === 'color') this.onOpenColorPicker()
       this.updateProp(null, prop, value)
     },
-    toggleGroupActions() {
-      this.isGroupActionsOpen = !this.isGroupActionsOpen
+    toggleGroupActions(value) {
+      this.isGroupActionsOpen = value
     },
+    copyGroup() {
+      let newGroup = JSON.parse(JSON.stringify(this.group))
+      newGroup.id = 'g' + utilService.makeId()
+      newGroup.tasks.forEach(task => {
+        task.id = 't' + utilService.makeId()
+      })
+
+      this.$emit('addGroup', newGroup)
+    },
+    focusGroupName() {
+      this.$refs.groupTitle.focus()
+    },
+    openColorPicker() {
+      this.focusGroupName()
+      this.isColorModalOpen = true
+    }
   },
   computed: {
     labels() {
@@ -215,9 +203,8 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${
-              res[title]
-            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${res[title]
+              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })
