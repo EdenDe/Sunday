@@ -43,8 +43,9 @@
         ></button>
         <span
           contenteditable
+          ref="groupTitle"
           class="group-title"
-          @click="onChangeGroupProp('title', $event.target.innerHTML)"
+          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
         >
           {{ group.title }}
@@ -91,6 +92,7 @@
         :style="{ backgroundColor: group.color }"
       ></div>
       <Checkbox />
+
       <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
         <input
           placeholder="+ Add task"

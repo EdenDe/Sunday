@@ -23,15 +23,21 @@
   }
 
   .person-picker-container{
+    z-index: 100;
+    position: absolute;
+    top:110%;
+    left:-80%;
     padding: em(8px) em(2px) 0 em(16px);
-    background-color: $color-snow_white;
+        
     width: 360px;
     height: fit-content;
-    position: absolute;
-    z-index: 100;
-    border-radius: (10px);
-    border: 1px solid $color-wolf_gray;
-    box-shadow: 0 0 6px 2px $person-picker-hover;
+    
+    border-radius: rem(10px);
+    box-shadow: $box-shadow-medium;
+    background-color: $color-snow_white;
+    &::after {
+        @include modal-arrow;
+      }
   
     .avatar{
       height: 25px;
@@ -57,6 +63,7 @@
   .search-container{
     position: relative;
     margin: $margin-medium 0;
+    background-color: transparent;
     
     .search-icon{
       @include flex-center;

@@ -2,18 +2,10 @@
   <section class="group-list">
     <Container @drop="onDrop">
       <Draggable v-for="group in groups" :key="group.id">
-        <GroupPreview
-          :group="group"
-          @addGroup="addGroup"
-          @removeGroup="removeGroup"
-          @copyGroup="copyGroup"
-        />
+        <GroupPreview :group="group" @addGroup="addGroup" @removeGroup="removeGroup" />
       </Draggable>
     </Container>
-    <button
-      class="btn-add-group flex justify-center align-center"
-      @click="onAddGroup"
-    >
+    <button class="btn-add-group flex justify-center align-center" @click="onAddGroup">
       <AddIcon class="add-icon icon" />
       Add new group
     </button>

@@ -59,8 +59,8 @@
       .btn-color {
         position: absolute;
         z-index: 100;
-        width: em(27px);
-        height: em(27px);
+        width: em(25px);
+        height: em(25px);
         border-radius: 50%;
         margin-inline-end: em(5px);
         display: none;
@@ -76,6 +76,7 @@
         display: inline-flex;
         font-size: rem(18px);
         margin: em(5px);
+        padding: 0;
         transition: outline 3s;
         align-items: center;
         font-family: $poppins-light;
@@ -131,13 +132,11 @@
     text-align: center;
 
     > *:not(:first-child, :nth-child(2)) {
-      padding: 6px;
       @include task-row;
+      @include flex-center;
+      padding: 6px;
       border-bottom: 1px solid $layout-border-color;
       margin-bottom: -1px;
-    }
-    &:nth-child(4) {
-      background-color: red;
     }
     & > *:nth-child(-n + 4) {
       position: sticky;
@@ -190,17 +189,21 @@
     @include task-cols;
     border-radius: 0 0 0 $border-radius-rounder;
     background-color: $color-snow_white;
-    opacity: 0.5;
-
+    
     :not(:first-child, .task-option) {
       border-bottom: 1px solid $layout-border-color;
     }
+    >*:not(.task-option) {
+    box-shadow: $box-shadow-xs;
+    }
 
-    &:hover{
+    &:hover {
       opacity: 1;
       background-color: $color-border_light_gray;
       & .task-option{
         background-color:$color-snow_white;
+
+        
       }
     }
     & :nth-child(3) {
@@ -210,23 +213,30 @@
     .first-col-color {
       @include fullSize;
       border-radius: 0 0 0 $border-radius-rounder;
+      opacity: 0.5;
+    }
+    .task-checkbox input{
+        opacity: 0.5;
     }
     .add-task-input-container {
+      @include flex-center;
+      height: 100%;
       position: sticky;
       left: 78px;
       top: 0px;
       grid-column: 4;
-      padding: em(4px) em(3px);
       border-left: 1px solid $layout-border-color;
       margin-left: -1px;
 
       input {
         padding: em(4px) 0;
-        padding-inline-start: 30px;
-        margin: auto;
+        padding-inline-start: 20px;
+        margin: 6px 10px;
         width: 95%;
         border-radius: $border-radius;
         border: 1px solid transparent;
+       background-color: transparent;
+               
         &:hover {
           border-color: $ui-border-on-secondary-color;
         }
