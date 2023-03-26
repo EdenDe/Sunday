@@ -35,7 +35,7 @@
         &>*{
           @include flex-center;
           @include fullSize;
-          color: $color-wolf_gray;
+          fill: $color-wolf_gray;
       } 
         .info-icon{
           padding: 5px;
