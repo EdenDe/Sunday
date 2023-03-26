@@ -1,11 +1,16 @@
 .person-list{
   padding-left: em(10px);
   position: relative;
-
+  
   &:hover{
     .plus-icon{
       opacity: 1;
     }
+  }
+
+  .avatar{
+    height: 25px;
+    width: 25px;
   }
 
   .plus-icon{
@@ -18,7 +23,7 @@
   }
 
   .person-picker-container{
-    padding: em(16px) em(16px) 0 em(16px);
+    padding: em(8px) em(2px) 0 em(16px);
     background-color: $color-snow_white;
     width: 360px;
     height: fit-content;
@@ -46,16 +51,17 @@
   .person-picker{
     width: 100%;
     flex-wrap: wrap;
+    gap: rem(8px);
   }
 
   .search-container{
     position: relative;
-    margin: 12px 0;
+    margin: $margin-medium 0;
     
-    span{
+    .search-icon{
       @include flex-center;
       position: absolute;
-      right:em(5px);
+      right:rem(25px);
       top:50%;
       transform: translateY(-50%);
       height: 24px;
@@ -69,10 +75,11 @@
     }
 
     input{
-      width: 100%;
+      width: rem(320px);
+      height: rem(32px);
       line-height: 1.5em;
       border: 1px solid $ui-border-color;
-      border-radius: $border-radius;
+      border-radius: $border-radius-rounder;
       padding: em(8px) em(24px);
       font-size:em(14px);
 

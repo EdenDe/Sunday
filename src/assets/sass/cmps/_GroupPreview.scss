@@ -177,15 +177,19 @@
   .add-task-container {
     @include task-cols;
     border-radius: 0 0 0 $border-radius-rounder;
+    background-color: $color-snow_white;
     opacity: 0.5;
 
-    *:not(:first-child, .task-option) {
+    :not(:first-child, .task-option) {
       border-bottom: 1px solid $layout-border-color;
     }
 
-    &:hover {
+    &:hover{
       opacity: 1;
       background-color: $color-border_light_gray;
+      & .task-option{
+        background-color:$color-snow_white;
+      }
     }
     & :nth-child(3) {
       position: sticky;
