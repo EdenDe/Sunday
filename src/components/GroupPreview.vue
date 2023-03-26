@@ -1,15 +1,28 @@
 <template>
   <section class="group-preview">
     <div class="grid-title flex align-items">
-      <div class="group-actions-wrapper sticky" v-clickOutside="toggleGroupActions">
+      <div
+        class="group-actions-wrapper sticky"
+        v-clickOutside="toggleGroupActions"
+      >
         <div class="svg-wrapper">
-          <span class="dots-icon" v-icon="'threeDots'" @click="toggleGroupActions(!isGroupActionsOpen)"
-            :class="{ active: isGroupActionsOpen }"></span>
+          <span
+            class="dots-icon"
+            v-icon="'threeDots'"
+            @click="toggleGroupActions(!isGroupActionsOpen)"
+            :class="{ active: isGroupActionsOpen }"
+          ></span>
 
           <div class="group-actions">
-            <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
-              @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)"
-              v-if="isGroupActionsOpen" />
+            <GroupActions
+              :groupColor="group.color"
+              @add="$emit('addGroup')"
+              @copy="copyGroup"
+              @renameTitle="focusGroupName"
+              @openColorPicker="openColorPicker"
+              @remove="$emit('removeGroup', group.id)"
+              v-if="isGroupActionsOpen"
+            />
           </div>
         </div>
       </div>
@@ -23,11 +36,6 @@
         ></i>
       </div>
       <div class="group-title-wrapper flex align-center">
-<<<<<<< HEAD
-        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
-        <span contenteditable ref="groupTitle" class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
-=======
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
@@ -39,11 +47,12 @@
           @click="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
         >
->>>>>>> 4b3b4506afa9fc8a5eb405f998f149405e7098c8
           {{ group.title }}
         </span>
 
-        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
+        <span class="tasks-num flex align-items justify-start"
+          >{{ tasksNumber }} Tasks</span
+        >
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
         <ColorPicker @changeColor="onChangeGroupProp" />
