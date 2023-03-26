@@ -10,10 +10,10 @@
           {{ currBoard.title }}
         </h2>
         <div class="btn btn-container">
-          <i class="info-icon" v-icon="'headerInfo'"></i>
+          <InfoIcon class="info-icon icon" />
         </div>
         <div class="btn btn-container">
-          <i class="star-icon" v-icon="'headerStar'"></i>
+          <StarIcon class="star-icon icon" />
         </div>
       </div>
       <div class="desc-wrapper">
@@ -22,7 +22,7 @@
       <nav class="nav-bar flex align-start">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
           <div class="btn btn-container grid grid-col">
-            <i class="task-filter-icon" v-icon="'homeHeader'"></i>
+            <HomeIcon class="filter-icon icon" />
             <span>Main Table</span>
           </div>
         </RouterLink>
@@ -42,16 +42,15 @@
             <span>Dashboard</span>
           </div>
         </RouterLink>
-        <div class="btn btn-container grid grid-col">
-          <span class="task-filter-icon plus-icon" v-icon="'plusHeader'"></span>
-        </div>
       </nav>
     </div>
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
         <button @click="addTask" class="btn btn-blue">New Task</button>
 
-        <span class="btn btn-blue task-filter-icon" v-icon="'arrowDown'"></span>
+        <span class="btn btn-blue task-filter-icon">
+          <ArrowDownIcon class="arrow-down-icon icon" />
+        </span>
       </div>
       <TaskFilter />
     </div>
@@ -60,6 +59,12 @@
 
 <script>
 import TaskFilter from './TaskFilter.vue'
+import InfoIcon from '../assets/icons/Info.svg'
+import StarIcon from '../assets/icons/Favorite.svg'
+import FilterIcon from '../assets/icons/Filter.svg'
+import HomeIcon from '../assets/icons/Home.svg'
+import ArrowDownIcon from '../assets/icons/NavigationChevronDown.svg'
+
 export default {
   name: 'BoardHeader',
   computed: {
@@ -74,6 +79,11 @@ export default {
   },
   components: {
     TaskFilter,
+    InfoIcon,
+    StarIcon,
+    FilterIcon,
+    HomeIcon,
+    ArrowDownIcon,
   },
 }
 </script>

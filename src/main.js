@@ -4,7 +4,7 @@ import router from './router'
 import { store } from './store/store.js'
 
 import ElementPlus from 'element-plus'
-import { icon, clickOutside, focus } from './directives.js'
+import { icon, clickOutside } from './directives.js'
 import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 

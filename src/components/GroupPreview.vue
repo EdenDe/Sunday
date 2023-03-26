@@ -27,7 +27,7 @@
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
-          @focusout.prevent="onOpenColorPicker"
+          @click.prevent="onOpenColorPicker"
         ></button>
         <span
           contenteditable

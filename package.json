@@ -11,13 +11,14 @@
     "cloudinary": "^1.35.0",
     "element-plus": "^2.3.1",
     "sass": "^1.59.3",
+    "vite-svg-loader": "^4.0.0",
     "vue": "^3.2.47",
     "vue-draggable-next": "^2.1.1",
     "vue-router": "^4.1.6",
+    "vue-svg-loader": "^0.16.0",
     "vue2-editor": "^2.10.3",
     "vue3-smooth-dnd": "^0.0.2",
-    "vuex": "^4.1.0",
-    "vue-svg-loader": "^0.16.0"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
