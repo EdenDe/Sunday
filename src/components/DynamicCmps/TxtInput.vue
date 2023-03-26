@@ -5,7 +5,7 @@
       @focusin="onFocusIn"
       @focusout="onFocusout($event.target.innerText)"
       :style="{ fontSize: '14px' }"
-      >{{ displayedTxt }}</span
+      >{{ txt }}</span
     >
   </section>
 </template>
