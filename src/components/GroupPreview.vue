@@ -1,14 +1,16 @@
 <template>
   <section class="group-preview">
     <div class="grid-title flex align-items">
-      <div class="svg-wrapper">
-        <span
-          class="dots-icon"
-          v-icon="'threeDots'"
-          @click="toggleGroupActions"
-          :class="{ active: isGroupActionsOpen }"
-        ></span>
-        <GroupActions v-if="isGroupActionsOpen" />
+      <div class="group-actions-wrapper">
+        <div class="svg-wrapper">
+          <span
+            class="dots-icon"
+            v-icon="'threeDots'"
+            @click="toggleGroupActions"
+            :class="{ active: isGroupActionsOpen }"
+          ></span>
+          <GroupActions v-if="isGroupActionsOpen" />
+        </div>
       </div>
       <div class="open-list">
         <i
@@ -16,6 +18,7 @@
           v-icon="'arrowDownGroup'"
           @click="toggleOpenList"
           :class="{ active: isGroupActionsOpen }"
+          :style="{ fill: group.color }"
         ></i>
       </div>
       <div class="group-title-wrapper flex align-center">
