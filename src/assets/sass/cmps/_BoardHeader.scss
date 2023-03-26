@@ -8,17 +8,16 @@
     border-bottom: 2px solid $primary-color;
   }
   .btn {
-       @include btn(transparent);
+    @include btn(transparent);
+  }
 
-     }
-  
   .board-header-top-wrapper {
     margin-top: $margin-small;
-    
+
     height: 50px;
     font-size: 22px;
     font-family: $poppins-light;
-    >*{
+    > * {
       margin-inline-end: 5px;
     }
     .board-title {
@@ -29,36 +28,29 @@
       letter-spacing: em(0.75px);
       padding: 0 4px;
     }
-      
-      .btn-container{        
-        padding: 0;
-        &>*{
-          @include flex-center;
-          @include fullSize;
-          fill: $color-wolf_gray;
-      } 
-        .info-icon{
-          padding: 5px;
+
+    .btn-container {
+      & > * {
+        fill: $icon-color;
+        path {
+          stroke-width: 1;
+        }
       }
-        .star-icon{
-          padding: 0;
-      }
-    }           
+    }
   }
-     .desc-wrapper {
-       .desc {
-         font-size: rem(14px);
-         color: $color-asphalt;
-       }
-     }
+  .desc-wrapper {
+    .desc {
+      font-size: rem(14px);
+      color: $color-asphalt;
+    }
+  }
 
-
-      .nav-bar {
-        margin-top: $padding-small;
-        border-bottom: 1px solid $layout-border-color;
+  .nav-bar {
+    margin-top: $padding-small;
+    border-bottom: 1px solid $layout-border-color;
     & > *:not(:last-child) {
       position: relative;
-     
+
       &::after {
         content: '|';
         position: absolute;
@@ -129,4 +121,14 @@
       }
     }
   }
-} 
+  //ICONS
+  .arrow-down-icon {
+    width: 15px;
+  }
+  .star-icon {
+    color: red;
+    path {
+      stroke-width: 1;
+    }
+  }
+}
