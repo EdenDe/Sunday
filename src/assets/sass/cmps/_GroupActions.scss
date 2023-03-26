@@ -1,7 +1,7 @@
-.group-actions-list{
-  z-index: 200;
+.group-actions-list {
+  z-index: 100;
   position: absolute;
-  top:35px;
+  top: 35px;
   left: 20px;
   height: 230px;
   width: 264px;
@@ -10,13 +10,13 @@
   box-shadow: $box-shadow-large;
   border-radius: $border-radius-rounder;
 
-  .group-action{
+  .group-action {
     padding: 4px $padding-small;
     font-size: rem(14px);
-    &>:first-child{
+    & > :first-child {
       margin-inline-end: $margin-small;
     }
-    &:hover{
+    &:hover {
       background-color: $primary-background-hover-color;
       border-radius: $btn-border-radius;
     }
