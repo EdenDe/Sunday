@@ -1,7 +1,7 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" />
+    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
     <div class="board-container board-layout">
       <BoardHeader @updateBoard="updateBoard" />
       <RouterView />
@@ -22,6 +22,7 @@ export default {
   watch: {
     currBoardId: {
       handler() {
+        console.log('currBoardId', this.currBoardId)
         this.$router.push({ params: { boardId: this.currBoardId } })
       }
     },
@@ -51,6 +52,14 @@ export default {
         toUpdate,
       })
     },
+    removeBoard(boardId) {
+      this.$store.dispatch({ type: 'remove', boardId })
+    },
+    async copyBoard(boardId) {
+      let newBoard = await boardService.getById(boardId)
+      delete newBoard._id
+      this.$store.dispatch({ type: 'saveBoard', newBoard })
+    }
   },
   components: {
     AppSideNav,
