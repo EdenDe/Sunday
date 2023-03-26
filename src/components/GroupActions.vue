@@ -13,8 +13,8 @@
 export default {
   name: 'actions',
   props: {
-    'taskId': String,
-    'groupColor': String
+    taskId: String,
+    groupColor: String,
   },
   data() {
     return {
@@ -66,20 +66,19 @@ export default {
           svg: '',
           emit: 'copy',
         },
-      ]
+      ],
     }
   },
   computed: {
     actions() {
       if (this.taskId) return this.taskActions
       return this.groupActions
-    }
+    },
   },
   methods: {
     emitFunction(action) {
       if (this.taskId) return this.$emit(action.emit, this.taskId)
       return this.$emit(action.emit)
-
     }
   }
 }

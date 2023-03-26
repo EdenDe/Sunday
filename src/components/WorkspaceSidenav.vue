@@ -9,22 +9,25 @@
     </button>
 
     <section class="navigation-header flex-col justify-between align-center">
-      <div class="dropdown-navigation-header flex justify-between align-center">
+      <div class="dropdown-navigation-header flex justify-between">
         <span class="dropdown-header-name">Workspace</span>
         <div class="more-menu flex">
-          <MenuIcon class="menu-icon icon" />
+          <i v-icon="'moreDots'"></i>
         </div>
       </div>
       <div class="dropdown-navigation-button flex justify-between align-center">
         <div class="workspace-title flex">
           <div class="workspace-icon-wrapper flex">
             <span class="icon-text flex justify-center align-center">M</span>
-            <HomeIcon class="home-icon icon" />
+            <i v-icon="'workspaceHome'" class="icon-svg"></i>
           </div>
           <span class="workspace-name">Main workspace</span>
         </div>
-
-        <ArrowDownIcon class="arrow-down-icon icon" />
+        <div class="dropdown-arrow">
+          <div class="icon-wrapper flex justify-center">
+            <i v-icon="'workManagementArrowDown'"></i>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -34,16 +37,22 @@
         role="button"
         @click="onAddBoard"
       >
-        <AddIcon class="add-icon icon" />
+        <i
+          v-icon="'workspacePlus'"
+          class="flex align-center justify-center"
+        ></i>
         <span class="action-text">Add</span>
       </div>
 
       <div class="action-item filter flex align-center">
-        <FilterIcon class="filter-icon icon" />
+        <i
+          v-icon="'workspaceFilter'"
+          class="flex align-center justify-center"
+        ></i>
         <span>Filters</span>
       </div>
       <div class="action-item search flex align-center">
-        <SearchIcon class="search-icon icon" />
+        <i v-icon="'searchFilter'" class="flex align-center justify-center"></i>
         <span class="action-text">Search</span>
       </div>
     </section>
@@ -58,7 +67,7 @@
         @click="onSetBoard(board._id)"
       >
         <section class="board-name flex align-center">
-          <BoardIcon class="board-icon icon" />
+          <i v-icon="'workspaceBoard'"></i>
           <span>{{ board.title }}</span>
         </section>
         <div
@@ -67,18 +76,18 @@
             updateModalBoardId(openModalBoardId === null ? board._id : null)
           "
         >
-          <MenuIcon class="menu-icon icon" />
+          <i v-icon="'workspaceDots'"></i>
         </div>
         <ul
           class="group-actions-list"
-          :class="{ 'is-modal-open': openModalBoardId === board._id }"
+          :class="{ 'modal-open': openModalBoardId === board._id }"
         >
           <li
             class="group-action flex align-center justify-start"
             @click.prevent="onCopyBoard(board._id)"
           >
             <div class="svg-wrapper">
-              <DuplicateIcon class="duplicate-icon icon" />
+              <i v-icon="'duplicateAction'"></i>
             </div>
             <p>Duplicate Board</p>
           </li>
@@ -87,7 +96,7 @@
             @click.prevent="onDeleteBoard(board._id)"
           >
             <div class="svg-wrapper">
-              <DeleteIcon class="delete-icon icon" />
+              <i v-icon="'deleteAction'"></i>
             </div>
             <p>Delete Board</p>
           </li>
@@ -110,6 +119,7 @@ import ArrowRightIcon from '../assets/icons/NavigationChevronRight.svg'
 import ArrowLeftIcon from '../assets/icons/NavigationChevronLeft.svg'
 import DuplicateIcon from '../assets/icons/Duplicate.svg'
 import DeleteIcon from '../assets/icons/Delete.svg'
+
 export default {
   name: 'WorkspaceSidenav',
   data() {
@@ -151,20 +161,6 @@ export default {
         return true
       }
     },
-  },
-  components: {
-    AddIcon,
-    BoardIcon,
-    FilterIcon,
-    HomeIcon,
-    InfoIcon,
-    SearchIcon,
-    MenuIcon,
-    ArrowDownIcon,
-    ArrowRightIcon,
-    ArrowLeftIcon,
-    DuplicateIcon,
-    DeleteIcon,
   },
 }
 </script>

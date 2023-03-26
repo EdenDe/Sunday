@@ -5,10 +5,12 @@
         <div class="svg-wrapper">
           <span class="dots-icon" v-icon="'threeDots'" @click="toggleGroupActions(!isGroupActionsOpen)"
             :class="{ active: isGroupActionsOpen }"></span>
-        </div>
-        <div class="group-actions">
-          <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup" @renameTitle="focusGroupName"
-            @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)" v-if="isGroupActionsOpen" />
+
+          <div class="group-actions">
+            <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
+              @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)"
+              v-if="isGroupActionsOpen" />
+          </div>
         </div>
       </div>
       <div class="open-list">
@@ -21,6 +23,7 @@
           @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
           {{ group.title }}
         </span>
+
         <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
@@ -43,6 +46,7 @@
       <div class="task-option"></div>
       <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
       <Checkbox />
+
       <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
         <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
       </form>
@@ -142,7 +146,7 @@ export default {
     copyGroup() {
       let newGroup = JSON.parse(JSON.stringify(this.group))
       newGroup.id = 'g' + utilService.makeId()
-      newGroup.tasks.forEach(task => {
+      newGroup.tasks.forEach((task) => {
         task.id = 't' + utilService.makeId()
       })
 
@@ -154,7 +158,7 @@ export default {
     openColorPicker() {
       this.focusGroupName()
       this.isColorModalOpen = true
-    }
+    },
   },
   computed: {
     labels() {
