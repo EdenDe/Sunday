@@ -3,6 +3,7 @@
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
         <h2
+          v-tooltip="'tooltipContent'"
           contenteditable
           class="board-title"
           @focusout="onChangeTitle($event.target.innerText)"
