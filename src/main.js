@@ -8,9 +8,6 @@ import { icon, clickOutside } from './directives.js'
 import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
-
 import FloatingVue from 'floating-vue'
 import 'floating-vue/dist/style.css'
 
@@ -22,6 +19,5 @@ app.use(ElementPlus)
 app.use(FloatingVue)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
-app.component('QuillEditor', QuillEditor)
 
 app.mount('#app')
