@@ -6,10 +6,14 @@
   }
   .btn {
       @include btn(transparent);
-      padding: 0;  
-  }
-
-  &-icon {
-    margin-inline-end: $margin-small;
+      padding: 0; 
+      .icon-container {
+          @include flex-center;
+          width: 30px;
+          > *{
+            height: 18px;
+            width: 18px;
+          }
+        }
   }
 }

@@ -11,6 +11,7 @@
     "@vueup/vue-quill": "^1.1.1",
     "cloudinary": "^1.35.0",
     "element-plus": "^2.3.1",
+    "floating-vue": "^2.0.0-beta.20",
     "sass": "^1.59.3",
     "vite-svg-loader": "^4.0.0",
     "vue": "^3.2.47",

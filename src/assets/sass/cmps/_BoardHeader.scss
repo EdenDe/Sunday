@@ -80,6 +80,7 @@
         margin-inline-end: $margin-small;
       }
       .icon-container{
+        height: 10px;
         width: 18px;
         .home-icon{
           color: $color-mud_black;
@@ -123,17 +124,15 @@
     }
 
     &-container {
-      // justify-items: start;
       height: 32px;
-
+      
+      .btn-add-task{
+        margin-inline-end: $margin-medium;
+      }
+      
       &:not(.btn-add-task) {
         padding: $padding-small;
       }
-
-      &:not(.btn-blue) {
-        margin-right: 6px;
-      }
-
       & > :last-child:not(.btn-blue) {
         padding-right: 12px;
       }

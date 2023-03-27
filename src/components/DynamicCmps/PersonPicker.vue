@@ -1,45 +1,49 @@
 <template>
   <section class="person-list flex align-center justify-center">
-    <div class="plus-icon" @click="isPersonPickerOpen = true">
-      <AddIcon class="add-icon icon" />
-    </div>
     <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
-    <div
-      v-if="isPersonPickerOpen"
-      class="person-picker-container flex-col justify-between"
-      v-clickOutside="onClosePicker"
-    >
-      <div class="flex wrap person-picker">
-        <article
-          class="task-person flex align-center"
-          v-for="(person, idx) in info"
-          :key="idx"
+    <VDropdown :distance="6">
+      <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">
+        <AddIcon class="add-icon icon" />
+      </div>
+      <template #popper>
+        <div
+          v-if="isPersonPickerOpen"
+          class="person-picker-container flex-col justify-between"
+          v-clickOutside="onClosePicker"
         >
-          <PersonAvatar :person="person" />
-          <span class="person-fullname">{{ person.fullname }}</span>
-          <button class="delete-person" @click="onDelete(person._id)">
-            <CloseIcon class="close-icon icon" />
-          </button>
-        </article>
-      </div>
-      <div class="search-container">
-        <input placeholder="Search names" v-model="search" />
-        <SearchIcon class="search-icon icon" />
-      </div>
-      <div class="suggested-members">
-        <h3>Suggested people</h3>
-        <ul class="clean-list">
-          <li
-            v-for="member in members"
-            @click="addPersonToTask(member)"
-            class="flex align-center member-picker-suggestions"
-          >
-            <PersonAvatar :person="member" />
-            <span class="person-fullname">{{ member.fullname }}</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+          <div class="flex wrap person-picker">
+            <article
+              class="task-person flex align-center"
+              v-for="(person, idx) in info"
+              :key="idx"
+            >
+              <PersonAvatar :person="person" />
+              <span class="person-fullname">{{ person.fullname }}</span>
+              <button class="delete-person" @click="onDelete(person._id)">
+                <CloseIcon class="close-icon icon" />
+              </button>
+            </article>
+          </div>
+          <div class="search-container">
+            <input placeholder="Search names" v-model="search" />
+            <SearchIcon class="search-icon icon" />
+          </div>
+          <div class="suggested-members">
+            <h3>Suggested people</h3>
+            <ul class="clean-list">
+              <li
+                v-for="member in members"
+                @click="addPersonToTask(member)"
+                class="flex align-center member-picker-suggestions"
+              >
+                <PersonAvatar :person="member" />
+                <span class="person-fullname">{{ member.fullname }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </template>
+    </VDropdown>
   </section>
 </template>
 
