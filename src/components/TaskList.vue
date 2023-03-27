@@ -1,5 +1,5 @@
 <template>
-  <Container orientation="horizental" @drop="onDrop" dropPlaceholder="true">
+  <Container orientation="horizental" @drop="onDrop" :dropPlaceholder="dropPlaceholder">
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
       <div class="group-actions-wrapper task-options sticky">
         <div class="svg-wrapper">
@@ -36,6 +36,7 @@ export default {
   data() {
     return {
       taskActionsOpen: null,
+      dropPlaceholder: true
     }
   },
   methods: {

@@ -70,19 +70,14 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 		task[prop] = toUpdate
 	} else if (groupId) {
 		let group = board.groups.find(group => groupId === group.id)
-		// activity = updateAcivitiy(
-		// 	prop,
-		// 	group.title,
-		// 	task[prop],
-		// 	toUpdate
-		// )
+		activity = updateAcivitiy(prop, group.title, task[prop], toUpdate)
 
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
 	}
 
-	board.activities.push(activity)
+	//board.activities.push(activity)
 	return board
 }
 
