@@ -8,7 +8,7 @@
       <div class="icon-wrapper">
         <component
           :is="action.icon"
-          class="icon"
+          :class="`icon ${action.icon}-icon flex align-center justify-center`"
           :style="{
             fill:
               action.title === 'Change group color' ? groupColor : '#676879',
@@ -68,34 +68,15 @@ export default {
           emit: 'remove',
         },
       ],
-      taskActions: [
-        {
-          title: 'Create new task below',
-          icon: '',
-          emit: 'add',
-        },
-        {
-          title: 'Delete',
-          icon: '',
-          emit: 'remove',
-        },
-        {
-          title: 'Duplicate',
-          icon: '',
-          emit: 'copy',
-        },
-      ],
     }
   },
   computed: {
     actions() {
-      if (this.taskId) return this.taskActions
       return this.groupActions
     },
   },
   methods: {
     emitFunction(action) {
-      if (this.taskId) return this.$emit(action.emit, this.taskId)
       return this.$emit(action.emit)
     },
   },

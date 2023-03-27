@@ -49,10 +49,14 @@
           contenteditable
           ref="groupTitle"
           class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
+          @keydown.enter="onChangeGroupProp('title', $event.target.innerText)"
+          @keyup.enter="$event.target.blur()"
+          @focusout.prevent="
+            onChangeGroupProp('title', $event.target.innerText)
+          "
           :style="{ color: group.color }"
         >
-          {{ group.title }}
+          {{ groupTitle }}
         </span>
 
         <span class="tasks-num flex align-items justify-start"
@@ -156,8 +160,8 @@ export default {
       })
     },
     onOpenColorPicker() {
-      console.log('hi')
-      console.log(this.isColorModalOpen)
+      debugger
+      this.$refs.groupTitle.focus()
       this.isColorModalOpen = !this.isColorModalOpen
     },
     onAddTask() {
@@ -199,6 +203,9 @@ export default {
     },
     onChangeGroupProp(prop, value) {
       if (prop === 'color') this.onOpenColorPicker()
+      if (prop === 'title' && value.trim().length === 0) {
+        value = 'Enter Title'
+      }
       this.updateProp(null, prop, value)
     },
     toggleGroupActions(value = false) {
@@ -233,6 +240,9 @@ export default {
         if (label === 'txt') label = 'text'
         return label
       })
+    },
+    groupTitle() {
+      return this.group.title || 'Enter Title'
     },
     groupStatusProgress() {
       let res = this.group.tasks.reduce((obj, { status }) => {

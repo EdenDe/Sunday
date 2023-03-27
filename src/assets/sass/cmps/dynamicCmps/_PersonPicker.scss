@@ -1,51 +1,61 @@
-.person-list{
+.person-list {
   padding-left: em(10px);
   position: relative;
-  
-  &:hover{
-    .plus-icon{
+
+  &:hover {
+    .add-icon {
       opacity: 1;
     }
   }
 
-  .avatar{
+  .avatar {
     height: 25px;
     width: 25px;
   }
 
-  .plus-icon{
+  .add-icon {
     @include flex-center;
     position: absolute;
-    left: 10px;
-    padding-top: 3px;
+    background-color: $primary-color;
+    color: $color-snow_white;
+    border-radius: 50%;
+    padding: 1px;
+    height: 14px;
+    width: 14px;
+    left: 8px;
+    top: 50%;
+    transform: translate(0%, -50%);
     opacity: 0;
-    transition: opacity .2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    path {
+      stroke-width: 100;
+    }
   }
 
-  .person-picker-container{
+  .person-picker-container {
     z-index: 100;
     position: absolute;
-    top:110%;
-    left:-80%;
+    top: 110%;
+    left: -80%;
     padding: em(8px) em(2px) 0 em(16px);
-        
+
     width: 360px;
     height: fit-content;
-    
+
     border-radius: rem(10px);
     box-shadow: $box-shadow-medium;
     background-color: $color-snow_white;
     &::after {
-        @include modal-arrow;
-      }
-  
-    .avatar{
+      @include modal-arrow;
+    }
+
+    .avatar {
       height: 25px;
       width: 25px;
     }
   }
 
-  .task-person{
+  .task-person {
     padding-right: em(5px);
     width: fit-content;
     background-color: #e5f4ff;
@@ -54,94 +64,93 @@
     margin-top: em(5px);
   }
 
-  .person-picker{
+  .person-picker {
     width: 100%;
     flex-wrap: wrap;
     gap: rem(8px);
   }
 
-  .search-container{
+  .search-container {
     position: relative;
     margin: $margin-medium 0;
     background-color: transparent;
-    
-    .search-icon{
+
+    .search-icon {
       @include flex-center;
       position: absolute;
-      right:rem(25px);
-      top:50%;
+      right: rem(25px);
+      top: 50%;
       transform: translateY(-50%);
       height: 24px;
       width: 24px;
       line-height: 24px;
       border-radius: $border-radius;
-      
-      &:hover{
-        background-color:$color-ui_grey;
+
+      &:hover {
+        background-color: $color-ui_grey;
       }
     }
 
-    input{
+    input {
       width: rem(320px);
       height: rem(32px);
       line-height: 1.5em;
       border: 1px solid $ui-border-color;
       border-radius: $border-radius-rounder;
       padding: em(8px) em(24px);
-      font-size:em(14px);
+      font-size: em(14px);
 
-      &:hover{
-       border-color: $primary-text-on-secondary-color
+      &:hover {
+        border-color: $primary-text-on-secondary-color;
       }
 
-      &:focus{
-        border-color:transparent;
-        outline: 1px solid $color-basic_blue
+      &:focus {
+        border-color: transparent;
+        outline: 1px solid $color-basic_blue;
       }
     }
- 
   }
 
   .delete-person {
     border-radius: 50%;
     text-align: center;
-    border:none;
+    border: none;
     height: 16px;
     line-height: 16px;
     width: 16px;
     background-color: transparent;
 
-    &:hover{
+    &:hover {
       background-color: $color-snow_white;
     }
   }
 
-  .person-fullname{
+  .person-fullname {
     padding: 4px;
     font-size: em(12px);
-    display:block;
+    display: block;
   }
 
-  .suggested-members{
+  .suggested-members {
     width: 100%;
     gap: 12px;
     padding-block-end: 5px;
 
-    h3{
+    h3 {
       color: $color-asphalt;
       font-family: $figtree-regular;
       font-size: em(14px);
       font-weight: 200;
-      margin:5px 0;
+      margin: 5px 0;
     }
 
-    .member-picker-suggestions{
+    .member-picker-suggestions {
       width: 100%;
       padding: 0 15px;
       border-radius: 5px;
       height: em(40px);
-  
-      &:hover{
+
+      &:hover {
         background-color: #dddfec;
       }
     }

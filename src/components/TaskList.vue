@@ -1,20 +1,16 @@
 <template>
   <Container orientation="horizental" @drop="onDrop">
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
-      <div class="group-actions-wrapper task-options sticky">
-        <div class="svg-wrapper">
-          <span
-            class="dots-icon"
-            @click="
-              setTaskActionOpen(taskActionsOpen === null ? task.id : null)
-            "
-            :class="{ active: taskActionsOpen === task.id }"
-          >
-            <MenuIcon class="menu-icon icon" />
-          </span>
-        </div>
-        <div class="group-actions">
-          <GroupActions
+      <div class="svg-wrapper task-actions-wrapper sticky">
+        <span
+          class="dots-icon"
+          @click="setTaskActionOpen(taskActionsOpen === null ? task.id : null)"
+          :class="{ active: taskActionsOpen === task.id }"
+        >
+          <MenuIcon class="menu-icon icon" />
+        </span>
+        <div class="task-actions">
+          <TaskActions
             :taskId="task.id"
             @add="addTaskBelow"
             @copy="copyTask"
@@ -37,6 +33,7 @@ import { Container, Draggable } from 'vue3-smooth-dnd'
 import TaskPreview from './TaskPreview.vue'
 import TaskActionBar from './TaskActionBar.vue'
 import GroupActions from '../components/GroupActions.vue'
+import TaskActions from './TaskActions.vue'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
 //ICON
@@ -98,6 +95,7 @@ export default {
     Draggable,
     TaskActionBar,
     GroupActions,
+    TaskActions,
     MenuIcon,
   },
 }

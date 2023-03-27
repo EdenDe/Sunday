@@ -82,7 +82,9 @@
         font-family: $poppins-light;
         font-weight: bold;
         position: relative;
-
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         &:hover {
           outline: 1px solid #c3c6d4;
           border-radius: 4px;
@@ -189,21 +191,19 @@
     @include task-cols;
     border-radius: 0 0 0 $border-radius-rounder;
     background-color: $color-snow_white;
-    
+
     :not(:first-child, .task-option) {
       border-bottom: 1px solid $layout-border-color;
     }
-    >*:not(.task-option) {
-    box-shadow: $box-shadow-xs;
+    > *:not(.task-option) {
+      box-shadow: $box-shadow-xs;
     }
 
     &:hover {
       opacity: 1;
       background-color: $color-border_light_gray;
-      & .task-option{
-        background-color:$color-snow_white;
-
-        
+      & .task-option {
+        background-color: $color-snow_white;
       }
     }
     & :nth-child(3) {
@@ -215,8 +215,8 @@
       border-radius: 0 0 0 $border-radius-rounder;
       opacity: 0.5;
     }
-    .task-checkbox input{
-        opacity: 0.5;
+    .task-checkbox input {
+      opacity: 0.5;
     }
     .add-task-input-container {
       @include flex-center;
@@ -235,8 +235,8 @@
         width: 95%;
         border-radius: $border-radius;
         border: 1px solid transparent;
-       background-color: transparent;
-               
+        background-color: transparent;
+
         &:hover {
           border-color: $ui-border-on-secondary-color;
         }
@@ -248,7 +248,7 @@
   }
 }
 
-.task-options {
+.task-options-wrapper {
   width: 40px;
   background-color: $color-snow_white;
   left: 0;
