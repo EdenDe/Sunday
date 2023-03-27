@@ -61,39 +61,6 @@
 
   .content-wrapper {
     padding: em(20px) em(14px) em(20px);
-
-    .update-log {
-      gap: em(5px);
-
-      .btn-update {
-        @include btn;
-        @include btn-blue;
-        border-radius: $btn-border-radius;
-        justify-self: end;
-      }
-
-      .textarea-update-log {
-        width: 100%;
-        border-radius: $border-radius-rounder;
-        border: 1px solid $color-link_color;
-        line-height: normal;
-        padding: em(10px) em(20px);
-        font-size: em(16px);
-        resize: none;
-
-        &:not(:focus):hover {
-          background-color: $color-ui_grey;
-        }
-
-        &:focus {
-          outline: none;
-        }
-      }
-    }
   }
 
-  img {
-    width: em(300px);
-    margin-top: auto;
-  }
 }

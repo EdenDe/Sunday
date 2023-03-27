@@ -169,7 +169,34 @@
             "txt": "Add a dark mode option for users who prefer a darker color scheme. Ensure smooth transitions and consistency between light and dark modes.",
             "file": "",
             "status": "Stuck",
-            "priority": "High"
+            "priority": "High",
+            "updates":[
+              {
+                "id": "u123123",
+                "createdAt":1679903998897,
+                "txt":"is it the right font?",
+                "likedBy":["u102"],
+                "byUser":   {
+                  "_id": "u103",
+                  "fullname": "Tamar Shalem",
+                  "color": "green",
+                  "imgUrl": "http://res.cloudinary.com/decasx192/image/upload/v1679763343/WhatsApp_Image_2023-03-25_at_19.52.48_ni6dze.jpg"
+                }
+              },
+              {
+                "id": "u123414",
+                "createdAt":1679904095360,
+                "txt":"I'm a genius",
+                "likedBy":[],
+                "byUser":{               
+                  "_id": "u101",
+                  "fullname": "Lior Doron",
+                  "imgUrl": "http://res.cloudinary.com/decasx192/image/upload/v1679762648/T04CLB0SNC9-U04EATZNA9F-0c4d78aa7da8-512_cm4mgt.png",
+                  "color": "red"            
+                }
+              }
+
+            ]
           },
           {
             "id": "t104",
@@ -181,7 +208,7 @@
                 "fullname": "Tamar Shalem",
                 "color": "green",
                 "imgUrl": "http://res.cloudinary.com/decasx192/image/upload/v1679763343/WhatsApp_Image_2023-03-25_at_19.52.48_ni6dze.jpg"
-              }
+              } 
             ],
             "date": 1660076400000,
             "timeline": [1679862000000, 1680026400000],
