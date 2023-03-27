@@ -43,7 +43,7 @@
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
-          @click.prevent="onOpenColorPicker"
+          @mousedown.prevent="onOpenColorPicker"
         ></button>
         <span
           contenteditable
