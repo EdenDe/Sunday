@@ -4,7 +4,7 @@ import router from './router'
 import { store } from './store/store.js'
 
 import ElementPlus from 'element-plus'
-import { icon, clickOutside } from './directives.js'
+import { icon, clickOutside, focus } from './directives.js'
 import 'element-plus/dist/index.css'
 import './assets/sass/style.scss'
 
@@ -19,5 +19,6 @@ app.use(ElementPlus)
 app.use(FloatingVue)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
+app.directive('focus', focus)
 
 app.mount('#app')
