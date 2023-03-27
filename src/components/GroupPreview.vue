@@ -40,10 +40,7 @@
           />
         </span>
       </div>
-      <div
-        class="group-title-wrapper flex align-center"
-        v-tooltip="'Click to Edit'"
-      >
+      <div class="group-title-wrapper flex align-center">
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
@@ -55,6 +52,7 @@
           class="group-title"
           @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
+          v-tooltip="'Click to Edit'"
         >
           {{ group.title }}
         </span>
