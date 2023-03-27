@@ -9,6 +9,7 @@
         >
           {{ currBoard.title }}
         </h2>
+
         <div class="btn btn-container">
           <InfoIcon class="info-icon icon" />
         </div>
