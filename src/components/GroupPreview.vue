@@ -27,11 +27,11 @@
           </div>
         </div>
       </div>
-      <div class="open-list-icon-wrapper">
+      <div class="open-list">
         <span
           class="open-list-icon"
           @click="toggleOpenList"
-          :class="{ active: isListOpen }"
+          :class="{ active: isGroupActionsOpen }"
         >
           <ArrowDownIcon
             class="arrow-down-icon icon"
@@ -43,20 +43,16 @@
         <button
           class="btn-color"
           :style="{ backgroundColor: group.color }"
-          @mousedown.prevent="onOpenColorPicker"
+          @click.prevent="onOpenColorPicker"
         ></button>
         <span
           contenteditable
           ref="groupTitle"
           class="group-title"
-          @keydown.enter="onChangeGroupProp('title', $event.target.innerText)"
-          @keyup.enter="$event.target.blur()"
-          @focusout.prevent="
-            onChangeGroupProp('title', $event.target.innerText)
-          "
+          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
         >
-          {{ groupTitle }}
+          {{ group.title }}
         </span>
 
         <span class="tasks-num flex align-items justify-start"

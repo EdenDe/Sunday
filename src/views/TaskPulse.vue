@@ -1,5 +1,5 @@
 <template>
-  <section class="task-pulse" v-if="task">
+  <section class="task-pulse">
     <header class="grid">
       <button class="btn btn-close" @click="onBack">
         <CloseIcon class="close-icon icon" />
@@ -11,7 +11,7 @@
       </div>
       <div class="tabs-wrapper flex align-center">
         <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'updateLog' }">
-          <button class="btn btn-tab" @click="activeTab = 'updateLog'">
+          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + task.updates?.length">
             <div class="task-update-icon">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="border"></div>
-        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }"
+        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }" v-tooltip="'Activity Log'"
           @click="activeTab = 'activityLog'">
           <button class="btn btn-tab">Activity Log</button>
         </div>
@@ -28,7 +28,7 @@
     <main class="content-wrapper">
       <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUserId="loggedInUser._id"
         :updates="task.updates ? task.updates : []" @addUpdate="addUpdate" @toggleLike="toggleLike" />
-      <ActivityLog v-if="activeTab === 'activityLog'" />
+      <ActivityLog v-if="activeTab === 'activityLog'" :activities="group.activities" />
     </main>
 
     <!-- <img src="https://cdn.monday.com/images/pulse-page-empty-state.svg" /> -->
@@ -46,20 +46,20 @@ export default {
   data() {
     return {
       //task: null,
-      groupId: null,
+      group: null,
+
       activeTab: 'updateLog',
       loggedInUser: userService.getLoggedInUser()
     }
   },
   methods: {
     onBack() {
-      this.$router.back()
+      this.$router.push(`/board/${this.$route.params.boardId}/main-table`)
     },
     addUpdate(content) {
       const task = this.task
       if (!task.updates) task.updates = []
-      debugger
-      task.updates.push({
+      task.updates.unshift({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
         txt: content,
@@ -70,7 +70,6 @@ export default {
       this.updateTask('updates', task.updates)
     },
     toggleLike(updateId, value) {
-      debugger
       let update = this.task.updates.find(update => update.id === updateId)
       if (value) {
         update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
@@ -80,8 +79,7 @@ export default {
       this.updateTask('updates', this.task.updates)
     },
     updateTask(prop, toUpdate) {
-      debugger
-      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.groupId, taskId: this.task.id, prop, toUpdate })
+      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.group.id, taskId: this.task.id, prop, toUpdate })
     }
   },
   computed: {
@@ -94,7 +92,7 @@ export default {
         for (let i = 0; i < groups.length; i++) {
           let currTask = groups[i].tasks.find((t) => t.id === this.taskId)
           if (currTask) {
-            this.groupId = groups[i].id
+            this.group = groups[i]
             return JSON.parse(JSON.stringify(currTask))
           }
         }

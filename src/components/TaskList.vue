@@ -1,16 +1,20 @@
 <template>
-  <Container orientation="horizental" @drop="onDrop">
+  <Container orientation="horizental" @drop="onDrop" dropPlaceholder="true">
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
-      <div class="svg-wrapper task-actions-wrapper sticky">
-        <span
-          class="dots-icon"
-          @click="setTaskActionOpen(taskActionsOpen === null ? task.id : null)"
-          :class="{ active: taskActionsOpen === task.id }"
-        >
-          <MenuIcon class="menu-icon icon" />
-        </span>
-        <div class="task-actions">
-          <TaskActions
+      <div class="group-actions-wrapper task-options sticky">
+        <div class="svg-wrapper">
+          <span
+            class="dots-icon"
+            @click="
+              setTaskActionOpen(taskActionsOpen === null ? task.id : null)
+            "
+            :class="{ active: taskActionsOpen === task.id }"
+          >
+            <MenuIcon class="menu-icon icon" />
+          </span>
+        </div>
+        <div class="group-actions">
+          <GroupActions
             :taskId="task.id"
             @add="addTaskBelow"
             @copy="copyTask"

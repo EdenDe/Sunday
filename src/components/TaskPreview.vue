@@ -14,7 +14,11 @@
       @updateProp="updateProp"
       @toggleTask="toggleTask"
     />
-    <div class="pulse-bubble" v-if="cmp.name === 'taskTitle'">
+    <div
+      class="pulse-bubble"
+      v-if="cmp.name === 'taskTitle'"
+      v-tooltip="'Add to conversation'"
+    >
       <RouterLink
         :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
       >

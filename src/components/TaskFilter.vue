@@ -25,24 +25,11 @@
       <div class="filter-modal">Filter</div>
     </div>
 
-    <div class="filter-main filter" ref="main">
-      <button class="btn btn-container" @click="toggleFilter($event)">
-        <div class="icon-container">
-          <FilterIcon class="filter-icon icon" />
-        </div>
-        <span>Filter</span>
-      </button>
-      <div class="filter-modal">Filter</div>
-    </div>
-
-    <div class="filter-sort filter" ref="sort">
-      <button class="btn btn-container" @click="toggleFilter($event)">
-        <div class="icon-container">
-          <SortIcon class="filter-icon icon" />
-        </div>
-        <span>Sort</span>
-      </button>
-      <div class="filter-modal">Filter</div>
+    <div class="btn btn-container grid grid-col aling-center">
+      <div class="icon-container">
+        <FilterIcon class="filter-icon icon" />
+      </div>
+      <span>Filter</span>
     </div>
   </section>
 </template>

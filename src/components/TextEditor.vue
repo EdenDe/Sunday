@@ -1,6 +1,6 @@
 <template>
   <section class="quill-editor">
-    <QuillEditor ref="quillEditor" :options="options" @text-change="onType" v-focus />
+    <QuillEditor ref="quillEditor" theme="snow" toolbar="essential" @text-change="onType" />
   </section>
 </template>
 
@@ -13,25 +13,6 @@ export default {
   props: {
     modelValue: String,
   },
-  data() {
-    return {
-      options: {
-        modules: {
-          toolbar: [['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-          ['link', 'image'],
-          [{ 'align': ['left', 'center', 'right', 'justify'] }],
-          [{ 'direction': 'rtl' }],
-          // [{ 'table': ['table'] }],
-          // ['hr'],
-          // ['emoji'],
-          [{ 'color': ['#ff0000', '#00ff00', '#11dd80', '#008000', '#00a359', '#00FFFF', '#ff642e', 'FF0000', '#fdab3d', '#cab641'] }]
-          ],
-        },
-        theme: 'bubble'
-      }
-    }
-  },
   methods: {
     onType() {
       let content = this.$refs.quillEditor.getText
@@ -40,12 +21,6 @@ export default {
       }
       this.$emit('update:modelValue', content)
     }
-  },
-  computed: {
-
-  },
-  created() {
-
   },
   components: {
     QuillEditor,

@@ -26,6 +26,7 @@
 
 <script>
 
+import { utilService } from '../services/util.service'
 import Avatar from './Avatar.vue'
 import TextEditor from './TextEditor.vue'
 
@@ -40,11 +41,6 @@ export default {
     return {
       isEditor: false,
       content: '',
-      customToolbar: [
-        // ["bold", "italic", "underline", "strike"],
-        // [{ list: "ordered" }, { list: "bullet" }],
-        // [{ 'color': ['#000000', '#11dd80'] }],
-      ],
     }
   },
   methods: {
@@ -53,38 +49,21 @@ export default {
         this.isEditor = value
       }
     },
-    onClickOut() {
-      // if (this.content === '') {
-      //   this.rowsNum = 1
-      // }
-    },
     setContent(content) {
       this.content = content
     },
     onUpdate() {
       this.$emit('addUpdate', this.content)
+      this.content = ''
     },
     onToggleLike(updateId, value) {
       this.$emit('toggleLike', updateId, value)
     }
   },
-
   computed: {
     dateFormatted() {
       return (createdAt) => {
-        const now = new Date()
-        const secondsAgo = Math.floor((now.getTime() - createdAt) / 1000)
-
-        const daysAgo = Math.floor(secondsAgo / (3600 * 24))
-        const hoursAgo = Math.floor(secondsAgo / 3600)
-
-        if (daysAgo > 0) {
-          return `${daysAgo}d`
-        } else if (hoursAgo > 0) {
-          return `${hoursAgo}h`
-        } else {
-          return 'just now'
-        }
+        return utilService.getRelativeTimeAndDay(createdAt)
       }
     },
     likedByUser() {
@@ -93,12 +72,8 @@ export default {
       }
     }
   },
-  created() {
-    console.log(this.updates)
-  },
   components: {
     TextEditor,
-
     Avatar
   },
 }
