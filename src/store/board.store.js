@@ -46,6 +46,12 @@ export const boardStore = {
 		groups({ currBoard }) {
 			return currBoard.groups
 		},
+		sumOfTasks({ currBoard }) {
+			return currBoard.groups.reduce((acc, group) => {
+				acc += group.tasks.length
+				return acc
+			}, 0)
+		},
 		cmpOrder({ currBoard }) {
 			return currBoard.cmpOrder
 		},

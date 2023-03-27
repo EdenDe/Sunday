@@ -40,10 +40,10 @@ export const clickOutside = {
 				)
 			) {
 				cb()
-				console.log('outside')
+				// console.log('outside')
 				console.log(el)
 			} else {
-				console.log('inside')
+				// console.log('inside')
 			}
 		}
 		setTimeout(() => {

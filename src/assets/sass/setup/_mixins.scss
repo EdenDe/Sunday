@@ -317,8 +317,11 @@
 @mixin filter-modal {
   z-index: 200;
   position: absolute;
-  top: 100%;
-  background-color: red;
+  top: 130%;
+  right: 50%;
+  transform: translate(50%, 0%);
+  background-color: $color-snow_white;
+  color: $color-mud_black;
   padding: $padding-medium;
   border-radius: $border-radius-filter;
   box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
