@@ -88,16 +88,18 @@ function getRandomIntInclusive(min, max) {
 function getRelativeTimeAndDay(createdAt) {
 	const now = new Date()
 	const secondsAgo = Math.floor((now.getTime() - createdAt) / 1000)
-
+	const minutesAgo = Math.floor(secondsAgo / (3600 * 24 * 60))
 	const daysAgo = Math.floor(secondsAgo / (3600 * 24))
 	const hoursAgo = Math.floor(secondsAgo / 3600)
 
-	if (daysAgo > 0) {
+	if (minutesAgo > 2) {
+		return `${minutesAgo}m`
+	} else if (daysAgo > 0) {
 		return `${daysAgo}d`
 	} else if (hoursAgo > 0) {
 		return `${hoursAgo}h`
 	} else {
-		return 'just now'
+		return 'now'
 	}
 }
 
@@ -161,7 +163,9 @@ function formatDateRange(timestamps) {
 	if (startYear !== endYear) {
 		// Dates span across multiple years
 		formattedRange = `${startMonth} ${startDate.getDate()} '${startYear} - ${endMonth} ${endDate.getDate()} '${endYear}`
-	} else if (startYear !== new Date().getFullYear().toString().substr(-2)) {
+	} else if (
+		startYear !== new Date().getFullYear().toString().substr(-2)
+	) {
 		// Dates are in the same year but not the current year
 		formattedRange = `${startMonth} ${startDate.getDate()}  -  ${endDate.getDate()} '${startYear}`
 	} else if (startMonth === endMonth) {

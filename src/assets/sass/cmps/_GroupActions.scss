@@ -3,8 +3,9 @@
   position: sticky;
   z-index: 103;
   left: 0;
-  background-color: $color-snow_white;
   height: 100%;
+
+
 
   &:hover {
     .dots-icon {
@@ -39,4 +40,12 @@
       }
     }
   }
+}
+
+.group-preview:not(:has(.dots-icon.active)) .group-actions-wrapper{
+  background-color: $color-snow_white;
+}
+
+.group-list:has(.group-menu-active) .group-actions-wrapper.task-options {
+  display: none;
 }

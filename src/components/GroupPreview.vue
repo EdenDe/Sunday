@@ -9,7 +9,7 @@
           <span
             class="dots-icon"
             @click="toggleGroupActions(!isGroupActionsOpen)"
-            :class="{ active: isGroupActionsOpen }"
+            :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
           >
             <MenuIcon class="menu-icon icon" />
           </span>
@@ -51,24 +51,13 @@
         />
       </div>
       <div class="group-title-wrapper flex align-center">
-        <button
-          class="btn-color"
-          :style="{ backgroundColor: group.color }"
-          @click.prevent="onOpenColorPicker"
-        ></button>
-        <span
-          contenteditable
-          ref="groupTitle"
-          class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
-          :style="{ color: group.color }"
-        >
+        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
+        <span contenteditable ref="groupTitle" class="group-title"
+          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
           {{ group.title }}
         </span>
 
-        <span class="tasks-num flex align-items justify-start"
-          >{{ tasksNumber }} Tasks</span
-        >
+        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
         <ColorPicker @changeColor="onChangeGroupProp" />
@@ -100,7 +89,7 @@
       :groupBgColor="group.color"
       @updateProp="updateProp"
     />
-    <div class="add-task-container" v-if="isListOpen">
+    <div class="add-task-container">
       <div class="task-option"></div>
       <div
         class="first-col-color"

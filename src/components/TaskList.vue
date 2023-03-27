@@ -1,36 +1,20 @@
 <template>
-  <Container
-    orientation="horizental"
-    @drop="onDrop"
-    :dropPlaceholder="dropPlaceholder"
-  >
+  <Container orientation="horizental" @drop="onDrop" :dropPlaceholder="dropPlaceholder">
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
       <div class="group-actions-wrapper task-options sticky">
         <div class="svg-wrapper">
-          <span
-            class="dots-icon"
-            @click="
-              setTaskActionOpen(taskActionsOpen === null ? task.id : null)
-            "
-            :class="{ active: taskActionsOpen === task.id }"
-          >
+          <span class="dots-icon" @click="
+            setTaskActionOpen(taskActionsOpen === null ? task.id : null)"
+            :class="{ active: taskActionsOpen === task.id }">
             <MenuIcon class="menu-icon icon" />
           </span>
         </div>
         <div class="group-actions">
-          <GroupActions
-            :taskId="task.id"
-            @add="addTaskBelow"
-            @copy="copyTask"
-            @remove="removeTask"
-            v-if="taskActionsOpen === task.id"
-          />
+          <GroupActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask"
+            v-if="taskActionsOpen === task.id" />
         </div>
       </div>
-      <div
-        class="first-col-color sticky"
-        :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
-      ></div>
+      <div class="first-col-color sticky" :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
     </Draggable>
   </Container>

@@ -20,7 +20,7 @@ export const boardService = {
 window.boardService = boardService
 
 async function query() {
-	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -54,6 +54,13 @@ function updateAcivitiy(prop, title, oldValue, newValue) {
 	}
 }
 
+// async function addActivity(boardId, props){
+//  const act=	updateAcivitiy({...props})
+//  const board= await getById(boardId)
+//  board.activities.push(act)
+//  return board.activities
+// }
+
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
 	let activity
@@ -71,13 +78,12 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	} else if (groupId) {
 		let group = board.groups.find(group => groupId === group.id)
 		activity = updateAcivitiy(prop, group.title, task[prop], toUpdate)
-
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
 	}
-
-	//board.activities.push(activity)
+	// board = addActivity(currBoard._id, activity)
+	board.activities.push(activity)
 	return board
 }
 

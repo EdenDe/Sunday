@@ -11,7 +11,11 @@
         <div class="udapte-header flex">
           <Avatar :person="update.byUser" />
           <p> {{ update.byUser.fullname }} </p>
-          <span class="udapte-date"> {{ dateFormatted(update.createdAt) }} </span>
+          <div class="actions-right" :class="{ active: actionMenuOpenFor === update.id }">
+            <span class="udapte-date"> {{ dateFormatted(update.createdAt) }} </span>
+            <MenuIcon class="menu-icon icon"
+              @click="toggleActionMenu(actionMenuOpenFor === update.id ? null : update.id)" />
+          </div>
         </div>
         <p v-html="update.txt"> </p>
         <div class="btn-container">
@@ -19,16 +23,20 @@
             :class="{ 'liked': likedByUser(update.likedBy) }">Like</button>
           <button>Reply</button>
         </div>
+        <div class="actions-list" v-if="actionMenuOpenFor === update.id">
+          <div class="actions">Delete</div>
+          <div class="actions">Edit</div>
+        </div>
       </article>
     </section>
   </section>
 </template>
 
 <script>
-
 import { utilService } from '../services/util.service'
 import Avatar from './Avatar.vue'
 import TextEditor from './TextEditor.vue'
+import MenuIcon from '../assets/icons/Menu.svg'
 
 export default {
   name: 'UpdateLog',
@@ -41,6 +49,7 @@ export default {
     return {
       isEditor: false,
       content: '',
+      actionMenuOpenFor: null
     }
   },
   methods: {
@@ -48,6 +57,9 @@ export default {
       if (this.content === '') {
         this.isEditor = value
       }
+    },
+    toggleActionMenu(value = null) {
+      this.actionMenuOpenFor = value
     },
     setContent(content) {
       this.content = content
@@ -74,7 +86,9 @@ export default {
   },
   components: {
     TextEditor,
-    Avatar
+    Avatar,
+    MenuIcon
+
   },
 }
 </script>

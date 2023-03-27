@@ -6,40 +6,47 @@ const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
-  getLoggedInUser,
-  login,
-  logout,
-  signup,
+	getLoggedInUser,
+	login,
+	logout,
+	signup,
 }
 
 localStorage.setItem(
-  STORAGE_KEY_LOGGEDIN_USER,
-  JSON.stringify({
-    _id: 'u102',
-    fullname: 'Eden Derhy',
-    imgUrl:
-      'http://res.cloudinary.com/decasx192/image/upload/v1679764197/eden_nsjpcz.jpg',
-    color: 'black',
-  })
+	STORAGE_KEY_LOGGEDIN_USER,
+	JSON.stringify({
+		_id: 'u102',
+		fullname: 'Eden Derhy',
+		imgUrl:
+			'http://res.cloudinary.com/decasx192/image/upload/v1679764197/eden_nsjpcz.jpg',
+		color: 'black',
+	})
 )
 
 function getLoggedInUser() {
+<<<<<<< HEAD
   // const str = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
   const str = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
   return JSON.parse(str)
+=======
+	//const str = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
+	const str = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
+	return JSON.parse(str)
+>>>>>>> 3a62ae62c29fde6de45ba302253e15184972632d
 }
 
 async function login(userCred) {
-  // const user = await httpService.post('auth/login', userCred)
-  if (user) {
-    return saveLocalUser(user)
-  }
+	// const user = await httpService.post('auth/login', userCred)
+	if (user) {
+		return saveLocalUser(user)
+	}
 }
 async function signup(userCred) {
-  // const user = await httpService.post('auth/signup', userCred)
-  return saveLocalUser(user)
+	// const user = await httpService.post('auth/signup', userCred)
+	return saveLocalUser(user)
 }
 async function logout() {
+<<<<<<< HEAD
   localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
   // return await httpService.post('auth/logout')
 }
@@ -55,6 +62,21 @@ function saveLocalUser(user) {
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
+=======
+	sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+	// return await httpService.post('auth/logout')
+}
+function saveLocalUser(user) {
+	user = {
+		_id: user._id,
+		fullname: user.fullname,
+	}
+	sessionStorage.setItem(
+		STORAGE_KEY_LOGGEDIN_USER,
+		JSON.stringify(user)
+	)
+	return user
+>>>>>>> 3a62ae62c29fde6de45ba302253e15184972632d
 }
 
 // function login(credentials) {
