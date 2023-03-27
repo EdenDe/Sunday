@@ -55,6 +55,9 @@ export const boardStore = {
 		priorityLabels({ currBoard }) {
 			return currBoard.priorityLabels
 		},
+		activities({ currBoard }) {
+			return currBoard.activities
+		},
 	},
 	actions: {
 		async loadBoards({ commit }, { filterBy = {} }) {

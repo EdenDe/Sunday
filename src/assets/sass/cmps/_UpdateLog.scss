@@ -24,15 +24,26 @@
 
     .update{
       display:grid;
-
+      width:100%;
+      position: relative;
       .udapte-header{
-        width:100%;
-
-        .udapte-date{
+        .actions-right{
           margin-left:auto;
+
+          .menu-icon{
+            @include action;
+            display:inline-block;
+            width:fit-content;
+          }
         }
       }
-      
+      .actions-list{
+        @include actions-list;
+
+        .action{
+          @include action;
+        }
+      }
     
   }
   
