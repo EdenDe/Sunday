@@ -1,8 +1,15 @@
-<template></template>
+<template>
+  <section class="activity-log grid">
+    <article class="activity grid">
+
+    </article>
+  </section>
+</template>
 
 <script>
 export default {
-  name: '',
+  name: 'ActivityLog',
+  props: { activities: Array },
   data() {
     return {
 
@@ -15,7 +22,7 @@ export default {
 
   },
   created() {
-
+    console.log(this.activities)
   },
   components: {
 

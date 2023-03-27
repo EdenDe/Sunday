@@ -28,7 +28,7 @@
     <main class="content-wrapper">
       <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUserId="loggedInUser._id"
         :updates="task.updates ? task.updates : []" @addUpdate="addUpdate" @toggleLike="toggleLike" />
-      <ActivityLog v-if="activeTab === 'activityLog'" />
+      <ActivityLog v-if="activeTab === 'activityLog'" :activities="group.activities" />
     </main>
 
     <!-- <img src="https://cdn.monday.com/images/pulse-page-empty-state.svg" /> -->
@@ -46,7 +46,8 @@ export default {
   data() {
     return {
       //task: null,
-      groupId: null,
+      group: null,
+
       activeTab: 'updateLog',
       loggedInUser: userService.getLoggedInUser()
     }
@@ -58,7 +59,7 @@ export default {
     addUpdate(content) {
       const task = this.task
       if (!task.updates) task.updates = []
-      task.updates.push({
+      task.updates.unshift({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
         txt: content,
@@ -78,7 +79,7 @@ export default {
       this.updateTask('updates', this.task.updates)
     },
     updateTask(prop, toUpdate) {
-      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.groupId, taskId: this.task.id, prop, toUpdate })
+      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.group.id, taskId: this.task.id, prop, toUpdate })
     }
   },
   computed: {
@@ -91,7 +92,7 @@ export default {
         for (let i = 0; i < groups.length; i++) {
           let currTask = groups[i].tasks.find((t) => t.id === this.taskId)
           if (currTask) {
-            this.groupId = groups[i].id
+            this.group = groups[i]
             return JSON.parse(JSON.stringify(currTask))
           }
         }

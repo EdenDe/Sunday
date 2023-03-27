@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service'
 import gBoard from '../../data/board.json' assert { type: 'json' }
 
 import { utilService } from './util.service.js'
+import { userService } from './user.service'
 
 const STORAGE_KEY = 'boardsDB'
 
@@ -41,21 +42,47 @@ async function save(board) {
 	return savedBoard
 }
 
-// function updateActivity(currBoard, groupId, taskId, prop, toUpdate) {}
+function updateAcivitiy(prop, title, oldValue, newValue) {
+	return {
+		id: 'a' + utilService.makeId(10),
+		createdAt: Date.now(),
+		createdBy: userService.getLoggedInUser(),
+		title,
+		prop,
+		oldValue,
+		newValue,
+	}
+}
 
 function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 	const board = JSON.parse(JSON.stringify(currBoard))
+	let activity
 	if (taskId) {
 		let group = board.groups.find(group => groupId === group.id)
 		let task = group.tasks.find(task => task.id === taskId)
+		activity = updateAcivitiy(
+			prop,
+			task.taskTitle,
+			task[prop],
+			toUpdate
+		)
+		activity.taskId = taskId
 		task[prop] = toUpdate
 	} else if (groupId) {
 		let group = board.groups.find(group => groupId === group.id)
+		// activity = updateAcivitiy(
+		// 	prop,
+		// 	group.title,
+		// 	task[prop],
+		// 	toUpdate
+		// )
+
 		group[prop] = toUpdate
 	} else {
 		board[prop] = toUpdate
 	}
 
+	board.activities.push(activity)
 	return board
 }
 

@@ -26,6 +26,7 @@
 
 <script>
 
+import { utilService } from '../services/util.service'
 import Avatar from './Avatar.vue'
 import TextEditor from './TextEditor.vue'
 
@@ -59,23 +60,10 @@ export default {
       this.$emit('toggleLike', updateId, value)
     }
   },
-
   computed: {
     dateFormatted() {
       return (createdAt) => {
-        const now = new Date()
-        const secondsAgo = Math.floor((now.getTime() - createdAt) / 1000)
-
-        const daysAgo = Math.floor(secondsAgo / (3600 * 24))
-        const hoursAgo = Math.floor(secondsAgo / 3600)
-
-        if (daysAgo > 0) {
-          return `${daysAgo}d`
-        } else if (hoursAgo > 0) {
-          return `${hoursAgo}h`
-        } else {
-          return 'just now'
-        }
+        return utilService.getRelativeTimeAndDay(createdAt)
       }
     },
     likedByUser() {
