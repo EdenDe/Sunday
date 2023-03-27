@@ -3,7 +3,7 @@
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
         <h2
-          v-tooltip="'tooltipContent'"
+          v-tooltip="'Click to Edit'"
           contenteditable
           class="board-title"
           @focusout="onChangeTitle($event.target.innerText)"
@@ -11,10 +11,10 @@
           {{ currBoard.title }}
         </h2>
 
-        <div class="btn btn-container">
+        <div class="btn btn-container" v-tooltip="'Show board description'">
           <InfoIcon class="info-icon icon" />
         </div>
-        <div class="btn btn-container">
+        <div class="btn btn-container" v-tooltip="'Add to favorite'">
           <StarIcon class="star-icon icon" />
         </div>
       </div>
@@ -29,7 +29,7 @@
       </div>
       <nav class="nav-bar flex align-start">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
-          <div class="btn btn-container grid grid-col">
+          <div class="btn btn-container grid grid-col" v-tooltip="'Main Table'">
             <div class="icon-container">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -37,12 +37,12 @@
           </div>
         </RouterLink>
         <RouterLink :to="'/board/' + currBoard._id + '/kanban'">
-          <div class="btn btn-container grid grid-col">
+          <div class="btn btn-container grid grid-col" v-tooltip="'Kanban'">
             <span>Kanban</span>
           </div>
         </RouterLink>
         <RouterLink :to="'/board/' + currBoard._id + '/dashboard'">
-          <div class="btn btn-container grid grid-col">
+          <div class="btn btn-container grid grid-col" v-tooltip="'Dashboard'">
             <span>Dashboard</span>
           </div>
         </RouterLink>

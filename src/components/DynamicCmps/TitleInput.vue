@@ -4,6 +4,7 @@
       contenteditable
       @focusout="onFocusout($event.target.innerText)"
       :style="{ fontSize: '14px' }"
+      v-tooltip="txt"
     >
       {{ txt }}
     </span>

@@ -4,10 +4,15 @@
     <div class="singup-form-container grid">
       <h2>Log in to your account</h2>
       <p>Enter your work email address</p>
-      <form @submit="login" class="singup-form grid">
-        <input type="text" placeholder="Full name" v-if="isSingup" />
-        <input type="text" placeholder="User name" />
-        <input type="password" placeholder="Password" />
+      <form @submit.prevent="loginSignup" class="singup-form grid">
+        <input
+          type="text"
+          placeholder="Full name"
+          v-if="isSingup"
+          v-model="fullname"
+        />
+        <input type="text" placeholder="User name" v-model="username" />
+        <input type="password" placeholder="Password" v-model="password" />
         <button>Next</button>
       </form>
       <small v-if="!isSingup">
@@ -27,19 +32,56 @@ export default {
   data() {
     return {
       isSingup: false,
+      fullname: '',
+      username: '',
+      password: '',
     }
   },
   methods: {
-    login() {
+    loginSignup() {
+      let credentials = {
+        username: this.username,
+        password: this.password,
+      }
       if (this.isSingup) {
-      } else {
+        credentials.fullname = this.fullname
+        this.onSignup(credentials)
+      } else this.onLogin(credentials)
+    },
+    async onLogin(credentials) {
+      try {
+        await this.$store.dispatch({
+          type: 'login',
+          credentials,
+        })
+        // route.push('/board/' + firstBoardId + '/main-table'")
+        // this.loggedinUser = this.$store.getters.loggedinUser
+      } catch (err) {
+        console.log("Cen't login...")
+      }
+    },
+    async onSignup(credentials) {
+      try {
+        await this.$store.dispatch({
+          type: 'signup',
+          credentials,
+        })
+        // route.push('/board/' + firstBoardId + '/main-table'")
+        // this.loggedinUser = this.$store.getters.loggedinUser
+      } catch (err) {
+        console.log("Cen't signup...")
       }
     },
     toggleSignup() {
       this.isSingup = !this.isSingup
     },
   },
-  computed() {},
+  computed: {
+    firstBoardId() {
+      const boards = this.$store.getters.boardsToDisplay
+      if (boards.length) return boards[0]._id
+    },
+  },
   components: { AppHeader },
 }
 </script>
