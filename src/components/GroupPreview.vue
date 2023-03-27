@@ -1,5 +1,5 @@
 <template>
-  <section class="group-preview">
+  <section class="group-preview" :class="isListOpen ? 'list-open' : ''">
     <div class="grid-title flex align-items">
       <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
@@ -27,11 +27,11 @@
           </div>
         </div>
       </div>
-      <div class="open-list">
+      <div class="open-list-icon-wrapper">
         <span
           class="open-list-icon"
           @click="toggleOpenList"
-          :class="{ active: isGroupActionsOpen }"
+          :class="{ active: isListOpen }"
         >
           <ArrowDownIcon
             class="arrow-down-icon icon"
@@ -131,7 +131,7 @@ import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
 import ColorPicker from '../components/ColorPicker.vue'
 //ICONS
-import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
+import ArrowDownIcon from '../assets/icons/ArrowRight.svg'
 import MenuIcon from '../assets/icons/Menu.svg'
 export default {
   name: 'GroupPreview',

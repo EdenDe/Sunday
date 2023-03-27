@@ -7,12 +7,16 @@
     </div>
 
     <div class="btn btn-container grid grid-col aling-center">
-      <PersonIcon class="person-icon icon" />
+      <div class="icon-container">
+        <PersonIcon class="person-icon icon" />
+      </div>
       <span>Person</span>
     </div>
 
     <div class="btn btn-container grid grid-col aling-center">
-      <FilterIcon class="filter-icon icon" />
+      <div class="icon-container">
+        <FilterIcon class="filter-icon icon" />
+      </div>
       <span>Filter</span>
     </div>
   </section>

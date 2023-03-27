@@ -30,23 +30,28 @@
     }
 
     .btn-container {
-      & > * {
-        fill: $icon-color;
-        path {
-          stroke-width: 1;
-        }
+      @include flex-center;
+      padding: 4px;
+      & * {
+        line-height: 20px;
+        color: $icon-color;
+        width: 24px;
+        height: 20px;
       }
     }
   }
   .desc-wrapper {
+    max-width: 20vw;
     .desc {
+      @include editableSpan;
+      width: 100%;
       font-size: rem(14px);
       color: $color-asphalt;
     }
   }
 
   .nav-bar {
-    margin-top: $padding-small;
+    margin: 8px 0 0;
     border-bottom: 1px solid $layout-border-color;
     & > *:not(:last-child) {
       position: relative;
@@ -66,9 +71,23 @@
       margin-left: 4px;
     }
     & > *:last-child {
-      padding: 3px;
+      // padding: 3px;
       align-self: center;
       justify-self: center;
+    }
+    .btn-container {
+      * {
+        margin-inline-end: $margin-small;
+      }
+      .icon-container {
+        height: 10px;
+        width: 18px;
+        .home-icon {
+          color: $color-mud_black;
+          height: 16px;
+          width: 16px;
+        }
+      }
     }
   }
 }
@@ -105,23 +124,26 @@
     }
 
     &-container {
-      // justify-items: start;
       height: 32px;
+
+      .btn-add-task {
+        margin-inline-end: $margin-medium;
+      }
 
       &:not(.btn-add-task) {
         padding: $padding-small;
       }
-
-      &:not(.btn-blue) {
-        margin-right: 6px;
-      }
-
       & > :last-child:not(.btn-blue) {
         padding-right: 12px;
       }
     }
   }
   //ICONS
+  &.group-open {
+    .arrow-down-icon {
+      transform: rotate(90deg);
+    }
+  }
   .arrow-down-icon {
     width: 15px;
   }

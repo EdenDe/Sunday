@@ -3,7 +3,7 @@
   position: relative;
 
   &:hover {
-    .add-icon {
+    .add-icon-wrapper {
       opacity: 1;
     }
   }
@@ -29,6 +29,21 @@
     transition: opacity 0.2s ease-in-out;
     path {
       stroke-width: 100;
+    }
+  }
+  .add-icon-wrapper {
+    @include flex-center;
+    position: absolute;
+    top: 30%;
+    left: 21px;
+    border-radius: 50%;
+    opacity: 0;
+    height: 13px;
+    width: 13px;
+    background-color: $color-blue-btn;
+    transition: opacity 0.2s ease-in-out;
+    .add-icon {
+      color: $color-snow_white;
     }
   }
 

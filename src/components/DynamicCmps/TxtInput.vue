@@ -1,7 +1,11 @@
 <template>
   <section class="task-txt">
-    <span contenteditable @focusin="onFocusIn" @focusout="onFocusout($event.target.innerText)"
-      :style="{ fontSize: '14px' }">{{ txt }}</span>
+    <span
+      contenteditable
+      @focusout="onFocusout($event.target.innerText)"
+      :style="{ fontSize: '14px' }"
+      >{{ txt }}</span
+    >
   </section>
 </template>
 
@@ -15,7 +19,6 @@ export default {
   data() {
     return {
       txt: this.info,
-      isFocused: false,
     }
   },
   watch: {
@@ -27,10 +30,6 @@ export default {
     onFocusout(txt) {
       this.txt = txt
       this.$emit('updateProp', 'text', txt)
-      this.isFocused = false
-    },
-    onFocusIn() {
-      this.isFocused = true
     },
   },
 }

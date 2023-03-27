@@ -255,32 +255,40 @@
 
 @mixin label-picker-container {
   @include flex-center;
+ 
+    background-color: $color-snow_white;
+      width: rem(200px);
+      border-radius: $border-radius-rounder;
+      box-shadow: $shadow;
+  
+  
 
-  ::before {
-    @include modal-arrow;
-  }
+  // ::before {
+  //   @include modal-arrow;
+  // }
 
-  align-items: flex-start;
-  justify-items: center;
-  z-index: 200;
-  position: absolute;
-  top: rem(35px);
-  padding-top: rem(18px);
-  background-color: $color-snow_white;
-  height: rem(320px);
-  width: rem(200px);
-  border-radius: $border-radius-rounder;
-  box-shadow: $shadow;
+  // align-items: flex-start;
+  // justify-items: center;
+  // z-index: 200;
+  // position: absolute;
+  // top: rem(35px);
+  // padding-top: rem(18px);
+  // background-color: $color-snow_white;
+  // height: rem(320px);
+  // width: rem(200px);
+  // border-radius: $border-radius-rounder;
+  // box-shadow: $shadow;
 }
 
 @mixin color-picker-label {
   @include flex-center;
-
+  color: $color-snow_white;
   height: rem(32px);
   width: rem(153px);
 
   margin: rem(4px);
   border-radius: $border-radius;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;

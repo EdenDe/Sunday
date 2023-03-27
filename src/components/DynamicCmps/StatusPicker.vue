@@ -1,11 +1,12 @@
 <template>
-  <div
+  <!-- <div
     :style="{ backgroundColor: status.color, fontSize: '14px' }"
     class="status flex justify-center align-center"
     @click="toggleColorPicker"
   >
     {{ status.title }}
 
+    
     <LabelPicker
       v-clickOutside="toggleColorPicker"
       v-if="isPickerOpen"
@@ -13,7 +14,28 @@
       @setLabel="setLabel"
     >
     </LabelPicker>
-  </div>
+  </div> -->
+  <section class="status-picker">
+    <VDropdown :distance="6">
+      <div
+        :style="{ backgroundColor: status.color, fontSize: '14px' }"
+        class="status flex justify-center align-center"
+        @click="toggleColorPicker"
+      >
+        {{ status.title }}
+      </div>
+      <template #popper>
+        <LabelPicker
+          v-clickOutside="toggleColorPicker"
+          v-if="isPickerOpen"
+          class="status-label-picker"
+          :labels="statusList"
+          @setLabel="setLabel"
+        >
+        </LabelPicker>
+      </template>
+    </VDropdown>
+  </section>
 </template>
 
 <script>

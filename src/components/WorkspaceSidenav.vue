@@ -5,7 +5,7 @@
     :class="{ 'workspace-close': isWorkspaceClosed }"
   >
     <button class="toggle-workspace flex align-center" @click="toggleWorkspace">
-      <ArrowRightIcon class="arrow-right-icon icon" />
+      <ArrowLeftIcon class="arrow-left-icon icon" />
     </button>
 
     <section class="navigation-header flex-col justify-between align-center">

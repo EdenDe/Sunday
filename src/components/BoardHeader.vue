@@ -9,6 +9,7 @@
         >
           {{ currBoard.title }}
         </h2>
+
         <div class="btn btn-container">
           <InfoIcon class="info-icon icon" />
         </div>
@@ -17,28 +18,30 @@
         </div>
       </div>
       <div class="desc-wrapper">
-        <p class="desc">Sunday app is a project management...</p>
+        <span
+          class="desc"
+          contenteditable
+          @focusout="onChangeDesc($event.target.innerText)"
+        >
+          {{ currBoard.description }}
+        </span>
       </div>
       <nav class="nav-bar flex align-start">
         <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
           <div class="btn btn-container grid grid-col">
-            <HomeIcon class="filter-icon icon" />
+            <div class="icon-container">
+              <HomeIcon class="home-icon icon" />
+            </div>
             <span>Main Table</span>
           </div>
         </RouterLink>
         <RouterLink :to="'/board/' + currBoard._id + '/kanban'">
-          <div
-            class="btn btn-container grid grid-col"
-            :class="{ 'is-active': $route.params.kanban }"
-          >
+          <div class="btn btn-container grid grid-col">
             <span>Kanban</span>
           </div>
         </RouterLink>
         <RouterLink :to="'/board/' + currBoard._id + '/dashboard'">
-          <div
-            class="btn btn-container grid grid-col"
-            :class="{ 'is-active': $route.params.kanban }"
-          >
+          <div class="btn btn-container grid grid-col">
             <span>Dashboard</span>
           </div>
         </RouterLink>
@@ -75,6 +78,9 @@ export default {
   methods: {
     onChangeTitle(txt) {
       this.$emit('updateBoard', 'title', txt)
+    },
+    onChangeDesc(desc) {
+      this.$emit('updateBoard', 'description', desc)
     },
   },
   components: {

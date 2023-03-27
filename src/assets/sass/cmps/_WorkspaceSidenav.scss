@@ -11,11 +11,12 @@
     width: rem(32px);
     min-width: rem(32px);
     transition: width 0.3s ease-in-out;
-    .workspace-arrow > svg {
-          transform: rotate(180deg);
-          transition: transform .3s ease-in;
-        }
-      
+    .arrow-left-icon {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease-in;
+      margin-right: 2px;
+    }
+
     & > *:not(.toggle-workspace) {
       display: none;
     }
@@ -24,16 +25,14 @@
       min-width: 254px; // set your desired minimum width here
     }
 
-    .toggle-workspace:hover svg {
-          margin-left: 10px;
-      
+    .toggle-workspace:hover .arrow-left-icon {
+      margin-right: -10px;
+      transform: translate(-50%, 0%);
     }
   }
-   .navigation-header {
-    padding: 0;
-    margin: rem(9px) rem(14px) rem(18px);
+  .navigation-header {
+    margin: rem(9px) rem(18px) rem(18px) rem(14px);
     display: grid;
-    grid-template-rows: 36.5 38px;
     .dropdown-header-name {
       font-size: rem(14px);
       color: $color-asphalt;
@@ -169,20 +168,20 @@
     height: rem(26px);
     transition: all 0.15s ease-in-out;
 
-    &:hover {       
-      width: 33px;
-      height: 22px;
+    &:hover {
+      width: 37px;
+      height: 25px;
       border-radius: 20px;
-      justify-content: end;
-      padding-inline-start: 9px;
       background-color: $color-blue-btn;
-        svg{
-          margin-right: 10px; 
-          fill: $color-snow_white;
-       }
+      .arrow-left-icon {
+        margin-right: 10px;
+        color: $color-snow_white;
+        width: 12px;
+        height: 12px;
+      }
     }
-    
-    svg{
+
+    svg {
       @include flex-center;
     }
   }
@@ -191,18 +190,23 @@
     height: 20px;
     width: 20px;
   }
+  .filter-icon {
+    margin-inline-start: -2px;
+  }
   .arrow-down-icon {
     width: 16px;
   }
-  .arrow-right-icon {
+  .arrow-left-icon {
     width: 12px;
+    height: 12px;
   }
   .home-icon {
     width: 12px;
     height: 12px;
   }
   .menu-icon {
-    width: 16px;
-    height: 16px;
+    margin-inline-end: 10px;
+    width: 20px;
+    height: 20px;
   }
 }

@@ -12,8 +12,7 @@
 .task-actions-list {
   z-index: 102;
   position: absolute;
-  top: 35px;
-  left: 20px;
+  top: 10px;
   height: 130px;
   width: 234px;
   padding: $padding-small;
@@ -35,7 +34,7 @@
 }
 
 .svg-wrapper {
-  @include flex-center;
+  opacity: 0;
   grid-column: 1;
   position: relative;
   .dots-icon {
@@ -51,5 +50,8 @@
         opacity: 0.8;
       }
     }
+  }
+  &:hover {
+    opacity: 1;
   }
 }

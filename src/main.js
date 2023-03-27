@@ -11,11 +11,15 @@ import './assets/sass/style.scss'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
+import FloatingVue from 'floating-vue'
+import 'floating-vue/dist/style.css'
+
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
 app.use(ElementPlus)
+app.use(FloatingVue)
 app.directive('icon', icon)
 app.directive('clickOutside', clickOutside)
 app.component('QuillEditor', QuillEditor)
