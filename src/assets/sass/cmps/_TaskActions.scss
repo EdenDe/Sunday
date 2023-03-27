@@ -3,38 +3,24 @@
   position: sticky;
   z-index: 100;
   left: 0;
-  background-color: $color-snow_white;
   height: 100%;
+  opacity: 0;
+  &:hover {
+    .dots-icon {
+      opacity: 1;
+    }
+  }
 }
 .task-actions {
   position: absolute;
 }
 .task-actions-list {
-  z-index: 102;
-  position: absolute;
-  top: 10px;
-  height: 130px;
-  width: 234px;
-  padding: $padding-small;
-  background-color: $color-snow_white;
-  box-shadow: $box-shadow-large;
-  border-radius: $border-radius-rounder;
-
+  @include actions-list;
   .task-action {
-    padding: 4px $padding-small;
-    font-size: rem(14px);
-    & > :first-child {
-      margin-inline-end: $margin-small;
-    }
-    &:hover {
-      background-color: $primary-background-hover-color;
-      border-radius: $btn-border-radius;
-    }
+    @include action;
   }
 }
-
 .svg-wrapper {
-  opacity: 0;
   grid-column: 1;
   position: relative;
   .dots-icon {
@@ -44,14 +30,11 @@
       background-color: $primary-background-hover-color;
     }
     &.active {
-      opacity: 1;
       background-color: $color-highlight_blue;
+      opacity: 1;
       &:hover {
         opacity: 0.8;
       }
     }
-  }
-  &:hover {
-    opacity: 1;
   }
 }

@@ -1,17 +1,23 @@
 <template>
-  <section class="person-list flex align-center justify-center">
-    <PersonAvatar v-for="(person, idx) in info" :key="idx" :person="person" />
+  <section class="person-picker">
     <VDropdown :distance="6">
-      <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">
-        <AddIcon class="add-icon icon" />
-      </div>
+      <section class="person-list flex align-center justify-center">
+        <PersonAvatar
+          v-for="(person, idx) in info"
+          :key="idx"
+          :person="person"
+        />
+        <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">
+          <AddIcon class="add-icon icon" />
+        </div>
+      </section>
       <template #popper>
         <div
           v-if="isPersonPickerOpen"
           class="person-picker-container flex-col justify-between"
           v-clickOutside="onClosePicker"
         >
-          <div class="flex wrap person-picker">
+          <div class="flex wrap person-picker-avatar">
             <article
               class="task-person flex align-center"
               v-for="(person, idx) in info"

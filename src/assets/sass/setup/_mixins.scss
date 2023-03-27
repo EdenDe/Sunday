@@ -255,13 +255,11 @@
 
 @mixin label-picker-container {
   @include flex-center;
- 
-    background-color: $color-snow_white;
-      width: rem(200px);
-      border-radius: $border-radius-rounder;
-      box-shadow: $shadow;
-  
-  
+
+  background-color: $color-snow_white;
+  width: rem(200px);
+  border-radius: $border-radius-rounder;
+  box-shadow: $shadow;
 
   // ::before {
   //   @include modal-arrow;
@@ -292,5 +290,27 @@
 
   &:hover {
     opacity: 0.8;
+  }
+}
+@mixin actions-list($height: rem(130px), $width: rem(234px), $z-index: 100) {
+  z-index: $z-index;
+  position: absolute;
+  top: 10px;
+  height: $height;
+  width: $width;
+  padding: $padding-small;
+  background-color: $color-snow_white;
+  box-shadow: $box-shadow-large;
+  border-radius: $border-radius-rounder;
+}
+@mixin action {
+  padding: 4px $padding-small;
+  font-size: rem(14px);
+  & > :first-child {
+    margin-inline-end: $margin-small;
+  }
+  &:hover {
+    background-color: $primary-background-hover-color;
+    border-radius: $btn-border-radius;
   }
 }

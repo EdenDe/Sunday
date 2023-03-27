@@ -1,24 +1,15 @@
 <template>
-  <section
-    class="task-preview grid"
-    :class="{
-      sticky: cmp.name === 'taskTitle' || cmp.name === 'checkbox',
-    }"
-    v-for="(cmp, idx) in cmpOrder"
-    :key="idx"
-  >
-    <component
-      :is="cmp.name"
-      :info="task[cmp.name]"
-      :taskId="task.id"
-      @updateProp="updateProp"
-      @toggleTask="toggleTask"
-    />
+  <section class="task-preview grid" :class="{
+    sticky: cmp.name === 'taskTitle' || cmp.name === 'checkbox',
+  }" v-for="(cmp, idx) in cmpOrder" :key="idx">
+    <component :is="cmp.name" :info="task[cmp.name]" :taskId="task.id" @updateProp="updateProp"
+      @toggleTask="toggleTask" />
     <div class="pulse-bubble" v-if="cmp.name === 'taskTitle'">
-      <RouterLink
-        :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
-      >
-        <PulseIcon class="pulse-icon icon" />
+      <RouterLink :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`">
+        <PulseIcon class="pulse-icon icon" v-if="taskUpdatesNum === 0" />
+        <p class="pulse-icon icon" v-else>
+          {{ taskUpdatesNum }}
+        </p>
       </RouterLink>
     </div>
   </section>
@@ -36,6 +27,8 @@ import TaskTitle from './dynamicCmps/TitleInput.vue'
 import txt from './dynamicCmps/TxtInput.vue'
 //ICONS
 import PulseIcon from '../assets/icons/Pulse.svg'
+import Pulse from '../assets/icons/Pulse.svg'
+
 export default {
   name: 'TaskPreview',
   props: {
@@ -59,6 +52,10 @@ export default {
     cmpOrder() {
       return this.$store.getters.cmpOrder
     },
+    taskUpdatesNum() {
+      console.log(this.task.updates?.length || 0)
+      return this.task.updates?.length || 0
+    }
   },
   components: {
     checkbox,

@@ -163,6 +163,7 @@ export default {
       debugger
       this.$refs.groupTitle.focus()
       this.isColorModalOpen = !this.isColorModalOpen
+      if (this.isColorModalOpen) this.focusGroupName()
     },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))

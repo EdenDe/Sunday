@@ -15,7 +15,9 @@
   &:hover:not(:has(a.router-link-active)) > *:not(:first-child) {
     background-color: $dark-background-color;
   }
-
+  &:hover:not(:has(a.router-link-active)) > *:first-child {
+    opacity: 1;
+  }
   &:has(a.router-link-active) {
     background-color: $color-highlight_blue;
     .task-preview {
