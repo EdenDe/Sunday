@@ -40,11 +40,6 @@ export default {
     return {
       isEditor: false,
       content: '',
-      customToolbar: [
-        // ["bold", "italic", "underline", "strike"],
-        // [{ list: "ordered" }, { list: "bullet" }],
-        // [{ 'color': ['#000000', '#11dd80'] }],
-      ],
     }
   },
   methods: {
@@ -53,16 +48,12 @@ export default {
         this.isEditor = value
       }
     },
-    onClickOut() {
-      // if (this.content === '') {
-      //   this.rowsNum = 1
-      // }
-    },
     setContent(content) {
       this.content = content
     },
     onUpdate() {
       this.$emit('addUpdate', this.content)
+      this.content = ''
     },
     onToggleLike(updateId, value) {
       this.$emit('toggleLike', updateId, value)
@@ -93,12 +84,8 @@ export default {
       }
     }
   },
-  created() {
-    console.log(this.updates)
-  },
   components: {
     TextEditor,
-
     Avatar
   },
 }
