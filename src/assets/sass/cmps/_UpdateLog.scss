@@ -1,24 +1,19 @@
 .update-log{
   gap: em(5px);
   .editor-wrapper{
+    .input-update-log {
+      width: 100%;
+      border-radius: $border-radius-rounder;
+      border: 1px solid $color-link_color;
+      line-height: normal;
+      padding: em(10px) em(20px);
+      font-size: em(16px);
+      resize: none;
 
-    // .textarea-update-log {
-    //   width: 100%;
-    //   border-radius: $border-radius-rounder;
-    //   border: 1px solid $color-link_color;
-    //   line-height: normal;
-    //   padding: em(10px) em(20px);
-    //   font-size: em(16px);
-    //   resize: none;
-
-    //   &:not(:focus):hover {
-    //     background-color: $color-ui_grey;
-    //   }
-
-    //   &:focus {
-    //     outline: none;
-    //   }
-
+      &:hover {
+        background-color: $color-ui_grey;
+      }
+    }
       .btn-update {
         @include btn;
         @include btn-blue;

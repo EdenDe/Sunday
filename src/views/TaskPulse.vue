@@ -26,8 +26,8 @@
       </div>
     </header>
     <main class="content-wrapper">
-      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="task.updates ? task.updates : []"
-        @addUpdate="addUpdate" @toggleLike="toggleLike" />
+      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUserId="loggedInUser._id"
+        :updates="task.updates ? task.updates : []" @addUpdate="addUpdate" @toggleLike="toggleLike" />
       <ActivityLog v-if="activeTab === 'activityLog'" />
     </main>
 
@@ -58,24 +58,26 @@ export default {
     addUpdate(content) {
       const task = this.task
       if (!task.updates) task.updates = []
-
+      debugger
       task.updates.push({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
         txt: content,
-        byUser: this.loggedInUser
+        likedBy: [],
+        byUser: { ...this.loggedInUser }
       })
 
       this.updateTask('updates', task.updates)
     },
     toggleLike(updateId, value) {
+      debugger
       let update = this.task.updates.find(update => update.id === updateId)
       if (value) {
         update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
       } else {
         update.likedBy.push(this.loggedInUser._id)
       }
-      this.updateTask('updates', task.updates)
+      this.updateTask('updates', this.task.updates)
     },
     updateTask(prop, toUpdate) {
       debugger

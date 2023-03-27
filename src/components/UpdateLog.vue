@@ -1,9 +1,9 @@
 <template>
   <section class="update-log grid">
-    <section class="editor-wrapper grid">
-      <QuillEditor ref="quillEditor" :options="options" />
-      <!-- <textarea @focus=" changeSize" :rows="rowsNum" class="textarea-update-log" v-model="content"
-      placeholder="Write an update..."></textarea> -->
+    <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
+      <input v-if="!isEditor" @focus="toggleIsEditor(true)" v-model="content" placeholder="Write an update..."
+        class="input-update-log" />
+      <TextEditor v-model="content" @setContent="setContent" v-else />
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper">
@@ -25,55 +25,44 @@
 </template>
 
 <script>
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
+
 import Avatar from './Avatar.vue'
+import TextEditor from './TextEditor.vue'
 
 export default {
   name: 'UpdateLog',
   props: {
     updates: Array,
-    loggedInUser: Object
+    loggedInUserId: String
   },
   emits: ['addUpdate', 'toggleLike'],
   data() {
     return {
-      rowsNum: 1,
+      isEditor: false,
+      content: '',
       customToolbar: [
         // ["bold", "italic", "underline", "strike"],
         // [{ list: "ordered" }, { list: "bullet" }],
         // [{ 'color': ['#000000', '#11dd80'] }],
       ],
-      options: {
-        modules: {
-          toolbar: [['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-          ['link', 'image'],
-          [{ 'align': ['left', 'center', 'right', 'justify'] }],
-          [{ 'direction': 'rtl' }],
-          // [{ 'table': ['table'] }],
-          // ['hr'],
-          // ['emoji'],
-          [{ 'color': ['#ff0000', '#00ff00', '#11dd80', '#008000', '#00a359', '#00FFFF', '#ff642e', 'FF0000', '#fdab3d', '#cab641'] }]
-          ],
-        },
-        placeholder: 'Compose an epic...',
-        theme: 'bubble'
-      }
     }
   },
   methods: {
-    changeSize() {
-      this.rowsNum = 5
+    toggleIsEditor(value = false) {
+      if (this.content === '') {
+        this.isEditor = value
+      }
     },
     onClickOut() {
       // if (this.content === '') {
       //   this.rowsNum = 1
       // }
     },
+    setContent(content) {
+      this.content = content
+    },
     onUpdate() {
-      const content = this.$refs.quillEditor.getHTML()
-      this.$emit('addUpdate', content)
+      this.$emit('addUpdate', this.content)
     },
     onToggleLike(updateId, value) {
       this.$emit('toggleLike', updateId, value)
@@ -100,7 +89,7 @@ export default {
     },
     likedByUser() {
       return (usersLiked) => {
-        return usersLiked.includes(this.loggedInUser._id)
+        return usersLiked.includes(this.loggedInUserId)
       }
     }
   },
@@ -108,7 +97,8 @@ export default {
     console.log(this.updates)
   },
   components: {
-    QuillEditor,
+    TextEditor,
+
     Avatar
   },
 }
