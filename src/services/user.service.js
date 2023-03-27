@@ -1,4 +1,6 @@
 import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
+import gUsers from '../../data/user.json' assert { type: 'json' }
 
 const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -22,8 +24,8 @@ localStorage.setItem(
 )
 
 function getLoggedInUser() {
-  const str = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
-  // const str = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
+  // const str = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
+  const str = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
   return JSON.parse(str)
 }
 
@@ -38,17 +40,23 @@ async function signup(userCred) {
   return saveLocalUser(user)
 }
 async function logout() {
-  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+  localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
   // return await httpService.post('auth/logout')
 }
 function saveLocalUser(user) {
   user = {
-    _id: user._id,
+    _id: utilService.makeId(),
+    username: user.username,
     fullname: user.fullname,
+    password: user.password,
+    imgUrl: '',
+    color: '#676879',
+    boards: [],
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
+
 // function login(credentials) {
 // 	return axios
 // 		.post('/api/auth/login', credentials)

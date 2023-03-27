@@ -1,0 +1,66 @@
+.group-title-container{
+    position: sticky;
+    z-index: 100;
+    left: 79px;
+    width: 323px;
+    
+      .group-title-wrapper {    
+        &:has(.group-title:focus-visible) .btn-color {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+        }
+    
+        .btn-color {
+          position: absolute;
+          z-index: 100;
+          width: em(25px);
+          height: em(25px);
+          border-radius: 50%;
+          margin-inline-end: em(5px);
+          display: none;
+          border: none;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          outline: none;
+        }
+    
+        .group-title {
+          @include editableSpan;
+          display: inline-flex;
+          font-size: rem(18px);
+          margin: em(5px);
+          padding: 0;
+          transition: outline 3s;
+          align-items: center;
+          font-family: $poppins-light;
+          font-weight: bold;
+          position: relative;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+    
+          &:hover {
+            outline: 1px solid #c3c6d4;
+            border-radius: 4px;
+          }
+    
+          &:focus-visible {
+            width: 200px;
+            padding-left: 30px;
+          }
+    
+          &:hover+.tasks-num {
+            opacity: 1;
+          }
+        }
+      }
+    
+      .tasks-num {
+        color: $color-mud_black;
+        font-size: rem(14px);
+        opacity: 0;
+      }
+    }
+  

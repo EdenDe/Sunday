@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "u101",
+    "username": "lior",
+    "fullname": "Lior Doron",
+    "password": "1234",
+    "imgUrl": "http://res.cloudinary.com/decasx192/image/upload/v1679762648/T04CLB0SNC9-U04EATZNA9F-0c4d78aa7da8-512_cm4mgt.png",
+    "color": "red",
+    "boards": []
+  },
+  {
+   "_id": "u102",
+   "username": "eden",
+   "fullname": "Eden Derhy",
+   "password": "1234",
+   "color": "black",
+   "imgUrl":"http://res.cloudinary.com/decasx192/image/upload/v1679764197/eden_nsjpcz.jpg",
+   "boards": []
+  },
+ {
+  "_id": "u103",
+  "username": "tamar",
+  "fullname": "Tamar Shalem",
+  "password": "1234",
+  "color": "black",
+  "imgUrl": "http://res.cloudinary.com/decasx192/image/upload/v1679763343/WhatsApp_Image_2023-03-25_at_19.52.48_ni6dze.jpg",
+  "boards": []
+  }
+]
