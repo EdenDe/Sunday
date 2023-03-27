@@ -1,5 +1,5 @@
 <template>
-  <section class="task-pulse" v-if="task">
+  <section class="task-pulse">
     <header class="grid">
       <button class="btn btn-close" @click="onBack">
         <CloseIcon class="close-icon icon" />
@@ -11,7 +11,7 @@
       </div>
       <div class="tabs-wrapper flex align-center">
         <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'updateLog' }">
-          <button class="btn btn-tab" @click="activeTab = 'updateLog'">
+          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + task.updates?.length">
             <div class="task-update-icon">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="border"></div>
-        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }"
+        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }" v-tooltip="'Activity Log'"
           @click="activeTab = 'activityLog'">
           <button class="btn btn-tab">Activity Log</button>
         </div>
@@ -53,12 +53,11 @@ export default {
   },
   methods: {
     onBack() {
-      this.$router.back()
+      this.$router.push(`/board/${this.$route.params.boardId}/main-table`)
     },
     addUpdate(content) {
       const task = this.task
       if (!task.updates) task.updates = []
-      debugger
       task.updates.push({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
@@ -70,7 +69,6 @@ export default {
       this.updateTask('updates', task.updates)
     },
     toggleLike(updateId, value) {
-      debugger
       let update = this.task.updates.find(update => update.id === updateId)
       if (value) {
         update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
@@ -80,7 +78,6 @@ export default {
       this.updateTask('updates', this.task.updates)
     },
     updateTask(prop, toUpdate) {
-      debugger
       this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.groupId, taskId: this.task.id, prop, toUpdate })
     }
   },
