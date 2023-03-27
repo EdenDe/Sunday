@@ -160,7 +160,6 @@ export default {
       })
     },
     onOpenColorPicker() {
-      debugger
       this.$refs.groupTitle.focus()
       this.isColorModalOpen = !this.isColorModalOpen
       if (this.isColorModalOpen) this.focusGroupName()
