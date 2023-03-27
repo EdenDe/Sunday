@@ -1,7 +1,8 @@
 .group-list {
   position: absolute;
+  padding-top: 18px;
   &::before {
-    content: "";
+    content: '';
     width: 38px;
     display: block;
   }

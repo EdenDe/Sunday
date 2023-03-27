@@ -1,19 +1,53 @@
-.task-filter{
+.task-filter {
   justify-content: start;
-  &>* {
-    display: flex;
-    align-items: center;
-  }
-  .btn {
+  position: relative;
+  .filter {
+    position: relative;
+    .btn {
+      @include flex-center;
       @include btn(transparent);
-      padding: 0; 
+      padding: 0;
       .icon-container {
+        @include flex-center;
+        width: 30px;
+        > * {
           @include flex-center;
-          width: 30px;
-          > *{
-            height: 18px;
-            width: 18px;
-          }
+          height: 18px;
+          width: 18px;
         }
+      }
+    }
+    &-modal {
+      @include filter-modal;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    &.active {
+      .filter-modal {
+        opacity: 1;
+      }
+    }
+
+    //MODALS:
+    &-search {
+      .filter-modal {
+        background-color: green;
+      }
+    }
+    &-person {
+      .filter-modal {
+        background-color: pink;
+      }
+    }
+    &-main {
+      .filter-modal {
+        background-color: blue;
+      }
+    }
+    &-sort {
+      .filter-modal {
+        background-color: purple;
+      }
+    }
   }
 }

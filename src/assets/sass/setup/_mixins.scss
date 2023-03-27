@@ -314,3 +314,12 @@
     border-radius: $btn-border-radius;
   }
 }
+@mixin filter-modal {
+  z-index: 200;
+  position: absolute;
+  top: 100%;
+  background-color: red;
+  padding: $padding-medium;
+  border-radius: $border-radius-filter;
+  box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
+}
