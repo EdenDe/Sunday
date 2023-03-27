@@ -1,0 +1,40 @@
+.task-actions-wrapper {
+  @include flex-center;
+  position: sticky;
+  z-index: 100;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  &:hover {
+    .dots-icon {
+      opacity: 1;
+    }
+  }
+}
+.task-actions {
+  position: absolute;
+}
+.task-actions-list {
+  @include actions-list;
+  .task-action {
+    @include action;
+  }
+}
+.svg-wrapper {
+  grid-column: 1;
+  position: relative;
+  .dots-icon {
+    @include flex-center;
+    border-radius: $btn-border-radius;
+    &:hover {
+      background-color: $primary-background-hover-color;
+    }
+    &.active {
+      background-color: $color-highlight_blue;
+      opacity: 1;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

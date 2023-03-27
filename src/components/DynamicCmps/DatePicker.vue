@@ -12,7 +12,7 @@
       v-model="date"
       @change="onChangeDate"
     />
-    <div v-if="date" @click.prevent="onRemoveDate">
+    <div class="remove-btn" v-if="date" @click.prevent="onRemoveDate">
       <CloseIcon class="close-icon icon" />
     </div>
   </section>

@@ -69,7 +69,6 @@ export default {
       return this.$store.getters.cmpOrder
     },
     taskUpdatesNum() {
-      console.log(this.task.updates?.length || 0)
       return this.task.updates?.length || 0
     },
   },

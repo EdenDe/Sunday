@@ -1,5 +1,5 @@
 <template>
-  <section class="group-preview">
+  <section class="group-preview" :class="isListOpen ? 'list-open' : ''">
     <div class="grid-title flex align-items">
       <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
@@ -32,7 +32,6 @@
           class="open-list-icon"
           @click="toggleOpenList"
           :class="{ active: isGroupActionsOpen }"
-          v-tooltip="'collapse group'"
         >
           <ArrowDownIcon
             class="arrow-down-icon icon"
@@ -52,7 +51,6 @@
           class="group-title"
           @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
           :style="{ color: group.color }"
-          v-tooltip="'Click to Edit'"
         >
           {{ group.title }}
         </span>
@@ -129,7 +127,7 @@ import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
 import ColorPicker from '../components/ColorPicker.vue'
 //ICONS
-import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
+import ArrowDownIcon from '../assets/icons/ArrowRight.svg'
 import MenuIcon from '../assets/icons/Menu.svg'
 export default {
   name: 'GroupPreview',
@@ -158,6 +156,7 @@ export default {
       })
     },
     onOpenColorPicker() {
+      this.$refs.groupTitle.focus()
       this.isColorModalOpen = !this.isColorModalOpen
       if (this.isColorModalOpen) this.focusGroupName()
     },
@@ -200,6 +199,9 @@ export default {
     },
     onChangeGroupProp(prop, value) {
       if (prop === 'color') this.onOpenColorPicker()
+      if (prop === 'title' && value.trim().length === 0) {
+        value = 'Enter Title'
+      }
       this.updateProp(null, prop, value)
     },
     toggleGroupActions(value = false) {
@@ -234,6 +236,9 @@ export default {
         if (label === 'txt') label = 'text'
         return label
       })
+    },
+    groupTitle() {
+      return this.group.title || 'Enter Title'
     },
     groupStatusProgress() {
       let res = this.group.tasks.reduce((obj, { status }) => {

@@ -4,10 +4,24 @@
   .remove-btn {
     display: none;
     top: 50%;
-    right: 8%;
+    right: 10%;
     transform: translate(0%, -50%);
+    .close-icon {
+      position: absolute;
+      right: 3px;
+      top: 1px;
+      padding: 0.5px;
+      width: 10px;
+      height: 10px;
+    }
   }
   &:hover {
+    .el-input__inner {
+      color: $color-basic_blue;
+    }
+    input {
+      border: 1px solid $color-explosive;
+    }
     .remove-btn {
       display: block;
     }

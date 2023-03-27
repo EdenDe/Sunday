@@ -161,17 +161,15 @@ function formatDateRange(timestamps) {
 	if (startYear !== endYear) {
 		// Dates span across multiple years
 		formattedRange = `${startMonth} ${startDate.getDate()} '${startYear} - ${endMonth} ${endDate.getDate()} '${endYear}`
-	} else if (
-		startYear !== new Date().getFullYear().toString().substr(-2)
-	) {
+	} else if (startYear !== new Date().getFullYear().toString().substr(-2)) {
 		// Dates are in the same year but not the current year
-		formattedRange = `${startMonth} ${startDate.getDate()} - ${endDate.getDate()} '${startYear}`
+		formattedRange = `${startMonth} ${startDate.getDate()}  -  ${endDate.getDate()} '${startYear}`
 	} else if (startMonth === endMonth) {
 		// Dates are in the same month and year
-		formattedRange = `${startMonth} ${startDate.getDate()} - ${endDate.getDate()}`
+		formattedRange = `${startMonth} ${startDate.getDate()}  -  ${endDate.getDate()}`
 	} else {
 		// Dates are in different months in the same year
-		formattedRange = `${startMonth} ${startDate.getDate()} - ${endMonth} ${endDate.getDate()}`
+		formattedRange = `${startMonth} ${startDate.getDate()}  -  ${endMonth} ${endDate.getDate()}`
 	}
 
 	return formattedRange

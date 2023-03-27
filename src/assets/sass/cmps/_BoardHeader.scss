@@ -5,7 +5,7 @@
   flex-direction: column;
 
   .router-link-active {
-  border-bottom: 2px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
   }
   .btn {
     @include btn(transparent);
@@ -28,11 +28,11 @@
       letter-spacing: em(0.75px);
       padding: 0 4px;
     }
- 
+
     .btn-container {
       @include flex-center;
       padding: 4px;
-      &  * {
+      & * {
         line-height: 20px;
         color: $icon-color;
         width: 24px;
@@ -75,14 +75,14 @@
       align-self: center;
       justify-self: center;
     }
-    .btn-container{
-      *{
+    .btn-container {
+      * {
         margin-inline-end: $margin-small;
       }
-      .icon-container{
+      .icon-container {
         height: 10px;
         width: 18px;
-        .home-icon{
+        .home-icon {
           color: $color-mud_black;
           height: 16px;
           width: 16px;
@@ -125,11 +125,11 @@
 
     &-container {
       height: 32px;
-      
-      .btn-add-task{
+
+      .btn-add-task {
         margin-inline-end: $margin-medium;
       }
-      
+
       &:not(.btn-add-task) {
         padding: $padding-small;
       }
@@ -139,6 +139,11 @@
     }
   }
   //ICONS
+  &.group-open {
+    .arrow-down-icon {
+      transform: rotate(90deg);
+    }
+  }
   .arrow-down-icon {
     width: 15px;
   }

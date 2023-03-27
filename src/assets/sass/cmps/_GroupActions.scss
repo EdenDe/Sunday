@@ -1,50 +1,42 @@
-.group-actions-list {
-  z-index: 100;
-  position: absolute;
-  top: 35px;
-  left: 20px;
-  height: 230px;
-  width: 264px;
-  padding: $padding-small;
+.group-actions-wrapper {
+  @include flex-center;
+  position: sticky;
+  z-index: 103;
+  left: 0;
   background-color: $color-snow_white;
-  box-shadow: $box-shadow-large;
-  border-radius: $border-radius-rounder;
+  height: 100%;
 
-  .group-action {
-    padding: 4px $padding-small;
-    font-size: rem(14px);
-    & > :first-child {
-      margin-inline-end: $margin-small;
-    }
-    &:hover {
-      background-color: $primary-background-hover-color;
-      border-radius: $btn-border-radius;
+  &:hover {
+    .dots-icon {
+      opacity: 1;
     }
   }
+  .dots-icon {
+    opacity: 0;
+  }
 }
-
-  .group-actions-wrapper {
+.group-actions-list {
+  @include actions-list(rem(230px), rem(264px), 102);
+  .group-action {
+    @include action;
+  }
+  .icon-wrapper {
+    @include flex-center;
+    grid-column: 1;
+    position: relative;
+    .dots-icon {
       @include flex-center;
-      position: sticky;
-      z-index: 101;
-      left: 0;
-    }
-    .svg-wrapper {
-      @include flex-center;
-      grid-column: 1;
-      position: relative;
-      .dots-icon {
-        @include flex-center;
-        border-radius: $btn-border-radius;
+      border-radius: $btn-border-radius;
+      &:hover {
+        background-color: $primary-background-hover-color;
+      }
+      &.active {
+        opacity: 1;
+        background-color: $color-highlight_blue;
         &:hover {
-          background-color: $primary-background-hover-color;
-        }
-        &.active {
-          opacity: 1;
-          background-color: $color-highlight_blue;
-          &:hover {
-            opacity: 0.8;
-          }
+          opacity: 0.8;
         }
       }
     }
+  }
+}

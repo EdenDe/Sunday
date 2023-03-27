@@ -7,20 +7,19 @@
       @dragover.prevent
     >
       <div class="img-wrapper" v-if="file">
-        <div
-          class="removeBtn"
-          @click.prevent="onRemoveFile"
-          v-tooltip="'Remove file'"
-        ></div>
+        <div class="remove-btn" @click.prevent="onRemoveFile" v-if="file">
+          <CloseIcon class="close-icon icon" />
+        </div>
         <img :src="file" alt="" />
       </div>
-      <div class="default-img-wrapper" v-if="!file" v-tooltip="'Add file'">
+
+      <div class="default-img-wrapper" v-if="!file">
         <img
           src="https://cdn.monday.com/images/file-types/empty.svg"
-          :style="{ height: '20px', width: '100%' }"
+          :style="{ height: '23px', width: '100%' }"
           class="default-img"
         />
-        <FileIcon class="file-icon icon" />
+        <AddIcon class="add-icon icon" />
       </div>
       <input type="file" @change="handleFile" hidden />
     </label>
@@ -29,6 +28,7 @@
 </template>
 <script>
 import { uploadFile } from '../../services/upload.service'
+import AddIcon from '../../assets/icons/Add.svg'
 import FileIcon from '../../assets/icons/Page.svg'
 import CloseIcon from '../../assets/icons/Close.svg'
 export default {
@@ -73,8 +73,9 @@ export default {
   },
 
   components: {
-    FileIcon,
+    AddIcon,
     CloseIcon,
+    FileIcon,
   },
 }
 </script>

@@ -1,11 +1,6 @@
 .task-list {
   background-color: $color-snow_white;
   @include task-cols;
-
-  .group-actions-wrapper{
-    height: fit-content;
-  }
-
   &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }
@@ -20,7 +15,9 @@
   &:hover:not(:has(a.router-link-active)) > *:not(:first-child) {
     background-color: $dark-background-color;
   }
-
+  &:hover:not(:has(a.router-link-active)) > *:first-child {
+    opacity: 1;
+  }
   &:has(a.router-link-active) {
     background-color: $color-highlight_blue;
     .task-preview {
@@ -37,5 +34,6 @@
   & > *:nth-child(-n + 3) {
     position: sticky;
     top: 0;
+    height: 100%;
   }
 }
