@@ -46,7 +46,6 @@ export default {
     //   this.$emit('changeGroupProp', color)
     // },
     changeGroupProp(prop, toUpdate) {
-      debugger
       console.log(prop, toUpdate)
       this.$emit('changeGroupProp', prop, toUpdate)
     },
