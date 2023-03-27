@@ -7,10 +7,14 @@
       @dragover.prevent
     >
       <div class="img-wrapper" v-if="file">
-        <div class="removeBtn" @click.prevent="onRemoveFile"></div>
+        <div
+          class="removeBtn"
+          @click.prevent="onRemoveFile"
+          v-tooltip="'Remove file'"
+        ></div>
         <img :src="file" alt="" />
       </div>
-      <div class="default-img-wrapper" v-if="!file">
+      <div class="default-img-wrapper" v-if="!file" v-tooltip="'Add file'">
         <img
           src="https://cdn.monday.com/images/file-types/empty.svg"
           :style="{ height: '20px', width: '100%' }"

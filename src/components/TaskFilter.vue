@@ -6,14 +6,20 @@
       <span>Search</span>
     </div>
 
-    <div class="btn btn-container grid grid-col aling-center">
+    <div
+      class="btn btn-container grid grid-col aling-center"
+      v-tooltip="'Filter by Person'"
+    >
       <div class="icon-container">
         <PersonIcon class="person-icon icon" />
       </div>
       <span>Person</span>
     </div>
 
-    <div class="btn btn-container grid grid-col aling-center">
+    <div
+      class="btn btn-container grid grid-col aling-center"
+      v-tooltip="'Filter by anything'"
+    >
       <div class="icon-container">
         <FilterIcon class="filter-icon icon" />
       </div>

@@ -64,3 +64,13 @@ select {
 ul {
   list-style-type: none;
 }
+
+
+//TOOLTIP
+.v-popper--theme-tooltip .v-popper__inner {
+  font-size: em(14px);
+  font-family: $figtree-regular;
+  background: $color-mud_black !important;
+  padding: 9px $padding-medium !important;
+  border-radius: $border-radius !important;
+}

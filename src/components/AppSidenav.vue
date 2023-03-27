@@ -2,7 +2,10 @@
   <section class="app-sidenav flex align-center flex-col justify-between">
     <div class="monday-icon-wrapper align-end flex justify-center">
       <RouterLink to="/">
-        <div class="monday-icon nav-item flex align-end">
+        <div
+          class="monday-icon nav-item flex align-end"
+          v-tooltip="'Home Page'"
+        >
           <img
             class="flex align-center justify-center"
             src="../assets/img/logo.png"
@@ -17,7 +20,10 @@
 
     <div class="workspace-arrow-left-div"></div>
     <section class="top-navigation-items-area flex-col align-center">
-      <div class="icon-wrapper flex align-center justify-center">
+      <div
+        class="icon-wrapper flex align-center justify-center"
+        v-tooltip="'work management'"
+      >
         <i class="svg nav-item" v-icon="'workManagement'"></i>
       </div>
       <div class="icon-wrapper" hidden>
