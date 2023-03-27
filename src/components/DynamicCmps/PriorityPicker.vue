@@ -1,24 +1,9 @@
 <template>
-  <!-- <div
-    :style="{ backgroundColor: status.color, fontSize: '14px' }"
-    class="priority flex justify-center align-center"
-    @click="toggleColorPicker"
-  >
-    {{ status.title }}
-    <LabelPicker
-      v-clickOutside="toggleColorPicker"
-      v-if="isPickerOpen"
-      :labels="priorityLabels"
-      @setLabel="updateLabel"
-    >
-    </LabelPicker>
-  </div> -->
-
   <section class="priority-picker">
     <VDropdown :distance="6">
       <div
         :style="{ backgroundColor: status.color, fontSize: '14px' }"
-        class="status flex justify-center align-center"
+        class="priority flex justify-center align-center"
         @click="toggleColorPicker"
       >
         {{ status.title }}

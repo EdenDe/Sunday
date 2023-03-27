@@ -22,7 +22,7 @@
     padding: 6px;
   }
 
-  > *:not(.pulse-bubble, .task-title, .task-action-bar-container) {
+  > *:not(.pulse-bubble, .task-title, .task-action-bar-container, .priority-picker, .status-picker) {
     font-size: em(14px);
     margin: 0;
     display: flex;
