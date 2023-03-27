@@ -1,5 +1,5 @@
 <template>
-  <Container orientation="horizental" @drop="onDrop" dropPlaceholder="true">
+  <Container orientation="horizental" @drop="onDrop">
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
       <div class="group-actions-wrapper task-options sticky">
         <div class="svg-wrapper">

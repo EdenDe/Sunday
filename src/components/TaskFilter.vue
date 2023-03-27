@@ -1,11 +1,7 @@
 <template>
   <section class="task-filter grid grid-col">
     <div class="filter-search filter" ref="search">
-      <button
-        class="btn btn-container"
-        @click="toggleFilter($event)"
-        v-clickOutside="toggleFilter($event)"
-      >
+      <button class="btn btn-container" @click="toggleFilter($event)">
         <input v-if="false" placeholder="Search" />
         <div class="icon-container">
           <SearchIcon class="search-icon icon" />
