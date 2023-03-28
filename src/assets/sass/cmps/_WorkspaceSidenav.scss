@@ -140,12 +140,15 @@
     }
 
     .group-actions-list {
+      z-index: 104;
       display: none;
       height: fit-content;
     }
 
     .group-actions-list.is-modal-open {
       display: grid;
+      top: 100%;
+      left: 80%;
     }
   }
   & > * {

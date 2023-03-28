@@ -1,6 +1,5 @@
 <template>
   <article class="update">
-
     <div class="update-header flex">
       <Avatar :person="update.byUser" />
       <p>{{ update.byUser.fullname }}</p>
@@ -16,16 +15,15 @@
       <button @click="toggleEditor">Cancel</button>
       <button @click="onSave">Save</button>
     </div>
-    <p v-else v-html="update.txt">
-    </p>
+    <p class="update-text" v-else v-html="update.txt"></p>
     <div class="btn-container">
-      <button @click="onToggleLike" :class="{ liked: likeUpdate }">
-        like
-      </button>
+      <button @click="onToggleLike" :class="{ liked: likeUpdate }">like</button>
       <button>Reply</button>
     </div>
     <div class="actions-list" v-if="isActionMenuOpen">
-      <button class="actions" @click="$emit('removeUpdate', update.id)">Delete</button>
+      <button class="actions" @click="$emit('removeUpdate', update.id)">
+        Delete
+      </button>
       <button class="actions" @click="toggleEditor">Edit</button>
     </div>
   </article>
@@ -47,7 +45,7 @@ export default {
     return {
       isActionMenuOpen: false,
       content: this.update.txt,
-      isEditor: false
+      isEditor: false,
     }
   },
   emits: ['toggleLike', 'removeUpdate', 'editUpdate'],
@@ -70,7 +68,7 @@ export default {
     onSave() {
       this.$emit('editUpdate', this.update.id, this.content)
       this.toggleEditor()
-    }
+    },
   },
   computed: {
     dateFormatted() {
@@ -80,15 +78,13 @@ export default {
     },
     likeUpdate() {
       return this.update.likedBy.includes(this.loggedInUserId)
-    }
+    },
   },
-  created() {
-
-  },
+  created() {},
   components: {
     Avatar,
     TextEditor,
-    MenuIcon
+    MenuIcon,
   },
 }
 </script>
