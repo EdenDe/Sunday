@@ -10,7 +10,7 @@
           </span>
         </div>
         <div class="group-actions">
-          <GroupActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask"
+          <TaskActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask"
             v-if="taskActionsOpen === task.id" />
         </div>
       </div>
@@ -24,7 +24,6 @@
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import TaskPreview from './TaskPreview.vue'
 import TaskActionBar from './TaskActionBar.vue'
-import GroupActions from '../components/GroupActions.vue'
 import TaskActions from './TaskActions.vue'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
@@ -87,7 +86,6 @@ export default {
     Container,
     Draggable,
     TaskActionBar,
-    GroupActions,
     TaskActions,
     MenuIcon,
   },

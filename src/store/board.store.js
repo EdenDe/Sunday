@@ -108,13 +108,10 @@ export const boardStore = {
 		) {
 			commit({ type: 'savePrevBoard' })
 
-			dispatch({
-				type: 'saveBoard',
-				groupId,
-				taskId,
-				prop,
-				toUpdate,
-			})
+			// dispatch({
+			// 	type: 'saveBoard',
+			// 	updatedBoard
+			// })
 
 			var updatedBoard = boardService.updateBoard(
 				state.currBoard,

@@ -1,19 +1,11 @@
 <template>
   <section class="group-actions-list grid">
-    <div
-      v-for="action in actions"
-      @click="emitFunction(action)"
-      class="group-action flex align-center justify-start"
-    >
+    <div v-for="action in actions" @click="emitFunction(action)" class="group-action flex align-center justify-start">
       <div class="icon-wrapper">
-        <component
-          :is="action.icon"
-          :class="`icon ${action.icon}-icon flex align-center justify-center`"
-          :style="{
-            fill:
-              action.title === 'Change group color' ? groupColor : '#676879',
-          }"
-        ></component>
+        <component :is="action.icon" :class="`icon ${action.icon}-icon flex align-center justify-center`" :style="{
+          fill:
+            action.title === 'Change group color' ? groupColor : '#676879',
+        }"></component>
       </div>
       <p>{{ action.title }}</p>
     </div>
@@ -40,7 +32,7 @@ export default {
         {
           title: 'Collapse this group',
           icon: 'CollapseIcon',
-          emit: 'Header',
+          emit: 'toggleOpenList',
         },
         {
           title: 'Add group',
