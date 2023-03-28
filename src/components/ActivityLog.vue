@@ -2,16 +2,26 @@
   <section class="activity-log grid">
     <article v-for="activity in activities" class="activity grid">
       <div>
-        <i></i>
-        <div v-tooltip="dateFormatted(activity.createdAt).tooltip">
+        <TimeIcon class="icon icon-time" />
+        <div v-tooltip="dateFormatted(activity.createdAt).tooltip" class="flex">
           {{ dateFormatted(activity.createdAt).date }}
         </div>
       </div>
-      <Avatar :person="activity.createdBy" />
-      <p>{{ activity.title }}</p>
+      <div class="activity-task">
+        <div class="avatar-wrapper">
+          <Avatar :person="activity.createdBy" />
+        </div>
+        <p>{{ activity.title }}</p>
+      </div>
       <div class="separator"></div>
-      <component :is="activity.prop"></component>
+      <div class="icon-wrapper">
+        <component
+          :is="activity.prop + 'Icon'"
+          :class="`icon ${activity.prop}-icon`"
+        ></component>
+      </div>
       <div>{{ activity.prop }}</div>
+
       <div class="separator"></div>
       <div class="activity-values grid">
         <component :is="activity.prop" :info="activity.oldValue"> </component>
@@ -34,10 +44,15 @@ import file from './dynamicCmps/FileUpload.vue'
 import TaskTitle from './dynamicCmps/TitleInput.vue'
 import txt from './dynamicCmps/TxtInput.vue'
 //ICONS
-import CalendarIcon from '../assets/icons/Calendar.svg'
-import StatusIcon from '../assets/icons/Status.svg'
-import PersonIcon from '../assets/icons/Person.svg'
-import PlusIcon from '../assets/icons/Add.svg'
+import TimeIcon from '../assets/icons/Time.svg'
+import dateIcon from '../assets/icons/Calendar.svg'
+import timelineIcon from '../assets/icons/Timeline.svg'
+import statusIcon from '../assets/icons/Status.svg'
+import priorityIcon from '../assets/icons/Priority.svg'
+import personIcon from '../assets/icons/PersonRound.svg'
+import fileIcon from '../assets/icons/Page.svg'
+import plusIcon from '../assets/icons/Add.svg'
+import textIcon from '../assets/icons/Text.svg'
 export default {
   name: 'ActivityLog',
   props: { activities: Array },
@@ -79,10 +94,15 @@ export default {
     file,
     txt,
     // icons
-    StatusIcon,
-    PersonIcon,
-    PlusIcon,
-    CalendarIcon,
+    TimeIcon,
+    plusIcon,
+    personIcon,
+    statusIcon,
+    priorityIcon,
+    dateIcon,
+    timelineIcon,
+    textIcon,
+    fileIcon,
   },
 }
 </script>
