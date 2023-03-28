@@ -1,9 +1,6 @@
 <template>
-  <section
-    class="workspace-sidenav flex-col justify-start"
-    ref="workspaceSidenav"
-    :class="{ 'workspace-close': isWorkspaceClosed }"
-  >
+  <section class="workspace-sidenav flex-col justify-start" ref="workspaceSidenav"
+    :class="{ 'workspace-close': isWorkspaceClosed }">
     <button class="toggle-workspace flex align-center" @click="toggleWorkspace">
       <ArrowLeftIcon class="arrow-left-icon icon" />
     </button>
@@ -29,11 +26,7 @@
     </section>
 
     <section class="action-list flex-col">
-      <div
-        class="action-item add flex align-center"
-        role="button"
-        @click="onAddBoard"
-      >
+      <div class="action-item add flex align-center" role="button" @click="onAddBoard">
         <AddIcon class="add-icon icon" />
         <span class="action-text">Add</span>
       </div>
@@ -54,42 +47,25 @@
     <div class="spacer"></div>
 
     <ul class="board-list flex-col justify-center">
-      <li
-        v-for="board in boardsToDisplay"
-        class="list-item flex justify-between align-center"
-        :class="{ 'is-active': board._id === $route.params.boardId }"
-        :id="board._id"
-        @click.stop="onSetBoard(board._id)"
-      >
+      <li v-for="board in boardsToDisplay" class="list-item flex justify-between align-center"
+        :class="{ 'is-active': board._id === $route.params.boardId }" :id="board._id" @click.stop="onSetBoard(board._id)">
         <section class="board-name flex align-center">
           <BoardIcon class="board-icon icon" />
           <span>{{ board.title }}</span>
         </section>
-        <div
-          class="dots-wrapper"
-          @click="
-            updateModalBoardId(openModalBoardId === null ? board._id : null)
-          "
-        >
+        <div class="dots-wrapper" @click="
+          updateModalBoardId(openModalBoardId === null ? board._id : null)
+        ">
           <MenuIcon class="menu-icon icon" />
         </div>
-        <ul
-          class="group-actions-list"
-          :class="{ 'is-modal-open': openModalBoardId === board._id }"
-        >
-          <li
-            class="group-action flex align-center justify-start"
-            @click.stop="onCopyBoard(board._id)"
-          >
+        <ul class="group-actions-list" :class="{ 'is-modal-open': openModalBoardId === board._id }">
+          <li class="group-action flex align-center justify-start" @click.stop="onCopyBoard(board._id)">
             <div class="svg-wrapper">
               <DuplicateIcon class="duplicate-icon icon" />
             </div>
             <p>Duplicate Board</p>
           </li>
-          <li
-            class="group-action flex align-center justify-start"
-            @click.stop="onDeleteBoard(board._id)"
-          >
+          <li class="group-action flex align-center justify-start" @click.stop="onDeleteBoard(board._id)">
             <div class="svg-wrapper">
               <DeleteIcon class="delete-icon icon" />
             </div>

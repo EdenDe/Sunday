@@ -5,14 +5,9 @@
       <h2>Log in to your account</h2>
       <p>Enter your work email address</p>
       <form @submit.prevent="loginSignup" class="singup-form grid">
-        <input
-          type="text"
-          placeholder="Full name"
-          v-if="isSingup"
-          v-model="fullname"
-        />
-        <input type="text" placeholder="User name" v-model="username" />
-        <input type="password" placeholder="Password" v-model="password" />
+        <input type="text" placeholder="Full name" v-if="isSingup" v-model="fullname" />
+        <input type="text" placeholder="User name" v-model="credentials.username" />
+        <input type="password" placeholder="Password" v-model="credentials.password" />
         <button>Next</button>
       </form>
       <small v-if="!isSingup">
@@ -32,49 +27,29 @@ export default {
   data() {
     return {
       isSingup: false,
+      credentials: {
+        password: '',
+        username: '',
+      },
       fullname: '',
-      username: '',
-      password: '',
     }
   },
   methods: {
-    loginSignup() {
-      let credentials = {
-        username: this.username,
-        password: this.password,
-      }
-      if (this.isSingup) {
-        credentials.fullname = this.fullname
-        this.onSignup(credentials)
-      } else this.onLogin(credentials)
-    },
-    async onLogin(credentials) {
+    async loginSignup() {
       try {
-        await this.$store.dispatch({
-          type: 'login',
-          credentials,
-        })
-        // route.push('/board/' + firstBoardId + '/main-table'")
-        // this.loggedinUser = this.$store.getters.loggedinUser
+        if (this.isSingup) {
+          this.credentials.fullname = this.fullname
+          await this.$store.dispatch({ type: 'signup', credentials: this.credentials })
+        }
+        await this.$store.dispatch({ type: 'login', credentials: this.credentials })
+        this.$router.push(`/board/${this.firstBoardId}/main-table`)
       } catch (err) {
-        console.log("Cen't login...")
-      }
-    },
-    async onSignup(credentials) {
-      try {
-        await this.$store.dispatch({
-          type: 'signup',
-          credentials,
-        })
-        // route.push('/board/' + firstBoardId + '/main-table'")
-        // this.loggedinUser = this.$store.getters.loggedinUser
-      } catch (err) {
-        console.log("Cen't signup...")
+        console.log(err)
       }
     },
     toggleSignup() {
       this.isSingup = !this.isSingup
-    },
+    }
   },
   computed: {
     firstBoardId() {

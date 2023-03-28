@@ -3,6 +3,7 @@ import gBoard from '../../data/board.json' assert { type: 'json' }
 
 import { utilService } from './util.service.js'
 import { userService } from './user.service'
+import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'boardsDB'
 
@@ -20,25 +21,31 @@ export const boardService = {
 
 window.boardService = boardService
 
-async function query() {
-	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-	return storageService.query(STORAGE_KEY)
+async function query(filterBy = {}) {
+	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	//return storageService.query(STORAGE_KEY)
+	return httpService.get('board', filterBy)
 }
 
 function getById(boardId) {
-	return storageService.get(STORAGE_KEY, boardId)
+	//return storageService.get(STORAGE_KEY, boardId)
+	return httpService.get(`board/${boardId}`)
 }
 
 async function remove(boardId) {
-	await storageService.remove(STORAGE_KEY, boardId)
+	return httpService.delete(`board/${boardId}`)
+
+	//await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
 	var savedBoard
 	if (board._id) {
-		savedBoard = await storageService.put(STORAGE_KEY, board)
+		//savedBoard = await storageService.put(STORAGE_KEY, board)
+		savedBoard = await httpService.put(`board/${board._id}`, board)
 	} else {
-		savedBoard = await storageService.post(STORAGE_KEY, board)
+		//savedBoard = await storageService.post(STORAGE_KEY, board)
+		savedBoard = await httpService.post(`board`, board)
 	}
 	return savedBoard
 }
@@ -59,7 +66,7 @@ function addActivity(prop, title, oldValue, newValue, color) {
 	return {
 		id: 'a' + utilService.makeId(10),
 		createdAt: Date.now(),
-		createdBy: userService.getLoggedInUser(),
+		createdBy: userService.getLoggedinUser(),
 		title,
 		prop,
 		oldValue,
@@ -152,7 +159,6 @@ function getEmptyTask() {
 
 function getEmptyBoard() {
 	return {
-		_id: '',
 		title: 'My board',
 		isStarred: false,
 		archivedAt: null,
