@@ -2,11 +2,10 @@
   <section class="person-picker">
     <VDropdown :distance="6">
       <section class="person-list flex align-center justify-center">
-        <PersonAvatar v-if="info.length < 3" v-for="(person, idx) in info" :key="idx" :person="person" />
-        <template v-else>
-          <PersonAvatar :person="info.at(0)" />
-          <div class="merge-person flex align-center"> +{{ info.length - 1 }} </div>
-        </template>
+
+        <PersonAvatar v-for="(person, idx) in personToDisplay" :key="idx" :person="person" />
+        <div class="merge-person flex align-center" v-if="info?.length > maxDisplay"> +{{ info.length - 1 }} </div>
+
         <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">
           <AddIcon class="add-icon icon" />
         </div>
@@ -53,6 +52,10 @@ export default {
   emits: ['updateProp'],
   props: {
     info: Array,
+    maxDisplay: {
+      type: Number,
+      default: 1
+    }
   },
   data() {
     return {
@@ -71,6 +74,9 @@ export default {
           regex.test(member.fullname)
       )
     },
+    personToDisplay() {
+      return this.info?.slice(0, this.$props.maxDisplay)
+    }
   },
   methods: {
     onClosePicker() {
