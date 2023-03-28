@@ -78,7 +78,7 @@ function addActivity(prop, title, oldValue, newValue, color) {
 function _updateTask(board, groupId, taskId, prop, toUpdate) {
 	let group = board.groups.find(group => groupId === group.id)
 	let task = group.tasks.find(task => task.id === taskId)
-	if (task[prop] !== toUpdate) {
+	if (task[prop] !== toUpdate && prop !== 'checkbox') {
 		let activity = addActivity(
 			prop,
 			task.taskTitle,
