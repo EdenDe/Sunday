@@ -52,25 +52,6 @@
           :tasksNumber="tasksNumber"
           @updateProp="updateProp"
         />
-        <!-- <div class="open-list" v-tooltip="'Collapse group'">
-        <ArrowDownIcon
-          class="open-list-icon icon"
-          :style="{ fill: group.color }"
-          @click="toggleOpenList"
-          />
-      </div>
-      <div class="group-title-wrapper flex align-center">
-        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
-        <span contenteditable ref="groupTitle" class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
-          {{ group.title }}
-        </span>
-
-        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
-      </div>
-      <div v-if="isColorModalOpen" class="color-picker-wrapper">
-        <ColorPicker @changeColor="onChangeGroupProp" />
-      </div> -->
       </div>
 
       <Container class="group-labels">
