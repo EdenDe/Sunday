@@ -3,109 +3,104 @@
     class="group-preview"
     :class="isListOpen ? 'list-open' : 'list-close'"
   >
-    <div class="grid-title flex align-items">
-      <div class="group-actions-wrapper sticky">
-        <div class="svg-wrapper">
-          <span
-            class="dots-icon"
-            @click="toggleGroupActions(!isGroupActionsOpen)"
-            :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
-          >
-            <MenuIcon class="menu-icon icon" />
-          </span>
+    <GroupPreviewClose
+      v-if="!isListOpen"
+      :group="group"
+      :isGroupActionsOpen="isGroupActionsOpen"
+      @toggleOpenList="toggleOpenList"
+      @toggleGroupActions="toggleGroupActions"
+    />
+    <template v-if="isListOpen">
+      <div class="grid-title">
+        <div class="group-actions-wrapper sticky">
+          <div class="svg-wrapper">
+            <span
+              class="dots-icon"
+              @click="toggleGroupActions(!isGroupActionsOpen)"
+              :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
+            >
+              <MenuIcon class="menu-icon icon" />
+            </span>
 
-          <div
-            class="group-actions"
-            v-if="isGroupActionsOpen"
-            v-clickOutside="toggleGroupActions"
-          >
-            <GroupActions
-              :groupColor="group.color"
-              @add="$emit('addGroup')"
-              @copy="copyGroup"
-              @renameTitle="focusGroupName"
-              @openColorPicker="openColorPicker"
-              @remove="$emit('removeGroup', group.id)"
-            />
+            <div
+              class="group-actions"
+              v-if="isGroupActionsOpen"
+              v-clickOutside="toggleGroupActions"
+            >
+              <GroupActions
+                :groupColor="group.color"
+                @add="$emit('addGroup')"
+                @copy="copyGroup"
+                @renameTitle="focusGroupName"
+                @openColorPicker="openColorPicker"
+                @remove="$emit('removeGroup', group.id)"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="open-list" v-tooltip="'Collapse group'">
-        <ArrowDownIcon
-          class="open-list-icon icon"
-          :style="{ fill: group.color }"
-          @click="toggleOpenList"
-        />
-      </div>
-      <GroupTitle
-        :color="group.color"
-        :title="group.title"
-        :tasksNumber="tasksNumber"
-        @changeGroupProp="onChangeGroupProp"
-      />
-      <!-- <div class="open-list" v-tooltip="'Collapse group'">
-        <ArrowDownIcon
-          class="open-list-icon icon"
-          :style="{ fill: group.color }"
-          @click="toggleOpenList"
-        />
-      </div>
-      <div class="group-title-wrapper flex align-center">
-        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
-        <span contenteditable ref="groupTitle" class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
-          {{ group.title }}
-        </span>
 
-        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
+        <div class="open-list" v-tooltip="'Collapse group'">
+          <ArrowDownIcon
+            class="open-list-icon icon"
+            :style="{ fill: group.color }"
+            @click="toggleOpenList"
+          />
+        </div>
+        <GroupTitle
+          :color="group.color"
+          :title="group.title"
+          :tasksNumber="tasksNumber"
+          @updateProp="updateProp"
+        />
       </div>
-      <div v-if="isColorModalOpen" class="color-picker-wrapper">
-        <ColorPicker @changeColor="onChangeGroupProp" />
-      </div> -->
-    </div>
-    <Container class="group-labels">
-      <Draggable
-        v-for="(label, index) in labels"
-        :key="label"
-        class="group-label"
-        :class="label"
-        :groupColor="group.color"
-      >
+
+      <Container class="group-labels">
+        <Draggable
+          v-for="(label, index) in labels"
+          :key="label"
+          class="group-label"
+          :class="label"
+          :groupColor="group.color"
+        >
+          <div
+            v-if="index === 1"
+            class="first-col-color group-label"
+            :style="{ backgroundColor: group.color }"
+          ></div>
+          <div v-if="index === 2" class="group-checkbox group-label">
+            <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
+          </div>
+          {{ label }}
+        </Draggable>
+      </Container>
+
+      <TaskList
+        v-if="isListOpen"
+        :tasks="group.tasks"
+        :groupBgColor="group.color"
+        @updateProp="updateProp"
+      />
+      <div class="add-task-container">
+        <div class="task-option"></div>
         <div
-          v-if="index === 1"
-          class="first-col-color group-label"
+          class="first-col-color"
           :style="{ backgroundColor: group.color }"
         ></div>
-        <div v-if="index === 2" class="group-checkbox group-label">
-          <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
-        </div>
-        {{ label }}
-      </Draggable>
-    </Container>
+        <Checkbox />
 
-    <TaskList
-      v-if="isListOpen"
-      :tasks="group.tasks"
-      :groupBgColor="group.color"
-      @updateProp="updateProp"
-    />
-    <div class="add-task-container">
-      <div class="task-option"></div>
-      <div
-        class="first-col-color"
-        :style="{ backgroundColor: group.color }"
-      ></div>
-      <Checkbox />
-
-      <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
-        <input
-          placeholder="+ Add task"
-          type="text"
-          v-model="newTask.taskTitle"
-        />
-      </form>
-    </div>
-    <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
+        <form
+          @submit.prevent="onAddTask"
+          class="add-task-input-container sticky"
+        >
+          <input
+            placeholder="+ Add task"
+            type="text"
+            v-model="newTask.taskTitle"
+          />
+        </form>
+      </div>
+      <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
+    </template>
     <TaskActionBar
       v-if="isActionBarOpen"
       :selectedTasksNum="selectedTasksNum"
@@ -127,6 +122,7 @@ import { Container, Draggable } from 'vue3-smooth-dnd'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
 import ColorPicker from '../components/ColorPicker.vue'
+import GroupPreviewClose from '../components/GroupPreviewClose.vue'
 //ICONS
 import ArrowDownIcon from '../assets/icons/ArrowRight.svg'
 import MenuIcon from '../assets/icons/Menu.svg'
@@ -148,6 +144,7 @@ export default {
   },
   methods: {
     updateProp(taskId, prop, toUpdate) {
+      console.log(taskId, prop, toUpdate)
       this.$store.dispatch({
         type: 'updateCurrBoard',
         groupId: this.group.id,
@@ -198,15 +195,16 @@ export default {
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
     },
-    onChangeGroupProp(prop, value) {
-      console.log(prop, value)
-      if (prop === 'color') this.onOpenColorPicker()
-      if (prop === 'title' && value.trim().length === 0) {
-        value = 'Enter Title'
-      }
-      this.updateProp(null, prop, value)
-    },
+    // onChangeGroupProp(prop, value) {
+    //   console.log(prop, value)
+    //   if (prop === 'color') this.onOpenColorPicker()
+    //   if (prop === 'title' && value.trim().length === 0) {
+    //     value = 'Enter Title'
+    //   }
+    //   this.updateProp(null, prop, value)
+    // },
     toggleGroupActions(value = false) {
+      console.log(value)
       this.isGroupActionsOpen = value
     },
     copyGroup() {
@@ -305,6 +303,7 @@ export default {
     TaskActionBar,
     GroupActions,
     ColorPicker,
+    GroupPreviewClose,
     ArrowDownIcon,
     MenuIcon,
   },
