@@ -78,4 +78,20 @@
     padding: rem(20px);
   }
 
+  &:hover + .screen{
+    display:block;
+  }
+
+}
+
+
+
+.screen{
+  position: absolute;
+  background:$transparent-overlay;
+  inset: 0;
+  z-index:200;
+  opacity: 0.5;
+  display:none;
+  transition: background .1s ease;
 }

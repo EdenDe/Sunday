@@ -13,6 +13,16 @@
       }
     }
 
+    .merge-person{
+      background-color: $color-blackish;
+      padding: 0 5px;
+      border-radius: 25px;
+      color:$color-snow_white;
+      font-size: em(12px);
+      height: 25px;
+      min-width: 25px;
+    }
+
     .avatar {
       height: 25px;
       width: 25px;

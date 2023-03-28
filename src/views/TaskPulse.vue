@@ -26,13 +26,14 @@
       </div>
     </header>
     <main class="content-wrapper">
-      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUserId="loggedInUser._id"
-        :updates="task.updates ? task.updates : []" @updateTask="updateTask" />
+      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="task.updates ? task.updates : []"
+        @updateTask="updateTask" />
       <ActivityLog v-if="activeTab === 'activityLog'" :activities="activities" />
     </main>
 
     <!-- <img src="https://cdn.monday.com/images/pulse-page-empty-state.svg" /> -->
   </section>
+  <div class="screen" />
 </template>
 
 <script>
@@ -41,7 +42,6 @@ import ActivityLog from '../components/ActivityLog.vue'
 import CloseIcon from '../assets/icons/CloseBig.svg'
 import HomeIcon from '../assets/icons/Home.svg'
 import { userService } from '../services/user.service'
-import { utilService } from '../services/util.service'
 export default {
   data() {
     return {

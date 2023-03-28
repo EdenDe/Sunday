@@ -28,11 +28,12 @@
       <Container class="group-labels">
         <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
           :groupColor="group.color">
-          <div v-if="index === 1" class="first-col-color group-label" :style="{ backgroundColor: group.color }"></div>
-          <div v-if="index === 2" class="group-checkbox group-label">
+          <div v-if="index === 1" draggable="false" class="first-col-color group-label"
+            :style="{ backgroundColor: group.color }"></div>
+          <div v-if="index === 2" draggable="false" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
-          {{ label }}
+          <div class="draggable-label">{{ label }}</div>
         </Draggable>
       </Container>
 
