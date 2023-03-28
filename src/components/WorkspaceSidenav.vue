@@ -37,7 +37,11 @@
       </div>
       <div class="action-item search flex align-center">
         <SearchIcon class="search-icon icon" />
-        <span class="action-text">Search</span>
+        <input
+          class="action-text"
+          placeholder="Search"
+          v-model="filterBy.txt"
+        />
       </div>
     </section>
     <div class="spacer"></div>
@@ -92,6 +96,9 @@ export default {
     return {
       isWorkspaceClosed: true,
       openModalBoardId: null,
+      filterBy: {
+        txt: '',
+      },
     }
   },
   emits: ['removeBoard', 'copyBoard', 'setBoard', 'addBoard'],

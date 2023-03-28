@@ -5,6 +5,7 @@
     <ul class="clean-list flex">
       <li class="flex align-center justify-center" v-for="member in members">
         <PersonAvatar
+          v-tooltip="member.fullname"
           :person="member"
           @click="$emit('setFilterBy', { by: 'member', value: member })"
         />

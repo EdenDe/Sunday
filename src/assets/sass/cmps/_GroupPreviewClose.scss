@@ -1,63 +1,71 @@
-.group-preview-close{
+.group-preview-close {
   height: 60px;
   background-color: $color-snow_white;
   &:hover .menu-icon {
     opacity: 1;
     fill: $color-mud_black;
-   
   }
- 
-  .first-col-color{
-    grid-area: auto/2 /span 2;
+
+  .first-col-color {
+    grid-area: auto/2 / span 2;
     border-top-left-radius: $border-radius-rounder;
     border-bottom-left-radius: $border-radius-rounder;
   }
-  .open-list{
+  .open-list {
     border-top: 1px solid $ui-border-color;
     padding-top: 12px;
+    background-color: $color-snow_white;
   }
-  .group-title-container{
-    grid-area: auto/auto /span 2;
+  .group-title-container {
+    grid-area: auto/auto / span 2;
     padding: 6px;
     border-right: 1px solid $ui-border-color;
     border-top: 1px solid $ui-border-color;
-    
-    .group-title-wrapper{
+    border-bottom: 1px solid $ui-border-color;
+    background-color: $color-snow_white;
+    .group-title-wrapper {
       position: relative;
-      .group-title{
+      .group-title {
         margin: 0;
+       
       }
-     
-      .tasks-num{
+
+      .tasks-num {
         position: absolute;
-        top:30px;
+        top: 30px;
         opacity: 1;
         // margin: 6px;
       }
     }
   }
 
-  .group-label{
+  .group-label {
     @include flex-center;
     border-right: 1px solid $ui-border-color;
     border-top: 1px solid $ui-border-color;
   }
 
-  .progress-bar{
+  .progress-bar {
     grid-row: 2;
+    > *:nth-child(-n + 3) {
+      position: sticky;
+      z-index: 100001;
+    }
 
-    >*:not(:nth-child(1)){
+    > *:not(:nth-child(1)) {
       border-top: none;
       border-bottom: 1px solid $ui-border-color;
       box-shadow: $box-shadow-xs;
     }
     > :nth-child(2) {
-       border-left: 1px solid #d0d4e4;
-       border-bottom-left-radius: $border-radius-rounder;
+      left: 40px;
+      border-left: 1px solid #d0d4e4;
+      border-bottom-left-radius: $border-radius-rounder;
     }
-    > :nth-child(5){
-       border-left: none;
-       border-bottom-left-radius: 0;
+    > :nth-child(5) {
+      border-left: none;
+      border-bottom-left-radius: 0;
+      background-color: $color-snow_white;
     }
   }
 }
