@@ -1,57 +1,66 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import gUsers from '../../data/user.json' assert { type: 'json' }
+import { httpService } from './http.service.js'
 
 const USER_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
-	getLoggedInUser,
 	login,
 	logout,
 	signup,
+	getLoggedinUser,
+	saveLocalUser,
+	query,
+	getById,
+	remove,
+	update,
 }
 
-localStorage.setItem(
-	STORAGE_KEY_LOGGEDIN_USER,
-	JSON.stringify({
-		_id: 'u102',
-		fullname: 'Eden Derhy',
-		imgUrl:
-			'http://res.cloudinary.com/decasx192/image/upload/v1679764197/eden_nsjpcz.jpg',
-		color: 'black',
-	})
-)
+function query() {
+	return httpService.get(`user`)
+}
 
-function getLoggedInUser() {
-	//const str = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
-	const str = localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
-	return JSON.parse(str)
+async function getById(userId) {
+	const user = await httpService.get(`user/${userId}`)
+	return user
+}
+function remove(userId) {
+	return httpService.delete(`user/${userId}`)
+}
+
+async function update(user) {
+	user = await httpService.put(`user/${user._id}`, user)
+	// Handle case in which admin updates other user's details
+	if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+	return user
 }
 
 async function login(userCred) {
-	// const user = await httpService.post('auth/login', userCred)
+	const user = await httpService.post('auth/login', userCred)
 	if (user) {
+		// socketService.login(user._id)
 		return saveLocalUser(user)
 	}
 }
 async function signup(userCred) {
-	// const user = await httpService.post('auth/signup', userCred)
+	const user = await httpService.post('auth/signup', userCred)
+	// socketService.login(user._id)
 	return saveLocalUser(user)
 }
 async function logout() {
-	localStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-	// return await httpService.post('auth/logout')
+	sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+	// socketService.logout()
+	return await httpService.post('auth/logout')
 }
+
 function saveLocalUser(user) {
 	user = {
-		_id: utilService.makeId(),
-		username: user.username,
+		_id: user._id,
 		fullname: user.fullname,
-		password: user.password,
-		imgUrl: '',
-		color: '#676879',
-		boards: [],
+		imgUrl: user.imgUrl,
+		color: user.color,
 	}
 	sessionStorage.setItem(
 		STORAGE_KEY_LOGGEDIN_USER,
@@ -59,6 +68,27 @@ function saveLocalUser(user) {
 	)
 	return user
 }
+
+function getLoggedinUser() {
+	return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+// function saveLocalUser(user) {
+// 	user = {
+// 		_id: utilService.makeId(),
+// 		username: user.username,
+// 		fullname: user.fullname,
+// 		password: user.password,
+// 		imgUrl: '',
+// 		color: '#676879',
+// 		boards: [],
+// 	}
+// 	sessionStorage.setItem(
+// 		STORAGE_KEY_LOGGEDIN_USER,
+// 		JSON.stringify(user)
+// 	)
+// 	return user
+// }
 
 // function login(credentials) {
 // 	return axios

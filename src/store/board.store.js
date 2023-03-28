@@ -102,27 +102,14 @@ export const boardStore = {
 				console.log(err)
 			}
 		},
-		async updateActivity(
-			{ commit },
-			{ groupId, taskId, prop, toUpdate }
-		) {
-			// console.log({ groupId, taskId, prop, toUpdate })
-			// const activity = {
-			// 	id: utilService.makeId(),
-			// 	txt: prop,
-			// 	createdAt: Date.now(),
-			// 	byMember: userService.getLoggedinUser(),
-			// 	group: group, // optional
-			// 	task: task, // optional
-			// }
-		},
 		async updateCurrBoard(
 			{ dispatch, commit, state },
 			{ groupId, taskId, prop, toUpdate }
 		) {
 			commit({ type: 'savePrevBoard' })
+
 			dispatch({
-				type: 'updateActivity',
+				type: 'saveBoard',
 				groupId,
 				taskId,
 				prop,
@@ -141,7 +128,7 @@ export const boardStore = {
 			commit({ type: 'updateBoard', board: updatedBoard })
 
 			try {
-				await boardService.save(state.currBoard)
+				await boardService.save(updatedBoard)
 			} catch (err) {
 				commit({ type: 'undoBoard' })
 				console.log('boardStore: Error in updateBoard', err)
