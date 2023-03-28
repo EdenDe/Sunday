@@ -7,57 +7,27 @@
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper flex-col">
-      <article class="update" v-for="update in updates">
-        <div class="update-header flex">
-          <Avatar :person="update.byUser" />
-          <p>{{ update.byUser.fullname }}</p>
-          <div class="actions-right" :class="{ active: actionMenuOpenFor === update.id }">
-            <span class="update-date">
-              {{ dateFormatted(update.createdAt) }}
-            </span>
-            <MenuIcon class="menu-icon icon" @click="
-              toggleActionMenu(
-                actionMenuOpenFor === update.id ? null : update.id
-              )" />
-          </div>
-        </div>
-        <div v-if="editing === update.id"></div>
-        <p v-html="update.txt"></p>
-        <div class="btn-container">
-          <button @click="onToggleLike(update.id, likedByUser(update.likedBy))"
-            :class="{ liked: likedByUser(update.likedBy) }">
-            Like
-          </button>
-          <button>Reply</button>
-        </div>
-        <div class="actions-list" v-if="actionMenuOpenFor === update.id">
-          <button class="actions" @click="onRemove">Delete</button>
-          <button class="actions" @click="onEdit">Edit</button>
-        </div>
-      </article>
+      <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
+        :loggedInUserId="loggedInUserId" @editUpdate="editUpdate" @toggleLike="toggleLike" />
     </section>
   </section>
 </template>
 
 <script>
-import { utilService } from '../services/util.service'
-import Avatar from './Avatar.vue'
+import Update from '../components/Update.vue'
 import TextEditor from './TextEditor.vue'
-import MenuIcon from '../assets/icons/Menu.svg'
 
 export default {
   name: 'UpdateLog',
   props: {
     updates: Array,
     loggedInUserId: String,
-    editing: null
   },
-  emits: ['addUpdate', 'toggleLike'],
+  emits: ['updateTask'],
   data() {
     return {
       isEditor: false,
       content: '',
-      actionMenuOpenFor: null,
     }
   },
   methods: {
@@ -66,36 +36,47 @@ export default {
         this.isEditor = value
       }
     },
-    toggleActionMenu(value = null) {
-      this.actionMenuOpenFor = value
-    },
     setContent(content) {
       this.content = content
     },
     onUpdate() {
-      this.$emit('addUpdate', this.content)
+      const updates = JSON.parse(JSON.stringify(this.updates))
+      updates.unshift({
+        id: 'up' + utilService.makeId(7),
+        createdAt: Date.now(),
+        txt: content,
+        likedBy: [],
+        byUser: { ...this.loggedInUser }
+      })
       this.content = ''
+      this.$emit('updateTask', 'updates', updates)
     },
-    onToggleLike(updateId, value) {
-      this.$emit('toggleLike', updateId, value)
+    removeUpdate(updateId) {
+      let updates = JSON.parse(JSON.stringify(this.updates))
+      updates = updates.filter(update => update.id !== updateId)
+      this.$emit('updateTask', 'updates', updates)
     },
-  },
-  computed: {
-    dateFormatted() {
-      return (createdAt) => {
-        return utilService.getRelativeTimeAndDay(createdAt)
+    toggleLike(updateId, value) {
+      const updates = JSON.parse(JSON.stringify(this.updates))
+      let update = updates.find(update => update.id === updateId)
+      if (value) {
+        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUserId)
+      } else {
+        update.likedBy.push(this.loggedInUserId)
       }
+      this.$emit('updateTask', 'updates', updates)
     },
-    likedByUser() {
-      return (usersLiked) => {
-        return usersLiked.includes(this.loggedInUserId)
-      }
-    },
+    editUpdate(updateId, content) {
+      const updates = JSON.parse(JSON.stringify(this.updates))
+      let update = updates.find(update => update.id === updateId)
+      update.txt = content
+      this.$emit('updateTask', 'updates', updates)
+    }
   },
+
   components: {
     TextEditor,
-    Avatar,
-    MenuIcon,
+    Update
   },
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <section class="quill-editor">
-    <QuillEditor ref="quillEditor" theme="snow" toolbar="essential" @text-change="onType" />
+    <QuillEditor :content-type="'html'" :content="modelValue" ref="quillEditor" theme="snow" toolbar="essential"
+      @text-change="onType" />
   </section>
 </template>
 
