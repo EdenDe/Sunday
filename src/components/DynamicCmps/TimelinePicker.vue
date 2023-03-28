@@ -75,7 +75,7 @@ export default {
       return utilService.formatDateRange(this.timeline)
     },
     formattedDaysRange() {
-      if (!this.timeline || !this.timeline.length) return ' - '
+      if (!this.timeline || !this.timeline.length) return ' Set-Dates '
       return utilService.getDaysBetween(this.timeline)
     },
     groupColor() {
