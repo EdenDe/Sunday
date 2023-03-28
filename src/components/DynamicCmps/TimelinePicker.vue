@@ -9,6 +9,7 @@
             }
             : null
         ">
+        {{ formattedDates }}
         <el-date-picker v-model="timeline" @change="onChangeTimeline" type="daterange" format="M D" value-format="x"
           range-separator="" start-placeholder="" end-placeholder="" :id="taskId + 'Timeline'" />
         <i v-if="timeline.length" v-icon="'closeSmall'" @click.prevent="onRemoveTimeline"></i>

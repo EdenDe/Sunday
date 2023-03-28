@@ -25,7 +25,7 @@
         <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" @updateProp="updateProp" />
       </div>
 
-      <Container class="group-labels">
+      <Container class="group-labels" :drop-placeholder="dropPlaceholderOptions" orientation="vertical">
         <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
           :groupColor="group.color">
           <div v-if="index === 1" draggable="false" class="first-col-color group-label"
@@ -83,6 +83,11 @@ export default {
       isListOpen: true,
       isColorModalOpen: false,
       isGroupActionsOpen: false,
+      dropPlaceholderOptions: {
+        className: 'drop-preview',
+        animationDuration: '150',
+        showOnTop: true,
+      },
     }
   },
   methods: {
