@@ -2,6 +2,7 @@
   margin-top: rem(2px);
   margin-bottom: em(30px);
   font-size: 14px;
+
   .grid-title {
     @include task-cols;
     .group-actions-wrapper {
@@ -186,4 +187,9 @@
     top: 70%;
     right: 300px;
   }
+}
+
+.drop-preview{
+  border: 1px dashed gray !important;
+  z-index: 1;
 }

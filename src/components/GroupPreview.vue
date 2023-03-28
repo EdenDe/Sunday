@@ -1,7 +1,9 @@
 <template>
   <section class="group-preview" :class="isListOpen ? 'list-open' : 'list-close'">
     <GroupPreviewClose v-if="!isListOpen" :group="group" :isGroupActionsOpen="isGroupActionsOpen"
-      @toggleOpenList="toggleOpenList" @toggleGroupActions="toggleGroupActions" />
+      @toggleOpenList="toggleOpenList" @toggleGroupActions="toggleGroupActions" :isTitleFocused="isTitleFocused"
+      :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
+      @toggleColorModal="toggleColorModal" />
     <template v-if="isListOpen">
       <div class="grid-title">
         <div class="group-actions-wrapper sticky">
@@ -13,7 +15,7 @@
 
             <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
               <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
-                @renameTitle="focusGroupName" @openColorPicker="openColorPicker" @toggleOpenList="toggleOpenList"
+                @renameTitle="toggleFocusGroupTitle" @openColorPicker="toggleColorModal" @toggleOpenList="toggleOpenList"
                 @remove="$emit('removeGroup', group.id)" />
             </div>
           </div>
@@ -22,15 +24,16 @@
         <div class="open-list" v-tooltip="'Collapse group'">
           <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="toggleOpenList" />
         </div>
-        <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" @updateProp="updateProp" />
+        <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused"
+          :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
+          @toggleColorModal="toggleColorModal" />
       </div>
 
       <Container class="group-labels">
         <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
           :groupColor="group.color">
-          <div v-if="index === 1" draggable="false" class="first-col-color group-label"
-            :style="{ backgroundColor: group.color }"></div>
-          <div v-if="index === 2" draggable="false" class="group-checkbox group-label">
+          <div v-if="index === 1" class="first-col-color group-label" :style="{ backgroundColor: group.color }"></div>
+          <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
           <div class="draggable-label">{{ label }}</div>
@@ -83,6 +86,12 @@ export default {
       isListOpen: true,
       isColorModalOpen: false,
       isGroupActionsOpen: false,
+      dropPlaceholderOptions: {
+        className: 'drop-preview',
+        animationDuration: '150',
+        showOnTop: true,
+      },
+      isTitleFocused: false,
     }
   },
   methods: {
@@ -96,11 +105,11 @@ export default {
         toUpdate,
       })
     },
-    onOpenColorPicker() {
-      this.$refs.groupTitle.focus()
-      this.isColorModalOpen = !this.isColorModalOpen
-      if (this.isColorModalOpen) this.focusGroupName()
-    },
+    // onOpenColorPicker() {
+    //   this.$refs.groupTitle.focus()
+    //   this.isColorModalOpen = !this.isColorModalOpen
+    //   if (this.isColorModalOpen) this.focusGroupName()
+    // },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
@@ -138,16 +147,7 @@ export default {
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
     },
-    // onChangeGroupProp(prop, value) {
-    //   console.log(prop, value)
-    //   if (prop === 'color') this.onOpenColorPicker()
-    //   if (prop === 'title' && value.trim().length === 0) {
-    //     value = 'Enter Title'
-    //   }
-    //   this.updateProp(null, prop, value)
-    // },
     toggleGroupActions(value = false) {
-      console.log(value)
       this.isGroupActionsOpen = value
     },
     copyGroup() {
@@ -159,12 +159,12 @@ export default {
 
       this.$emit('addGroup', newGroup)
     },
-    focusGroupName() {
-      this.$refs.groupTitle.focus()
+    toggleFocusGroupTitle(value = true) {
+      this.isTitleFocused = value
     },
-    openColorPicker() {
-      this.focusGroupName()
-      this.isColorModalOpen = true
+    toggleColorModal(value = true) {
+      this.toggleFocusGroupTitle(value)
+      this.isColorModalOpen = value
     },
   },
   computed: {
