@@ -1,0 +1,98 @@
+.update {
+  display: grid;
+  width: 100%;
+  position: relative;
+  border: 1px solid $layout-border-color;
+  border-radius: $border-radius-rounder;
+  margin-bottom: $margin-medium;
+
+  &-header {
+    @include flex-center;
+    gap: $padding-small;
+    height: rem(65px);
+    padding: 5px $padding-medium;
+
+    .avatar{
+      height: 40px;
+      width: 40px;
+      border: none;
+    }
+
+    .actions-right {
+      @include flex-center;
+      margin-left: auto;
+      
+      .update-date{
+        font-size: 14px;
+        margin-inline-end: 5px;
+      }
+
+      .menu-icon {
+        @include action;
+        display: inline-block;
+        width: fit-content;
+        margin-bottom: 5px;
+        height: 24px;
+      }
+    }
+  }
+
+  &-text {
+    display: flex;
+    padding: $padding-small $padding-medium 0;
+    min-height: rem(44px);
+    margin-bottom: rem(24px);
+  }
+
+  .btn-container {
+    // display: flex;
+    @include flex-center;
+    height: rem(41px);
+    width: 100%;
+    border-top: 1px solid $layout-border-color;
+    border-bottom-right-radius: $border-radius-rounder;
+    border-bottom-left-radius: $border-radius-rounder;
+    
+    .btn{
+      justify-content: center;
+      align-items: center;
+      gap: $padding-small;
+      height: 100%;
+    }
+
+    .btn.liked {
+    color: $color-blue-btn;
+    }
+    
+    .btn:hover{
+      background-color: $primary-background-hover-color;
+      border-radius: $btn-border-radius;
+    }
+    
+    &>* {
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      font-size: 16px;
+      .icon-container{
+        @include flex-center;
+        >*{
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &:first-child {
+        border-right: 1px solid $layout-border-color;
+      }
+    }
+  }
+
+  .actions-list {
+    @include actions-list;
+
+    .action {
+      @include action;
+    }
+  }
+}

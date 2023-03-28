@@ -4,7 +4,7 @@
       <button class="btn btn-close" @click="onBack">
         <CloseIcon class="close-icon icon" />
       </button>
-      <div>
+      <div class="task-title-container">
         <span contenteditable class="task-title">
           {{ task.taskTitle }}
         </span>
@@ -38,7 +38,7 @@
 <script>
 import UpdateLog from '../components/UpdateLog.vue'
 import ActivityLog from '../components/ActivityLog.vue'
-import CloseIcon from '../assets/icons/Close.svg'
+import CloseIcon from '../assets/icons/CloseBig.svg'
 import HomeIcon from '../assets/icons/Home.svg'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service'
@@ -47,7 +47,7 @@ export default {
     return {
       groupId: null,
       activeTab: 'updateLog',
-      loggedInUser: null
+      loggedInUser: null,
     }
   },
   methods: {
@@ -55,8 +55,14 @@ export default {
       this.$router.push(`/board/${this.$route.params.boardId}/main-table`)
     },
     updateTask(prop, toUpdate) {
-      this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.groupId, taskId: this.task.id, prop, toUpdate })
-    }
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: this.groupId,
+        taskId: this.task.id,
+        prop,
+        toUpdate,
+      })
+    },
   },
   computed: {
     taskId() {
@@ -77,8 +83,8 @@ export default {
     },
     activities() {
       let activities = this.$store.getters.activities
-      return activities.filter(activity => activity.taskId === this.taskId)
-    }
+      return activities.filter((activity) => activity.taskId === this.taskId)
+    },
   },
   created() {
     this.loggedInUser = this.$store.getters.loggedinUser
