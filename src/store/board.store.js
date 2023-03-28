@@ -47,7 +47,7 @@ export const boardStore = {
 			return currBoard.groups
 		},
 		sumOfTasks({ currBoard }) {
-			return currBoard.groups.reduce((acc, group) => {
+			return currBoard.groups?.reduce((acc, group) => {
 				acc += group.tasks.length
 				return acc
 			}, 0)
