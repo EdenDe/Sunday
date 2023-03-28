@@ -23,18 +23,19 @@ import {
   socketService,
   SOCKET_EVENT_UPDATE_BOARD,
   SOCKET_EMIT_UPDATE_BOARD,
+  SOCKET_EMIT_SET_TOPIC,
 } from '../services/socket.service.js'
 export default {
   created() {
     this.loadBoard(this.$route.params.boardId)
-    socketService.emit(SOCKET_EMIT_UPDATE_BOARD, '')
-    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoard)
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
   },
   watch: {
     currBoardId: {
       handler() {
         console.log('currBoardId', this.currBoardId)
         this.$router.push({ params: { boardId: this.currBoardId } })
+        socketService.emit(SOCKET_EMIT_SET_TOPIC, this.currBoardId)
       },
     },
   },
@@ -51,8 +52,8 @@ export default {
         board: newBoard,
       })
     },
-    loadBoard(boardId) {
-      this.$store.dispatch({ type: 'loadBoard', boardId })
+    async loadBoard(boardId) {
+      await this.$store.dispatch({ type: 'loadBoard', boardId })
     },
     updateBoard(prop, toUpdate) {
       this.$store.dispatch({
@@ -62,6 +63,10 @@ export default {
         prop: prop,
         toUpdate,
       })
+    },
+    updateBoardFromSocket(board) {
+      console.log('hi')
+      this.$store.commit({ type: 'updateBoard', board })
     },
     removeBoard(boardId) {
       this.$store.dispatch({ type: 'remove', boardId })

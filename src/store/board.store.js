@@ -77,7 +77,7 @@ export const boardStore = {
 		},
 		async loadBoard({ state, commit }, { boardId }) {
 			const board = await boardService.getById(boardId)
-			//const board = state.boards.find(board => board._id === boardId)
+			// const board = state.boards.find(board => board._id === boardId)
 			if (board) {
 				commit({ type: 'setBoard', board })
 			}
