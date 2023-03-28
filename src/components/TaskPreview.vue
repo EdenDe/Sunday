@@ -23,9 +23,12 @@
         :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
       >
         <PulseIcon class="pulse-icon icon" v-if="taskUpdatesNum === 0" />
-        <p class="pulse-icon icon" v-else>
-          {{ taskUpdatesNum }}
-        </p>
+        <div class="pulse-icon-empty icon" v-else>
+          <PulseEmptyIcon />
+          <p>
+            {{ taskUpdatesNum }}
+          </p>
+        </div>
       </RouterLink>
     </div>
   </section>
@@ -43,7 +46,7 @@ import TaskTitle from './dynamicCmps/TitleInput.vue'
 import txt from './dynamicCmps/TxtInput.vue'
 //ICONS
 import PulseIcon from '../assets/icons/Pulse.svg'
-import Pulse from '../assets/icons/Pulse.svg'
+import PulseEmptyIcon from '../assets/icons/PulseEmpty.svg'
 
 export default {
   name: 'TaskPreview',
@@ -83,6 +86,7 @@ export default {
     file,
     txt,
     PulseIcon,
+    PulseEmptyIcon,
   },
 }
 </script>

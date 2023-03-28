@@ -1,6 +1,6 @@
-.update-log{
+.update-log {
   gap: em(5px);
-  .editor-wrapper{
+  .editor-wrapper {
     .input-update-log {
       width: 100%;
       border-radius: $border-radius-rounder;
@@ -14,42 +14,44 @@
         background-color: $color-ui_grey;
       }
     }
-      .btn-update {
-        @include btn;
-        @include btn-blue;
-        border-radius: $btn-border-radius;
-        justify-self: end;
-      }
+    .btn-update {
+      @include btn;
+      @include btn-blue;
+      border-radius: $btn-border-radius;
+      justify-self: end;
     }
+  }
+  .updates-wrapper {
+    padding: 20px;
 
-    .update{
-      display:grid;
-      width:100%;
+    .update {
+      display: grid;
+      width: 100%;
       position: relative;
-      .udapte-header{
-        .actions-right{
-          margin-left:auto;
+      .update-header {
+        height: rem(68px);
+        padding: 16px 16px 8px 16px;
+        .actions-right {
+          margin-left: auto;
 
-          .menu-icon{
+          .menu-icon {
             @include action;
-            display:inline-block;
-            width:fit-content;
+            display: inline-block;
+            width: fit-content;
           }
         }
       }
-      .actions-list{
+      .actions-list {
         @include actions-list;
 
-        .action{
+        .action {
           @include action;
         }
       }
-    
+    }
   }
-  
   // img {
   //   width: em(300px);
   //   margin-top: auto;
   // }
 }
-

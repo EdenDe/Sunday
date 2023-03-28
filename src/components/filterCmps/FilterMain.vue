@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import Avatar from './Avatar.vue'
+import Avatar from '../Avatar.vue'
 export default {
   name: 'Main Filter',
   data() {

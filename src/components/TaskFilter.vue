@@ -72,9 +72,10 @@ import SearchIcon from '../assets/icons/Search.svg'
 import MemberIcon from '../assets/icons/PersonRound.svg'
 import FilterIcon from '../assets/icons/Filter.svg'
 import SortIcon from '../assets/icons/Sort.svg'
-import MemberFilter from './FilterMember.vue'
-import SortFilter from './FilterSort.vue'
-import MainFilter from './FilterMain.vue'
+import MemberFilter from './filterCmps/FilterMember.vue'
+import SortFilter from './filterCmps/FilterSort.vue'
+import MainFilter from './filterCmps/FilterMain.vue'
+
 export default {
   name: 'TaskFilter',
   data() {

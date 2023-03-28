@@ -22,7 +22,13 @@
     padding: 6px;
   }
 
-  > *:not(.pulse-bubble, .task-title, .task-action-bar-container, .priority-picker, .status-picker) {
+  > *:not(
+      .pulse-bubble,
+      .task-title,
+      .task-action-bar-container,
+      .priority-picker,
+      .status-picker
+    ) {
     font-size: em(14px);
     margin: 0;
     display: flex;
@@ -32,6 +38,7 @@
 
   .pulse-bubble {
     @include flex-center;
+    position: relative;
     margin-left: auto;
     height: 100%;
     min-width: em(65px);
@@ -47,12 +54,28 @@
       height: em(24px);
     }
 
-    svg {
+    .pulse-icon {
       color: $layout-border-color;
       height: 24px;
       width: 24px;
       &:hover {
         color: $primary-on-secondary-color;
+      }
+      &-empty {
+        position: relative;
+        color: $primary-on-secondary-color;
+        p {
+          position: absolute;
+          bottom: 0;
+          right: -5px;
+          @include flex-center;
+          height: rem(13px);
+          width: rem(13px);
+          background-color: $primary-on-secondary-color;
+          color: $color-snow_white;
+          border-radius: 50%;
+          font-size: 10px;
+        }
       }
     }
   }

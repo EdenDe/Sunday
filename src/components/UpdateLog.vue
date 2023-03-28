@@ -1,26 +1,46 @@
 <template>
   <section class="update-log grid">
     <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
-      <input v-if="!isEditor" @focus="toggleIsEditor(true)" v-model="content" placeholder="Write an update..."
-        class="input-update-log" />
+      <input
+        v-if="!isEditor"
+        @focus="toggleIsEditor(true)"
+        v-model="content"
+        placeholder="Write an update..."
+        class="input-update-log"
+      />
       <TextEditor v-model="content" @setContent="setContent" v-else />
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
-    <section class="updates-wrapper">
+    <section class="updates-wrapper flex-col">
       <article class="update" v-for="update in updates">
-        <div class="udapte-header flex">
+        <div class="update-header flex">
           <Avatar :person="update.byUser" />
-          <p> {{ update.byUser.fullname }} </p>
-          <div class="actions-right" :class="{ active: actionMenuOpenFor === update.id }">
-            <span class="udapte-date"> {{ dateFormatted(update.createdAt) }} </span>
-            <MenuIcon class="menu-icon icon"
-              @click="toggleActionMenu(actionMenuOpenFor === update.id ? null : update.id)" />
+          <p>{{ update.byUser.fullname }}</p>
+          <div
+            class="actions-right"
+            :class="{ active: actionMenuOpenFor === update.id }"
+          >
+            <span class="update-date">
+              {{ dateFormatted(update.createdAt) }}
+            </span>
+            <MenuIcon
+              class="menu-icon icon"
+              @click="
+                toggleActionMenu(
+                  actionMenuOpenFor === update.id ? null : update.id
+                )
+              "
+            />
           </div>
         </div>
-        <p v-html="update.txt"> </p>
+        <p v-html="update.txt"></p>
         <div class="btn-container">
-          <button @click="onToggleLike(update.id, likedByUser(update.likedBy))"
-            :class="{ 'liked': likedByUser(update.likedBy) }">Like</button>
+          <button
+            @click="onToggleLike(update.id, likedByUser(update.likedBy))"
+            :class="{ liked: likedByUser(update.likedBy) }"
+          >
+            Like
+          </button>
           <button>Reply</button>
         </div>
         <div class="actions-list" v-if="actionMenuOpenFor === update.id">
@@ -42,14 +62,14 @@ export default {
   name: 'UpdateLog',
   props: {
     updates: Array,
-    loggedInUserId: String
+    loggedInUserId: String,
   },
   emits: ['addUpdate', 'toggleLike'],
   data() {
     return {
       isEditor: false,
       content: '',
-      actionMenuOpenFor: null
+      actionMenuOpenFor: null,
     }
   },
   methods: {
@@ -70,7 +90,7 @@ export default {
     },
     onToggleLike(updateId, value) {
       this.$emit('toggleLike', updateId, value)
-    }
+    },
   },
   computed: {
     dateFormatted() {
@@ -82,13 +102,12 @@ export default {
       return (usersLiked) => {
         return usersLiked.includes(this.loggedInUserId)
       }
-    }
+    },
   },
   components: {
     TextEditor,
     Avatar,
-    MenuIcon
-
+    MenuIcon,
   },
 }
 </script>
