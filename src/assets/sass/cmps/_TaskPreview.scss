@@ -49,6 +49,8 @@
 
     svg {
       color: $layout-border-color;
+      height: 24px;
+      width: 24px;
       &:hover {
         color: $primary-on-secondary-color;
       }

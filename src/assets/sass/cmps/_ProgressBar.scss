@@ -1,5 +1,6 @@
 .progress-bar {
   @include task-cols;
+  
 
   > *:not(:nth-child(-n + 4)) {
     @include task-row;

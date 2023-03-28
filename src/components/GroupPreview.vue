@@ -1,12 +1,15 @@
 <template>
-  <section class="group-preview" :class="isListOpen ? 'list-open' : ''">
+  <section
+    class="group-preview"
+    :class="isListOpen ? 'list-open' : 'list-close'"
+  >
     <div class="grid-title flex align-items">
       <div class="group-actions-wrapper sticky">
         <div class="svg-wrapper">
           <span
             class="dots-icon"
             @click="toggleGroupActions(!isGroupActionsOpen)"
-            :class="{ active: isGroupActionsOpen }"
+            :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
           >
             <MenuIcon class="menu-icon icon" />
           </span>
@@ -27,41 +30,38 @@
           </div>
         </div>
       </div>
-      <div class="open-list">
-        <span
-          class="open-list-icon"
+      <div class="open-list" v-tooltip="'Collapse group'">
+        <ArrowDownIcon
+          class="open-list-icon icon"
+          :style="{ fill: group.color }"
           @click="toggleOpenList"
-          :class="{ active: isGroupActionsOpen }"
-        >
-          <ArrowDownIcon
-            class="arrow-down-icon icon"
-            :style="{ fill: group.color }"
-          />
-        </span>
+        />
+      </div>
+      <GroupTitle
+        :color="group.color"
+        :title="group.title"
+        :tasksNumber="tasksNumber"
+        @changeGroupProp="onChangeGroupProp"
+      />
+      <!-- <div class="open-list" v-tooltip="'Collapse group'">
+        <ArrowDownIcon
+          class="open-list-icon icon"
+          :style="{ fill: group.color }"
+          @click="toggleOpenList"
+        />
       </div>
       <div class="group-title-wrapper flex align-center">
-        <button
-          class="btn-color"
-          :style="{ backgroundColor: group.color }"
-          @click.prevent="onOpenColorPicker"
-        ></button>
-        <span
-          contenteditable
-          ref="groupTitle"
-          class="group-title"
-          @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
-          :style="{ color: group.color }"
-        >
+        <button class="btn-color" :style="{ backgroundColor: group.color }" @click.prevent="onOpenColorPicker"></button>
+        <span contenteditable ref="groupTitle" class="group-title"
+          @focusout="onChangeGroupProp('title', $event.target.innerHTML)" :style="{ color: group.color }">
           {{ group.title }}
         </span>
 
-        <span class="tasks-num flex align-items justify-start"
-          >{{ tasksNumber }} Tasks</span
-        >
+        <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
       </div>
       <div v-if="isColorModalOpen" class="color-picker-wrapper">
         <ColorPicker @changeColor="onChangeGroupProp" />
-      </div>
+      </div> -->
     </div>
     <Container class="group-labels">
       <Draggable
@@ -73,10 +73,10 @@
       >
         <div
           v-if="index === 1"
-          class="first-col-color"
+          class="first-col-color group-label"
           :style="{ backgroundColor: group.color }"
         ></div>
-        <div v-if="index === 2" class="group-checkbox">
+        <div v-if="index === 2" class="group-checkbox group-label">
           <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
         </div>
         {{ label }}
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import GroupTitle from './GroupTitle.vue'
 import TaskList from './TaskList.vue'
 import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
@@ -198,6 +199,7 @@ export default {
       this.toggleSelectGroup('checkbox', false)
     },
     onChangeGroupProp(prop, value) {
+      console.log(prop, value)
       if (prop === 'color') this.onOpenColorPicker()
       if (prop === 'title' && value.trim().length === 0) {
         value = 'Enter Title'
@@ -294,6 +296,7 @@ export default {
     },
   },
   components: {
+    GroupTitle,
     TaskList,
     ProgressBar,
     Container,
