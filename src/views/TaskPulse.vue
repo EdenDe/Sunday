@@ -5,7 +5,7 @@
         <CloseIcon class="close-icon icon" />
       </button>
       <div>
-        <span contenteditable class="task-title" :style="{ fontSize: '24px' }">
+        <span contenteditable class="task-title">
           {{ task.taskTitle }}
         </span>
       </div>
@@ -45,7 +45,6 @@ import { utilService } from '../services/util.service'
 export default {
   data() {
     return {
-      //task: null,
       groupId: null,
       activeTab: 'updateLog',
       loggedInUser: null

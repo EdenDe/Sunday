@@ -3,7 +3,7 @@
     <div v-for="value in Array(2).fill(null)"></div>
     <div v-for="(item, idx) in cmpOrder" :key="idx">
       <div v-if="item.name === 'status' || item.name === 'priority'" class="flex progress-container" :class="item">
-        <div v-for="label in groupStatusProgress(item.name)" :style="{
+        <div v-for="label in groupStatusProgress(item.name)" v-tooltip="label.title" :style="{
           flex: 1,
           'flex-basis': label.width,
           backgroundColor: label.color,
