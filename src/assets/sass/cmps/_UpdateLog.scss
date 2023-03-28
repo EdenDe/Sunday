@@ -28,7 +28,10 @@
       display: grid;
       width: 100%;
       position: relative;
-      .update-header {
+      border: 1px solid $layout-border-color;
+      border-radius: $border-radius-rounder;
+      margin-bottom: $margin-medium;
+      &-header {
         height: rem(68px);
         padding: 16px 16px 8px 16px;
         .actions-right {
@@ -38,6 +41,27 @@
             @include action;
             display: inline-block;
             width: fit-content;
+          }
+        }
+      }
+      &-text {
+        display: flex;
+        padding: 8px 15px 0;
+        min-height: rem(44px);
+        margin-bottom: rem(24px);
+      }
+      .btn-container {
+        display: flex;
+        height: rem(41px);
+        width: 100%;
+        border-top: 1px solid $layout-border-color;
+        border-bottom-right-radius: $border-radius-rounder;
+        border-bottom-left-radius: $border-radius-rounder;
+        & > * {
+          width: 100%;
+          border: none;
+          :first-of-type {
+            border-right: 1px solid $layout-border-color;
           }
         }
       }

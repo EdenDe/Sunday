@@ -137,7 +137,7 @@ export default {
       this.updateModalBoardId(null)
     },
     onCopyBoard(boardId) {
-      //this.$emit('copyBoard', boardId)
+      // this.$emit('copyBoard', boardId)
       this.updateModalBoardId(null)
     },
   },
