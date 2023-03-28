@@ -40,18 +40,18 @@ async function update(user) {
 async function login(userCred) {
 	const user = await httpService.post('auth/login', userCred)
 	if (user) {
-		// socketService.login(user._id)
+		socketService.login(user._id)
 		return saveLocalUser(user)
 	}
 }
 async function signup(userCred) {
 	const user = await httpService.post('auth/signup', userCred)
-	// socketService.login(user._id)
+	socketService.login(user._id)
 	return saveLocalUser(user)
 }
 async function logout() {
 	sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-	// socketService.logout()
+	socketService.logout()
 	return await httpService.post('auth/logout')
 }
 
@@ -74,7 +74,11 @@ function getLoggedinUser() {
 		sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
 	)
 	if (user) return user
-	return { _id: 'u123123', fullname: 'guest', color: 'black' }
+	const guestUser = { _id: utilService.makeId(), fullname: 'guest', color: 'black' }
+	saveLocalUser(guestUser)
+	socketService.login(guestUser._id)
+	return guestUser
+
 }
 
 // function saveLocalUser(user) {
