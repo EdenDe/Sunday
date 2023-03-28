@@ -74,7 +74,7 @@ function getLoggedinUser() {
 		sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
 	)
 	if (user) return user
-	return { _id: 123123, fullname: 'guest', color: 'black' }
+	return { _id: 'u123123', fullname: 'guest', color: 'black' }
 }
 
 // function saveLocalUser(user) {
