@@ -1,5 +1,6 @@
 .fileUpload {
   position: relative;
+  @include flex-center;
   .file-container {
     @include flex-center;
     position: relative;
@@ -15,9 +16,9 @@
   .img-wrapper {
     position: relative;
     @include flex-center;
-    img{
+    img {
       width: 100%;
-      height: 36px;
+      height: 23px;
     }
     .file-icon {
       height: 30px;

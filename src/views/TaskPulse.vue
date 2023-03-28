@@ -27,7 +27,7 @@
     </header>
     <main class="content-wrapper">
       <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUserId="loggedInUser._id"
-        :updates="task.updates ? task.updates : []" @addUpdate="addUpdate" @toggleLike="toggleLike" />
+        :updates="task.updates ? task.updates : []" @updateTask="updateTask" />
       <ActivityLog v-if="activeTab === 'activityLog'" :activities="activities" />
     </main>
 
@@ -54,27 +54,6 @@ export default {
   methods: {
     onBack() {
       this.$router.push(`/board/${this.$route.params.boardId}/main-table`)
-    },
-    addUpdate(content) {
-      const task = this.task
-      if (!task.updates) task.updates = []
-      task.updates.unshift({
-        id: 'up' + utilService.makeId(7),
-        createdAt: Date.now(),
-        txt: content,
-        likedBy: [],
-        byUser: { ...this.loggedInUser }
-      })
-      this.updateTask('updates', task.updates)
-    },
-    toggleLike(updateId, value) {
-      let update = this.task.updates.find(update => update.id === updateId)
-      if (value) {
-        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
-      } else {
-        update.likedBy.push(this.loggedInUser._id)
-      }
-      this.updateTask('updates', this.task.updates)
     },
     updateTask(prop, toUpdate) {
       this.$store.dispatch({ type: 'updateCurrBoard', groupId: this.groupId, taskId: this.task.id, prop, toUpdate })

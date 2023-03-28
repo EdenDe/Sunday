@@ -14,9 +14,10 @@
 </template>
 
 <script>
-import Avatar from './Avatar.vue'
+import Avatar from '../Avatar.vue'
 export default {
   name: 'MemberFilter',
+  emits: ['setFilterBy'],
   data() {
     return {}
   },

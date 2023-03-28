@@ -2,7 +2,7 @@
   <section class="fileUpload" :class="{ 'is-loading': isLoading }">
     <label
       class="file-container"
-      :style="{ height: '100%', width: '80%' }"
+      :style="{ height: '23px', width: '80%' }"
       @drop.prevent="handleFile"
       @dragover.prevent
     >

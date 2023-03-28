@@ -1,24 +1,60 @@
-.activity{
-  grid-template-columns: 56px 30px minmax(200px,1fr) 16px 40px 80px 16px 150px;
-
-  >*{
-    @include flex-center;
+.activity {
+  grid-template-columns: 56px minmax(200px, 1fr) 16px 40px 80px 16px 150px;
+  font-size: 14px;
+  > * {
+    display: flex;
+    align-items: center;
     height: 56px;
     padding: 8px 0;
     align-self: center;
     border-bottom: 1px solid $ui-border-color;
+    &.activity-values {
+      display: grid;
+      grid-template-columns: 60px 15px 60px;
+      pointer-events: none;
+      .priority-picker,
+      .status-picker {
+        color: $color-snow_white;
+        width: 100%;
+        height: 100%;
+      }
+      .timeline-picker {
+        padding: 0;
+        .timeline-display {
+          padding: 0;
+        }
+        .timeline-label {
+          height: fit-content;
+          font-size: 12px;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          background-color: $color-blue-btn;
+        }
+      }
+    }
   }
 
-  p{
+  .avatar-wrapper {
+    padding-right: 6px;
+  }
+
+  p {
     justify-content: start;
     overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding-inline-start: 6px;
   }
-  
-  .activity-values{
-    grid-template-columns: 60px 15px 60px;
-    pointer-events: none
+  .icon-wrapper {
+    justify-content: center;
+    .icon {
+      fill: $color-mud_black;
+      color: $color-mud_black;
+    }
   }
-
+  .icon-time {
+    justify-content: flex-start;
+  }
 }
