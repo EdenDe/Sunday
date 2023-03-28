@@ -2,29 +2,47 @@
   <section class="board-header flex-col align-start">
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
-        <h2 v-tooltip="'Click to Edit'" contenteditable class="board-title"
-          @focusout="onChangeTitle($event.target.innerText)">
+        <h2
+          v-tooltip="'Click to Edit'"
+          contenteditable
+          class="board-title"
+          @focusout="onChangeTitle($event.target.innerText)"
+        >
           {{ currBoard.title }}
         </h2>
-
         <div class="btn btn-container" v-tooltip="'Show board description'">
           <InfoIcon class="info-icon icon" />
         </div>
         <div class="btn btn-container" v-tooltip="'Add to favorite'">
           <StarIcon class="star-icon icon" />
         </div>
-        <div class="btn-action-wrapper">
-          <RouterLink :to="'/board/' + currBoard._id + '/main-table/'" class="btn btn-acivity">
+
+        <div class="btn-action-wrapper flex">
+          <RouterLink
+            :to="'/board/' + currBoard._id + '/main-table/'"
+            class="btn btn-activity flex"
+          >
             Activity
-            <div class="person-picker-wrapper">
+            <div class="person-picker-wrapper flex">
               <PersonPicker :info="currBoard.members" :maxDisplay="2" />
             </div>
           </RouterLink>
-          <button class="btn"> Invite </button>
+
+          <button class="btn flex invite">
+            <div class="svg-wrapper flex align-items justify-center">
+              <AddPersonIcon class="icon icon-add-person" />
+            </div>
+            <span> Invite </span>
+          </button>
         </div>
       </div>
+
       <div class="desc-wrapper">
-        <span class="desc" contenteditable @focusout="onChangeDesc($event.target.innerText)">
+        <span
+          class="desc"
+          contenteditable
+          @focusout="onChangeDesc($event.target.innerText)"
+        >
           {{ currBoard.description }}
         </span>
       </div>
@@ -70,6 +88,7 @@ import FilterIcon from '../assets/icons/Filter.svg'
 import HomeIcon from '../assets/icons/Home.svg'
 import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
 import PersonPicker from './dynamicCmps/PersonPicker.vue'
+import AddPersonIcon from '../assets/icons/AddToTeam.svg'
 
 export default {
   name: 'BoardHeader',
@@ -93,7 +112,8 @@ export default {
     FilterIcon,
     HomeIcon,
     ArrowDownIcon,
-    PersonPicker
+    PersonPicker,
+    AddPersonIcon,
   },
 }
 </script>

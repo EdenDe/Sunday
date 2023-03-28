@@ -40,6 +40,7 @@
       }
     }
   }
+
   .desc-wrapper {
     max-width: 20vw;
     .desc {
@@ -91,17 +92,40 @@
     }
   }
 
-  .btn-action-wrapper{
-    margin-left:auto;
+  .btn-action-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
     width: 250px;
-    .person-picker-wrapper{
+    gap: rem(10px);
+    .person-picker-wrapper {
       pointer-events: none;
     }
-    .btn-acivity{
+    .btn-activity {
       width: fit-content;
     }
+
+    a {
+      align-items: center;
+      height: rem(32px);
+      .person-picker-wrapper {
+        display: flex;
+      }
+    }
+    .btn.invite {
+      @include flex-center;
+      height: rem(32px);
+      padding: 0px 8px;
+      gap: 5px;
+      border-radius: $border-radius-filter;
+      border: 1px solid $color-explosive-hover;
+    }
+    & :nth-child(2) {
+      .icon {
+        fill: $color-american_gray-hover;
+      }
+    }
   }
- 
 }
 
 .seconde-row-container {
