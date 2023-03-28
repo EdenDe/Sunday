@@ -1,7 +1,12 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
+    <WorkspaceSideNav
+      @addBoard="addBoard"
+      @setBoard="loadBoard"
+      @copyBoard="copyBoard"
+      @removeBoard="removeBoard"
+    />
     <div class="board-container board-layout">
       <BoardHeader @updateBoard="updateBoard" />
       <RouterView />
@@ -14,23 +19,29 @@ import AppSideNav from '@/components/AppSidenav.vue'
 import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
 import BoardHeader from '../components/BoardHeader.vue'
 import { boardService } from '../services/board.service.js'
-
+import {
+  socketService,
+  SOCKET_EVENT_UPDATE_BOARD,
+  SOCKET_EMIT_UPDATE_BOARD,
+} from '../services/socket.service.js'
 export default {
   created() {
     this.loadBoard(this.$route.params.boardId)
+    socketService.emit(SOCKET_EMIT_UPDATE_BOARD, '')
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoard)
   },
   watch: {
     currBoardId: {
       handler() {
         console.log('currBoardId', this.currBoardId)
         this.$router.push({ params: { boardId: this.currBoardId } })
-      }
+      },
     },
   },
   computed: {
     currBoardId() {
       return this.$store.getters.currBoard._id
-    }
+    },
   },
   methods: {
     addBoard() {
@@ -59,7 +70,10 @@ export default {
       let newBoard = await boardService.getById(boardId)
       delete newBoard._id
       this.$store.dispatch({ type: 'saveBoard', board: newBoard })
-    }
+    },
+  },
+  unmounted() {
+    socketService.off(SOCKET_EVENT_UPDATE_BOARD, this.board)
   },
   components: {
     AppSideNav,

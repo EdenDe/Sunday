@@ -4,11 +4,11 @@
 </template>
 
 <script>
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router'
 
 export default {
-  created() {
-    this.$store.dispatch({ type: "loadBoards" })
+  mounted() {
+    this.$store.dispatch({ type: 'loadBoards' })
   },
 }
 </script>
