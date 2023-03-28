@@ -65,6 +65,7 @@
       </div>
 
       <Container class="group-labels">
+<<<<<<< HEAD
         <Draggable
           v-for="(label, index) in labels"
           :key="label"
@@ -78,9 +79,16 @@
             :style="{ backgroundColor: group.color }"
           ></div>
           <div v-if="index === 2" class="group-checkbox group-label">
+=======
+        <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
+          :groupColor="group.color">
+          <div v-if="index === 1" draggable="false" class="first-col-color group-label"
+            :style="{ backgroundColor: group.color }"></div>
+          <div v-if="index === 2" draggable="false" class="group-checkbox group-label">
+>>>>>>> f525ee8514f60f37cf220f36ec207b7b3376fb0b
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
-          {{ label }}
+          <div class="draggable-label">{{ label }}</div>
         </Draggable>
       </Container>
 

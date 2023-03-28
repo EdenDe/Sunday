@@ -8,7 +8,7 @@
     </section>
     <section class="updates-wrapper flex-col">
       <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
-        :loggedInUserId="loggedInUserId" @editUpdate="editUpdate" @toggleLike="toggleLike" />
+        :loggedInUserId="loggedInUser._id" @editUpdate="editUpdate" @toggleLike="toggleLike" />
     </section>
   </section>
 </template>
@@ -16,12 +16,13 @@
 <script>
 import Update from '../components/Update.vue'
 import TextEditor from './TextEditor.vue'
+import { utilService } from '../services/util.service'
 
 export default {
   name: 'UpdateLog',
   props: {
     updates: Array,
-    loggedInUserId: String,
+    loggedInUser: Object,
   },
   emits: ['updateTask'],
   data() {
@@ -44,7 +45,7 @@ export default {
       updates.unshift({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
-        txt: content,
+        txt: this.content,
         likedBy: [],
         byUser: { ...this.loggedInUser }
       })
@@ -60,9 +61,9 @@ export default {
       const updates = JSON.parse(JSON.stringify(this.updates))
       let update = updates.find(update => update.id === updateId)
       if (value) {
-        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUserId)
+        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
       } else {
-        update.likedBy.push(this.loggedInUserId)
+        update.likedBy.push(this.loggedInUser._id)
       }
       this.$emit('updateTask', 'updates', updates)
     },

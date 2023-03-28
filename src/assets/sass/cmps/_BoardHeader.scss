@@ -90,6 +90,18 @@
       }
     }
   }
+
+  .btn-action-wrapper{
+    margin-left:auto;
+    width: 250px;
+    .person-picker-wrapper{
+      pointer-events: none;
+    }
+    .btn-acivity{
+      width: fit-content;
+    }
+  }
+ 
 }
 
 .seconde-row-container {

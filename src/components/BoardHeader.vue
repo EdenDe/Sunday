@@ -2,12 +2,8 @@
   <section class="board-header flex-col align-start">
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
-        <h2
-          v-tooltip="'Click to Edit'"
-          contenteditable
-          class="board-title"
-          @focusout="onChangeTitle($event.target.innerText)"
-        >
+        <h2 v-tooltip="'Click to Edit'" contenteditable class="board-title"
+          @focusout="onChangeTitle($event.target.innerText)">
           {{ currBoard.title }}
         </h2>
 
@@ -17,13 +13,18 @@
         <div class="btn btn-container" v-tooltip="'Add to favorite'">
           <StarIcon class="star-icon icon" />
         </div>
+        <div class="btn-action-wrapper">
+          <RouterLink :to="'/board/' + currBoard._id + '/main-table/'" class="btn btn-acivity">
+            Activity
+            <div class="person-picker-wrapper">
+              <PersonPicker :info="currBoard.members" :maxDisplay="2" />
+            </div>
+          </RouterLink>
+          <button class="btn"> Invite </button>
+        </div>
       </div>
       <div class="desc-wrapper">
-        <span
-          class="desc"
-          contenteditable
-          @focusout="onChangeDesc($event.target.innerText)"
-        >
+        <span class="desc" contenteditable @focusout="onChangeDesc($event.target.innerText)">
           {{ currBoard.description }}
         </span>
       </div>
@@ -68,6 +69,7 @@ import StarIcon from '../assets/icons/Favorite.svg'
 import FilterIcon from '../assets/icons/Filter.svg'
 import HomeIcon from '../assets/icons/Home.svg'
 import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
+import PersonPicker from './dynamicCmps/PersonPicker.vue'
 
 export default {
   name: 'BoardHeader',
@@ -91,6 +93,7 @@ export default {
     FilterIcon,
     HomeIcon,
     ArrowDownIcon,
+    PersonPicker
   },
 }
 </script>

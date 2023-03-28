@@ -10,15 +10,8 @@
         </span>
       </div>
       <div class="tabs-wrapper flex align-center">
-        <div
-          class="btn-tab-wrapper"
-          :class="{ 'active-tab': activeTab === 'updateLog' }"
-        >
-          <button
-            class="btn btn-tab"
-            @click="activeTab = 'updateLog'"
-            v-tooltip="'Updates / ' + task.updates?.length"
-          >
+        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'updateLog' }">
+          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + task.updates?.length">
             <div class="task-update-icon">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -26,31 +19,21 @@
           </button>
         </div>
         <div class="border"></div>
-        <div
-          class="btn-tab-wrapper"
-          :class="{ 'active-tab': activeTab === 'activityLog' }"
-          v-tooltip="'Activity Log'"
-          @click="activeTab = 'activityLog'"
-        >
+        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }" v-tooltip="'Activity Log'"
+          @click="activeTab = 'activityLog'">
           <button class="btn btn-tab">Activity Log</button>
         </div>
       </div>
     </header>
     <main class="content-wrapper">
-      <UpdateLog
-        v-if="activeTab === 'updateLog'"
-        :loggedInUserId="loggedInUser._id"
-        :updates="task.updates ? task.updates : []"
-        @updateTask="updateTask"
-      />
-      <ActivityLog
-        v-if="activeTab === 'activityLog'"
-        :activities="activities"
-      />
+      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="task.updates ? task.updates : []"
+        @updateTask="updateTask" />
+      <ActivityLog v-if="activeTab === 'activityLog'" :activities="activities" />
     </main>
 
     <!-- <img src="https://cdn.monday.com/images/pulse-page-empty-state.svg" /> -->
   </section>
+  <div class="screen" />
 </template>
 
 <script>
@@ -59,11 +42,9 @@ import ActivityLog from '../components/ActivityLog.vue'
 import CloseIcon from '../assets/icons/CloseBig.svg'
 import HomeIcon from '../assets/icons/Home.svg'
 import { userService } from '../services/user.service'
-import { utilService } from '../services/util.service'
 export default {
   data() {
     return {
-      //task: null,
       groupId: null,
       activeTab: 'updateLog',
       loggedInUser: null,
