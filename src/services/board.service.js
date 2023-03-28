@@ -15,12 +15,13 @@ export const boardService = {
 	getEmptyBoard,
 	getEmptyGroup,
 	getEmptyTask,
+	addActivity,
 }
 
 window.boardService = boardService
 
 async function query() {
-	localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	return storageService.query(STORAGE_KEY)
 }
 
@@ -42,7 +43,19 @@ async function save(board) {
 	return savedBoard
 }
 
-function updateAcivitiy(prop, title, oldValue, newValue) {
+// function addActivity(prop, title, oldValue, newValue) {
+// 	return {
+// 		id: 'a' + utilService.makeId(10),
+// 		createdAt: Date.now(),
+// 		createdBy: userService.getLoggedInUser(),
+// 		title,
+// 		prop,
+// 		oldValue,
+// 		newValue,
+// 	}
+// }
+
+function addActivity(prop, title, oldValue, newValue, color) {
 	return {
 		id: 'a' + utilService.makeId(10),
 		createdAt: Date.now(),
@@ -51,40 +64,67 @@ function updateAcivitiy(prop, title, oldValue, newValue) {
 		prop,
 		oldValue,
 		newValue,
+		color,
 	}
 }
 
-// async function addActivity(boardId, props){
-//  const act=	updateAcivitiy({...props})
-//  const board= await getById(boardId)
-//  board.activities.push(act)
-//  return board.activities
+// async function addActivity(boardId, props) {
+// 	const act = _updateAcivitiy({ ...props })
+// 	const board = await getById(boardId)
+// 	board.activities.push(act)
+// 	return board.activities
 // }
 
-function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
-	const board = JSON.parse(JSON.stringify(currBoard))
-	let activity
-	if (taskId) {
-		let group = board.groups.find(group => groupId === group.id)
-		let task = group.tasks.find(task => task.id === taskId)
-		activity = updateAcivitiy(
+function _updateTask(board, groupId, taskId, prop, toUpdate) {
+	let group = board.groups.find(group => groupId === group.id)
+	let task = group.tasks.find(task => task.id === taskId)
+	if (task[prop] !== toUpdate) {
+		let activity = addActivity(
 			prop,
 			task.taskTitle,
 			task[prop],
 			toUpdate
 		)
 		activity.taskId = taskId
-		task[prop] = toUpdate
-	} else if (groupId) {
-		let group = board.groups.find(group => groupId === group.id)
-		activity = updateAcivitiy(prop, group.title, task[prop], toUpdate)
-		group[prop] = toUpdate
-	} else {
-		board[prop] = toUpdate
+		board.activities.unshift(activity)
 	}
-	// board = addActivity(currBoard._id, activity)
-	board.activities.push(activity)
+	task[prop] = toUpdate
 	return board
+}
+
+function _updateGroup(board, groupId, prop, toUpdate) {
+	let group = board.groups.find(group => groupId === group.id)
+	if (prop !== 'tasks') {
+		let activity = addActivity(
+			prop,
+			group.title,
+			task[prop],
+			toUpdate
+		)
+		board.activities.unshift(activity)
+	}
+	group[prop] = toUpdate
+	return board
+}
+
+function _updateBoard(board, prop, toUpdate) {
+	if (prop !== 'activities') {
+		board[prop] = toUpdate
+	} else {
+		board.activities.unshift(toUpdate)
+	}
+	return board
+}
+
+function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
+	const board = JSON.parse(JSON.stringify(currBoard))
+	if (taskId)
+		return _updateTask(board, groupId, taskId, prop, toUpdate)
+	else if (groupId)
+		return _updateGroup(board, groupId, prop, toUpdate)
+
+	return _updateBoard(board, prop, toUpdate)
+	// board = addActivity(currBoard._id, activity)
 }
 
 function getEmptyGroup() {
