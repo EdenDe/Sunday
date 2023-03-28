@@ -4,34 +4,48 @@
   right: 0;
   top: 0;
   height: 100vh;
-  width: em(700px);
+  width: em(695px);
   box-shadow: $box-shadow-large;
   background-color: $color-snow_white;
   overflow-y: auto;
 
   header {
-    gap: 5px;
+    
     border-bottom: 0.5px solid $workspace-side-nav;
-    padding: em(14px) em(14px) 0;
+    margin: em(20px) em(20px) em(6px) em(24px);
 
+    .home-icon{
+      height: 16px;
+      width: 16px;
+    }
     .btn {
       @include btn(transparent);
       @include flex-center;
       width: 100%;
       height: em(32px);
+        
       &-close {
+        @include flex-center;
         padding: 0;
         height: em(24px);
         width: em(24px);
+        text-align: center;
+        .close-icon{
+          @include flex-center;
+          height: 24px;
+          width: 24px;
+          // color: $ui-bord;
+        }
       }
     }
-
     .task-title {
-      @include editableSpan;
-      font-family: $figtree-regular;
-      line-height: lh(22.5px);
-      color: $color-mud_black;
-    }
+        @include editableSpan;
+        font-family: $figtree-regular;
+        font-size: 18px;
+        color: $color-mud_black;
+        margin-bottom: 10px;
+      }
+    
 
     .tabs-wrapper {
       margin-inline-start: em(8px);
@@ -39,6 +53,7 @@
         padding-inline-end: em(4px);
       }
       .btn-tab-wrapper {
+        @include flex-center;
         border-bottom: 2px solid transparent;
       }
 
@@ -60,7 +75,7 @@
   }
 
   .content-wrapper {
-    padding: em(20px) em(14px) em(20px);
+    padding: rem(20px);
   }
 
 }

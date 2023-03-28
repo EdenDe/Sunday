@@ -17,8 +17,22 @@
     </div>
     <p class="update-text" v-else v-html="update.txt"></p>
     <div class="btn-container">
-      <button @click="onToggleLike" :class="{ liked: likeUpdate }">like</button>
-      <button>Reply</button>
+      <button
+        @click="onToggleLike"
+        :class="{ liked: likeUpdate }"
+        class="btn grid grid-col"
+      >
+        <div class="icon-container">
+          <ThumbsUp class="thumbs-up-icon" />
+        </div>
+        like
+      </button>
+      <button class="btn grid grid-col">
+        <div class="icon-container">
+          <Replay class="replay-icon" />
+        </div>
+        Reply
+      </button>
     </div>
     <div class="actions-list" v-if="isActionMenuOpen">
       <button class="actions" @click="$emit('removeUpdate', update.id)">
@@ -34,6 +48,9 @@ import { utilService } from '../services/util.service'
 import MenuIcon from '../assets/icons/Menu.svg'
 import Avatar from './Avatar.vue'
 import TextEditor from './TextEditor.vue'
+//ICON
+import ThumbsUp from '../assets/icons/ThumbsUp.svg'
+import Replay from '../assets/icons/Replay.svg'
 
 export default {
   name: 'update',
@@ -85,6 +102,8 @@ export default {
     Avatar,
     TextEditor,
     MenuIcon,
+    ThumbsUp,
+    Replay,
   },
 }
 </script>
