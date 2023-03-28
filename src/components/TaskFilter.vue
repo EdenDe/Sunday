@@ -23,11 +23,15 @@
       class="filter-member filter"
       :class="{ active: activeFilter === 'member' }"
     >
-      <button class="btn btn-container" @click="toggleFilter('member')">
+      <button
+        class="btn btn-container"
+        @click="toggleFilter('member')"
+        v-tooltip="'Filter by person'"
+      >
         <div class="icon-container">
           <MemberIcon class="member-icon icon" />
         </div>
-        <span>Member</span>
+        <span>Person</span>
       </button>
       <div class="filter-modal">
         <MemberFilter @setFilterBy="setFilterBy" />
@@ -39,7 +43,11 @@
       ref="member"
       :class="{ active: activeFilter === 'main' }"
     >
-      <button class="btn btn-container" @click="toggleFilter('main')">
+      <button
+        class="btn btn-container"
+        @click="toggleFilter('main')"
+        v-tooltip="'Filter by anything'"
+      >
         <div class="icon-container">
           <FilterIcon class="filter-icon icon" />
         </div>

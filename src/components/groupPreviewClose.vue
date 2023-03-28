@@ -2,56 +2,25 @@
   <section class="group-preview-close grid-title">
     <div class="group-actions-wrapper sticky">
       <div class="svg-wrapper">
-        <span
-          class="dots-icon"
-          @click="toggleGroupActions"
-          :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
-        >
+        <span class="dots-icon" @click="toggleGroupActions" :class="isGroupActionsOpen ? 'active group-menu-active' : ''">
           <MenuIcon class="menu-icon icon" />
         </span>
 
-        <div
-          class="group-actions"
-          v-if="isGroupActionsOpen"
-          v-clickOutside="toggleGroupActions"
-        >
-          <GroupActions
-            :groupColor="group.color"
-            @add="$emit('addGroup')"
-            @copy="copyGroup"
-            @renameTitle="focusGroupName"
-            @openColorPicker="openColorPicker"
-            @remove="$emit('removeGroup', group.id)"
-          />
+        <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
+          <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup" @renameTitle="focusGroupName"
+            @openColorPicker="openColorPicker" @remove="$emit('removeGroup', group.id)" />
         </div>
       </div>
     </div>
 
-    <div
-      class="first-col-color"
-      :style="{ backgroundColor: group.color }"
-    ></div>
+    <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
     <div class="open-list" v-tooltip="'Collapse group'">
-      <ArrowDownIcon
-        class="open-list-icon icon"
-        :style="{ fill: group.color }"
-        @click="$emit('toggleOpenList')"
-      />
+      <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="$emit('toggleOpenList')" />
     </div>
 
-    <GroupTitle
-      :color="group.color"
-      :title="group.title"
-      :tasksNumber="tasksNumber"
-      @updateProp="updateProp"
-    />
+    <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" @updateProp="updateProp" />
 
-    <div
-      v-for="label in labels"
-      :key="label"
-      class="group-label"
-      :class="label"
-    >
+    <div v-for="label in labels" :key="label" class="group-label" :class="label">
       {{ label }}
     </div>
     <ProgressBar :tasks="group.tasks" :groupColor="group.color" />

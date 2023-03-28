@@ -66,7 +66,7 @@ export default {
       //task: null,
       groupId: null,
       activeTab: 'updateLog',
-      loggedInUser: userService.getLoggedInUser(),
+      loggedInUser: null,
     }
   },
   methods: {
@@ -104,6 +104,9 @@ export default {
       let activities = this.$store.getters.activities
       return activities.filter((activity) => activity.taskId === this.taskId)
     },
+  },
+  created() {
+    this.loggedInUser = this.$store.getters.loggedinUser
   },
   components: {
     UpdateLog,

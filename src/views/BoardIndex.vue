@@ -58,7 +58,7 @@ export default {
     async copyBoard(boardId) {
       let newBoard = await boardService.getById(boardId)
       delete newBoard._id
-      this.$store.dispatch({ type: 'saveBoard', newBoard })
+      this.$store.dispatch({ type: 'saveBoard', board: newBoard })
     }
   },
   components: {
