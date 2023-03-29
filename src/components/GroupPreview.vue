@@ -80,12 +80,18 @@
           <div
             v-if="index === 1"
             class="first-col-color group-label"
-            :style="{ backgroundColor: group.color }"
+            :style="{ backgroundColor: group.color, width: label.width }"
           ></div>
-          <div v-if="index === 2" class="group-checkbox group-label">
+          <div
+            v-if="index === 2"
+            class="group-checkbox group-label"
+            :style="{ width: label.width }"
+          >
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
-          <div class="draggable-label">{{ label }}</div>
+          <div class="draggable-label" :style="{ width: label.width }">
+            {{ label.name }}
+          </div>
         </Draggable>
         <div></div>
       </Container>
@@ -169,12 +175,13 @@ export default {
       console.log('addedIndex', addedIndex)
       console.log('removedIndex', removedIndex)
 
-      //  this.currTasks.splice(
+      // let cmpOrder = [...this.$store.getters.cmpOrder]
+      // cmpOrder = cmpOrder.splice(
       //   addedIndex,
       //   0,
-      //   this.currTasks.splice(removedIndex, 1)[0]
+      //   cmpOrder.splice(removedIndex, 1)[0]
       // )
-      // this.updateProp(null, 'tasks', this.currTasks)
+      // this.updateProp(null, 'cmpOrder', cmpOrder)
     },
     updateProp(taskId, prop, toUpdate) {
       console.log(taskId, prop, toUpdate)
@@ -255,14 +262,17 @@ export default {
   },
   computed: {
     labels() {
-      let labels = [null, null, null]
-      labels.push(
-        ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
-      )
+      let labels = [
+        { name: '', width: '40px' },
+        { name: '', width: '6px' },
+        { name: '', width: '33px' },
+      ]
+      const cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
+      labels.push(...cmpOrder.slice(1).map((cmp) => cmp))
 
       return labels.map((label) => {
-        if (label === 'taskTitle') label = 'task'
-        if (label === 'txt') label = 'text'
+        if (label.name === 'taskTitle') label.name = 'task'
+        if (label.name === 'txt') label.name = 'text'
         return label
       })
     },
