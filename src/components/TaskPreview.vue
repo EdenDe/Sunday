@@ -1,27 +1,11 @@
 <template>
-  <section
-    class="task-preview grid"
-    :class="{
-      sticky: cmp.name === 'taskTitle' || cmp.name === 'checkbox',
-    }"
-    v-for="(cmp, idx) in cmpOrder"
-    :key="idx"
-  >
-    <component
-      :is="cmp.name"
-      :info="task[cmp.name]"
-      :taskId="task.id"
-      @updateProp="updateProp"
-      @toggleTask="toggleTask"
-    />
-    <div
-      class="pulse-bubble"
-      v-if="cmp.name === 'taskTitle'"
-      v-tooltip="'Add to conversation'"
-    >
-      <RouterLink
-        :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
-      >
+  <section class="task-preview grid" :class="{
+    sticky: cmp.name === 'taskTitle' || cmp.name === 'checkbox',
+  }" v-for="(cmp, idx) in cmpOrder" :key="idx">
+    <component :is="cmp.name" :info="task[cmp.name]" :taskId="task.id" @updateProp="updateProp"
+      @toggleTask="toggleTask" />
+    <div class="pulse-bubble" v-if="cmp.name === 'taskTitle'" v-tooltip="'Add to conversation'">
+      <RouterLink :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`">
         <PulseIcon class="pulse-icon icon" v-if="taskUpdatesNum === 0" />
         <div class="pulse-icon-empty icon" v-else>
           <PulseEmptyIcon />

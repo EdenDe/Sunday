@@ -17,7 +17,7 @@
           <RouterLink :to="'/board/' + currBoard._id + '/main-table/'" class="btn btn-activity flex">
             Activity
             <div class="person-picker-wrapper flex">
-              <PersonPicker :info="currBoard.members" :maxDisplay="2" />
+              <PersonPicker :info="currBoard.members" :maxDisplay="3" />
             </div>
           </RouterLink>
 

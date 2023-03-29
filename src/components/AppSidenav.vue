@@ -2,17 +2,8 @@
   <section class="app-sidenav flex align-center flex-col justify-between">
     <div class="monday-icon-wrapper align-end flex justify-center">
       <RouterLink to="/">
-        <div
-          class="monday-icon nav-item flex align-end"
-          v-tooltip="'Home Page'"
-        >
-          <img
-            class="flex align-center justify-center"
-            src="../assets/img/logo.png"
-            width="40"
-            height="40"
-            alt=""
-          />
+        <div class="monday-icon nav-item flex align-end" v-tooltip="'Home Page'">
+          <img class="flex align-center justify-center" src="../assets/img/logo.png" width="40" height="40" alt="" />
         </div>
       </RouterLink>
     </div>
@@ -20,10 +11,7 @@
 
     <div class="workspace-arrow-left-div"></div>
     <section class="top-navigation-items-area flex-col align-center">
-      <div
-        class="icon-wrapper flex align-center justify-center"
-        v-tooltip="'work management'"
-      >
+      <div class="icon-wrapper flex align-center justify-center" v-tooltip="'work management'">
         <i class="svg nav-item" v-icon="'workManagement'"></i>
       </div>
       <div class="icon-wrapper" hidden>
@@ -55,24 +43,28 @@
       </div>
     </section>
 
-    <section
-      class="footer-navigation-items-area flex-col align-center justify-center"
-    >
+    <section class="footer-navigation-items-area flex-col align-center justify-center">
       <div class="navigation-style-divider"></div>
       <div class="icon-wrapper flex justify-center align-center" hidden></div>
       <div class="avatar-wrapper flex align-center justify-center">
-        <img
-          src="../assets/img/avatar-side-nav.png"
-          class="avatar-preview"
-          title="Lior Doron"
-        />
+        <Avatar :person="user" />
       </div>
     </section>
   </section>
 </template>
 
 <script>
+import Avatar from '../components/Avatar.vue'
+
 export default {
   name: 'AppSidenav',
+  computed: {
+    user() {
+      return this.$store.getters.loggedinUser
+    }
+  },
+  components: {
+    Avatar
+  }
 }
 </script>
