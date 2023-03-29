@@ -1,4 +1,5 @@
 .group-preview-close {
+  @include task-cols;
   height: 60px;
   background-color: $color-snow_white;
   &:hover .menu-icon {
@@ -37,22 +38,25 @@
         position: absolute;
         top: 30px;
         opacity: 1;
-        // margin: 6px;
       }
     }
   }
 
   .group-label {
     @include flex-center;
+    grid-row: 1;
+    text-transform: capitalize;
     border-right: 1px solid $ui-border-color;
     border-top: 1px solid $ui-border-color;
   }
 
   .progress-bar {
     grid-row: 2;
+    grid-column: 1;
     > *:nth-child(-n + 3) {
       position: sticky;
-      z-index: 100001;
+      left:46px;
+      z-index: 1001;
     }
 
     > *:not(:nth-child(1)) {

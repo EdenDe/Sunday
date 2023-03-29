@@ -1,5 +1,5 @@
 <template>
-  <section class="group-preview-close grid-title">
+  <section class="group-preview-close title-grid">
     <div class="group-actions-wrapper sticky">
       <div class="svg-wrapper">
         <span
@@ -55,6 +55,7 @@
       :key="label"
       class="group-label"
       :class="label"
+      :style="{width=label.width}"
     >
       {{ label }}
     </div>
@@ -98,16 +99,14 @@ export default {
       this.isGroupActionsOpen = value
     },
   },
-
   computed: {
     labels() {
       let labels = []
-      labels.push(
-        ...this.$store.getters.cmpOrder.slice(2).map((cmp) => cmp.name)
-      )
+      const cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
+      labels.push(...cmpOrder.slice(1).map((cmp) => cmp))
 
       return labels.map((label) => {
-        if (label === 'txt') label = 'text'
+        if (label.name === 'txt') label.name = 'text'
         return label
       })
     },

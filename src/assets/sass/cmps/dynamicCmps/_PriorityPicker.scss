@@ -1,6 +1,16 @@
 .priority-picker {
   display: grid;  
   font-size: em(12px);
+  position: relative;
+
+  &:hover {
+    .peeling-span {
+      display: block;
+    }
+  }
+  .peeling-span {
+    @include peeling-span;
+  }
   
   .priority{
     @include fullSize;
@@ -13,6 +23,11 @@
     }
   }
  }
+  // display: block;
+
+  // & * {
+  //   height: 100%;
+  // }
 
 .v-popper__inner:has(.priority-label-picker) {
   @include label-picker-container;
@@ -22,4 +37,3 @@
     @include color-picker-label;
   }
 }
-

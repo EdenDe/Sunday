@@ -1,7 +1,7 @@
 .board-header {
   z-index: 200;
   position: sticky;
-  top:0;
+  top: 0;
   left: 0;
   background-color: $color-snow_white;
   padding: 8px 30px 0 38px;
@@ -28,10 +28,11 @@
     .board-title {
       @include editableSpan;
       padding: 0;
-      font-size: em(16px);
+      font-size: rem(32px);
       color: $color-mud_black;
-      letter-spacing: em(0.75px);
+      // letter-spacing: em(0.75px);
       padding: 0 4px;
+      font-weight: 1000;
     }
 
     .btn-container {
@@ -57,8 +58,9 @@
   }
 
   .nav-bar {
-    margin: 8px 0 0;
+    // margin: 8px 0 0;
     border-bottom: 1px solid $layout-border-color;
+
     & > *:not(:last-child) {
       position: relative;
 
@@ -74,7 +76,8 @@
       }
     }
     & > *:not(:first-child) {
-      margin-left: 4px;
+      margin-left: -2px;
+      padding-inline-start: 2px;
     }
     & > *:last-child {
       // padding: 3px;
@@ -82,16 +85,18 @@
       justify-self: center;
     }
     .btn-container {
-      * {
-        margin-inline-end: $margin-small;
+      @include flex-center;
+      > *:not(.icon-container) {
+        padding: 0 $padding-small;
       }
+
       .icon-container {
-        height: 10px;
-        width: 18px;
+        @include flex-center;
+        color: $icon-color;
         .home-icon {
-          color: $color-mud_black;
-          height: 16px;
-          width: 16px;
+          padding: 0;
+          height: 18px;
+          width: 18px;
         }
       }
     }
@@ -101,18 +106,18 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    width: 250px;
     gap: rem(10px);
     .person-picker-wrapper {
       pointer-events: none;
     }
     .btn-activity {
       width: fit-content;
+      height: fit-content;
     }
 
     a {
       align-items: center;
-      height: rem(32px);
+      padding: 4px 8px;
       .person-picker-wrapper {
         display: flex;
       }
@@ -124,6 +129,7 @@
       gap: 5px;
       border-radius: $border-radius-filter;
       border: 1px solid $color-explosive-hover;
+      font-size: rem(12px);
     }
     & :nth-child(2) {
       .icon {

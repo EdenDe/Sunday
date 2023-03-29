@@ -6,7 +6,8 @@
   background-color: $color-riverstone_gray;
   border-right: 1.2px solid $workspace-side-nav;
   transition: width 0.3s ease-out;
-   
+  width: 255px;
+
   &.workspace-close {
     width: rem(32px);
     min-width: rem(32px);

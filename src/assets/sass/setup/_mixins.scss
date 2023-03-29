@@ -198,11 +198,13 @@
 
 @mixin task-cols {
   display: grid;
-  grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 60px;
-
+  grid-auto-flow: column;
+  justify-content: start;
   cursor: pointer;
+}
 
-  //margin-top: -1px;
+@mixin grid-temp{
+  grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 }
 
 @mixin task-row {
@@ -311,22 +313,32 @@
   box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
 }
 
-@mixin input($width : 100%){
-    width: $width;
-    height: rem(32px);
-    line-height: 1.5em;
-    border: 1px solid $ui-border-color;
-    border-radius: $border-radius-rounder;
-    padding: em(8px) em(24px);
-    font-size: em(14px);
+@mixin input($width: 100%) {
+  width: $width;
+  height: rem(32px);
+  line-height: 1.5em;
+  border: 1px solid $ui-border-color;
+  border-radius: $border-radius-rounder;
+  padding: em(8px) em(24px);
+  font-size: em(14px);
 
-    &:hover {
-      border-color: $primary-text-on-secondary-color;
-    }
+  &:hover {
+    border-color: $primary-text-on-secondary-color;
+  }
 
-    &:focus {
-      border-color: transparent;
-      outline: 1px solid $color-basic_blue;
-    }
-  
+  &:focus {
+    border-color: transparent;
+    outline: 1px solid $color-basic_blue;
+  }
+}
+@mixin peeling-span {
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+  height: rem(10px);
+  width: rem(10px);
+}
+
+@mixin random($min, $max) {
+  $random: #{floor(random() * ($max - $min + 1) + $min)};
+  @content;
 }

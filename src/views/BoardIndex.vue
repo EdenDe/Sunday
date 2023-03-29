@@ -1,7 +1,12 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
+    <WorkspaceSideNav
+      @addBoard="addBoard"
+      @setBoard="loadBoard"
+      @copyBoard="copyBoard"
+      @removeBoard="removeBoard"
+    />
     <div class="board-container board-layout">
       <BoardHeader @updateBoard="updateBoard" />
       <RouterView v-if="currBoardId" />
@@ -17,8 +22,7 @@ import { boardService } from '../services/board.service.js'
 import {
   socketService,
   SOCKET_EVENT_UPDATE_BOARD,
-  SOCKET_EMIT_UPDATE_BOARD,
-  SOCKET_EMIT_SET_TOPIC,
+  SOCKET_EMIT_SET_BOARD_TOPIC,
 } from '../services/socket.service.js'
 export default {
   created() {
@@ -30,7 +34,7 @@ export default {
       handler() {
         if (!this.currBoardId) return
         this.$router.push({ params: { boardId: this.currBoardId } })
-        socketService.emit(SOCKET_EMIT_SET_TOPIC, this.currBoardId)
+        socketService.emit(SOCKET_EMIT_SET_BOARD_TOPIC, this.currBoardId)
       },
       immediate: true,
     },

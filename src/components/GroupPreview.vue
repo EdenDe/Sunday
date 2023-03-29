@@ -1,58 +1,139 @@
 <template>
-  <section class="group-preview" :class="isListOpen ? 'list-open' : 'list-close'">
-    <GroupPreviewClose v-if="!isListOpen" :group="group" :isGroupActionsOpen="isGroupActionsOpen"
-      @toggleOpenList="toggleOpenList" @updateProp="updateProp" @copyGroup="copyGroup" />
+  <section
+    class="group-preview"
+    :class="isListOpen ? 'list-open' : 'list-close'"
+  >
+    <GroupPreviewClose
+      v-if="!isListOpen"
+      :group="group"
+      :isGroupActionsOpen="isGroupActionsOpen"
+      @toggleOpenList="toggleOpenList"
+      @updateProp="updateProp"
+      @copyGroup="copyGroup"
+    />
     <template v-if="isListOpen">
       <div class="grid-title">
         <div class="group-actions-wrapper sticky">
           <div class="svg-wrapper">
-            <span class="dots-icon" @click="toggleGroupActions(!isGroupActionsOpen)"
-              :class="isGroupActionsOpen ? 'active group-menu-active' : ''">
+            <span
+              class="dots-icon"
+              @click="toggleGroupActions(!isGroupActionsOpen)"
+              :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
+            >
               <MenuIcon class="menu-icon icon" />
             </span>
 
-            <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
-              <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copyGroup="copyGroup"
-                @renameTitle="toggleFocusGroupTitle" @openColorPicker="toggleColorModal" @toggleOpenList="toggleOpenList"
-                @remove="$emit('removeGroup', group.id)" />
+            <div
+              class="group-actions"
+              v-if="isGroupActionsOpen"
+              v-clickOutside="toggleGroupActions"
+            >
+              <GroupActions
+                :groupColor="group.color"
+                @add="$emit('addGroup')"
+                @copyGroup="copyGroup"
+                @renameTitle="toggleFocusGroupTitle"
+                @openColorPicker="toggleColorModal"
+                @toggleOpenList="toggleOpenList"
+                @remove="$emit('removeGroup', group.id)"
+              />
             </div>
           </div>
         </div>
 
         <div class="open-list" v-tooltip="'Collapse group'">
-          <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="toggleOpenList" />
+          <ArrowDownIcon
+            class="open-list-icon icon"
+            :style="{ fill: group.color }"
+            @click="toggleOpenList"
+          />
         </div>
-        <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused"
-          :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
-          @toggleColorModal="toggleColorModal" />
+        <GroupTitle
+          :color="group.color"
+          :title="group.title"
+          :tasksNumber="tasksNumber"
+          :isTitleFocused="isTitleFocused"
+          :isColorModalOpen="isColorModalOpen"
+          @updateProp="updateProp"
+          @toggleFocusGroupTitle="toggleFocusGroupTitle"
+          @toggleColorModal="toggleColorModal"
+        />
       </div>
 
+<<<<<<< HEAD
       <Container class="group-labels" orientation="vertical">
         <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
           :groupColor="group.color">
           <div v-if="index === 1" class="first-col-color group-label" :style="{ backgroundColor: group.color }"></div>
+=======
+      <Container
+        class="group-labels"
+        @drop="onDropColumn"
+        orientation="horizontal"
+        :drop-placeholder="{
+          className: 'drop-placeholder1',
+          animationDuration: '200',
+          showOnTop: true,
+        }"
+      >
+        <Draggable
+          v-for="(label, index) in labels"
+          :key="index"
+          class="group-label"
+          :class="label"
+          :groupColor="group.color"
+          :style="{ width: label.width }"
+        >
+          <div class="draggable-label">
+            {{ label.name }}
+          </div>
+          <div
+            v-if="index === 1"
+            class="first-col-color group-label"
+            :style="{ backgroundColor: group.color }"
+          ></div>
+>>>>>>> 0a92e4d1160b397df670c859f7589291e0f72963
           <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
-          <div class="draggable-label">{{ label }}</div>
         </Draggable>
         <div></div>
       </Container>
 
-      <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
+      <TaskList
+        v-if="isListOpen"
+        :tasks="group.tasks"
+        :groupBgColor="group.color"
+        @updateProp="updateProp"
+      />
       <div class="add-task-container">
         <div class="task-option"></div>
-        <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
+        <div
+          class="first-col-color"
+          :style="{ backgroundColor: group.color }"
+        ></div>
         <Checkbox />
 
-        <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
-          <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
+        <form
+          @submit.prevent="onAddTask"
+          class="add-task-input-container sticky"
+        >
+          <input
+            placeholder="+ Add task"
+            type="text"
+            v-model="newTask.taskTitle"
+          />
         </form>
       </div>
       <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
     </template>
-    <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
-      @remove="removeTasks" @copy="copySelectedTasks"></TaskActionBar>
+    <TaskActionBar
+      v-if="isActionBarOpen"
+      :selectedTasksNum="selectedTasksNum"
+      @closeActionBar="closeActionBar"
+      @remove="removeTasks"
+      @copy="copySelectedTasks"
+    ></TaskActionBar>
   </section>
 </template>
 
@@ -94,6 +175,19 @@ export default {
     }
   },
   methods: {
+    onDropColumn({ addedIndex, removedIndex }) {
+      addedIndex -= 2
+      removedIndex -= 2
+      let cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
+      cmpOrder.splice(addedIndex, 0, cmpOrder.splice(removedIndex, 1)[0])
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: null,
+        taskId: null,
+        prop: 'cmpOrder',
+        toUpdate: cmpOrder,
+      })
+    },
     updateProp(taskId, prop, toUpdate) {
       console.log(taskId, prop, toUpdate)
       this.$store.dispatch({
@@ -163,14 +257,17 @@ export default {
   },
   computed: {
     labels() {
-      let labels = [null, null, null]
-      labels.push(
-        ...this.$store.getters.cmpOrder.slice(1).map((cmp) => cmp.name)
-      )
+      let labels = [
+        { name: '', width: '40px' },
+        { name: '', width: '6px' },
+        { name: '', width: '33px' },
+      ]
+      const cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
+      labels.push(...cmpOrder.slice(1).map((cmp) => cmp))
 
       return labels.map((label) => {
-        if (label === 'taskTitle') label = 'task'
-        if (label === 'txt') label = 'text'
+        if (label.name === 'taskTitle') label.name = 'task'
+        if (label.name === 'txt') label.name = 'text'
         return label
       })
     },
@@ -194,8 +291,9 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${res[title]
-              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${
+              res[title]
+            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })

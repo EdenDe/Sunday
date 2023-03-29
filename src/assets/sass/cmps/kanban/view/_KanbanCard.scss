@@ -1,0 +1,11 @@
+.task-card{
+  height: max-content;
+  width: 238px;
+  margin: 12px;
+  padding: $padding-small;
+
+  background-color: $color-snow_white;
+  border-radius: $border-radius;
+
+  box-shadow: $box-shadow-medium;
+}

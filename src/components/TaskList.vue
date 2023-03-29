@@ -2,10 +2,18 @@
   <Container
     orientation="horizental"
     @drop="onDrop"
-    :dropPlaceholder="dropPlaceholder"
+    :drop-placeholder="{
+      className: 'drop-placeholder',
+      animationDuration: '200',
+      showOnTop: true,
+    }"
+    drag-class="on-drag"
   >
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
-      <div class="group-actions-wrapper task-options sticky">
+      <div
+        class="group-actions-wrapper task-options sticky"
+        :style="{ width: '40px' }"
+      >
         <div class="svg-wrapper">
           <span
             class="dots-icon"
@@ -29,7 +37,11 @@
       </div>
       <div
         class="first-col-color sticky"
-        :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
+        :style="{
+          backgroundColor: groupBgColor,
+          borderColor: groupBgColor,
+          width: '6px',
+        }"
       ></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
       <div></div>

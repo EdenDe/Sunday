@@ -5,6 +5,7 @@
 
   .grid-title {
     @include task-cols;
+    @include grid-temp;
     .group-actions-wrapper {
       @include flex-center;
       position: sticky;
@@ -113,6 +114,7 @@
   }
   .add-task-container {
     @include task-cols;
+    @include grid-temp;
     border-radius: 0 0 0 $border-radius-rounder;
     background-color: $color-snow_white;
 

@@ -1,0 +1,28 @@
+.kanban-layout{
+  display: grid;
+  grid-template-columns: 38px 1fr 30px;
+  height: max-content;
+  >*{
+    grid-column: 2;
+  }
+  .kanban{
+    gap: 14px;
+
+  }
+  .label-col{
+    cursor: pointer;
+    background-color: $color-riverstone_gray;
+    width: 260px;
+    border-radius: $border-radius-rounder;
+    &-title{
+      display: flex;
+      align-items: center;
+      padding-inline-start: $padding-small;
+      height: 40px;
+      color: $color-snow_white;
+      border-top-right-radius: $border-radius-rounder;
+      border-top-left-radius: $border-radius-rounder;
+      
+    }
+  }
+}

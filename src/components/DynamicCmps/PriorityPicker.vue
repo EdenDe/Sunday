@@ -9,6 +9,7 @@
           @setLabel="updateLabel">
         </LabelPicker>
       </template>
+      <span class="peeling-span scale-up-tr"></span>
     </VDropdown>
   </section>
 </template>

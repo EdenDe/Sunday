@@ -1,9 +1,10 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
+//Board sockets
 export const SOCKET_EVENT_UPDATE_BOARD = 'board-get-update'
 export const SOCKET_EMIT_UPDATE_BOARD = 'board-set-update'
-export const SOCKET_EMIT_SET_TOPIC = 'board-set-topic'
+export const SOCKET_EMIT_SET_BOARD_TOPIC = 'board-set-topic'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'

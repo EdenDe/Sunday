@@ -16,6 +16,8 @@
           @include flex-center;
           height: 18px;
           width: 18px;
+          color: $icon-color;
+          fill: $icon-color;
         }
       }
     }

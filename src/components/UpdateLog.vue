@@ -1,8 +1,8 @@
 <template>
   <section class="update-log grid">
     <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
-      <input v-if="!isEditor" @focus="toggleIsEditor(true)" v-model="content" placeholder="Write an update..."
-        class="input-update-log" />
+      <input v-if="!isEditor" @focus="toggleIsEditor(true)" @input="onType" v-model="content"
+        placeholder="Write an update..." class="input-update-log" />
       <TextEditor v-model="content" @setContent="setContent" v-else />
       <div class="emoji-container" @click="toggleShowEmoji">
         <button class="btn flex align-center justify-between">
@@ -14,6 +14,7 @@
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper flex-col">
+      <h1>{{ typingUser }}</h1>
       <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
         :loggedInUserId="loggedInUser._id" @editUpdate="editUpdate" @toggleLike="toggleLike" />
     </section>
@@ -34,6 +35,7 @@ export default {
   props: {
     updates: Array,
     loggedInUser: Object,
+    taskId: String,
   },
   emits: ['editUpdates'],
   data() {
@@ -41,12 +43,12 @@ export default {
       isEditor: false,
       content: '',
       emojiIndex: new EmojiIndex(data),
-      isEmojiOpen: false
+      isEmojiOpen: false,
+      typingUser: '',
     }
   },
   methods: {
     addEmoji(emoji) {
-      debugger
       this.content += emoji.native
     },
     toggleIsEditor(value = false) {
@@ -62,14 +64,13 @@ export default {
       this.content = content
     },
     onUpdate() {
-      debugger
       const updates = JSON.parse(JSON.stringify(this.updates))
       updates.unshift({
         id: 'up' + utilService.makeId(7),
         createdAt: Date.now(),
         txt: this.content,
         likedBy: [],
-        byUser: { ...this.loggedInUser }
+        byUser: { ...this.loggedInUser },
       })
       this.content = ''
       this.$emit('editUpdates', 'updates', updates)
@@ -81,9 +82,11 @@ export default {
     },
     toggleLike(updateId, value) {
       const updates = JSON.parse(JSON.stringify(this.updates))
-      let update = updates.find(update => update.id === updateId)
+      let update = updates.find((update) => update.id === updateId)
       if (value) {
-        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
+        update.likedBy = update.likedBy.filter(
+          (userId) => userId !== this.loggedInUser._id
+        )
       } else {
         update.likedBy.push(this.loggedInUser._id)
       }
@@ -91,7 +94,7 @@ export default {
     },
     editUpdate(updateId, content) {
       const updates = JSON.parse(JSON.stringify(this.updates))
-      let update = updates.find(update => update.id === updateId)
+      let update = updates.find((update) => update.id === updateId)
       update.txt = content
       this.$emit('editUpdates', 'updates', updates)
     }
