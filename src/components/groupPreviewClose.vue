@@ -2,61 +2,28 @@
   <section class="group-preview-close title-grid">
     <div class="group-actions-wrapper sticky">
       <div class="svg-wrapper">
-        <span
-          class="dots-icon"
-          @click="toggleGroupActions"
-          :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
-        >
+        <span class="dots-icon" @click="toggleGroupActions" :class="isGroupActionsOpen ? 'active group-menu-active' : ''">
           <MenuIcon class="menu-icon icon" />
         </span>
 
-        <div
-          class="group-actions"
-          v-if="isGroupActionsOpen"
-          v-clickOutside="toggleGroupActions"
-        >
-          <GroupActions
-            :groupColor="group.color"
-            @add="$emit('addGroup')"
-            @copy="$emit('copyGroup')"
-            @renameTitle="toggleFocusGroupTitle"
-            @openColorPicker="toggleColorModal"
-            @remove="$emit('removeGroup', group.id)"
-          />
+        <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
+          <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="$emit('copyGroup')"
+            @renameTitle="toggleFocusGroupTitle" @openColorPicker="toggleColorModal"
+            @remove="$emit('removeGroup', group.id)" />
         </div>
       </div>
     </div>
 
-    <div
-      class="first-col-color"
-      :style="{ backgroundColor: group.color }"
-    ></div>
+    <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
     <div class="open-list" v-tooltip="'Expand group'">
-      <ArrowDownIcon
-        class="open-list-icon icon"
-        :style="{ fill: group.color }"
-        @click="$emit('toggleOpenList')"
-      />
+      <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="$emit('toggleOpenList')" />
     </div>
 
-    <GroupTitle
-      :color="group.color"
-      :title="group.title"
-      :tasksNumber="tasksNumber"
-      :isTitleFocused="isTitleFocused"
-      :isColorModalOpen="isColorModalOpen"
-      @updateProp="onUpdateProp"
-      @toggleFocusGroupTitle="toggleFocusGroupTitle"
-      @toggleColorModal="toggleColorModal"
-    />
+    <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused"
+      :isColorModalOpen="isColorModalOpen" @updateProp="onUpdateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
+      @toggleColorModal="toggleColorModal" />
 
-    <div
-      v-for="label in labels"
-      :key="label"
-      class="group-label"
-      :class="label"
-      :style="{width=label.width}"
-    >
+    <div v-for="label in labels" :key="label" class="group-label" :class="label" :style="{ width: label.width }">
       {{ label }}
     </div>
     <ProgressBar :tasks="group.tasks" :groupColor="group.color" />

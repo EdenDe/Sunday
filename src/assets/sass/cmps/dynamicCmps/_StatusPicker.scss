@@ -8,7 +8,7 @@
       display: block;
     }
   }
-  
+
   .status{
     @include fullSize;
     display:grid;
@@ -17,6 +17,7 @@
 
     span{
       padding: 0 8px
+    }
 }
 .peeling-span {
   @include peeling-span;
@@ -28,6 +29,7 @@
   .color-picker-label {
     @include color-picker-label;
   }
+}
 }
 
 // &:hover:before {
