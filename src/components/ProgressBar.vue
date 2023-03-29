@@ -1,6 +1,7 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
-    <div v-for="value in Array(2).fill(null)"></div>
+    <div :style="{ width: '40px' }"></div>
+    <div :style="{ width: '6px' }"></div>
     <div
       v-for="(item, idx) in cmpOrder"
       :key="idx"
