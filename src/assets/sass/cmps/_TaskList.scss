@@ -1,6 +1,11 @@
 .task-list {
   @include task-cols;
   background-color: $color-snow_white;
+
+  >*:not(:first-child){
+    border-top: 1px solid $ui-border-color;
+  }
+  
   &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }
@@ -25,11 +30,6 @@
       border-bottom: 1px solid $color-basic_blue;
     }
   }
-
-  // TODO: ASK ASI
-  // &:hover :is(.status, .priority){
-  // opacity: 0.8;
-  // }
 
   & > *:nth-child(-n + 3) {
     position: sticky;

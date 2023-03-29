@@ -32,6 +32,7 @@
         :style="{ backgroundColor: groupBgColor, borderColor: groupBgColor }"
       ></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
+      <div></div>
     </Draggable>
   </Container>
 </template>
