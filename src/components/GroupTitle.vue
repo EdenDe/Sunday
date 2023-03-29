@@ -1,17 +1,20 @@
 <template>
   <section class="group-title-container">
-    <div class="group-title-wrapper flex align-center">
+    <div
+      class="group-title-wrapper flex align-center"
+      :style="{ color: color, width: '323px' }"
+    >
       <span
         class="btn-color"
         :style="{ backgroundColor: color }"
         @mousedown.prevent="toggleColorPicker(true)"
-      ></span>
+      >
+      </span>
       <span
         contenteditable
         ref="groupTitle"
         class="group-title"
         @focusout="onChangeGroupProp('title', $event.target.innerText)"
-        :style="{ color: color }"
       >
         {{ title }}
       </span>

@@ -1,7 +1,7 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
     <div :style="{ width: '40px' }"></div>
-    <div :style="{ width: '6px' }"></div>
+    <div :style="{ width: '6px', backgroundColor: groupColor }"></div>
     <div
       v-for="(item, idx) in cmpOrder"
       :key="idx"

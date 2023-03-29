@@ -13,7 +13,7 @@
     />
     <template v-if="isListOpen">
       <div class="grid-title">
-        <div class="group-actions-wrapper sticky">
+        <div class="group-actions-wrapper sticky" :style="{ width: '40px' }">
           <div class="svg-wrapper">
             <span
               class="dots-icon"
@@ -41,7 +41,11 @@
           </div>
         </div>
 
-        <div class="open-list" v-tooltip="'Collapse group'">
+        <div
+          :style="{ width: '33px' }"
+          class="open-list"
+          v-tooltip="'Collapse group'"
+        >
           <ArrowDownIcon
             class="open-list-icon icon"
             :style="{ fill: group.color }"
@@ -84,7 +88,7 @@
           <div
             v-if="index === 1"
             class="first-col-color group-label"
-            :style="{ backgroundColor: group.color }"
+            :style="{ backgroundColor: group.color, width: '6px' }"
           ></div>
           <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />

@@ -5,7 +5,6 @@
 
   .grid-title {
     @include task-cols;
-    @include grid-temp;
     .group-actions-wrapper {
       @include flex-center;
       position: sticky;
@@ -21,13 +20,11 @@
       position: sticky;
       z-index: 100;
       left: 46px;
-      grid-column: 3;
       .open-list-icon {
-          height: 12px;
-          width: 12px;
-        }
+        height: 12px;
+        width: 12px;
+      }
     }
-
   }
   .first-col-color {
     @include fullSize;
@@ -67,7 +64,7 @@
       position: sticky;
       z-index: 1;
     }
-    >:last-child{
+    > :last-child {
       border-right: none;
     }
     .first-col-color {
@@ -124,7 +121,7 @@
     > *:not(.task-option) {
       box-shadow: $box-shadow-xs;
     }
-    >:last-child{
+    > :last-child {
       border-right: none;
     }
     &:hover {
@@ -175,10 +172,10 @@
     }
   }
   &.list-open {
-     .open-list-icon {
-        transform: rotate(90deg);
-      }
+    .open-list-icon {
+      transform: rotate(90deg);
     }
+  }
 }
 
 .task-options-wrapper {
@@ -195,7 +192,7 @@
   }
 }
 
-.drop-preview{
+.drop-preview {
   border: 1px dashed gray !important;
   z-index: 1;
 }
