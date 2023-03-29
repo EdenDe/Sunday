@@ -4,9 +4,12 @@
       <Avatar :person="update.byUser" />
       <p>{{ update.byUser.fullname }}</p>
       <div class="actions-right">
-        <span class="update-date">
-          {{ dateFormatted(update.createdAt) }}
-        </span>
+        <div class="update-date">
+          <TimeIcon class="icon icon-time" />
+          <span class="update-date-txt">
+            {{ dateFormatted(update.createdAt) }}
+          </span>
+        </div>
         <MenuIcon class="menu-icon icon" @click="toggleActionMenu" />
       </div>
     </div>
@@ -23,13 +26,13 @@
         class="btn grid grid-col"
       >
         <div class="icon-container">
-          <ThumbsUp class="thumbs-up-icon" />
+          <ThumbsUpIcon class="thumbs-up-icon" />
         </div>
         like
       </button>
       <button class="btn grid grid-col">
         <div class="icon-container">
-          <Replay class="replay-icon" />
+          <ReplayIcon class="replay-icon" />
         </div>
         Reply
       </button>
@@ -49,9 +52,9 @@ import MenuIcon from '../assets/icons/Menu.svg'
 import Avatar from './Avatar.vue'
 import TextEditor from './TextEditor.vue'
 //ICON
-import ThumbsUp from '../assets/icons/ThumbsUp.svg'
-import Replay from '../assets/icons/Replay.svg'
-
+import ThumbsUpIcon from '../assets/icons/ThumbsUp.svg'
+import ReplayIcon from '../assets/icons/Replay.svg'
+import TimeIcon from '../assets/icons/Time.svg'
 export default {
   name: 'update',
   props: {
@@ -102,8 +105,9 @@ export default {
     Avatar,
     TextEditor,
     MenuIcon,
-    ThumbsUp,
-    Replay,
+    ThumbsUpIcon,
+    ReplayIcon,
+    TimeIcon,
   },
 }
 </script>

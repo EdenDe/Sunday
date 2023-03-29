@@ -12,7 +12,7 @@
     height: rem(65px);
     padding: 5px $padding-medium;
 
-    .avatar{
+    .avatar {
       height: 40px;
       width: 40px;
       border: none;
@@ -21,10 +21,14 @@
     .actions-right {
       @include flex-center;
       margin-left: auto;
-      
-      .update-date{
+
+      .update-date {
         font-size: 14px;
         margin-inline-end: 5px;
+        .icon {
+          width: 14px;
+          height: 14px;
+        }
       }
 
       .menu-icon {
@@ -52,8 +56,8 @@
     border-top: 1px solid $layout-border-color;
     border-bottom-right-radius: $border-radius-rounder;
     border-bottom-left-radius: $border-radius-rounder;
-    
-    .btn{
+
+    .btn {
       justify-content: center;
       align-items: center;
       gap: $padding-small;
@@ -61,22 +65,22 @@
     }
 
     .btn.liked {
-    color: $color-blue-btn;
+      color: $color-blue-btn;
     }
-    
-    .btn:hover{
+
+    .btn:hover {
       background-color: $primary-background-hover-color;
       border-radius: $btn-border-radius;
     }
-    
-    &>* {
+
+    & > * {
       width: 100%;
       border: none;
       background-color: transparent;
       font-size: 16px;
-      .icon-container{
+      .icon-container {
         @include flex-center;
-        >*{
+        > * {
           width: 16px;
           height: 16px;
         }
@@ -90,6 +94,8 @@
 
   .actions-list {
     @include actions-list;
+    top: 50px;
+    right: 10px;
 
     .action {
       @include action;
