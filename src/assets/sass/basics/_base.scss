@@ -65,6 +65,22 @@ ul {
   list-style-type: none;
 }
 
+//scrollbar
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-scrollbar_gray;  
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
 //TOOLTIP
 .v-popper--theme-tooltip .v-popper__inner {
   font-size: em(14px);

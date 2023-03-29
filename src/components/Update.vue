@@ -13,18 +13,14 @@
         <MenuIcon class="menu-icon icon" @click="toggleActionMenu" />
       </div>
     </div>
-    <div v-if="isEditor">
+    <div class="update-body" v-if="isEditor">
       <TextEditor v-model="content" @setContent="setContent" />
-      <button @click="toggleEditor">Cancel</button>
-      <button @click="onSave">Save</button>
+      <button class="btn-cancel" @click="toggleEditor">Cancel</button>
+      <button class="btn-save" @click="onSave">Save</button>
     </div>
     <p class="update-text" v-else v-html="update.txt"></p>
     <div class="btn-container">
-      <button
-        @click="onToggleLike"
-        :class="{ liked: likeUpdate }"
-        class="btn grid grid-col"
-      >
+      <button @click="onToggleLike" :class="{ liked: likeUpdate }" class="btn grid grid-col">
         <div class="icon-container">
           <ThumbsUpIcon class="thumbs-up-icon" />
         </div>
@@ -37,11 +33,15 @@
         Reply
       </button>
     </div>
-    <div class="actions-list" v-if="isActionMenuOpen">
-      <button class="actions" @click="$emit('removeUpdate', update.id)">
+    <div class="actions-list" v-if="isActionMenuOpen" v-clickOutside="toggleActionMenu">
+      <button class="action" @click="$emit('removeUpdate', update.id)">
+        <DeleteIcon class="icon" />
         Delete
       </button>
-      <button class="actions" @click="toggleEditor">Edit</button>
+      <button class="action" @click="toggleEditor">
+        <EditIcon class="icon" />
+        Edit
+      </button>
     </div>
   </article>
 </template>
@@ -55,6 +55,8 @@ import TextEditor from './TextEditor.vue'
 import ThumbsUpIcon from '../assets/icons/ThumbsUp.svg'
 import ReplayIcon from '../assets/icons/Replay.svg'
 import TimeIcon from '../assets/icons/Time.svg'
+import EditIcon from '../assets/icons/Edit.svg'
+import DeleteIcon from '../assets/icons/Delete.svg'
 export default {
   name: 'update',
   props: {
@@ -100,7 +102,7 @@ export default {
       return this.update.likedBy.includes(this.loggedInUserId)
     },
   },
-  created() {},
+  created() { },
   components: {
     Avatar,
     TextEditor,
@@ -108,6 +110,8 @@ export default {
     ThumbsUpIcon,
     ReplayIcon,
     TimeIcon,
+    EditIcon,
+    DeleteIcon
   },
 }
 </script>

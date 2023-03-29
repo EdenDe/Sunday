@@ -14,7 +14,7 @@
         </div>
 
         <div class="btn-action-wrapper flex">
-          <RouterLink :to="'/board/' + currBoard._id + '/main-table/'" class="btn btn-activity flex">
+          <RouterLink :to="'/board/' + currBoard._id + '/main-table/pulse'" class="btn btn-activity flex">
             Activity
             <div class="person-picker-wrapper flex">
               <PersonPicker :info="currBoard.members" :maxDisplay="3" />
@@ -29,7 +29,8 @@
           </button>
         </div>
       </div>
-      <Invite v-if="isInviteModalOpen" />
+      <Invite v-clickOutside="toggleInviteModal" v-if="isInviteModalOpen" @toggleInviteModal="toggleInviteModal"
+        @updateBoard="(props, toUpdate) => $emit('updateBoard', props, toUpdate)" />
 
       <div class="desc-wrapper">
         <span class="desc" contenteditable @focusout="onChangeDesc($event.target.innerText)">
@@ -102,7 +103,7 @@ export default {
     },
     toggleInviteModal() {
       this.isInviteModalOpen = !this.isInviteModalOpen
-    }
+    },
   },
   components: {
     TaskFilter,

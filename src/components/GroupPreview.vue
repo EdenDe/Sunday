@@ -27,7 +27,7 @@
           @toggleColorModal="toggleColorModal" />
       </div>
 
-      <Container class="group-labels">
+      <Container class="group-labels" orientation="vertical">
         <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
           :groupColor="group.color">
           <div v-if="index === 1" class="first-col-color group-label" :style="{ backgroundColor: group.color }"></div>
@@ -108,17 +108,6 @@ export default {
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
-
-      // const activity = boardService.addActivity('Created', this.newTask.taskTitle, 'Group: ' + this.group.title)
-      // activity.taskId = this.newTask.id
-      // this.$store.dispatch({
-      //   type: 'updateCurrBoard',
-      //   groupId: null,
-      //   taskId: null,
-      //   prop: 'activities',
-      //   toUpdate: activity,
-      // })
-
       this.newTask.id = 't' + utilService.makeId()
       this.newTask.taskTitle = ''
     },
@@ -140,6 +129,7 @@ export default {
         if (this.selectedTasks.includes(task.id)) {
           let newTask = { ...task }
           newTask.id = utilService.makeId()
+          newTask.taskTitle += ' copy'
           tasks.push(newTask)
         }
       })

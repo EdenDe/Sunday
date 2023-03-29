@@ -1,8 +1,18 @@
 .status-picker {
-  display: block;  
-  & * {
-   height: 100%;
+  display: grid;  
+  font-size: em(12px);
+  
+  .status{
+    @include fullSize;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+
+    span{
+      padding: 0 8px
+    }
   }
+  
 }
 
 .v-popper__inner:has(.status-label-picker){

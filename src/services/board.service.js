@@ -103,13 +103,15 @@ function _updateTask(board, groupId, taskId, prop, toUpdate) {
 	return board
 }
 
-function _activityRemoveOrAddTask(taskList, command) {
+function _activityRemoveOrAddTask(groupTitle, taskList, command) {
 	let activities = taskList.map(task => {
-		return addActivity(
+		const activity = addActivity(
 			command,
 			task.taskTitle,
-			command === 'Created' ? 'Group: ' + group.title : null
+			command === 'Created' ? 'Group: ' + groupTitle : null
 		)
+		activity.taskId = task.id
+		return activity
 	})
 	return activities
 }
@@ -132,7 +134,11 @@ function _updateGroup(board, groupId, prop, toUpdate) {
 
 		if (removedTasks) {
 			activities.push(
-				..._activityRemoveOrAddTask(removedTasks, 'Deleted')
+				..._activityRemoveOrAddTask(
+					group.title,
+					removedTasks,
+					'Deleted'
+				)
 			)
 		}
 
@@ -142,7 +148,7 @@ function _updateGroup(board, groupId, prop, toUpdate) {
 
 		if (newTasks) {
 			activities.push(
-				..._activityRemoveOrAddTask(newTasks, 'Deleted')
+				..._activityRemoveOrAddTask(group.title, newTasks, 'Created')
 			)
 		}
 
@@ -272,14 +278,7 @@ function getEmptyBoard() {
 				color: '#c4c4c4',
 			},
 		],
-		members: [
-			{
-				id: 'u101',
-				fullname: 'Lior Doron',
-				imgUrl:
-					'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_960_720.png',
-			},
-		],
+		members: [userService.getLoggedinUser()],
 		groups: [
 			{
 				id: 'g' + utilService.makeId(),
@@ -291,7 +290,7 @@ function getEmptyBoard() {
 						checkbox: false,
 						taskTitle: 'Task 1',
 						person: [],
-						date: 1661113200000,
+						date: null,
 						status: '',
 						timeline: [],
 						txt: '',
@@ -302,7 +301,7 @@ function getEmptyBoard() {
 						checkbox: false,
 						taskTitle: 'Task 2',
 						person: [],
-						date: 1661372400000,
+						date: null,
 						status: '',
 						timeline: [],
 						txt: '',
@@ -313,7 +312,7 @@ function getEmptyBoard() {
 						checkbox: false,
 						taskTitle: 'Task 3',
 						person: [],
-						date: 1661631600000,
+						date: null,
 						status: '',
 						timeline: [],
 						txt: '',
@@ -323,5 +322,6 @@ function getEmptyBoard() {
 			},
 		],
 		activities: [],
+		updates: [],
 	}
 }

@@ -6,12 +6,12 @@
       </button>
       <div class="task-title-container">
         <span contenteditable class="task-title">
-          {{ task.taskTitle }}
+          {{ object.title }}
         </span>
       </div>
       <div class="tabs-wrapper flex align-center">
         <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'updateLog' }">
-          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + task.updates?.length">
+          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + object.updates?.length">
             <div class="task-update-icon">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -26,8 +26,8 @@
       </div>
     </header>
     <main class="content-wrapper">
-      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="task.updates ? task.updates : []"
-        @updateTask="updateTask" />
+      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="object.updates"
+        @editUpdates="update" />
       <ActivityLog v-if="activeTab === 'activityLog'" :activities="activities" />
     </main>
 
@@ -41,7 +41,6 @@ import UpdateLog from '../components/UpdateLog.vue'
 import ActivityLog from '../components/ActivityLog.vue'
 import CloseIcon from '../assets/icons/CloseBig.svg'
 import HomeIcon from '../assets/icons/Home.svg'
-import { userService } from '../services/user.service'
 export default {
   data() {
     return {
@@ -54,11 +53,11 @@ export default {
     onBack() {
       this.$router.push(`/board/${this.$route.params.boardId}/main-table`)
     },
-    updateTask(prop, toUpdate) {
+    update(prop, toUpdate) {
       this.$store.dispatch({
         type: 'updateCurrBoard',
-        groupId: this.groupId,
-        taskId: this.task.id,
+        groupId: this.taskId ? this.groupId : null,
+        taskId: this.taskId,
         prop,
         toUpdate,
       })
@@ -66,23 +65,37 @@ export default {
   },
   computed: {
     taskId() {
-      return this.$route.params.taskId
+      return this.$route.params.taskId || null
     },
-    task() {
-      const groups = this.$store.getters.groups
-      if (groups) {
-        for (let i = 0; i < groups.length; i++) {
-          let currTask = groups[i].tasks.find((t) => t.id === this.taskId)
-          if (currTask) {
-            this.groupId = groups[i].id
-            return JSON.parse(JSON.stringify(currTask))
+    object() {
+      if (this.taskId) {
+        const groups = this.$store.getters.groups
+        if (groups) {
+          for (let i = 0; i < groups.length; i++) {
+            let currTask = groups[i].tasks.find((t) => t.id === this.taskId)
+            if (currTask) {
+              this.groupId = groups[i].id
+              debugger
+              return {
+                title: currTask.taskTitle,
+                updates: currTask.updates || [],
+              }
+            }
           }
+          this.onBack()
         }
-        this.onBack()
+      } else {
+        let board = this.$store.getters.currBoard
+        return {
+          title: board.title,
+          updates: board.updates || [],
+        }
       }
+
     },
     activities() {
       let activities = this.$store.getters.activities
+      if (!this.taskId) return activities
       return activities.filter((activity) => activity.taskId === this.taskId)
     },
   },

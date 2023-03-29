@@ -4,7 +4,7 @@ import LoginSignup from '../views/LoginSignup.vue'
 import BoardIndex from '../views/BoardIndex.vue'
 import BoardKanban from '../views/BoardKanban.vue'
 import BoardTable from '../views/BoardTable.vue'
-import TaskPulse from '../views/TaskPulse.vue'
+import Pulse from '../views/Pulse.vue'
 import Dashboard from '../views/Dashboard.vue'
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,9 +31,9 @@ const router = createRouter({
 					component: BoardTable,
 					children: [
 						{
-							path: 'pulse/:taskId',
+							path: 'pulse/:taskId?',
 							name: 'pulse',
-							component: TaskPulse,
+							component: Pulse,
 						},
 					],
 				},

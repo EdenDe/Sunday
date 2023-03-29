@@ -4,6 +4,13 @@
       <input v-if="!isEditor" @focus="toggleIsEditor(true)" v-model="content" placeholder="Write an update..."
         class="input-update-log" />
       <TextEditor v-model="content" @setContent="setContent" v-else />
+      <div class="emoji-container" @click="toggleShowEmoji">
+        <button class="btn flex align-center justify-between">
+          <Emoji />
+          Emoji
+        </button>
+        <picker v-if="isEmojiOpen" :data="emojiIndex" @select="addEmoji" />
+      </div>
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper flex-col">
@@ -17,6 +24,10 @@
 import Update from '../components/Update.vue'
 import TextEditor from './TextEditor.vue'
 import { utilService } from '../services/util.service'
+import data from "emoji-mart-vue-fast/data/twitter.json";
+import "emoji-mart-vue-fast/css/emoji-mart.css";
+import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
+import Emoji from '../assets/icons/Emoji.svg'
 
 export default {
   name: 'UpdateLog',
@@ -24,23 +35,34 @@ export default {
     updates: Array,
     loggedInUser: Object,
   },
-  emits: ['updateTask'],
+  emits: ['editUpdates'],
   data() {
     return {
       isEditor: false,
       content: '',
+      emojiIndex: new EmojiIndex(data),
+      isEmojiOpen: false
     }
   },
   methods: {
+    addEmoji(emoji) {
+      debugger
+      this.content += emoji.native
+    },
     toggleIsEditor(value = false) {
       if (this.content === '') {
         this.isEditor = value
       }
     },
+    toggleShowEmoji() {
+      this.isEmojiOpen = !this.isEmojiOpen
+    },
     setContent(content) {
+      debugger
       this.content = content
     },
     onUpdate() {
+      debugger
       const updates = JSON.parse(JSON.stringify(this.updates))
       updates.unshift({
         id: 'up' + utilService.makeId(7),
@@ -50,12 +72,12 @@ export default {
         byUser: { ...this.loggedInUser }
       })
       this.content = ''
-      this.$emit('updateTask', 'updates', updates)
+      this.$emit('editUpdates', 'updates', updates)
     },
     removeUpdate(updateId) {
       let updates = JSON.parse(JSON.stringify(this.updates))
       updates = updates.filter(update => update.id !== updateId)
-      this.$emit('updateTask', 'updates', updates)
+      this.$emit('editUpdates', 'updates', updates)
     },
     toggleLike(updateId, value) {
       const updates = JSON.parse(JSON.stringify(this.updates))
@@ -65,19 +87,21 @@ export default {
       } else {
         update.likedBy.push(this.loggedInUser._id)
       }
-      this.$emit('updateTask', 'updates', updates)
+      this.$emit('editUpdates', 'updates', updates)
     },
     editUpdate(updateId, content) {
       const updates = JSON.parse(JSON.stringify(this.updates))
       let update = updates.find(update => update.id === updateId)
       update.txt = content
-      this.$emit('updateTask', 'updates', updates)
+      this.$emit('editUpdates', 'updates', updates)
     }
   },
 
   components: {
     TextEditor,
-    Update
+    Update,
+    Emoji,
+    Picker
   },
 }
 </script>

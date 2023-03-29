@@ -1,8 +1,17 @@
 .priority-picker {
-     display: block;
-     & * {
-       height: 100%;
-     }
+  display: grid;  
+  font-size: em(12px);
+  
+  .priority{
+    @include fullSize;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+
+    span{
+      padding: 0 8px
+    }
+  }
  }
 
 .v-popper__inner:has(.priority-label-picker) {
