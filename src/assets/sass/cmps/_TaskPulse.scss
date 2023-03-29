@@ -4,15 +4,14 @@
   right: 0;
   top: 0;
   height: 100vh;
-  width: em(695px);
+  width: em(629px);
   box-shadow: $box-shadow-large;
   background-color: $color-snow_white;
-  overflow-y: auto;
+   overflow-y: auto;
 
   header {
-    
     border-bottom: 0.5px solid $workspace-side-nav;
-    margin: em(20px) em(20px) em(6px) em(24px);
+    padding: em(20px) em(20px) 0 em(24px);
 
     .home-icon{
       height: 16px;
@@ -40,10 +39,11 @@
     }
     .task-title {
         @include editableSpan;
+        padding-top:0;
         font-family: $figtree-regular;
-        font-size: 18px;
+        font-size: em(18px);
         color: $color-mud_black;
-        margin-bottom: 10px;
+        margin-bottom: em(10px);
       }
     
 
@@ -54,6 +54,7 @@
       }
       .btn-tab-wrapper {
         @include flex-center;
+        padding-bottom: 2px;
         border-bottom: 2px solid transparent;
       }
 
@@ -75,7 +76,7 @@
   }
 
   .content-wrapper {
-    padding: rem(20px);
+    padding: em(24px);
   }
 
   &:hover + .screen{

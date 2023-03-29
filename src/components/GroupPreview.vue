@@ -199,17 +199,6 @@ export default {
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
-
-      // const activity = boardService.addActivity('Created', this.newTask.taskTitle, 'Group: ' + this.group.title)
-      // activity.taskId = this.newTask.id
-      // this.$store.dispatch({
-      //   type: 'updateCurrBoard',
-      //   groupId: null,
-      //   taskId: null,
-      //   prop: 'activities',
-      //   toUpdate: activity,
-      // })
-
       this.newTask.id = 't' + utilService.makeId()
       this.newTask.taskTitle = ''
     },
@@ -231,6 +220,7 @@ export default {
         if (this.selectedTasks.includes(task.id)) {
           let newTask = { ...task }
           newTask.id = utilService.makeId()
+          newTask.taskTitle += ' copy'
           tasks.push(newTask)
         }
       })

@@ -69,6 +69,8 @@ export const boardStore = {
 		async loadBoards({ commit }, { filterBy = {} }) {
 			try {
 				const boards = await boardService.query(filterBy)
+				if (!boards || !boards.length) return
+
 				commit({ type: 'setBoards', boards })
 				commit({ type: 'setBoard', board: boards[0] })
 			} catch (err) {

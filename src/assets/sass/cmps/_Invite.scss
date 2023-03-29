@@ -1,5 +1,5 @@
 .invite-modal{
-  @include actions-list(rem(530px),rem(500px),2000);
+  @include actions-list(rem(500px),rem(532px),2000);
   top:50%;
   left:50%;
   transform: translateX(-50%);
@@ -8,16 +8,27 @@
   h1{
     font-size:24px;
     line-height: 36px;
+    font-weight: 200;
+    margin-bottom: 15px;
   }
 
-  .member{
-    height: 33px;
-    margin-bottom:8px;
-    cursor: pointer;
+  .btn-close{
+    @include btn;
+    @include flex-center;
+    border-radius: $btn-border-radius;
+ 
+    position: absolute;
+    right:18px;
+    top:11px;
+    line-height: 24px;
+     padding:em(2px) em(4px);
+     width: 29px;
+     height:32px;
 
-    :is(.focus){
-      opacity: 0.7;
-    }
+     svg{
+      stroke-width: 0.1em;
+     }
+    
   }
 
   .member-fullname{
@@ -25,17 +36,33 @@
     font-size:15px;
     line-height: 22.5px;
     padding-left:em(8px);
+    text-transform: capitalize;
   }
 
   .member-list{
-    .member:is(:hover) .member-fullname{
+    margin-top:10px;
+    padding: 10px 5px;
+    .member:hover .member-fullname{
       color:$primary-color;
     }
+
+    :is(.focus){
+      opacity: 0.7;
+    }
+
+    .member{
+      height: 33px;
+      cursor: pointer;
+      margin-top: em(8px);
+      margin-bottom: em(17px);
+    }
+
   }
 
   .search-user-wrapper{
     position: relative;
     height: 35px;
+    margin-bottom: 10px;
 
     .input-seach-user:focus + .option-list{
       display:block;
@@ -43,6 +70,7 @@
 
     input{
       @include input;
+      padding-left: 6px;
       position: absolute;
       top:0;
       height: 35px;
@@ -60,12 +88,24 @@
       width:100%;
 
       h5{
-        padding: 5px 8px;
+        padding: 5px 7px;
         color:$secondary-text-color;
+        line-height: 22px;
       }
 
       .member{
         @include action;
+        padding: em(5px) em(7px);
+        .avatar{
+          width:25px;
+          height: 25px;
+        }
+
+        .member-fullname{
+          padding-left:0; 
+          font-size:em(14px);
+        }
+      
       }
     }
 

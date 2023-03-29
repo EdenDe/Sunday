@@ -262,22 +262,6 @@
   width: rem(200px);
   border-radius: $border-radius-rounder;
   box-shadow: $shadow;
-
-  // ::before {
-  //   @include modal-arrow;
-  // }
-
-  // align-items: flex-start;
-  // justify-items: center;
-  // z-index: 200;
-  // position: absolute;
-  // top: rem(35px);
-  // padding-top: rem(18px);
-  // background-color: $color-snow_white;
-  // height: rem(320px);
-  // width: rem(200px);
-  // border-radius: $border-radius-rounder;
-  // box-shadow: $shadow;
 }
 
 @mixin color-picker-label {

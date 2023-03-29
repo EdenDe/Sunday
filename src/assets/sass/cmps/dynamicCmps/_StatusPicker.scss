@@ -1,14 +1,23 @@
 .status-picker {
-  display: block;
+  display: grid;  
+  font-size: em(12px);
   position: relative;
-  & * {
-    height: 100%;
-  }
+
   &:hover {
     .peeling-span {
       display: block;
     }
   }
+
+  .status{
+    @include fullSize;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+
+    span{
+      padding: 0 8px
+    }
 }
 .peeling-span {
   @include peeling-span;
@@ -20,6 +29,7 @@
   .color-picker-label {
     @include color-picker-label;
   }
+}
 }
 
 // &:hover:before {

@@ -17,10 +17,7 @@
       </div>
       <div class="separator"></div>
       <div class="icon-wrapper">
-        <component
-          :is="activity.prop + 'Icon'"
-          :class="`icon ${activity.prop}-icon`"
-        ></component>
+        <component :is="activity.prop + 'Icon'" :class="`icon ${activity.prop}-icon`"></component>
       </div>
       <div class="activity-prop-txt">
         {{ activity.prop === 'taskTitle' ? 'Title' : activity.prop }}
@@ -29,7 +26,7 @@
       <div class="separator"></div>
       <div class="activity-values grid">
         <component :is="activity.prop" :info="activity.oldValue"> </component>
-        <div class="arrow">></div>
+        <ArrowRight v-if="activity.newValue" class="icon icon-arrow-right"></ArrowRight>
         <component :is="activity.prop" :info="activity.newValue"> </component>
       </div>
     </article>
@@ -59,6 +56,9 @@ import plusIcon from '../assets/icons/Add.svg'
 import TaskTitleIcon from '../assets/icons/Text.svg'
 import txtIcon from '../assets/icons/Text.svg'
 import updatesIcon from '../assets/icons/Text.svg'
+import CreatedIcon from '../assets/icons/AddWithBorder.svg'
+import DeletedIcon from '../assets/icons/Delete2.svg'
+import ArrowRight from '../assets/icons/ArrowRight.svg'
 
 export default {
   name: 'ActivityLog',
@@ -111,6 +111,9 @@ export default {
     txtIcon,
     TaskTitleIcon,
     fileIcon,
+    CreatedIcon,
+    DeletedIcon,
+    ArrowRight
   },
 }
 </script>

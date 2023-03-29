@@ -1,6 +1,6 @@
 <template>
   <div class="invite-modal">
-    <button class="btn btn-close" @click="onBack">
+    <button class="btn-close" @click="onBack">
       <CloseIcon class="close-icon icon" />
     </button>
     <h1>Board Members</h1>
@@ -15,7 +15,7 @@
       </ul>
     </div>
     <ul class="member-list">
-      <li v-for="member in members" :ref="member.id" class="flex member">
+      <li v-for="member in members" class="flex member" :ref="member._id">
         <Avatar :person="member" />
         <span class="member-fullname">{{ member.fullname }}</span>
       </li>
@@ -39,16 +39,18 @@ export default {
       this.$emit('toggleInviteModal')
     },
     addToBoard(user) {
+      if (this.$refs[user._id]) {
+        for (let index = 1; index < 5; index++) {
+          setTimeout(() => {
+            this.$refs[user._id].at(0).classList.toggle('focus')
+          }, 400 * index)
+        }
+      } else {
+        const members = JSON.parse(JSON.stringify(this.members))
+        members.push(user)
+        this.$emit('updateBoard', 'members', members)
+      }
 
-      // if (!this.$refs[user.id]) {
-      //   this.$emit('addToBoard', user)
-      // } else {
-      //   for (let index = 1; index < 5; index++) {
-      //     setTimeout(() => {
-      //       this.$refs[user.id].classList.toggle('focus')
-      //     }, 1000 * index)
-      //   }
-      // }
     }
   },
   computed: {

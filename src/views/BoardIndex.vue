@@ -33,7 +33,6 @@ export default {
     currBoardId: {
       handler() {
         if (!this.currBoardId) return
-        console.log('currBoardId', this.currBoardId)
         this.$router.push({ params: { boardId: this.currBoardId } })
         socketService.emit(SOCKET_EMIT_SET_BOARD_TOPIC, this.currBoardId)
       },

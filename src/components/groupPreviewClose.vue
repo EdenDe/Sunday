@@ -101,7 +101,6 @@ export default {
       this.isGroupActionsOpen = value
     },
   },
-
   computed: {
     labels() {
       let labels = []

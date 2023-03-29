@@ -41,6 +41,10 @@
     }
   }
 
+  .update-body{
+    padding:0 15px;
+  }
+
   &-text {
     display: flex;
     padding: $padding-small $padding-medium 0;
@@ -92,13 +96,37 @@
     }
   }
 
+  .btn-cancel{
+    height: 32px;
+    @include btn(transparent)
+  }
+
+  .btn-save{
+    height: 32px;
+    @include btn;
+    @include btn-blue;
+    border-radius: $btn-border-radius;
+  }
+
   .actions-list {
     @include actions-list;
     top: 50px;
     right: 10px;
+    height: fit-content;
 
     .action {
-      @include action;
+      @include btn(transparent);
+      text-align: start;
+      width:100%;
+      height: 32px;
+      display:flex;
+      align-items:center;
+      
+     
+      .icon{
+        margin-inline-end:5px;
+        color:$color-asphalt
+      }
     }
   }
 }

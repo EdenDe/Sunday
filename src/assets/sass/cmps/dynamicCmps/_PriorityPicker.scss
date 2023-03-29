@@ -1,9 +1,8 @@
 .priority-picker {
-  display: block;
+  display: grid;  
+  font-size: em(12px);
   position: relative;
-  & * {
-    height: 100%;
-  }
+
   &:hover {
     .peeling-span {
       display: block;
@@ -12,7 +11,23 @@
   .peeling-span {
     @include peeling-span;
   }
-}
+  
+  .priority{
+    @include fullSize;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+
+    span{
+      padding: 0 8px
+    }
+  }
+ }
+  // display: block;
+
+  // & * {
+  //   height: 100%;
+  // }
 
 .v-popper__inner:has(.priority-label-picker) {
   @include label-picker-container;

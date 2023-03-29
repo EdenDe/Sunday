@@ -2,12 +2,8 @@
   <section class="board-header flex-col align-start">
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
-        <h2
-          v-tooltip="'Click to Edit'"
-          contenteditable
-          class="board-title"
-          @focusout="onChangeTitle($event.target.innerText)"
-        >
+        <h2 v-tooltip="'Click to Edit'" contenteditable class="board-title"
+          @focusout="onChangeTitle($event.target.innerText)">
           {{ currBoard.title }}
         </h2>
         <div class="btn btn-container" v-tooltip="'Show board description'">
@@ -18,10 +14,7 @@
         </div>
 
         <div class="btn-action-wrapper flex">
-          <RouterLink
-            :to="'/board/' + currBoard._id + '/main-table/'"
-            class="btn btn-activity flex"
-          >
+          <RouterLink :to="'/board/' + currBoard._id + '/main-table/pulse'" class="btn btn-activity flex">
             Activity
             <div class="person-picker-wrapper flex">
               <PersonPicker :info="currBoard.members" :maxDisplay="3" />
@@ -36,14 +29,11 @@
           </button>
         </div>
       </div>
-      <Invite v-if="isInviteModalOpen" />
+      <Invite v-clickOutside="toggleInviteModal" v-if="isInviteModalOpen" @toggleInviteModal="toggleInviteModal"
+        @updateBoard="(props, toUpdate) => $emit('updateBoard', props, toUpdate)" />
 
       <div class="desc-wrapper">
-        <span
-          class="desc"
-          contenteditable
-          @focusout="onChangeDesc($event.target.innerText)"
-        >
+        <span class="desc" contenteditable @focusout="onChangeDesc($event.target.innerText)">
           {{ currBoard.description }}
         </span>
       </div>

@@ -13,7 +13,9 @@ export default {
   name: 'TextEditor',
   props: {
     modelValue: String,
+
   },
+
   methods: {
     onType() {
       let content = this.$refs.quillEditor.getText
@@ -31,6 +33,8 @@ export default {
 
 <style>
 .quill-editor {
-  height: fit-content
+  height: fit-content;
+  margin-bottom: 5px;
+  border-radius: 3px;
 }
 </style>
