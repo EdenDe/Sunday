@@ -36,7 +36,6 @@ export default {
         console.log('currBoardId', this.currBoardId)
         this.$router.push({ params: { boardId: this.currBoardId } })
         socketService.emit(SOCKET_EMIT_SET_BOARD_TOPIC, this.currBoardId)
-        console.log('hi')
       },
       immediate: true,
     },

@@ -31,15 +31,6 @@
 import Update from '../components/Update.vue'
 import TextEditor from './TextEditor.vue'
 import { utilService } from '../services/util.service'
-//SOCKETS
-import {
-  socketService,
-  SOCKET_EMIT_SET_PULSE_TOPIC,
-  SOCKET_EMIT_SEND_UPDATE,
-  SOCKET_EVENT_ADD_UPDATE,
-  SOCKET_EVENT_USER_IS_TYPING,
-  SOCKET_EMIT_USER_IS_TYPING,
-} from '../services/socket.service.js'
 
 export default {
   name: 'UpdateLog',
