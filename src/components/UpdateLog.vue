@@ -1,14 +1,28 @@
 <template>
   <section class="update-log grid">
     <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
-      <input v-if="!isEditor" @focus="toggleIsEditor(true)" v-model="content" placeholder="Write an update..."
-        class="input-update-log" />
+      <input
+        v-if="!isEditor"
+        @focus="toggleIsEditor(true)"
+        @input="onType"
+        v-model="content"
+        placeholder="Write an update..."
+        class="input-update-log"
+      />
       <TextEditor v-model="content" @setContent="setContent" v-else />
       <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper flex-col">
-      <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
-        :loggedInUserId="loggedInUser._id" @editUpdate="editUpdate" @toggleLike="toggleLike" />
+      <h1>{{ typingUser }}</h1>
+      <Update
+        v-for="update in updates"
+        :update="update"
+        :key="update.id"
+        @removeUpdate="removeUpdate"
+        :loggedInUserId="loggedInUser._id"
+        @editUpdate="editUpdate"
+        @toggleLike="toggleLike"
+      />
     </section>
   </section>
 </template>
@@ -23,12 +37,16 @@ export default {
   props: {
     updates: Array,
     loggedInUser: Object,
+    taskId: String,
   },
+
   emits: ['updateTask'],
+
   data() {
     return {
       isEditor: false,
       content: '',
+      typingUser: '',
     }
   },
   methods: {
@@ -47,21 +65,23 @@ export default {
         createdAt: Date.now(),
         txt: this.content,
         likedBy: [],
-        byUser: { ...this.loggedInUser }
+        byUser: { ...this.loggedInUser },
       })
       this.content = ''
       this.$emit('updateTask', 'updates', updates)
     },
     removeUpdate(updateId) {
       let updates = JSON.parse(JSON.stringify(this.updates))
-      updates = updates.filter(update => update.id !== updateId)
+      updates = updates.filter((update) => update.id !== updateId)
       this.$emit('updateTask', 'updates', updates)
     },
     toggleLike(updateId, value) {
       const updates = JSON.parse(JSON.stringify(this.updates))
-      let update = updates.find(update => update.id === updateId)
+      let update = updates.find((update) => update.id === updateId)
       if (value) {
-        update.likedBy = update.likedBy.filter(userId => userId !== this.loggedInUser._id)
+        update.likedBy = update.likedBy.filter(
+          (userId) => userId !== this.loggedInUser._id
+        )
       } else {
         update.likedBy.push(this.loggedInUser._id)
       }
@@ -69,15 +89,15 @@ export default {
     },
     editUpdate(updateId, content) {
       const updates = JSON.parse(JSON.stringify(this.updates))
-      let update = updates.find(update => update.id === updateId)
+      let update = updates.find((update) => update.id === updateId)
       update.txt = content
       this.$emit('updateTask', 'updates', updates)
-    }
+    },
   },
 
   components: {
     TextEditor,
-    Update
+    Update,
   },
 }
 </script>

@@ -1,9 +1,18 @@
 .priority-picker {
-     display: block;
-     & * {
-       height: 100%;
-     }
- }
+  display: block;
+  position: relative;
+  & * {
+    height: 100%;
+  }
+  &:hover {
+    .peeling-span {
+      display: block;
+    }
+  }
+  .peeling-span {
+    @include peeling-span;
+  }
+}
 
 .v-popper__inner:has(.priority-label-picker) {
   @include label-picker-container;
@@ -13,4 +22,3 @@
     @include color-picker-label;
   }
 }
-
