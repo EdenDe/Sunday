@@ -198,7 +198,8 @@
 
 @mixin task-cols {
   display: grid;
-  grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
+  grid-auto-flow: column;
+  // grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 
   cursor: pointer;
 

@@ -7,9 +7,6 @@
   border-right: 1.2px solid $workspace-side-nav;
   transition: width 0.3s ease-out;
   width: 255px;
-  &:hover+{
-    margin-inline-start: -255px;
-  }
 
   &.workspace-close {
     width: rem(32px);

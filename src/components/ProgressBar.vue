@@ -1,11 +1,15 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
     <div v-for="value in Array(2).fill(null)"></div>
-    <div v-for="(item, idx) in cmpOrder" :key="idx">
+    <div
+      v-for="(item, idx) in cmpOrder"
+      :key="idx"
+      :style="{ width: item.width }"
+    >
       <div
         v-if="item.name === 'status' || item.name === 'priority'"
         class="flex progress-container"
-        :class="item"
+        :class="item.name"
       >
         <div
           v-for="label in groupStatusProgress(item.name)"
