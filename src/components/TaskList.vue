@@ -2,7 +2,12 @@
   <Container
     orientation="horizental"
     @drop="onDrop"
-    :dropPlaceholder="dropPlaceholder"
+    :drop-placeholder="{
+      className: 'drop-placeholder',
+      animationDuration: '200',
+      showOnTop: true,
+    }"
+    drag-class="on-drag"
   >
     <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
       <div class="group-actions-wrapper task-options sticky">

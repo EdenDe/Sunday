@@ -3,6 +3,8 @@
     class="workspace-sidenav flex-col justify-start"
     ref="workspaceSidenav"
     :class="{ 'workspace-close': isWorkspaceClosed }"
+    @mouseover="isWorkspaceClosed = false"
+    @mouseout="isWorkspaceClosed = true"
   >
     <button class="toggle-workspace flex align-center" @click="toggleWorkspace">
       <ArrowLeftIcon class="arrow-left-icon icon" />

@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
 
+
   .router-link-active {
     border-bottom: 2px solid $primary-color;
   }
@@ -94,8 +95,8 @@
           .home-icon {
             padding:0;
             color: $color-mud_black;
-            height: 16px;
-            width: 16px;
+            height: 18px;
+            width: 18px;
           }
       }
     }
