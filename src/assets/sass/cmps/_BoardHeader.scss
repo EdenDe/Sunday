@@ -92,11 +92,11 @@
 
       .icon-container {
         @include flex-center;
+        color: $icon-color;
         .home-icon {
           padding: 0;
-          color: $color-mud_black;
-          height: 16px;
-          width: 16px;
+          height: 18px;
+          width: 18px;
         }
       }
     }

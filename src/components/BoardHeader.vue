@@ -104,7 +104,7 @@ export default {
       return { ...this.$store.getters.currBoard }
     },
     numOfMembers() {
-      return this.$store.getters.currBoard.members.length
+      return this.$store.getters.currBoard.members?.length
     },
   },
   methods: {
