@@ -1,0 +1,70 @@
+.invite-modal{
+  @include actions-list(rem(530px),rem(500px),2000);
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding: em(24px) em(32px) em(8px);
+
+  h1{
+    font-size:24px;
+    line-height: 36px;
+  }
+
+  .member{
+    height: 33px;
+    margin-bottom:8px;
+    cursor: pointer;
+  }
+
+  .member-fullname{
+    @include flex-center;
+    font-size:15px;
+    line-height: 22.5px;
+    padding-left:em(8px);
+  }
+
+  .member-list{
+    .member:is(:hover) .member-fullname{
+      color:$primary-color;
+    }
+  }
+
+  .search-user-wrapper{
+    position: relative;
+    height: 35px;
+
+    .input-seach-user:focus + .option-list{
+      display:block;
+    }
+
+    input{
+      @include input;
+      position: absolute;
+      top:0;
+      height: 35px;
+    }
+
+    .option-list{
+      box-shadow: $box-shadow-small;
+      border-color: $color-wolf_gray;
+      border-radius: $border-radius-rounder;
+      padding: em(8px);
+      display:none;
+      position: absolute;
+      top:36px;
+      background-color: $color-snow_white;
+      width:100%;
+
+      h5{
+        padding: 5px 8px;
+        color:$secondary-text-color;
+      }
+
+      .member{
+        @include action;
+      }
+    }
+
+  }
+ 
+}

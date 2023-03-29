@@ -326,3 +326,23 @@
   border-radius: $border-radius-filter;
   box-shadow: 0 4px 17px 6px rgba(0, 0, 0, 0.1);
 }
+
+@mixin input($width : 100%){
+    width: $width;
+    height: rem(32px);
+    line-height: 1.5em;
+    border: 1px solid $ui-border-color;
+    border-radius: $border-radius-rounder;
+    padding: em(8px) em(24px);
+    font-size: em(14px);
+
+    &:hover {
+      border-color: $primary-text-on-secondary-color;
+    }
+
+    &:focus {
+      border-color: transparent;
+      outline: 1px solid $color-basic_blue;
+    }
+  
+}
