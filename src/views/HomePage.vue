@@ -8,6 +8,7 @@
       <h4 class="home-page-body-sub-header">
         What would you like to mange with sunday.com Work OS?
       </h4>
+      <div class="comet-line underline"></div>
       <RouterLink
         v-if="firstBoardId"
         :to="'/board/' + firstBoardId + '/main-table'"
@@ -23,19 +24,28 @@
     </div>
 
     <div
-      v-for="(star, index) in 20"
+      v-for="(star, index) in 15"
       :key="star"
       class="star"
       :class="`star${index + 1}`"
+      :style="{
+        animationDelay: starAnimationDelay(index),
+      }"
     ></div>
   </section>
 </template>
 
 <script>
 import AppHeader from '../components/AppHeader.vue'
+import { utilService } from '../services/util.service.js'
 export default {
   components: {
     AppHeader,
+  },
+  methods: {
+    starAnimationDelay(index) {
+      return `${index / 5}s`
+    },
   },
   computed: {
     firstBoardId() {
