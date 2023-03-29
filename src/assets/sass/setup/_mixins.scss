@@ -199,11 +199,12 @@
 @mixin task-cols {
   display: grid;
   grid-auto-flow: column;
-  // grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
-
+  justify-content: start;
   cursor: pointer;
+}
 
-  //margin-top: -1px;
+@mixin grid-temp{
+  grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 }
 
 @mixin task-row {

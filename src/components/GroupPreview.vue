@@ -76,21 +76,18 @@
           class="group-label"
           :class="label"
           :groupColor="group.color"
+          :style="{ width: label.width }"
         >
+          <div class="draggable-label">
+            {{ label.name }}
+          </div>
           <div
             v-if="index === 1"
             class="first-col-color group-label"
-            :style="{ backgroundColor: group.color, width: label.width }"
+            :style="{ backgroundColor: group.color }"
           ></div>
-          <div
-            v-if="index === 2"
-            class="group-checkbox group-label"
-            :style="{ width: label.width }"
-          >
+          <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
-          </div>
-          <div class="draggable-label" :style="{ width: label.width }">
-            {{ label.name }}
           </div>
         </Draggable>
         <div></div>
@@ -172,16 +169,17 @@ export default {
   },
   methods: {
     onDropColumn({ addedIndex, removedIndex }) {
-      console.log('addedIndex', addedIndex)
-      console.log('removedIndex', removedIndex)
-
-      // let cmpOrder = [...this.$store.getters.cmpOrder]
-      // cmpOrder = cmpOrder.splice(
-      //   addedIndex,
-      //   0,
-      //   cmpOrder.splice(removedIndex, 1)[0]
-      // )
-      // this.updateProp(null, 'cmpOrder', cmpOrder)
+      addedIndex -= 2
+      removedIndex -= 2
+      let cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
+      cmpOrder.splice(addedIndex, 0, cmpOrder.splice(removedIndex, 1)[0])
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: null,
+        taskId: null,
+        prop: 'cmpOrder',
+        toUpdate: cmpOrder,
+      })
     },
     updateProp(taskId, prop, toUpdate) {
       console.log(taskId, prop, toUpdate)
