@@ -2,15 +2,8 @@
   <section class="person-picker">
     <VDropdown :distance="6">
       <section class="person-list flex align-center justify-center">
-        <PersonAvatar
-          v-for="(person, idx) in personToDisplay"
-          :key="idx"
-          :person="person"
-        />
-        <div
-          class="merge-person flex align-center"
-          v-if="info?.length > maxDisplay"
-        >
+        <PersonAvatar v-for="(person, idx) in personToDisplay" :key="idx" :person="person" />
+        <div class="merge-person flex align-center" v-if="info?.length > personToDisplay?.length">
           <span>+{{ info.length - 1 }}</span>
         </div>
 
@@ -19,17 +12,10 @@
         </div>
       </section>
       <template #popper>
-        <div
-          v-if="isPersonPickerOpen"
-          class="person-picker-container flex-col justify-between"
-          v-clickOutside="onClosePicker"
-        >
+        <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
+          v-clickOutside="onClosePicker">
           <div class="flex wrap person-picker-avatar">
-            <article
-              class="task-person flex align-center"
-              v-for="(person, idx) in info"
-              :key="idx"
-            >
+            <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">
               <PersonAvatar :person="person" />
               <span class="person-fullname">{{ person.fullname }}</span>
               <button class="delete-person" @click="onDelete(person._id)">
@@ -44,11 +30,8 @@
           <div class="suggested-members">
             <h3>Suggested people</h3>
             <ul class="clean-list">
-              <li
-                v-for="member in members"
-                @click="addPersonToTask(member)"
-                class="flex align-center member-picker-suggestions"
-              >
+              <li v-for="member in members" @click="addPersonToTask(member)"
+                class="flex align-center member-picker-suggestions">
                 <PersonAvatar :person="member" />
                 <span class="person-fullname">{{ member.fullname }}</span>
               </li>
@@ -72,7 +55,7 @@ export default {
     info: Array,
     maxDisplay: {
       type: Number,
-      default: 1,
+      default: 2,
     },
   },
   data() {
@@ -93,7 +76,10 @@ export default {
       )
     },
     personToDisplay() {
-      return this.info?.slice(0, this.$props.maxDisplay)
+      if (this.info?.length <= this.maxDisplay) {
+        return this.info
+      }
+      return this.info?.slice(0, this.maxDisplay - 1)
     },
   },
   methods: {
