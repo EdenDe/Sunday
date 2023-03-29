@@ -1,7 +1,7 @@
 .update-log {
   gap: em(5px);
   .editor-wrapper {
-    gap:5px;
+    gap: 5px;
     margin-bottom: 20px;
     .input-update-log {
       width: 100%;
@@ -16,6 +16,31 @@
         background-color: $color-ui_grey;
       }
     }
+
+    .quill-editor {
+      border-radius: $border-radius;
+      .ql-container {
+        border-bottom-left-radius: $border-radius-rounder;
+        border-bottom-right-radius: $border-radius-rounder;
+        border-bottom: 1px solid $color-input-border;
+        border-right: 1px solid $color-input-border;
+        border-left: 1px solid $color-input-border;
+      }
+      .ql-toolbar {
+        border-top-right-radius: $border-radius-rounder;
+        border-top-left-radius: $border-radius-rounder;
+        border-top: 1px solid $color-input-border;
+        border-right: 1px solid $color-input-border;
+        border-left: 1px solid $color-input-border;
+      }
+      p {
+        font-size: rem(18px);
+        color: $color-mud_black;
+        min-height: 70px;
+        padding-bottom: 70px;
+      }
+    }
+
     .btn-update {
       @include btn;
       @include btn-blue;
