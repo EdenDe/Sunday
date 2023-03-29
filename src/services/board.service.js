@@ -22,7 +22,6 @@ export const boardService = {
 window.boardService = boardService
 
 async function query(filterBy = {}) {
-<<<<<<< HEAD
 	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
 	//return storageService.query(STORAGE_KEY)
 	return httpService.get('board', filterBy)
@@ -31,22 +30,11 @@ async function query(filterBy = {}) {
 function getById(boardId) {
 	//return storageService.get(STORAGE_KEY, boardId)
 	return httpService.get(`board/${boardId}`)
-=======
-  // localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-  // return storageService.query(STORAGE_KEY)
-  return httpService.get('board', filterBy)
-}
-
-function getById(boardId) {
-  // return storageService.get(STORAGE_KEY, boardId)
-  return httpService.get(`board/${boardId}`)
->>>>>>> 2df75a1d5b14f89a5b0999688a9c6802fdd499df
 }
 
 async function remove(boardId) {
 	return httpService.delete(`board/${boardId}`)
 
-<<<<<<< HEAD
 	//await storageService.remove(STORAGE_KEY, boardId)
 }
 
@@ -60,21 +48,6 @@ async function save(board) {
 		savedBoard = await httpService.post(`board`, board)
 	}
 	return savedBoard
-=======
-  // await storageService.remove(STORAGE_KEY, boardId)
-}
-
-async function save(board) {
-  var savedBoard
-  if (board._id) {
-    // savedBoard = await storageService.put(STORAGE_KEY, board)
-    savedBoard = await httpService.put(`board/${board._id}`, board)
-  } else {
-    // savedBoard = await storageService.post(STORAGE_KEY, board)
-    savedBoard = await httpService.post(`board`, board)
-  }
-  return savedBoard
->>>>>>> 2df75a1d5b14f89a5b0999688a9c6802fdd499df
 }
 
 // function addActivity(prop, title, oldValue, newValue) {
@@ -112,7 +85,11 @@ function addActivity(prop, title, oldValue, newValue, color) {
 function _updateTask(board, groupId, taskId, prop, toUpdate) {
 	let group = board.groups.find(group => groupId === group.id)
 	let task = group.tasks.find(task => task.id === taskId)
-	if (task[prop] !== toUpdate && prop !== 'checkbox') {
+	if (
+		task[prop] !== toUpdate &&
+		prop !== 'checkbox' &&
+		prop !== 'updates'
+	) {
 		let activity = addActivity(
 			prop,
 			task.taskTitle,

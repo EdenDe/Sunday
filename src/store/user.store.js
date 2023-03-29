@@ -3,11 +3,14 @@ import { utilService } from '../services/util.service.js'
 import { userService } from '../services/user.service.js'
 
 export const userStore = {
-	strict: true,
 	state: {
+		users: [],
 		user: userService.getLoggedinUser(),
 	},
 	mutations: {
+		setUsers(state, { users }) {
+			state.users = users
+		},
 		setUser(state, { user }) {
 			state.user = user
 		},
@@ -19,8 +22,20 @@ export const userStore = {
 		loggedinUser({ user }) {
 			return user
 		},
+		users({ users }) {
+			return users
+		},
 	},
 	actions: {
+		async loadUsers({ commit }) {
+			try {
+				const users = await userService.query()
+				commit({ type: 'setUsers', users })
+			} catch (err) {
+				console.error('Cannot login', err)
+				throw err
+			}
+		},
 		async login({ commit }, { credentials }) {
 			try {
 				const user = await userService.login(credentials)

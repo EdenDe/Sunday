@@ -107,22 +107,7 @@
   }
 
   input {
-    width: rem(320px);
-    height: rem(32px);
-    line-height: 1.5em;
-    border: 1px solid $ui-border-color;
-    border-radius: $border-radius-rounder;
-    padding: em(8px) em(24px);
-    font-size: em(14px);
-
-    &:hover {
-      border-color: $primary-text-on-secondary-color;
-    }
-
-    &:focus {
-      border-color: transparent;
-      outline: 1px solid $color-basic_blue;
-    }
+    @include input(rem(320px))
   }
 }
 
