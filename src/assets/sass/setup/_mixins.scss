@@ -353,3 +353,8 @@
   height: rem(10px);
   width: rem(10px);
 }
+
+@mixin random($min, $max) {
+  $random: #{floor(random() * ($max - $min + 1) + $min)};
+  @content;
+}
