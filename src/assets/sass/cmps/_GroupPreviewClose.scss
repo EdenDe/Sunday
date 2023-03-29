@@ -52,7 +52,8 @@
     grid-row: 2;
     > *:nth-child(-n + 3) {
       position: sticky;
-      z-index: 100001;
+      left:46px;
+      z-index: 1001;
     }
 
     > *:not(:nth-child(1)) {
