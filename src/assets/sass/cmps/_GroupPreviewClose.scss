@@ -29,6 +29,9 @@
         margin: 0;
        
       }
+      .btn-color{
+        left: 5px;
+      }
 
       .tasks-num {
         position: absolute;
@@ -59,7 +62,6 @@
     }
     > :nth-child(2) {
       left: 40px;
-      border-left: 1px solid #d0d4e4;
       border-bottom-left-radius: $border-radius-rounder;
     }
     > :nth-child(5) {

@@ -10,7 +10,7 @@
         contenteditable
         ref="groupTitle"
         class="group-title"
-        @focusout="onChangeGroupProp('title', $event.target.innerHTML)"
+        @focusout="onChangeGroupProp('title', $event.target.innerText)"
         :style="{ color: color }"
       >
         {{ title }}
@@ -37,6 +37,7 @@ export default {
     isTitleFocused: Boolean,
     isColorModalOpen: Boolean,
   },
+  emits: ['updateProp', 'toggleFocusGroupTitle', 'toggleColorModal'],
   data() {
     return {
       isColorPickerOpen: false,
@@ -55,7 +56,6 @@ export default {
         console.log(this.isColorModalOpen)
         this.focusGroupName()
         this.isColorPickerOpen = this.isColorModalOpen
-        // this.openColorModal()
       },
       immediate: true,
     },

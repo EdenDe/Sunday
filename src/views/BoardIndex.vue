@@ -65,7 +65,6 @@ export default {
       })
     },
     updateBoardFromSocket(board) {
-      console.log('hi')
       this.$store.commit({ type: 'updateBoard', board })
     },
     removeBoard(boardId) {

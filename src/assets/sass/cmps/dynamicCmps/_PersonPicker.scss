@@ -14,9 +14,10 @@
     }
 
     .merge-person{
+      @include flex-center;
       background-color: $color-blackish;
-      padding: 0 5px;
-      border-radius: 25px;
+      border-radius: 50%;
+      padding-inline-end: 2px;
       color:$color-snow_white;
       font-size: em(12px);
       height: 25px;

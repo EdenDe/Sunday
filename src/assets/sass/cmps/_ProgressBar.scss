@@ -19,6 +19,9 @@
     border-left: 1px solid #d0d4e4;
     border-bottom-left-radius: $border-radius-rounder;
   }
+  >:last-child{
+    border-right: none;
+  }
 
   .progress-container {
     height: em(35px);

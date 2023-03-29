@@ -1,59 +1,120 @@
 <template>
-  <section class="group-preview" :class="isListOpen ? 'list-open' : 'list-close'">
-    <GroupPreviewClose v-if="!isListOpen" :group="group" :isGroupActionsOpen="isGroupActionsOpen"
-      @toggleOpenList="toggleOpenList" @toggleGroupActions="toggleGroupActions" :isTitleFocused="isTitleFocused"
-      :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
-      @toggleColorModal="toggleColorModal" />
+  <section
+    class="group-preview"
+    :class="isListOpen ? 'list-open' : 'list-close'"
+  >
+    <GroupPreviewClose
+      v-if="!isListOpen"
+      :group="group"
+      :isGroupActionsOpen="isGroupActionsOpen"
+      @toggleOpenList="toggleOpenList"
+      @updateProp="updateProp"
+      @copyGroup="copyGroup"
+    />
     <template v-if="isListOpen">
       <div class="grid-title">
         <div class="group-actions-wrapper sticky">
           <div class="svg-wrapper">
-            <span class="dots-icon" @click="toggleGroupActions(!isGroupActionsOpen)"
-              :class="isGroupActionsOpen ? 'active group-menu-active' : ''">
+            <span
+              class="dots-icon"
+              @click="toggleGroupActions(!isGroupActionsOpen)"
+              :class="isGroupActionsOpen ? 'active group-menu-active' : ''"
+            >
               <MenuIcon class="menu-icon icon" />
             </span>
 
-            <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
-              <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copy="copyGroup"
-                @renameTitle="toggleFocusGroupTitle" @openColorPicker="toggleColorModal" @toggleOpenList="toggleOpenList"
-                @remove="$emit('removeGroup', group.id)" />
+            <div
+              class="group-actions"
+              v-if="isGroupActionsOpen"
+              v-clickOutside="toggleGroupActions"
+            >
+              <GroupActions
+                :groupColor="group.color"
+                @add="$emit('addGroup')"
+                @copyGroup="copyGroup"
+                @renameTitle="toggleFocusGroupTitle"
+                @openColorPicker="toggleColorModal"
+                @toggleOpenList="toggleOpenList"
+                @remove="$emit('removeGroup', group.id)"
+              />
             </div>
           </div>
         </div>
 
         <div class="open-list" v-tooltip="'Collapse group'">
-          <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="toggleOpenList" />
+          <ArrowDownIcon
+            class="open-list-icon icon"
+            :style="{ fill: group.color }"
+            @click="toggleOpenList"
+          />
         </div>
-        <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused"
-          :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
-          @toggleColorModal="toggleColorModal" />
+        <GroupTitle
+          :color="group.color"
+          :title="group.title"
+          :tasksNumber="tasksNumber"
+          :isTitleFocused="isTitleFocused"
+          :isColorModalOpen="isColorModalOpen"
+          @updateProp="updateProp"
+          @toggleFocusGroupTitle="toggleFocusGroupTitle"
+          @toggleColorModal="toggleColorModal"
+        />
       </div>
 
       <Container class="group-labels">
-        <Draggable v-for="(label, index) in labels" :key="label" class="group-label" :class="label"
-          :groupColor="group.color">
-          <div v-if="index === 1" class="first-col-color group-label" :style="{ backgroundColor: group.color }"></div>
+        <Draggable
+          v-for="(label, index) in labels"
+          :key="label"
+          class="group-label"
+          :class="label"
+          :groupColor="group.color"
+        >
+          <div
+            v-if="index === 1"
+            class="first-col-color group-label"
+            :style="{ backgroundColor: group.color }"
+          ></div>
           <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
           <div class="draggable-label">{{ label }}</div>
         </Draggable>
+        <div></div>
       </Container>
 
-      <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
+      <TaskList
+        v-if="isListOpen"
+        :tasks="group.tasks"
+        :groupBgColor="group.color"
+        @updateProp="updateProp"
+      />
       <div class="add-task-container">
         <div class="task-option"></div>
-        <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
+        <div
+          class="first-col-color"
+          :style="{ backgroundColor: group.color }"
+        ></div>
         <Checkbox />
 
-        <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
-          <input placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
+        <form
+          @submit.prevent="onAddTask"
+          class="add-task-input-container sticky"
+        >
+          <input
+            placeholder="+ Add task"
+            type="text"
+            v-model="newTask.taskTitle"
+          />
         </form>
       </div>
       <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
     </template>
-    <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
-      @remove="removeTasks" @copy="copySelectedTasks"></TaskActionBar>
+    <TaskActionBar
+      v-if="isActionBarOpen"
+      :selectedTasksNum="selectedTasksNum"
+      @closeActionBar="closeActionBar"
+      @remove="removeTasks"
+      @copy="copySelectedTasks"
+    ></TaskActionBar>
   </section>
 </template>
 
@@ -105,11 +166,6 @@ export default {
         toUpdate,
       })
     },
-    // onOpenColorPicker() {
-    //   this.$refs.groupTitle.focus()
-    //   this.isColorModalOpen = !this.isColorModalOpen
-    //   if (this.isColorModalOpen) this.focusGroupName()
-    // },
     onAddTask() {
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
@@ -159,12 +215,12 @@ export default {
 
       this.$emit('addGroup', newGroup)
     },
-    toggleFocusGroupTitle(value = true) {
-      this.isTitleFocused = value
-    },
     toggleColorModal(value = true) {
       this.toggleFocusGroupTitle(value)
       this.isColorModalOpen = value
+    },
+    toggleFocusGroupTitle(value = true) {
+      this.isTitleFocused = value
     },
   },
   computed: {
@@ -200,8 +256,9 @@ export default {
           res[title] = {
             width: Math.round(presentageWidth) + '%',
             color: color,
-            title: `${title} ${res[title]
-              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+            title: `${title} ${
+              res[title]
+            }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
           }
         }
       })

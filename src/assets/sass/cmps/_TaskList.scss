@@ -1,6 +1,6 @@
 .task-list {
-  background-color: $color-snow_white;
   @include task-cols;
+  background-color: $color-snow_white;
   &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }

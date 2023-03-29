@@ -1,12 +1,12 @@
 .workspace-sidenav {
-  grid-area: workspace-sidenav;
   @include sidenav;
+  grid-area: workspace-sidenav;
   position: relative;
   color: $primary-text-color;
   background-color: $color-riverstone_gray;
   border-right: 1.2px solid $workspace-side-nav;
-
   transition: width 0.3s ease-out;
+   
   &.workspace-close {
     width: rem(32px);
     min-width: rem(32px);
@@ -14,7 +14,6 @@
     .arrow-left-icon {
       transform: rotate(180deg);
       transition: transform 0.3s ease-in;
-      margin-right: 2px;
     }
 
     & > *:not(.toggle-workspace) {
@@ -24,10 +23,11 @@
     &:not(.workspace-close) {
       min-width: 254px;
     }
-    &.workspace-close {
-      .toggle-workspace:hover .arrow-left-icon {
-        margin-right: -10px;
-      }
+    &.workspace-close .toggle-workspace:hover{
+        right: rem(-45px);
+        & .arrow-left-icon {
+            margin-right: -8px;
+          }
     }
   }
   .navigation-header {
@@ -163,6 +163,7 @@
   }
 
   .toggle-workspace {
+    z-index: 201;
     position: absolute;
     background-color: $color-snow_white;
     border-radius: 50%;
@@ -177,6 +178,7 @@
     transition: all 0.15s ease-in-out;
 
     &:hover {
+      right: rem(-30px);
       width: 37px;
       height: 25px;
       border-radius: 20px;

@@ -18,9 +18,9 @@
           <GroupActions
             :groupColor="group.color"
             @add="$emit('addGroup')"
-            @copy="copyGroup"
-            @renameTitle="focusGroupName"
-            @openColorPicker="openColorPicker"
+            @copy="$emit('copyGroup')"
+            @renameTitle="toggleFocusGroupTitle"
+            @openColorPicker="toggleColorModal"
             @remove="$emit('removeGroup', group.id)"
           />
         </div>
@@ -31,7 +31,7 @@
       class="first-col-color"
       :style="{ backgroundColor: group.color }"
     ></div>
-    <div class="open-list" v-tooltip="'Collapse group'">
+    <div class="open-list" v-tooltip="'Expand group'">
       <ArrowDownIcon
         class="open-list-icon icon"
         :style="{ fill: group.color }"
@@ -45,7 +45,7 @@
       :tasksNumber="tasksNumber"
       :isTitleFocused="isTitleFocused"
       :isColorModalOpen="isColorModalOpen"
-      @updateProp="updateProp"
+      @updateProp="onUpdateProp"
       @toggleFocusGroupTitle="toggleFocusGroupTitle"
       @toggleColorModal="toggleColorModal"
     />
@@ -74,14 +74,27 @@ import MenuIcon from '../assets/icons/Menu.svg'
 export default {
   name: 'GroupPreviewClose',
   props: { group: Object },
+  emits: ['updateProp'],
   data() {
     return {
       isGroupActionsOpen: false,
+      isColorModalOpen: false,
+      isTitleFocused: false,
     }
   },
   methods: {
+    onUpdateProp(taskId, prop, value) {
+      console.log(taskId, prop, value)
+      this.$emit('updateProp', taskId, prop, value)
+    },
+    toggleColorModal(value = true) {
+      this.toggleFocusGroupTitle(value)
+      this.isColorModalOpen = value
+    },
+    toggleFocusGroupTitle(value = true) {
+      this.isTitleFocused = value
+    },
     toggleGroupActions(value = false) {
-      console.log(value)
       this.isGroupActionsOpen = value
     },
   },
@@ -102,6 +115,13 @@ export default {
       if (this.group.tasks?.length) return this.group.tasks.length
       else return 'No '
     },
+
+    // toggleFocusGroupTitle(value) {
+    //   this.$emit('toggleFocusGroupTitle', value)
+    // },
+    // toggleColorModal(value) {
+    //   this.$emit('toggleColorModal', value)
+    // },
   },
   components: {
     GroupTitle,
