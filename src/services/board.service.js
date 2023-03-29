@@ -22,29 +22,29 @@ export const boardService = {
 window.boardService = boardService
 
 async function query(filterBy = {}) {
-	//localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-	//return storageService.query(STORAGE_KEY)
+	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
+	// return storageService.query(STORAGE_KEY)
 	return httpService.get('board', filterBy)
 }
 
 function getById(boardId) {
-	//return storageService.get(STORAGE_KEY, boardId)
+	// return storageService.get(STORAGE_KEY, boardId)
 	return httpService.get(`board/${boardId}`)
 }
 
 async function remove(boardId) {
 	return httpService.delete(`board/${boardId}`)
 
-	//await storageService.remove(STORAGE_KEY, boardId)
+	// await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
 	var savedBoard
 	if (board._id) {
-		//savedBoard = await storageService.put(STORAGE_KEY, board)
+		// savedBoard = await storageService.put(STORAGE_KEY, board)
 		savedBoard = await httpService.put(`board/${board._id}`, board)
 	} else {
-		//savedBoard = await storageService.post(STORAGE_KEY, board)
+		// savedBoard = await storageService.post(STORAGE_KEY, board)
 		savedBoard = await httpService.post(`board`, board)
 	}
 	return savedBoard

@@ -1,8 +1,10 @@
 <template>
   <section class="activity-log grid">
     <article v-for="activity in activities" class="activity grid">
-      <div>
-        <TimeIcon class="icon icon-time" />
+      <div class="activity-date">
+        <div class="icon-time-wrapper">
+          <TimeIcon class="icon icon-time" />
+        </div>
         <div v-tooltip="dateFormatted(activity.createdAt).tooltip" class="flex">
           {{ dateFormatted(activity.createdAt).date }}
         </div>
@@ -20,7 +22,9 @@
           :class="`icon ${activity.prop}-icon`"
         ></component>
       </div>
-      <div>{{ activity.prop }}</div>
+      <div class="activity-prop-txt">
+        {{ activity.prop === 'taskTitle' ? 'Title' : activity.prop }}
+      </div>
 
       <div class="separator"></div>
       <div class="activity-values grid">
@@ -52,7 +56,10 @@ import priorityIcon from '../assets/icons/Priority.svg'
 import personIcon from '../assets/icons/PersonRound.svg'
 import fileIcon from '../assets/icons/Page.svg'
 import plusIcon from '../assets/icons/Add.svg'
-import textIcon from '../assets/icons/Text.svg'
+import TaskTitleIcon from '../assets/icons/Text.svg'
+import txtIcon from '../assets/icons/Text.svg'
+import updatesIcon from '../assets/icons/Text.svg'
+
 export default {
   name: 'ActivityLog',
   props: { activities: Array },
@@ -101,7 +108,8 @@ export default {
     priorityIcon,
     dateIcon,
     timelineIcon,
-    textIcon,
+    txtIcon,
+    TaskTitleIcon,
     fileIcon,
   },
 }
