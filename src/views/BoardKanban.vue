@@ -1,30 +1,18 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="kanban flex">
-      <Container
-        class="kanban-container"
-        orientation="horizontal"
-        @drop="onDropColumn($event)"
-        :drop-placeholder="{
-          className: 'drop-placeholder1',
-          animationDuration: '200',
-          showOnTop: true,
-        }"
-      >
-        <Draggable
-          class="label-col"
-          v-for="(label, index) in labels"
-          :key="index"
-        >
-          <div
-            class="label-col-title"
-            :style="{ backgroundColor: label.color }"
-          >
+      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn" :drop-placeholder="{
+        className: 'drop-placeholder',
+        animationDuration: '200',
+        showOnTop: true,
+      }">
+        <Draggable class="label-col" v-for="(label, index) in labels" :key="index">
+          <div class="label-col-title" :style="{ backgroundColor: label.color }">
             <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
 
-          <KanbanCards :tasks="tasks(label.title)" />
+          <KanbanCards :cmpsToDisplay="cmpsToDisplay" :tasks="tasks(label.title)" />
         </Draggable>
       </Container>
     </div>
@@ -41,6 +29,7 @@ export default {
     return {
       labelsOrder: [],
       currLabel: 'statusOrderKanban',
+      cmpsToDisplay: ['taskTitle', 'date', 'person']
     }
   },
   created() {
@@ -71,7 +60,6 @@ export default {
       )
     },
   },
-
   computed: {
     labels() {
       return this.labelsOrder
@@ -80,10 +68,11 @@ export default {
       return (currLabel) => {
         let taskPerLabel = {}
         const groups = this.$store.getters.groups
+        const orderFilter = this.currLabel === 'priorityOrderKanban' ? 'priority' : 'status'
         groups.forEach((group) => {
           taskPerLabel = group.tasks.reduce((label, task) => {
-            if (!label[task.status]) label[task.status] = []
-            label[task.status].push(task)
+            if (!label[task[orderFilter]]) label[task[orderFilter]] = []
+            label[task[orderFilter]].push(task)
             return label
           }, taskPerLabel)
         })
