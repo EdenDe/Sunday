@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { store } from '../store/store'
 import HomePage from '../views/HomePage.vue'
 import LoginSignup from '../views/LoginSignup.vue'
 import BoardIndex from '../views/BoardIndex.vue'
@@ -21,9 +22,9 @@ const router = createRouter({
 		},
 		{
 			path: '/board/:boardId',
-			//redirect: '/board/:boardId/main-table',
 			name: 'boardIndex',
 			component: BoardIndex,
+			meta: { requiresAuth: true },
 			children: [
 				{
 					path: 'main-table',
@@ -46,10 +47,26 @@ const router = createRouter({
 					path: 'dashboard',
 					name: 'dashboard',
 					component: Dashboard,
+
 				},
 			],
 		},
 	],
+
+
+})
+
+
+router.beforeEach((to, from, next) => {
+	if (to.matched.some(route => route.meta.requiresAuth)) {
+		if (!sessionStorage.getItem('loggedinUser')) {
+			next({
+				name: 'loginSignup',
+				query: { redirect: to.fullPath }
+			})
+		}
+	}
+	next()
 })
 
 export default router

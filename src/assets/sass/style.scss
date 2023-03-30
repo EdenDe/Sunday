@@ -40,7 +40,7 @@
 @import 'cmps/GroupPreviewClose';
 @import 'cmps/Update';
 @import 'cmps/Invite';
-
+@import 'cmps/Loader';
 
 // DYNAMIC CMPS
 @import 'cmps/dynamicCmps/Checkbox';
@@ -52,7 +52,6 @@
 @import 'cmps/dynamicCmps/PersonPicker';
 @import 'cmps/dynamicCmps/TxtInput';
 @import 'cmps/dynamicCmps/FileUpload';
-
 
 // KANBAN
 @import 'cmps/kanban/view/Kanban';
