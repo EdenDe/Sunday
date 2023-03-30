@@ -33,9 +33,12 @@ export default {
       // })
     },
   },
+<<<<<<< HEAD:src/components/kanaban/KanbanCards.vue
   created() {
     console.log(this.cmpsToDisplay)
   },
+=======
+>>>>>>> d0677cd5898f1a1b86ee04ec4da4bb012f1add26:src/components/kanban/KanbanCards.vue
   components: {
     Container,
     Draggable,

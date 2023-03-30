@@ -1,5 +1,6 @@
 <template>
-  <section class="home-page grid">
+  <Loader v-if="isLoading" />
+  <section class="home-page grid" v-else>
     <AppHeader :boardId="firstBoardId" />
     <div class="home-page-body grid">
       <div class="home-page-body-title grid">
@@ -7,17 +8,20 @@
           A platform built for a new way of working
         </h1>
         <h4 class="home-page-body-sub-header flex align-end justify-center">
-          What would you like to mange with sunday.com Work OS?
+          What would you like to manage with sunday.com Work OS?
           <div class="comet-line underline"></div>
         </h4>
       </div>
+
       <RouterLink
         v-if="firstBoardId"
         :to="'/board/' + firstBoardId + '/main-table'"
         class="btn-get-started"
+        @click.native="handleLinkClick"
       >
         <span> Get Started </span>
       </RouterLink>
+
       <div :style="{ marginTop: '8px', fontSize: '13px' }">
         No credit card needed &nbsp; ✦ &nbsp; Unlimited time on Free plan
       </div>
@@ -46,17 +50,27 @@
 
 <script>
 import AppHeader from '../components/AppHeader.vue'
+import Loader from '../components/Loader.vue'
 import { utilService } from '../services/util.service.js'
 export default {
   components: {
     AppHeader,
+    Loader,
   },
+
   data() {
     return {
       stars: Array.from({ length: 15 }, () => ({
         delay: utilService.getRandomIntInclusive(1, 3),
       })),
+      isLoading: false,
     }
+  },
+  methods: {
+    handleLinkClick() {
+      console.log('clicked on link in homepage')
+      this.$store.commit({ type: 'setPageLoading', isLoading: true })
+    },
   },
   computed: {
     firstBoardId() {

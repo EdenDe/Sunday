@@ -21,8 +21,8 @@
 </template>
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
-import KanbanCards from '../../src/components/kanaban/KanbanCards.vue'
-import KanbanFilter from '../../src/components/kanaban/KanbanFilter.vue'
+import KanbanCards from '../../src/components/kanban/KanbanCards.vue'
+import KanbanFilter from '../../src/components/kanban/KanbanFilter.vue'
 export default {
   name: 'Kanban',
   data() {

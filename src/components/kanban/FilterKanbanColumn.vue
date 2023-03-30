@@ -1,6 +1,5 @@
 <template>
-  <section class="kanban-filter flex">
-    <h4 class="kanban-filter-title">Customize View</h4>
+  <section class="kanban-column">
     <h4 class="select-title">Kanban Column</h4>
     <div class="kanban-filter-select">
       <div class="filter-select-input" @click="toggleOptions">
@@ -14,10 +13,11 @@
     </div>
   </section>
 </template>
+
 <script>
 import ArrowDown from '../../assets/icons/ArrowDown.svg'
 export default {
-  name: 'KanbanFilter',
+  name: 'FilterKanbanColumn',
   emits: ['changeLabel'],
   data() {
     return {
@@ -35,7 +35,10 @@ export default {
       this.isOptionOpen = !this.isOptionOpen
     },
   },
-
-  components: { ArrowDown },
+  components: {
+    ArrowDown,
+  },
 }
 </script>
+
+<style></style>

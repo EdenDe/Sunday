@@ -15,7 +15,7 @@
         <label :data-diff="groupTimelineProgressRange" class="timeline-label active-timeline" :style="
           progressTimeline?.length
             ? {
-              background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})`,
+              background: ` linear-gradient(90deg, ${groupColor} ${gradientPercent}, #323232 ${gradientPercent})`,
             }
             : null
         ">
@@ -36,31 +36,6 @@ export default {
     tasks: Array,
     groupColor: String,
     isClose: Boolean,
-  },
-  data() {
-    return {
-      progressTimeline: null,
-    }
-  },
-  watch: {
-    tasks: {
-      handler() {
-        this.setProgressTimeline()
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
-  methods: {
-    setProgressTimeline() {
-      const timestamps = this.tasks.map((task) => [...task['timeline']]).flat()
-      if (!timestamps?.length) return
-
-      let minTimestamp = Math.min(...timestamps)
-      let maxTimestamp = Math.max(...timestamps)
-
-      this.progressTimeline = [minTimestamp, maxTimestamp]
-    },
   },
   computed: {
     ...mapGetters(['cmpOrder', 'statusLabels', 'priorityLabels']),
@@ -93,24 +68,12 @@ export default {
         return res
       }
     },
-    gridientColor() {
-      const [startDate, endDate] = this.progressTimeline
-
+    gradientPercent() {
+      const [startDate] = this.progressTimeline
       let fullDiff = utilService.getDaysBetweenNumber(this.progressTimeline)
       let startToToday =
         utilService.getDaysBetweenNumber([startDate, Date.now()]) - 1
-      let todayToEnd = utilService.getDaysBetweenNumber([Date.now(), endDate])
-
-      if (todayToEnd < 0 || startToToday < 0) {
-        return {
-          start: todayToEnd < 0 ? '100%' : '0%',
-        }
-      }
-      let presentageStart = Math.round((startToToday / fullDiff) * 100) + '%'
-
-      return {
-        start: presentageStart,
-      }
+      return Math.round((startToToday / fullDiff) * 100) + '%'
     },
     groupTimelineProgressDates() {
       if (!this.progressTimeline) return '-'
@@ -119,6 +82,15 @@ export default {
     groupTimelineProgressRange() {
       if (!this.progressTimeline) return '-'
       return utilService.getDaysBetween(this.progressTimeline)
+    },
+    progressTimeline() {
+      const timestamps = this.tasks.map((task) => [...task['timeline']]).flat()
+      if (!timestamps?.length) return
+
+      let minTimestamp = Math.min(...timestamps)
+      let maxTimestamp = Math.max(...timestamps)
+
+      return [minTimestamp, maxTimestamp]
     },
   },
 }

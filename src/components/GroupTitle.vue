@@ -56,7 +56,6 @@ export default {
     },
     isColorModalOpen: {
       handler() {
-        console.log(this.isColorModalOpen)
         this.focusGroupName()
         this.isColorPickerOpen = this.isColorModalOpen
       },
@@ -68,7 +67,6 @@ export default {
       this.isColorPickerOpen = value
     },
     onChangeGroupProp(prop, value) {
-      console.log(prop, value)
       this.$emit('updateProp', null, prop, value)
       if (prop === 'title' && value.trim().length === 0) {
         value = 'Enter Title'

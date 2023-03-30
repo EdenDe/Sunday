@@ -1,10 +1,16 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
+    <WorkspaceSideNav
+      @addBoard="addBoard"
+      @setBoard="loadBoard"
+      @copyBoard="copyBoard"
+      @removeBoard="removeBoard"
+    />
     <div class="board-container board-layout">
       <BoardHeader @updateBoard="updateBoard" @setFilter="setFilter" />
       <RouterView v-if="currBoardId" />
+      <Loader v-else />
     </div>
   </section>
 </template>
@@ -13,6 +19,7 @@
 import AppSideNav from '@/components/AppSidenav.vue'
 import WorkspaceSideNav from '@/components/WorkspaceSidenav.vue'
 import BoardHeader from '../components/BoardHeader.vue'
+import Loader from '../components/Loader.vue'
 import { boardService } from '../services/board.service.js'
 import {
   socketService,
@@ -20,12 +27,17 @@ import {
   SOCKET_EMIT_SET_BOARD_TOPIC,
 } from '../services/socket.service.js'
 export default {
+  created() {
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
+  },
   watch: {
     currBoardId: {
       handler() {
+        console.log('waiting for currBoardId')
         if (!this.currBoardId) return
         this.$router.push({ params: { boardId: this.currBoardId } })
         socketService.emit(SOCKET_EMIT_SET_BOARD_TOPIC, this.currBoardId)
+        console.log('got currBoardId')
       },
       immediate: true,
     },
@@ -68,7 +80,7 @@ export default {
     },
     setFilter(filterBy) {
       this.$store.dispatch({ type: 'setFilter', filterBy: filterBy })
-    }
+    },
   },
   created() {
     socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
@@ -76,10 +88,14 @@ export default {
   unmounted() {
     socketService.off(SOCKET_EVENT_UPDATE_BOARD, this.board)
   },
+  mounted() {
+    this.$store.commit({ type: 'setPageLoading', isLoading: false })
+  },
   components: {
     AppSideNav,
     WorkspaceSideNav,
     BoardHeader,
+    Loader,
   },
 }
 </script>

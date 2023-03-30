@@ -13,12 +13,12 @@
       }
     }
 
-    .merge-person{
+    .merge-person {
       @include flex-center;
       background-color: $color-blackish;
       border-radius: 50%;
       padding-inline-end: 2px;
-      color:$color-snow_white;
+      color: $color-snow_white;
       font-size: em(12px);
       height: 25px;
       min-width: 25px;
@@ -44,6 +44,7 @@
         height: 100%;
         width: 100%;
         color: $color-snow_white;
+        padding: 1px;
       }
     }
   }
@@ -108,7 +109,7 @@
   }
 
   input {
-    @include input(rem(320px))
+    @include input(rem(320px));
   }
 }
 
