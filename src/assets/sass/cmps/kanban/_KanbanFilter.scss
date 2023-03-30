@@ -1,0 +1,72 @@
+.kanban-filter{
+  grid-column: 3;
+  flex-direction: column;
+  width: 268px;
+  height: 70vh;
+  padding: 20px 10px 0;
+  background-color: $color-snow_white;
+  border-left: 1px solid $ui-border-color;
+  
+  *{
+    font-size: rem(14px);
+    font-weight: 300;
+  }
+
+  &-title{
+    color: $color-scrollbar_gray;
+    margin-bottom: $margin-medium;
+  }
+
+  .select-title{
+    padding: 5px 0 $padding-small 0;
+    color: $color-mud_black; 
+  }
+
+  &-select{
+    position: relative;
+    height: 35px;
+    margin-bottom: 10px;
+
+    
+     .filter-select-input {
+      @include input;
+      position: relative;
+      font-size: rem(14px);
+      width: 235px;
+      padding-left: 8px;
+      height: 35px;
+
+    .icon {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      * {
+      height: 14px;
+      width: 14px;
+      fill: $ui-border-color;
+      }
+   }
+  }
+        
+  .options-list{
+    position: absolute;
+    box-shadow: $box-shadow-small;
+    border-color: $color-wolf_gray;
+    border-radius: $border-radius-rounder;
+    padding: em(8px);
+    top:36px;
+    background-color: $color-snow_white;
+    width:100%;
+    cursor: pointer;
+
+    transition: all .3s ease-in-out;
+
+    .option{
+        @include action;
+          padding: em(5px) em(7px);
+    }
+  }
+
+  }
+
+}
