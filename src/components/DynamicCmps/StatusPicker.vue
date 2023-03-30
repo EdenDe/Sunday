@@ -4,9 +4,9 @@
       <div :style="{ backgroundColor: status.color, fontSize: '14px' }" class="status " @click="toggleColorPicker">
         <span>{{ status.title }}</span>
       </div>
-      <template #popper>
-        <LabelPicker v-clickOutside="toggleColorPicker" v-if="isPickerOpen" class="status-label-picker"
-          :labels="statusList" @setLabel="setLabel">
+      <template #popper v-if="isPickerOpen">
+        <LabelPicker v-clickOutside="toggleColorPicker" class="status-label-picker" :labels="statusList"
+          @setLabel="setLabel">
         </LabelPicker>
       </template>
       <span class="peeling-span scale-up-tr"></span>
