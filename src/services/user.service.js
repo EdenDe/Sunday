@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service.js'
+import { socketService } from './socket.service.js'
 import { utilService } from './util.service.js'
 import gUsers from '../../data/user.json' assert { type: 'json' }
 import { httpService } from './http.service.js'
@@ -74,11 +75,14 @@ function getLoggedinUser() {
 		sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)
 	)
 	if (user) return user
-	const guestUser = { _id: utilService.makeId(), fullname: 'guest', color: 'black' }
+	const guestUser = {
+		_id: utilService.makeId(),
+		fullname: 'guest',
+		color: 'black',
+	}
 	saveLocalUser(guestUser)
 	socketService.login(guestUser._id)
 	return guestUser
-
 }
 
 // function saveLocalUser(user) {

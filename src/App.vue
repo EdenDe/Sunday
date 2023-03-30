@@ -1,6 +1,6 @@
 <template>
-  <RouterView v-if="!pageLoading" />
-  <Loader v-else />
+  <Loader v-if="pageLoading" />
+  <RouterView />
 </template>
 
 <script>

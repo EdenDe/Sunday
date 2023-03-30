@@ -4,9 +4,9 @@
       <Container
         class="kanban-container"
         orientation="horizontal"
-        @drop="onDropColumn($event)"
+        @drop="onDropColumn"
         :drop-placeholder="{
-          className: 'drop-placeholder1',
+          className: 'drop-placeholder',
           animationDuration: '200',
           showOnTop: true,
         }"
@@ -24,11 +24,14 @@
             {{ label.title }}
           </div>
 
-          <KanbanCards :tasks="tasks(label.title)" />
+          <KanbanCards
+            :cmpsToDisplay="cmpsToDisplay"
+            :tasks="tasks(label.title)"
+          />
         </Draggable>
       </Container>
     </div>
-    <KanbanFilter @changeLabel="onChangeLabel" />
+    <KanbanFilter @changeLabel="onChangeLabel" @setFilterCmp="setFilterCmp" />
   </section>
 </template>
 <script>
@@ -41,6 +44,7 @@ export default {
     return {
       labelsOrder: [],
       currLabel: 'statusOrderKanban',
+      cmpsToDisplay: ['taskTitle', 'date', 'person'],
     }
   },
   created() {
@@ -53,7 +57,7 @@ export default {
       this.labelsOrder.splice(
         addedIndex,
         0,
-        cmpOrder.splice(removedIndex, 1)[0]
+        this.labelsOrder.splice(removedIndex, 1)[0]
       )
       this.$store.dispatch({
         type: 'updateCurrBoard',
@@ -70,8 +74,11 @@ export default {
         JSON.stringify(this.$store.getters.currBoard[this.currLabel])
       )
     },
+    setFilterCmp(cmps) {
+      this.cmpsToDisplay = ['taskTitle']
+      this.cmpsToDisplay.push(...cmps)
+    },
   },
-
   computed: {
     labels() {
       return this.labelsOrder
@@ -80,10 +87,12 @@ export default {
       return (currLabel) => {
         let taskPerLabel = {}
         const groups = this.$store.getters.groups
+        const orderFilter =
+          this.currLabel === 'priorityOrderKanban' ? 'priority' : 'status'
         groups.forEach((group) => {
           taskPerLabel = group.tasks.reduce((label, task) => {
-            if (!label[task.status]) label[task.status] = []
-            label[task.status].push(task)
+            if (!label[task[orderFilter]]) label[task[orderFilter]] = []
+            label[task[orderFilter]].push(task)
             return label
           }, taskPerLabel)
         })

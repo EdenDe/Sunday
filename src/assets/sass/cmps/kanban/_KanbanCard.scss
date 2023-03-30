@@ -1,11 +1,78 @@
 .task-card{
-  height: 300px;
+  height: max-content;
   width: 238px;
   margin: 12px;
   padding: $padding-small;
 
   background-color: $color-snow_white;
-  border-radius: $border-radius;
-
+ // border-radius: $border-radius;
+  gap:8px;
   box-shadow: $box-shadow-medium;
+
+  .card-row{
+    grid-template-columns: 25px 55px 140px;
+    padding: $padding-small;
+    &.taskTitle-row{
+      grid-template-columns:170px 24px 20px;
+
+      :is(.icon-wrapper,.cmp-name){
+        display:none;
+      }
+      .task-title{
+        padding:0;
+
+      }
+    }
+
+    &:not(.taskTitle-row):nth-child(3){
+      background-color: #f5f6f8;
+
+      &:hover{
+        //couldnt find :(
+      }
+    }
+  }
+
+  .pulse-bubble {
+    @include flex-center;
+    position: relative;
+    margin-left: auto;
+    height: 100%;
+
+    * {
+      height: 100%;
+    }
+
+    a {
+      display: inline-block;
+      width: em(24px);
+      height: em(24px);
+    }
+
+    .pulse-icon {
+      color: $layout-border-color;
+      height: 24px;
+      width: 24px;
+      &:hover {
+        color: $primary-on-secondary-color;
+      }
+      &-empty {
+        position: relative;
+        color: $primary-on-secondary-color;
+        p {
+          position: absolute;
+          bottom: 0;
+          right: -5px;
+          @include flex-center;
+          height: rem(13px);
+          width: rem(13px);
+          background-color: $primary-on-secondary-color;
+          color: $color-snow_white;
+          border-radius: 50%;
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
 }

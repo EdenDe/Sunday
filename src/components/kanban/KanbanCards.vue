@@ -1,33 +1,33 @@
 <template>
-  <Container
-    class="kanban-cards grid"
-    @drop="onDropTask($event)"
-    orientation="horizontal"
-    :drop-placeholder="{
-      className: 'drop-placeholder1',
-      animationDuration: '200',
-      showOnTop: true,
-    }"
-  >
-    <Draggable
-      v-for="(task, index) in tasks"
-      :key="index"
-      class="task-card grid"
-      :class="task"
+  <div v-for="(task, index) in tasks" :key="index" class="grid">
+    <Container
+      class="kanban-cards grid"
+      @drop="onDropTask"
+      orientation="vertical"
+      :drop-placeholder="{
+        className: 'drop-placeholder1',
+        animationDuration: '200',
+        showOnTop: true,
+      }"
     >
-      <h1>
-        {{ task.id }}
-        I'm a card
-      </h1>
-    </Draggable>
-  </Container>
+      <Draggable class="task-card">
+        <KanbanCard
+          v-for="(cmp, index) in cmpsToDisplay"
+          :task="task"
+          :cmp="cmp"
+          :key="index"
+        />
+      </Draggable>
+    </Container>
+  </div>
 </template>
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
+import KanbanCard from './KanbanCard.vue'
 
 export default {
   name: 'KanbanCards',
-  props: { tasks: Array },
+  props: { tasks: Array, cmpsToDisplay: Array },
   methods: {
     onDropTask({ addedIndex, removedIndex }) {
       console.log(addedIndex, removedIndex)
@@ -44,9 +44,11 @@ export default {
       // })
     },
   },
+  created() {},
   components: {
     Container,
     Draggable,
+    KanbanCard,
   },
 }
 </script>
