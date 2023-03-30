@@ -24,6 +24,14 @@
       cursor: pointer;
       &:hover {
         background-color: $color-timeline-hover;
+        color: transparent;
+        &::after {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          content: attr(data-diff);
+          color: $color-snow_white;
+        }
         .remove-btn {
           display: block;
         }

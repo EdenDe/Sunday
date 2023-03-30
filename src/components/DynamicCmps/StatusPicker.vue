@@ -1,12 +1,20 @@
 <template>
   <section class="status-picker">
     <VDropdown :distance="6">
-      <div :style="{ backgroundColor: status.color, fontSize: '14px' }" class="status " @click="toggleColorPicker">
+      <div
+        :style="{ backgroundColor: status.color }"
+        class="status"
+        @click="toggleColorPicker"
+      >
         <span>{{ status.title }}</span>
       </div>
       <template #popper v-if="isPickerOpen">
-        <LabelPicker v-clickOutside="toggleColorPicker" class="status-label-picker" :labels="statusList"
-          @setLabel="setLabel">
+        <LabelPicker
+          v-clickOutside="toggleColorPicker"
+          class="status-label-picker"
+          :labels="statusList"
+          @setLabel="setLabel"
+        >
         </LabelPicker>
       </template>
       <span class="peeling-span scale-up-tr"></span>

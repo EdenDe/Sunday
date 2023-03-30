@@ -160,7 +160,6 @@
   border-radius: 50px;
   padding: 20px;
   color: $color-snow_white;
-
   @include arrow-after;
 }
 
@@ -203,7 +202,7 @@
   cursor: pointer;
 }
 
-@mixin grid-temp{
+@mixin grid-temp {
   grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 }
 

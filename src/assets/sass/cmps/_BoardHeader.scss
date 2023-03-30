@@ -37,6 +37,7 @@
 
     .btn-container {
       @include flex-center;
+      border-radius: $border-radius;
       padding: 4px;
       & * {
         line-height: 20px;
