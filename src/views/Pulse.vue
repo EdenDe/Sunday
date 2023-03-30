@@ -10,8 +10,15 @@
         </span>
       </div>
       <div class="tabs-wrapper flex align-center">
-        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'updateLog' }">
-          <button class="btn btn-tab" @click="activeTab = 'updateLog'" v-tooltip="'Updates / ' + object.updates?.length">
+        <div
+          class="btn-tab-wrapper"
+          :class="{ 'active-tab': activeTab === 'updateLog' }"
+        >
+          <button
+            class="btn btn-tab"
+            @click="activeTab = 'updateLog'"
+            v-tooltip="'Updates / ' + object.updates?.length"
+          >
             <div class="task-update-icon">
               <HomeIcon class="home-icon icon" />
             </div>
@@ -19,16 +26,27 @@
           </button>
         </div>
         <div class="border"></div>
-        <div class="btn-tab-wrapper" :class="{ 'active-tab': activeTab === 'activityLog' }" v-tooltip="'Activity Log'"
-          @click="activeTab = 'activityLog'">
+        <div
+          class="btn-tab-wrapper"
+          :class="{ 'active-tab': activeTab === 'activityLog' }"
+          v-tooltip="'Activity Log'"
+          @click="activeTab = 'activityLog'"
+        >
           <button class="btn btn-tab">Activity Log</button>
         </div>
       </div>
     </header>
     <main class="content-wrapper">
-      <UpdateLog v-if="activeTab === 'updateLog'" :loggedInUser="loggedInUser" :updates="object.updates"
-        @editUpdates="update" />
-      <ActivityLog v-if="activeTab === 'activityLog'" :activities="activities" />
+      <UpdateLog
+        v-if="activeTab === 'updateLog'"
+        :loggedInUser="loggedInUser"
+        :updates="object.updates"
+        @editUpdates="update"
+      />
+      <ActivityLog
+        v-if="activeTab === 'activityLog'"
+        :activities="activities"
+      />
     </main>
 
     <!-- <img src="https://cdn.monday.com/images/pulse-page-empty-state.svg" /> -->
@@ -76,7 +94,6 @@ export default {
             let currTask = groups[i].tasks.find((t) => t.id === this.taskId)
             if (currTask) {
               this.groupId = groups[i].id
-              debugger
               return {
                 title: currTask.taskTitle,
                 updates: currTask.updates || [],
@@ -92,7 +109,6 @@ export default {
           updates: board.updates || [],
         }
       }
-
     },
     activities() {
       let activities = this.$store.getters.activities
