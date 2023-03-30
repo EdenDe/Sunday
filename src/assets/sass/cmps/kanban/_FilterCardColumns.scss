@@ -1,0 +1,20 @@
+.card-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  .card-checkbox {
+    width: rem(230px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+    .label {
+      width: 100%;
+      margin-bottom: 16px;
+      .checkbox-wrapper {
+        .checkbox {
+          margin-block-end: 6px;
+        }
+      }
+    }
+  }
+}
