@@ -7,15 +7,12 @@
         </div>
         <input placeholder="Search" v-model="txt" @input="() => setText('txt', txt)"
           class="flex align-center justify-start search-input" :class="{ typing: txt.length > 0 }" />
-        <!-- <span class="flex align-center justify-start search-input" contenteditable @focus="onFirstType"
-          @change="(event) => event.target.innerText" ref="groupTitle">
-          {{ filterBy.txt }}
-        </span> -->
       </button>
     </div>
 
     <div class="filter-member filter" :class="{ active: activeFilter === 'member' }">
-      <button class="btn btn-container" @click="() => toggleFilter('member')" v-tooltip="'Filter by person'">
+      <button class="btn btn-container" @click="() => toggleFilter(activeFilter === 'member' ? null : 'member')"
+        v-tooltip="'Filter by person'">
         <div class="icon-container">
           <MemberIcon class="member-icon icon" />
         </div>
@@ -27,7 +24,8 @@
     </div>
 
     <div class="filter-main filter" ref="member" :class="{ active: activeFilter === 'main' }">
-      <button class="btn btn-container" @click="() => toggleFilter('main')" v-tooltip="'Filter by anything'">
+      <button class="btn btn-container" @click="() => toggleFilter(activeFilter === 'main' ? null : 'main')"
+        v-tooltip="'Filter by anything'">
         <div class="icon-container">
           <FilterIcon class="filter-icon icon" />
         </div>
@@ -38,7 +36,7 @@
       </div>
     </div>
     <div class="filter-sort filter" ref="sort" :class="{ active: activeFilter === 'sort' }">
-      <button class="btn btn-container" @click="() => toggleFilter('sort')">
+      <button class="btn btn-container" @click="() => toggleFilter(activeFilter === 'sort' ? null : 'sort')">
         <div class="icon-container">
           <SortIcon class="filter-icon icon" />
         </div>
@@ -95,7 +93,6 @@ export default {
   },
   computed: {
     filterBy() {
-      console.log('hihohoho', this.$store.getters.filterBy)
       return this.$store.getters.filterBy
     }
   },

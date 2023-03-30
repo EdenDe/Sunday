@@ -7,23 +7,25 @@
     <p class="subheader">Recent filters</p>
     <section class="filters-lists-container flex justify-between">
       <ul>
-        <p class="filter-title">Priority</p>
+        <p class="filter-title">Priority {{ filter.priority.length ? '/ ' + filter.priority.length : '' }}</p>
         <li class="flex align-center justify-start" v-for="label in priorityLabels"
+          :class="{ active: priorityFiltered(label.title) }"
           @click="$emit('setFilterBy', { by: 'priority', value: label.title })">
           <div :style="{ backgroundColor: label.color }"></div>
           {{ label.title ? label.title : 'Blank' }}
         </li>
       </ul>
       <ul>
-        <p class="filter-title">Status</p>
+        <p class="filter-title">Status {{ filter.status.length ? '/ ' + filter.status.length : '' }}</p>
         <li class="flex align-center justify-start" v-for="label in statusLabels"
+          :class="{ active: statusFiltered(label.title) }"
           @click="$emit('setFilterBy', { by: 'status', value: label.title })">
           <div :style="{ backgroundColor: label.color }"></div>
           {{ label.title ? label.title : 'Blank' }}
         </li>
       </ul>
       <ul>
-        <p class="filter-title">Person</p>
+        <p class="filter-title">Person {{ filter.person.length ? '/ ' + filter.person.length : '' }}</p>
         <li class="flex align-center justify-start" v-for="member in membersLabels"
           :class="{ active: personFiltered(member._id) }"
           @click="$emit('setFilterBy', { by: 'person', value: member._id })">
@@ -43,10 +45,6 @@ export default {
     filter: Object
   },
   emits: ['setFilterBy'],
-  data() {
-    return {}
-  },
-  methods: {},
   computed: {
     numberOfItems() {
       return this.$store.getters.sumOfTasks
@@ -62,8 +60,20 @@ export default {
     },
     personFiltered() {
       return (memberId) => {
-        let yo = this.$store.getters.filterBy.person
-        return yo.includes(memberId)
+        let list = this.filter.person
+        return list.includes(memberId)
+      }
+    },
+    statusFiltered() {
+      return (status) => {
+        let list = this.filter.status
+        return list.includes(status)
+      }
+    },
+    priorityFiltered() {
+      return (priority) => {
+        let list = this.filter.priority
+        return list.includes(priority)
       }
     }
   },

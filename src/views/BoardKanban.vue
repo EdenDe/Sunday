@@ -1,25 +1,13 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="kanban flex">
-      <Container
-        class="kanban-container"
-        orientation="horizontal"
-        @drop="onDropColumn($event)"
-        :drop-placeholder="{
-          className: 'drop-placeholder1',
-          animationDuration: '200',
-          showOnTop: true,
-        }"
-      >
-        <Draggable
-          class="label-col"
-          v-for="(label, index) in labels"
-          :key="index"
-        >
-          <div
-            class="label-col-title"
-            :style="{ backgroundColor: label.color }"
-          >
+      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn($event)" :drop-placeholder="{
+        className: 'drop-placeholder1',
+        animationDuration: '200',
+        showOnTop: true,
+      }">
+        <Draggable class="label-col" v-for="(label, index) in labels" :key="index">
+          <div class="label-col-title" :style="{ backgroundColor: label.color }">
             {{ label.title }}
           </div>
 
@@ -78,16 +66,19 @@ export default {
       return this.labelsOrder
     },
     tasks() {
-      return (label) => {
+      return (currLabel) => {
+        let taskPerLabel = {};
         const groups = this.$store.getters.groups
+        groups.forEach(group => {
+          taskPerLabel = group.tasks.reduce((label, task) => {
+            if (!label[task.status]) label[task.status] = []
+            label[task.status].push(task)
+            return label
+          }, taskPerLabel)
+        })
+
+        return taskPerLabel[currLabel]
       }
-      // return groups
-      // let tasks = groups.map((g) =>
-      //   g.tasks.filter((t) => t.priority === 'Critical')
-      // )
-      // return tasks
-      //return tasks
-      // filter((t) => t.priority === label)
     },
   },
   components: {

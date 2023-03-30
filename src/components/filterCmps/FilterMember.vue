@@ -6,7 +6,7 @@
       <li class="flex align-center justify-center" v-for="member in members"
         :class="{ active: personFiltered(member._id) }">
         <PersonAvatar v-tooltip="member.fullname" :person="member"
-          @click="$emit('setFilterBy', { by: 'person', value: member._id })" />
+          @click="() => $emit('setFilterBy', { by: 'person', value: member._id })" />
       </li>
     </ul>
   </div>
