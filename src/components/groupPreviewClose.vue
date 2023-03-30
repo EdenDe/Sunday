@@ -61,7 +61,11 @@
         {{ label.name }}
       </div>
     </section>
-    <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
+    <ProgressBar
+      :tasks="group.tasks"
+      :groupColor="group.color"
+      :isClose="true"
+    />
   </section>
 </template>
 

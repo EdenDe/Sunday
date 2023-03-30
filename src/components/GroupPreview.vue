@@ -94,7 +94,6 @@
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
         </Draggable>
-        <div></div>
       </Container>
 
       <TaskList

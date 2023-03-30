@@ -2,6 +2,12 @@
   @include task-cols;
   height: 60px;
   background-color: $color-snow_white;
+  &::after{
+   @include infinity-table;
+   grid-area: 1/ span 2/ 12;
+    height: 73px;
+  }
+
   &:hover .menu-icon {
     opacity: 1;
     fill: $color-mud_black;
@@ -64,7 +70,6 @@
       box-shadow: $box-shadow-xs;
     }
     > *:not(:nth-child(-n + 4)) {
-      border-top: 1px solid $ui-border-color;
       position: sticky;
       left: 402px;
     }

@@ -2,6 +2,13 @@
   @include task-cols;
   background-color: $color-snow_white;
 
+    &::after {
+        @include infinity-table;
+        border-bottom: none;
+        height: 33px;
+        grid-column: 12;
+      }
+
   >*:not(:first-child){
     border-top: 1px solid $ui-border-color;
   }

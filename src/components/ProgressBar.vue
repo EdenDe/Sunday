@@ -1,7 +1,11 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
     <div :style="{ width: '40px' }"></div>
-    <div :style="{ width: '6px', backgroundColor: groupColor }"></div>
+    <div
+      v-if="isClose"
+      :style="{ width: '6px', backgroundColor: groupColor }"
+    ></div>
+    <div v-else :style="{ width: '6px' }"></div>
     <div
       v-for="(item, idx) in cmpOrder"
       :key="idx"
@@ -39,7 +43,6 @@
       </div>
       <div v-else :class="item['name']"></div>
     </div>
-    <div></div>
   </section>
 </template>
 
@@ -51,6 +54,7 @@ export default {
   props: {
     tasks: Array,
     groupColor: String,
+    isClose: Boolean,
   },
   data() {
     return {
