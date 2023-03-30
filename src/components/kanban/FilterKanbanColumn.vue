@@ -1,6 +1,11 @@
 <template>
   <section class="kanban-column">
-    <h4 class="select-title">Kanban Column</h4>
+    <div class="filter-title">
+      <h4 class="select-title">Kanban Column</h4>
+      <div class="icon-wrapper">
+        <InfoIcon class="icon icon-info" />
+      </div>
+    </div>
     <div class="kanban-filter-select">
       <div class="filter-select-input" @click="toggleOptions">
         <span>{{ columnFilter }}</span>
@@ -16,6 +21,7 @@
 
 <script>
 import ArrowDown from '../../assets/icons/ArrowDown.svg'
+import InfoIcon from '../../assets/icons/Info.svg'
 export default {
   name: 'FilterKanbanColumn',
   emits: ['changeLabel'],
@@ -37,6 +43,7 @@ export default {
   },
   components: {
     ArrowDown,
+    InfoIcon,
   },
 }
 </script>
