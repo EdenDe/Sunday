@@ -1,13 +1,26 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="kanban flex">
-      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn($event)" :drop-placeholder="{
-        className: 'drop-placeholder1',
-        animationDuration: '200',
-        showOnTop: true,
-      }">
-        <Draggable class="label-col" v-for="(label, index) in labels" :key="index">
-          <div class="label-col-title" :style="{ backgroundColor: label.color }">
+      <Container
+        class="kanban-container"
+        orientation="horizontal"
+        @drop="onDropColumn($event)"
+        :drop-placeholder="{
+          className: 'drop-placeholder1',
+          animationDuration: '200',
+          showOnTop: true,
+        }"
+      >
+        <Draggable
+          class="label-col"
+          v-for="(label, index) in labels"
+          :key="index"
+        >
+          <div
+            class="label-col-title"
+            :style="{ backgroundColor: label.color }"
+          >
+            <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
 
@@ -15,7 +28,7 @@
         </Draggable>
       </Container>
     </div>
-    <KanbanFilter @changeLabels="onChangeLabel" />
+    <KanbanFilter @changeLabel="onChangeLabel" />
   </section>
 </template>
 <script>
@@ -27,11 +40,12 @@ export default {
   data() {
     return {
       labelsOrder: [],
+      currLabel: 'statusOrderKanban',
     }
   },
   created() {
     this.labelsOrder = JSON.parse(
-      JSON.stringify(this.$store.getters.currBoard.statusOrderKanban)
+      JSON.stringify(this.$store.getters.currBoard[this.currLabel])
     )
   },
   methods: {
@@ -41,23 +55,20 @@ export default {
         0,
         cmpOrder.splice(removedIndex, 1)[0]
       )
-      // this.$store.dispatch({
-      //   type: 'updateCurrBoard',
-      //   groupId: null,
-      //   taskId: null,
-      //   prop: 'cmpOrder',
-      //   toUpdate: cmpOrder,
-      // })
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId: null,
+        taskId: null,
+        prop: this.currLabel,
+        toUpdate: this.labelsOrder,
+      })
     },
     onChangeLabel(value) {
-      if (value === 'Priority')
-        this.labelsOrder = JSON.parse(
-          JSON.stringify(this.$store.getters.currBoard.priorityOrderKanban)
-        )
-      else
-        this.labelsOrder = JSON.parse(
-          JSON.stringify(this.$store.getters.currBoard.statusOrderKanban)
-        )
+      this.currLabel =
+        value === 'Priority' ? 'priorityOrderKanban' : 'statusOrderKanban'
+      this.labelsOrder = JSON.parse(
+        JSON.stringify(this.$store.getters.currBoard[this.currLabel])
+      )
     },
   },
 
@@ -67,16 +78,15 @@ export default {
     },
     tasks() {
       return (currLabel) => {
-        let taskPerLabel = {};
+        let taskPerLabel = {}
         const groups = this.$store.getters.groups
-        groups.forEach(group => {
+        groups.forEach((group) => {
           taskPerLabel = group.tasks.reduce((label, task) => {
             if (!label[task.status]) label[task.status] = []
             label[task.status].push(task)
             return label
           }, taskPerLabel)
         })
-
         return taskPerLabel[currLabel]
       }
     },
