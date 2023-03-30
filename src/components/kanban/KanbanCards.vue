@@ -1,13 +1,15 @@
 <template>
-  <Container class="kanban-cards grid" @drop="onDropTask" orientation="horizontal" :drop-placeholder="{
-    className: 'drop-placeholder1',
-    animationDuration: '200',
-    showOnTop: true,
-  }">
-    <Draggable v-for="(task, index) in tasks" :key="index" class="task-card" :class="task">
-      <KanbanCard v-for="cmp, index in cmpsToDisplay" :task="task" :cmp="cmp" :key="index" />
-    </Draggable>
-  </Container>
+  <div v-for="(task, index) in tasks" :key="index" class="grid">
+    <Container class="kanban-cards grid" @drop="onDropTask" orientation="vertical" :drop-placeholder="{
+      className: 'drop-placeholder1',
+      animationDuration: '200',
+      showOnTop: true,
+    }">
+      <Draggable class="task-card">
+        <KanbanCard v-for="cmp, index in cmpsToDisplay" :task="task" :cmp="cmp" :key="index" />
+      </Draggable>
+    </Container>
+  </div>
 </template>
 <script>
 
@@ -33,12 +35,9 @@ export default {
       // })
     },
   },
-<<<<<<< HEAD:src/components/kanaban/KanbanCards.vue
   created() {
-    console.log(this.cmpsToDisplay)
+    console.log(this.tasks)
   },
-=======
->>>>>>> d0677cd5898f1a1b86ee04ec4da4bb012f1add26:src/components/kanban/KanbanCards.vue
   components: {
     Container,
     Draggable,

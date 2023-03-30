@@ -1,12 +1,7 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav
-      @addBoard="addBoard"
-      @setBoard="loadBoard"
-      @copyBoard="copyBoard"
-      @removeBoard="removeBoard"
-    />
+    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
     <div class="board-container board-layout">
       <BoardHeader @updateBoard="updateBoard" @setFilter="setFilter" />
       <RouterView v-if="currBoardId" />
@@ -89,6 +84,8 @@ export default {
     socketService.off(SOCKET_EVENT_UPDATE_BOARD, this.board)
   },
   mounted() {
+    console.log('i mountedddddd');
+
     this.$store.commit({ type: 'setPageLoading', isLoading: false })
   },
   components: {

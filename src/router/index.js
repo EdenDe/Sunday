@@ -47,22 +47,18 @@ const router = createRouter({
 					path: 'dashboard',
 					name: 'dashboard',
 					component: Dashboard,
-
 				},
 			],
 		},
 	],
-
-
 })
-
 
 router.beforeEach((to, from, next) => {
 	if (to.matched.some(route => route.meta.requiresAuth)) {
 		if (!sessionStorage.getItem('loggedinUser')) {
 			next({
 				name: 'loginSignup',
-				query: { redirect: to.fullPath }
+				query: { redirect: to.fullPath },
 			})
 		}
 	}

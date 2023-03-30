@@ -16,7 +16,7 @@
         </Draggable>
       </Container>
     </div>
-    <KanbanFilter @changeLabel="onChangeLabel" />
+    <KanbanFilter @changeLabel="onChangeLabel" @setFilterCmp="setFilterCmp" />
   </section>
 </template>
 <script>
@@ -59,6 +59,10 @@ export default {
         JSON.stringify(this.$store.getters.currBoard[this.currLabel])
       )
     },
+    setFilterCmp(cmps) {
+      this.cmpsToDisplay = ['taskTitle']
+      this.cmpsToDisplay.push(...cmps)
+    }
   },
   computed: {
     labels() {
