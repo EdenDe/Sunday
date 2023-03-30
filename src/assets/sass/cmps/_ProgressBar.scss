@@ -1,5 +1,11 @@
 .progress-bar {
   @include task-cols;
+  &::after {
+      @include infinity-table;
+      border-top: none;
+      height: 34px;
+      grid-column: 12;
+    }
   
 
   > *:not(:nth-child(-n + 4)) {
@@ -19,9 +25,7 @@
     border-left: 1px solid #d0d4e4;
     border-bottom-left-radius: $border-radius-rounder;
   }
-  >:last-child{
-    border-right: none;
-  }
+
 
   .progress-container {
     height: em(35px);

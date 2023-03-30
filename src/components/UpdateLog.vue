@@ -1,8 +1,14 @@
 <template>
   <section class="update-log grid">
     <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
-      <input v-if="!isEditor" @focus="toggleIsEditor(true)" @input="onType" v-model="content"
-        placeholder="Write an update..." class="input-update-log" />
+      <input
+        v-if="!isEditor"
+        @focus="toggleIsEditor(true)"
+        @input="onType"
+        v-model="content"
+        placeholder="Write an update..."
+        class="input-update-log"
+      />
       <TextEditor v-model="content" @setContent="setContent" v-else />
       <div class="emoji-container" @click="toggleShowEmoji">
         <button class="btn flex align-center justify-between">
@@ -15,8 +21,15 @@
     </section>
     <section class="updates-wrapper flex-col">
       <h1>{{ typingUser }}</h1>
-      <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
-        :loggedInUserId="loggedInUser._id" @editUpdate="editUpdate" @toggleLike="toggleLike" />
+      <Update
+        v-for="update in updates"
+        :update="update"
+        :key="update.id"
+        @removeUpdate="removeUpdate"
+        :loggedInUserId="loggedInUser._id"
+        @editUpdate="editUpdate"
+        @toggleLike="toggleLike"
+      />
     </section>
   </section>
 </template>
@@ -25,9 +38,9 @@
 import Update from '../components/Update.vue'
 import TextEditor from './TextEditor.vue'
 import { utilService } from '../services/util.service'
-import data from "emoji-mart-vue-fast/data/twitter.json";
-import "emoji-mart-vue-fast/css/emoji-mart.css";
-import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
+import data from 'emoji-mart-vue-fast/data/twitter.json'
+import 'emoji-mart-vue-fast/css/emoji-mart.css'
+import { Picker, EmojiIndex } from 'emoji-mart-vue-fast/src'
 import Emoji from '../assets/icons/Emoji.svg'
 
 export default {
@@ -60,7 +73,6 @@ export default {
       this.isEmojiOpen = !this.isEmojiOpen
     },
     setContent(content) {
-      debugger
       this.content = content
     },
     onUpdate() {
@@ -77,7 +89,7 @@ export default {
     },
     removeUpdate(updateId) {
       let updates = JSON.parse(JSON.stringify(this.updates))
-      updates = updates.filter(update => update.id !== updateId)
+      updates = updates.filter((update) => update.id !== updateId)
       this.$emit('editUpdates', 'updates', updates)
     },
     toggleLike(updateId, value) {
@@ -97,14 +109,14 @@ export default {
       let update = updates.find((update) => update.id === updateId)
       update.txt = content
       this.$emit('editUpdates', 'updates', updates)
-    }
+    },
   },
 
   components: {
     TextEditor,
     Update,
     Emoji,
-    Picker
+    Picker,
   },
 }
 </script>

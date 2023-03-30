@@ -8,10 +8,7 @@
       display: block;
     }
   }
-  .peeling-span {
-    @include peeling-span;
-  }
-  
+
   .priority{
     @include fullSize;
     display:grid;
@@ -25,10 +22,12 @@
  }
   // display: block;
 
+  .peeling-span {
+    @include peeling-span;
+  }
   // & * {
   //   height: 100%;
   // }
-
 .v-popper__inner:has(.priority-label-picker) {
   @include label-picker-container;
   height: rem(240px);
