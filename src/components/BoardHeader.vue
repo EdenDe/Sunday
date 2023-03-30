@@ -66,7 +66,7 @@
           <ArrowDownIcon class="arrow-down-icon icon" />
         </span>
       </div>
-      <TaskFilter />
+      <TaskFilter @setFilter="(filterBy) => $emit('setFilter', filterBy)" />
     </div>
   </section>
 </template>

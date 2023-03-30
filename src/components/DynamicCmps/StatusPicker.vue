@@ -1,7 +1,7 @@
 <template>
   <section class="status-picker">
     <VDropdown :distance="6">
-      <div :style="{ backgroundColor: status.color, fontSize: '14px' }" class="status " @click="toggleColorPicker">
+      <div :style="{ backgroundColor: status.color }" class="status " @click="toggleColorPicker">
         <span>{{ status.title }}</span>
       </div>
       <template #popper v-if="isPickerOpen">
@@ -17,7 +17,7 @@
 <script>
 import LabelPicker from '../LabelPicker.vue'
 export default {
-  name: 'TaskStatus ',
+  name: 'TaskStatus',
   props: {
     info: String,
   },

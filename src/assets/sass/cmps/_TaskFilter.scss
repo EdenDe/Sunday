@@ -46,18 +46,28 @@
 
     //MODALS:
     &-search {
-      span {
+      input {
+        @include btn(transparent);
+        width:90px;
         position: relative;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        height: 80%;
+        height: 32px;
         padding-left: 30px;
         border-radius: $border-radius;
         text-align: left;
-        &:focus-visible {
+        &:focus{
           width: 200px;
           outline: 1px solid $color-basic_blue;
+        }
+        &:hover{
+          background-color:transparent
+        }
+        &.typing {
+          background-color: $color-highlight_blue;
+          width: 200px;
+          outline: none;
         }
       }
       .icon-container {

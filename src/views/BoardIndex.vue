@@ -1,14 +1,9 @@
 <template>
   <section class="board-index main-layout">
     <AppSideNav />
-    <WorkspaceSideNav
-      @addBoard="addBoard"
-      @setBoard="loadBoard"
-      @copyBoard="copyBoard"
-      @removeBoard="removeBoard"
-    />
+    <WorkspaceSideNav @addBoard="addBoard" @setBoard="loadBoard" @copyBoard="copyBoard" @removeBoard="removeBoard" />
     <div class="board-container board-layout">
-      <BoardHeader @updateBoard="updateBoard" />
+      <BoardHeader @updateBoard="updateBoard" @setFilter="setFilter" />
       <RouterView v-if="currBoardId" />
     </div>
   </section>
@@ -25,10 +20,6 @@ import {
   SOCKET_EMIT_SET_BOARD_TOPIC,
 } from '../services/socket.service.js'
 export default {
-  created() {
-    //this.loadBoard(this.$route.params.boardId)
-    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
-  },
   watch: {
     currBoardId: {
       handler() {
@@ -75,6 +66,12 @@ export default {
       delete newBoard._id
       this.$store.dispatch({ type: 'saveBoard', board: newBoard })
     },
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'setFilter', filterBy: filterBy })
+    }
+  },
+  created() {
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
   },
   unmounted() {
     socketService.off(SOCKET_EVENT_UPDATE_BOARD, this.board)

@@ -4,6 +4,12 @@ export const boardStore = {
 	state: {
 		boards: [],
 		currBoard: {},
+		filterBy: {
+			txt: '',
+			status: [],
+			person: [],
+			priority: [],
+		},
 		savePrevBoard: {},
 	},
 	mutations: {
@@ -35,12 +41,18 @@ export const boardStore = {
 		undoBoard(state) {
 			state.currBoard = state.savePrevBoard
 		},
+		setFilter(state, { filterBy }) {
+			state.filterBy = filterBy
+		},
 	},
 	getters: {
 		boardsToDisplay({ boards }) {
 			return boards.map(({ _id, title }) => ({ _id, title }))
 		},
-		currBoard({ currBoard }) {
+		currBoard({ currBoard, filterBy }) {
+			if (currBoard._id) {
+				return boardService.setFilter(currBoard, filterBy)
+			}
 			return currBoard
 		},
 		groups({ currBoard }) {
@@ -63,6 +75,9 @@ export const boardStore = {
 		},
 		activities({ currBoard }) {
 			return currBoard.activities
+		},
+		filterBy({ filterBy }) {
+			return filterBy
 		},
 	},
 	actions: {
@@ -105,16 +120,14 @@ export const boardStore = {
 				console.log(err)
 			}
 		},
+		setFilter({ commit }, { filterBy }) {
+			commit({ type: 'setFilter', filterBy })
+		},
 		async updateCurrBoard(
-			{ dispatch, commit, state },
+			{ commit, state },
 			{ groupId, taskId, prop, toUpdate }
 		) {
 			commit({ type: 'savePrevBoard' })
-
-			// dispatch({
-			// 	type: 'saveBoard',
-			// 	updatedBoard
-			// })
 
 			var updatedBoard = boardService.updateBoard(
 				state.currBoard,
@@ -124,7 +137,6 @@ export const boardStore = {
 				toUpdate
 			)
 			// optimistic
-
 			commit({ type: 'updateBoard', board: updatedBoard })
 
 			try {

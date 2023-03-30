@@ -6,7 +6,6 @@ import { userService } from './user.service'
 import { httpService } from './http.service.js'
 
 const STORAGE_KEY = 'boardsDB'
-
 export const boardService = {
 	query,
 	getById,
@@ -17,50 +16,70 @@ export const boardService = {
 	getEmptyGroup,
 	getEmptyTask,
 	addActivity,
+	setFilter,
 }
 
 window.boardService = boardService
 
-async function query(filterBy = {}) {
-	// localStorage.setItem(STORAGE_KEY, JSON.stringify(gBoard))
-	// return storageService.query(STORAGE_KEY)
-	return httpService.get('board', filterBy)
+async function query() {
+	return httpService.get('board')
 }
 
-function getById(boardId) {
-	// return storageService.get(STORAGE_KEY, boardId)
+async function getById(boardId) {
 	return httpService.get(`board/${boardId}`)
 }
 
 async function remove(boardId) {
 	return httpService.delete(`board/${boardId}`)
-
-	// await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
-	var savedBoard
 	if (board._id) {
-		// savedBoard = await storageService.put(STORAGE_KEY, board)
-		savedBoard = await httpService.put(`board/${board._id}`, board)
+		return await httpService.put(`board/${board._id}`, board)
 	} else {
-		// savedBoard = await storageService.post(STORAGE_KEY, board)
-		savedBoard = await httpService.post(`board`, board)
+		return await httpService.post(`board`, board)
 	}
-	return savedBoard
 }
 
-// function addActivity(prop, title, oldValue, newValue) {
-// 	return {
-// 		id: 'a' + utilService.makeId(10),
-// 		createdAt: Date.now(),
-// 		createdBy: userService.getLoggedInUser(),
-// 		title,
-// 		prop,
-// 		oldValue,
-// 		newValue,
-// 	}
-// }
+//const currBoard = await getById('6422de01e6f5b31b74228324')
+// setFilter(currBoard, {
+// 	txt: '',
+// 	status: [],
+// 	person: [],
+// 	priority: [],
+// })
+
+function setFilter(currBoard, filterBy) {
+	console.log(filterBy)
+	let board = JSON.parse(JSON.stringify(currBoard))
+	let groups = []
+	board.groups.forEach(group => {
+		let tasks = []
+		group.tasks.forEach(task => {
+			let regex = new RegExp(filterBy.txt, 'i')
+			if (
+				regex.test(task.taskTitle) &&
+				(!filterBy.status.length ||
+					filterBy.status.includes(task.status)) &&
+				(!filterBy.priority.length ||
+					filterBy.priority.includes(task.priority)) &&
+				(!filterBy.person?.length ||
+					task.person.some(person =>
+						filterBy.person.includes(person._id)
+					))
+			) {
+				tasks.push(task)
+			}
+		})
+
+		if (tasks.length) {
+			group.tasks = tasks
+			groups.push(group)
+		}
+	})
+	board.groups = groups
+	return board
+}
 
 function addActivity(prop, title, oldValue, newValue, color) {
 	return {
@@ -176,7 +195,6 @@ function updateBoard(currBoard, groupId, taskId, prop, toUpdate) {
 		return _updateGroup(board, groupId, prop, toUpdate)
 
 	return _updateBoard(board, prop, toUpdate)
-	// board = addActivity(currBoard._id, activity)
 }
 
 function getEmptyGroup() {

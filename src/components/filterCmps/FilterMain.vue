@@ -8,33 +8,25 @@
     <section class="filters-lists-container flex justify-between">
       <ul>
         <p class="filter-title">Priority</p>
-        <li
-          class="flex align-center justify-start"
-          v-for="label in priorityLabels"
-          @click="$emit('setFilterBy', { by: 'priority', value: label.title })"
-        >
+        <li class="flex align-center justify-start" v-for="label in priorityLabels"
+          @click="$emit('setFilterBy', { by: 'priority', value: label.title })">
           <div :style="{ backgroundColor: label.color }"></div>
           {{ label.title ? label.title : 'Blank' }}
         </li>
       </ul>
       <ul>
         <p class="filter-title">Status</p>
-        <li
-          class="flex align-center justify-start"
-          v-for="label in statusLabels"
-          @click="$emit('setFilterBy', { by: 'status', value: label.title })"
-        >
+        <li class="flex align-center justify-start" v-for="label in statusLabels"
+          @click="$emit('setFilterBy', { by: 'status', value: label.title })">
           <div :style="{ backgroundColor: label.color }"></div>
           {{ label.title ? label.title : 'Blank' }}
         </li>
       </ul>
       <ul>
-        <p class="filter-title">Members</p>
-        <li
-          class="flex align-center justify-start"
-          v-for="member in membersLabels"
-          @click="$emit('setFilterBy', { by: 'member', value: member._id })"
-        >
+        <p class="filter-title">Person</p>
+        <li class="flex align-center justify-start" v-for="member in membersLabels"
+          :class="{ active: personFiltered(member._id) }"
+          @click="$emit('setFilterBy', { by: 'person', value: member._id })">
           <PersonAvatar :person="member" />
           {{ member.fullname }}
         </li>
@@ -47,6 +39,9 @@
 import Avatar from '../Avatar.vue'
 export default {
   name: 'Main Filter',
+  props: {
+    filter: Object
+  },
   emits: ['setFilterBy'],
   data() {
     return {}
@@ -65,8 +60,14 @@ export default {
     membersLabels() {
       return this.$store.getters.currBoard.members
     },
+    personFiltered() {
+      return (memberId) => {
+        let yo = this.$store.getters.filterBy.person
+        return yo.includes(memberId)
+      }
+    }
   },
-  created() {},
+  created() { },
   components: {
     PersonAvatar: Avatar,
   },
