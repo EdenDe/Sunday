@@ -47,5 +47,5 @@
 }
 
 .group-list:has(.group-menu-active) .group-actions-wrapper.task-options {
-  display: none;
+  opacity: 0;
 }
