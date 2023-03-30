@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  .filter-title {
+    width: rem(230px);
+    margin-block-end: rem(8px);
+    .icon {
+      color: $color-asphalt;
+    }
+  }
   .card-checkbox {
     width: rem(230px);
     overflow: hidden;
@@ -12,9 +19,25 @@
       margin-bottom: 16px;
       .checkbox-wrapper {
         .checkbox {
-          margin-block-end: 6px;
+          appearance: none;
+          border: 1px solid $ui-border-color;
+          border-radius: $border-radius;
+          height: 16px;
+          width: 16px;
+          &:checked {
+            appearance: checkbox;
+            -webkit-appearance: checkbox;
+          }
+        }
+        .checkbox-txt {
+          text-transform: capitalize;
+          margin-inline-start: rem(8px);
         }
       }
+    }
+    .svg-wrapper {
+      color: #c5c7d0;
+      fill: #c5c7d0;
     }
   }
 }
