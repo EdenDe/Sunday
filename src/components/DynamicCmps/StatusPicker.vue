@@ -1,20 +1,12 @@
 <template>
   <section class="status-picker">
     <VDropdown :distance="6">
-      <div
-        :style="{ backgroundColor: status.color }"
-        class="status"
-        @click="toggleColorPicker"
-      >
+      <div :style="{ backgroundColor: status.color }" class="status" @click="toggleColorPicker">
         <span>{{ status.title }}</span>
       </div>
       <template #popper v-if="isPickerOpen">
-        <LabelPicker
-          v-clickOutside="toggleColorPicker"
-          class="status-label-picker"
-          :labels="statusList"
-          @setLabel="setLabel"
-        >
+        <LabelPicker v-clickOutside="toggleColorPicker" class="status-label-picker" :labels="statusList"
+          @setLabel="setLabel">
         </LabelPicker>
       </template>
       <span class="peeling-span scale-up-tr"></span>
@@ -25,7 +17,7 @@
 <script>
 import LabelPicker from '../LabelPicker.vue'
 export default {
-  name: 'TaskStatus ',
+  name: 'TaskStatus',
   props: {
     info: String,
   },

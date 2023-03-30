@@ -1,7 +1,7 @@
 <template>
   <Container
     class="kanban-cards grid"
-    @drop="onDropTask"
+    @drop="onDropTask($event)"
     orientation="horizontal"
     :drop-placeholder="{
       className: 'drop-placeholder1',
@@ -44,7 +44,7 @@ export default {
       // })
     },
   },
-  computed: {
+  components: {
     Container,
     Draggable,
   },

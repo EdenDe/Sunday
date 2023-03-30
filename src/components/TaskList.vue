@@ -44,6 +44,7 @@
         }"
       ></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
+      <div></div>
     </Draggable>
   </Container>
 </template>

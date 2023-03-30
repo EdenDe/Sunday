@@ -8,7 +8,7 @@
       @removeBoard="removeBoard"
     />
     <div class="board-container board-layout">
-      <BoardHeader @updateBoard="updateBoard" />
+      <BoardHeader @updateBoard="updateBoard" @setFilter="setFilter" />
       <RouterView v-if="currBoardId" />
       <Loader v-else />
     </div>
@@ -28,7 +28,6 @@ import {
 } from '../services/socket.service.js'
 export default {
   created() {
-    console.log('board index created')
     socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
   },
   watch: {
@@ -79,6 +78,12 @@ export default {
       delete newBoard._id
       this.$store.dispatch({ type: 'saveBoard', board: newBoard })
     },
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'setFilter', filterBy: filterBy })
+    },
+  },
+  created() {
+    socketService.on(SOCKET_EVENT_UPDATE_BOARD, this.updateBoardFromSocket)
   },
   unmounted() {
     socketService.off(SOCKET_EVENT_UPDATE_BOARD, this.board)

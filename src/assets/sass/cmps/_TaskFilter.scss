@@ -46,18 +46,32 @@
 
     //MODALS:
     &-search {
-      span {
+      input {
+        @include btn(transparent);
+        width:90px;
         position: relative;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        height: 80%;
+        height: 30px;
         padding-left: 30px;
         border-radius: $border-radius;
         text-align: left;
-        &:focus-visible {
+        &:focus{
           width: 200px;
           outline: 1px solid $color-basic_blue;
+        }
+        &:hover{
+          background-color:transparent;
+          border-radius: $border-radius;
+        }
+        &.typing {
+          background-color: $color-highlight_blue;
+          width: 200px;
+          outline: none;
+          &:focus{
+            outline: 1px solid $color-basic_blue;
+          }
         }
       }
       .icon-container {
@@ -84,6 +98,16 @@
             height: rem(40px);
             width: rem(40px);
             cursor: pointer;
+           
+            *{
+              margin-inline-start: 0;
+              outline:none;
+            }
+            &.active{
+              background: $color-glitter;
+              border-radius: 50%
+              
+            }
           }
         }
       }
@@ -116,10 +140,14 @@
           }
           .filters-lists-container {
             gap: rem(16px);
+            .active{
+              background-color:$color-highlight_blue
+            }
             .filter-title {
               font-size: 16px;
               color: $color-explosive-hover;
               margin-block-end: 16px;
+             
             }
             li {
               width: 146px;
@@ -131,6 +159,7 @@
               border-radius: $border-radius;
               gap: 5px;
               cursor: pointer;
+             
               div {
                 border-radius: 50%;
                 height: 10px;
