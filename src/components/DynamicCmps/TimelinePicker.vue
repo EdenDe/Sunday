@@ -1,18 +1,36 @@
 <template>
   <section class="timeline-picker">
     <div class="timeline-display">
-      <label :data-diff="formattedDaysRange" :for="taskId + 'Timeline'" class="timeline-label"
-        :class="{ 'active-timeline': timeline?.length }" :style="
+      <label
+        :data-diff="formattedDaysRange"
+        :for="taskId + 'Timeline'"
+        class="timeline-label"
+        :class="{ 'active-timeline': timeline?.length }"
+        :style="
           timeline?.length
             ? {
-              background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})`,
-            }
+                background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})`,
+              }
             : null
-        ">
+        "
+      >
         {{ formattedDates }}
-        <el-date-picker v-model="timeline" @change="onChangeTimeline" type="daterange" format="M D" value-format="x"
-          range-separator="" start-placeholder="" end-placeholder="" :id="taskId + 'Timeline'" />
-        <i v-if="timeline.length" v-icon="'closeSmall'" @click.prevent="onRemoveTimeline"></i>
+        <el-date-picker
+          v-model="timeline"
+          @change="onChangeTimeline"
+          type="daterange"
+          format="M D"
+          value-format="x"
+          range-separator=""
+          start-placeholder=""
+          end-placeholder=""
+          :id="taskId + 'Timeline'"
+        />
+        <i
+          v-if="timeline.length"
+          v-icon="'closeSmall'"
+          @click.prevent="onRemoveTimeline"
+        ></i>
       </label>
     </div>
   </section>
@@ -53,11 +71,11 @@ export default {
   },
   computed: {
     formattedDates() {
-      if (!this.timeline || !this.timeline.length) return ' - '
+      if (!this.timeline || !this.timeline.length) return '-'
       return utilService.formatDateRange(this.timeline)
     },
     formattedDaysRange() {
-      if (!this.timeline || !this.timeline.length) return ' Set-Dates '
+      if (!this.timeline || !this.timeline.length) return ' Set Dates '
       return utilService.getDaysBetween(this.timeline)
     },
     groupColor() {

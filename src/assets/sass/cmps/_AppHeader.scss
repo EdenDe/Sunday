@@ -1,33 +1,61 @@
-.app-header{
+.app-header {
   align-content: center;
   height: 10vh;
   background-color: $color-snow_white;
-
-  .logo{
+  .logo {
     @include flex-center;
     justify-self: start;
     font-family: $figtree-bold;
     font-size: 1.5rem;
     color: $color-blackish;
-    &-link{
+    &-link {
       @include flex-center;
       width: 170px;
       letter-spacing: 0.48px;
     }
-    &-img{
+    &-img {
       height: 40px;
       width: 40px;
     }
-    span{
+    span {
       font-family: $figtree-regular;
       font-size: 1rem;
     }
   }
+  .btn-wrapper {
+    display: flex;
+    justify-self: flex-end;
+    font-family: $poppins-light;
+    .login {
+      @include flex-center;
+      height: 100%;
+      width: fit-content;
+      &-btn {
+        @include flex-center;
+        @include btn;
+        background-color: transparent;
+        border-radius: $border-radius-filter;
+        height: rem(32px);
+        padding: 8px 10px;
+        &-txt {
+          font-size: 0.875rem;
+        }
+        &:hover {
+          background-color: $color-header-hover;
+          color: $color-header-hover-txt;
+        }
+      }
+    }
 
-  .btn-get-started{
-    @include btn-get-started(40px, 100px);
-    justify-self: end;
-    background-color: $color-blue-get-started;
+    .btn {
+      justify-content: flex-end;
+      margin-inline-start: rem(14px);
+      &-get-started {
+        @include btn-get-started(40px, 130px);
+        font-size: rem(13px);
+        justify-content: space-between;
+        background-color: $color-blue-get-started;
+      }
+    }
   }
-
 }

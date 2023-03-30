@@ -7,9 +7,24 @@
           <div>Sunday <span>.com</span></div>
         </RouterLink>
       </div>
-      <RouterLink to="/login-signup" class="btn-get-started">
-        login
-      </RouterLink>
+      <div class="btn-wrapper">
+        <div class="login">
+          <RouterLink
+            to="/login-signup"
+            class="login-btn flex align-center justify-center"
+          >
+            <span class="login-btn-txt">Log In</span>
+          </RouterLink>
+        </div>
+        <div class="btn flex">
+          <RouterLink
+            :to="'/board/' + boardId + '/main-table'"
+            class="btn-get-started flex justify-between"
+          >
+            Get Started
+          </RouterLink>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -20,6 +35,5 @@ import { RouterLink } from 'vue-router'
 export default {
   name: 'AppHeader',
   props: { boardId: String },
-  components: { RouterLink },
 }
 </script>

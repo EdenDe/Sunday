@@ -95,14 +95,14 @@ export default {
 
         labels.forEach(({ title, color }) => {
           if (res[title]) {
-            let presentageWidth = (res[title] / totalTaskLength) * 100
+            let percentageWidth = (res[title] / totalTaskLength) * 100
 
             res[title] = {
-              width: Math.round(presentageWidth) + '%',
+              width: Math.round(percentageWidth) + '%',
               color: color,
               title: `${title} ${
                 res[title]
-              }/${totalTaskLength} ${presentageWidth.toFixed(1)}%`,
+              }/${totalTaskLength} ${percentageWidth.toFixed(1)}%`,
             }
           }
         })
