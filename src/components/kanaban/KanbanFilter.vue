@@ -18,6 +18,7 @@
 import ArrowDown from '../../assets/icons/ArrowDown.svg'
 export default {
   name: 'KanbanFilter',
+  emits: ['changeLabel'],
   data() {
     return {
       columnFilter: 'Status',
@@ -28,6 +29,7 @@ export default {
     onSelect(value) {
       this.columnFilter = value
       this.toggleOptions()
+      this.$emit('changeLabel', value)
     },
     toggleOptions() {
       this.isOptionOpen = !this.isOptionOpen

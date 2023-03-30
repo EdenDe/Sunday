@@ -20,15 +20,14 @@
             class="label-col-title"
             :style="{ backgroundColor: label.color }"
           >
-            <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
 
-          <KanbanCards :tasks="tasks" />
+          <KanbanCards :tasks="tasks(label.title)" />
         </Draggable>
       </Container>
     </div>
-    <KanbanFilter />
+    <KanbanFilter @changeLabels="onChangeLabel" />
   </section>
 </template>
 <script>
@@ -37,10 +36,23 @@ import KanbanCards from '../../src/components/kanaban/KanbanCards.vue'
 import KanbanFilter from '../../src/components/kanaban/KanbanFilter.vue'
 export default {
   name: 'Kanban',
+  data() {
+    return {
+      labelsOrder: [],
+    }
+  },
+  created() {
+    this.labelsOrder = JSON.parse(
+      JSON.stringify(this.$store.getters.currBoard.statusOrderKanban)
+    )
+  },
   methods: {
     onDropColumn({ addedIndex, removedIndex }) {
-      //  let cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
-      // cmpOrder.splice(addedIndex, 0, cmpOrder.splice(removedIndex, 1)[0])
+      this.labelsOrder.splice(
+        addedIndex,
+        0,
+        cmpOrder.splice(removedIndex, 1)[0]
+      )
       // this.$store.dispatch({
       //   type: 'updateCurrBoard',
       //   groupId: null,
@@ -49,19 +61,31 @@ export default {
       //   toUpdate: cmpOrder,
       // })
     },
+    onChangeLabel(value) {
+      if (value === 'Priority')
+        this.labelsOrder = JSON.parse(
+          JSON.stringify(this.$store.getters.currBoard.priorityOrderKanban)
+        )
+      else
+        this.labelsOrder = JSON.parse(
+          JSON.stringify(this.$store.getters.currBoard.statusOrderKanban)
+        )
+    },
   },
 
   computed: {
     labels() {
-      return this.$store.getters.currBoard.priorityLabels
+      return this.labelsOrder
     },
     tasks() {
-      const groups = this.$store.getters.groups
+      return (label) => {
+        const groups = this.$store.getters.groups
+      }
       // return groups
-      let tasks = groups.map((g) =>
-        g.tasks.filter((t) => t.priority === 'Critical')
-      )
-      return tasks
+      // let tasks = groups.map((g) =>
+      //   g.tasks.filter((t) => t.priority === 'Critical')
+      // )
+      // return tasks
       //return tasks
       // filter((t) => t.priority === label)
     },
