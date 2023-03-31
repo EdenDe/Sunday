@@ -89,10 +89,10 @@ export default {
       let update = updates.find((update) => update.id === updateId)
       if (value) {
         update.likedBy = update.likedBy.filter(
-          (userId) => userId !== this.loggedInUser._id
+          (user) => user._id !== this.loggedInUser._id
         )
       } else {
-        update.likedBy.push(this.loggedInUser._id)
+        update.likedBy.push(this.loggedInUser)
       }
       this.$emit('editUpdates', 'updates', updates)
     },

@@ -15,24 +15,32 @@
     </div>
     <div class="update-body" v-if="isEditor">
       <TextEditor v-model="content" @setContent="setContent" />
-      <button class="btn-cancel" @click="toggleEditor">Cancel</button>
-      <button class="btn-save" @click="onSave">Save</button>
+      <div class="btn-editor-container flex">
+        <button class="btn-cancel" @click="toggleEditor">Cancel</button>
+        <button class="btn-save" @click="onSave">Save</button>
+      </div>
     </div>
-    <p class="update-text" v-else v-html="update.txt"></p>
-    <div class="btn-container">
-      <button @click="onToggleLike" :class="{ liked: likeUpdate }" class="btn grid grid-col">
-        <div class="icon-container">
-          <ThumbsUpIcon class="thumbs-up-icon" />
-        </div>
-        like
-      </button>
-      <button class="btn grid grid-col">
-        <div class="icon-container">
-          <ReplayIcon class="replay-icon" />
-        </div>
-        Reply
-      </button>
-    </div>
+    <template v-else>
+      <p class="update-text" v-html="update.txt"></p>
+      <div class="flex liked-by-container align-center">
+        <Avatar v-for="person in update.likedBy" :person="person" :key="person._id" v-tooltip="person.fullname" />
+        <span>Liked</span>
+      </div>
+      <div class="btn-container">
+        <button @click="onToggleLike" :class="{ liked: likeUpdate }" class="btn grid grid-col">
+          <div class="icon-container">
+            <ThumbsUpIcon class="thumbs-up-icon" />
+          </div>
+          like
+        </button>
+        <button class="btn grid grid-col">
+          <div class="icon-container">
+            <ReplayIcon class="replay-icon" />
+          </div>
+          Reply
+        </button>
+      </div>
+    </template>
     <div class="actions-list" v-if="isActionMenuOpen" v-clickOutside="toggleActionMenu">
       <button class="action" @click="$emit('removeUpdate', update.id)">
         <DeleteIcon class="icon" />
@@ -57,6 +65,7 @@ import ReplayIcon from '../assets/icons/Replay.svg'
 import TimeIcon from '../assets/icons/Time.svg'
 import EditIcon from '../assets/icons/Edit.svg'
 import DeleteIcon from '../assets/icons/Delete.svg'
+import PersonPicker from './dynamicCmps/PersonPicker.vue'
 export default {
   name: 'update',
   props: {
@@ -99,7 +108,7 @@ export default {
       }
     },
     likeUpdate() {
-      return this.update.likedBy.includes(this.loggedInUserId)
+      return this.update.likedBy.some(user => user._id === this.loggedInUserId)
     },
   },
   created() { },
@@ -111,7 +120,8 @@ export default {
     ReplayIcon,
     TimeIcon,
     EditIcon,
-    DeleteIcon
+    DeleteIcon,
+    PersonPicker,
   },
 }
 </script>

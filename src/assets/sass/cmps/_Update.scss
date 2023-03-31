@@ -6,6 +6,20 @@
   border-radius: $border-radius-rounder;
   margin-bottom: $margin-medium;
 
+  .liked-by-container{
+    margin: 8px 16px;
+    .avatar{
+      width:25px;
+      height: 25px;
+    }
+    span{
+      padding-left: em(10px);
+      font-size: em(14px);
+      color:$color-mud_black
+    }
+  }
+
+
   &-header {
     @include flex-center;
     gap: $padding-small;
@@ -35,7 +49,6 @@
         @include action;
         display: inline-block;
         width: fit-content;
-        margin-bottom: 5px;
         height: 24px;
       }
     }
@@ -52,6 +65,7 @@
     margin-bottom: rem(24px);
   }
 
+
   .btn-container {
     // display: flex;
     @include flex-center;
@@ -66,16 +80,18 @@
       align-items: center;
       gap: $padding-small;
       height: 100%;
+
+      &:hover{
+        background-color: $primary-background-hover-color;
+        border-radius: $btn-border-radius;
+      }
     }
 
     .btn.liked {
       color: $color-blue-btn;
     }
 
-    .btn:hover {
-      background-color: $primary-background-hover-color;
-      border-radius: $btn-border-radius;
-    }
+  
 
     & > * {
       width: 100%;
@@ -106,6 +122,12 @@
     @include btn;
     @include btn-blue;
     border-radius: $btn-border-radius;
+  }
+
+  .btn-editor-container{
+    justify-content: end;
+    margin-bottom: 5px;
+    gap:5px;
   }
 
   .actions-list {

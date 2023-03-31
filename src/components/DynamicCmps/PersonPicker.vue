@@ -3,8 +3,8 @@
     <VDropdown :distance="6">
       <section class="person-list flex align-center justify-center">
         <PersonAvatar v-for="(person, idx) in personToDisplay" :key="idx" :person="person" />
-        <div class="merge-person flex align-center" v-if="info?.length > personToDisplay?.length">
-          <span>+{{ info.length - 1 }}</span>
+        <div class="merge-person avatar flex align-center" v-if="info?.length > personToDisplay?.length">
+          <span class="flex align-center">+{{ info.length - 1 }}</span>
         </div>
 
         <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">

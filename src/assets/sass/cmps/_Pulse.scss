@@ -21,7 +21,7 @@
       @include btn(transparent);
       @include flex-center;
       width: 100%;
-      height: em(32px);
+     //height: em(32px);
         
       &-close {
         @include flex-center;
@@ -29,6 +29,7 @@
         height: em(24px);
         width: em(24px);
         text-align: center;
+        margin-bottom:em(7px);
         .close-icon{
           @include flex-center;
           height: 24px;
@@ -37,18 +38,19 @@
         }
       }
     }
-    .task-title {
-        @include editableSpan;
-        padding-top:0;
-        font-family: $figtree-regular;
-        font-size: em(18px);
-        color: $color-mud_black;
-        margin-bottom: em(10px);
-      }
-    
 
+    .task-title-container{
+      margin-bottom: em(8px);
+      .task-title {
+        @include editableSpan;
+        font-family: $poppins-light;
+        font-weight: 1000;
+        font-size: em(24px);
+        color: $color-mud_black;
+      }
+    }
     .tabs-wrapper {
-      margin-inline-start: em(8px);
+      height: fit-content;
       .task-update-icon {
         padding-inline-end: em(4px);
       }
@@ -63,6 +65,7 @@
         height: 15px;
         background-color: $layout-border-color;
         padding: 0;
+        transform: translateY(75%);
       }
 
       &:has(.btn-tab:hover) .border {

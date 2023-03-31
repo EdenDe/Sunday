@@ -201,7 +201,9 @@ function getEmptyGroup() {
 		id: 'g' + utilService.makeId(),
 		title: 'New Group',
 		color: utilService.getRandomColor(),
-		tasks: Array(3).fill().map(() => getEmptyTask()),
+		tasks: Array(3)
+			.fill()
+			.map(() => getEmptyTask()),
 	}
 }
 
