@@ -262,6 +262,7 @@
     outline: 1px solid $color-basic_blue;
   }
 }
+
 @mixin peeling-span {
   transition: opacity 0.3s ease-in-out;
   display: none;
