@@ -10,11 +10,11 @@
     drag-class="on-drag"
   >
     <Draggable
-      :class="{ active: activeTasks.some((t) => t.id === task.id) }"
+      @click="activeTask = task.id"
+      :class="{ active: activeTask === task.id || task.checkbox }"
       class="task-list"
       v-for="(task, index) in tasks"
       :key="index"
-      @click="activeTasks.push(task.id)"
     >
       <div
         class="group-actions-wrapper task-options sticky"
@@ -72,7 +72,7 @@ export default {
     return {
       taskActionsOpen: null,
       dropPlaceholder: true,
-      activeTasks: [],
+      activeTask: null,
     }
   },
   methods: {
@@ -115,6 +115,11 @@ export default {
         this.currTasks = this.tasks
       },
       immediate: true,
+    },
+    activeTasks: {
+      handler() {
+        console.log(this.activeTasks)
+      },
     },
   },
   components: {

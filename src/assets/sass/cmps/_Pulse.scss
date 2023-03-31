@@ -7,13 +7,13 @@
   width: em(629px);
   box-shadow: $box-shadow-large;
   background-color: $color-snow_white;
-   overflow-y: auto;
+  overflow-y: auto;
 
   header {
     border-bottom: 0.5px solid $workspace-side-nav;
     padding: em(20px) em(20px) 0 em(24px);
 
-    .home-icon{
+    .home-icon {
       height: 16px;
       width: 16px;
     }
@@ -22,14 +22,14 @@
       @include flex-center;
       width: 100%;
       height: em(32px);
-        
+
       &-close {
         @include flex-center;
         padding: 0;
         height: em(24px);
         width: em(24px);
         text-align: center;
-        .close-icon{
+        .close-icon {
           @include flex-center;
           height: 24px;
           width: 24px;
@@ -38,14 +38,13 @@
       }
     }
     .task-title {
-        @include editableSpan;
-        padding-top:0;
-        font-family: $figtree-regular;
-        font-size: em(18px);
-        color: $color-mud_black;
-        margin-bottom: em(10px);
-      }
-    
+      @include editableSpan;
+      padding-top: 0;
+      font-family: $figtree-regular;
+      font-size: em(18px);
+      color: $color-mud_black;
+      margin-bottom: em(10px);
+    }
 
     .tabs-wrapper {
       margin-inline-start: em(8px);
@@ -79,20 +78,17 @@
     padding: em(24px);
   }
 
-  &:hover + .screen{
-    display:block;
+  &:hover + .screen {
+    display: block;
   }
-
 }
 
-
-
-.screen{
+.screen {
   position: absolute;
-  background:$transparent-overlay;
+  background: $transparent-overlay;
   inset: 0;
-  z-index:200;
+  z-index: 201;
   opacity: 0.5;
-  display:none;
-  transition: background .1s ease;
+  display: none;
+  transition: background-color 0.1s ease;
 }
