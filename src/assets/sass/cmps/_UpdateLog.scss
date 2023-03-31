@@ -3,7 +3,7 @@
   .editor-wrapper {
     gap: 5px;
     margin-bottom: 20px;
-
+    
     .btn{
       @include btn(transparent);
   
@@ -12,6 +12,14 @@
       svg{
         height:20px
       }
+    }
+    .btn-container{
+      padding: 2px 0;
+    }
+
+    .emoji-mart{
+      position: absolute;
+      z-index: 1111;
     }
 
     .input-update-log {
@@ -54,10 +62,9 @@
       border-left: 1px solid $color-input-border;
     }
     p {
-      font-size: rem(18px);
+      font-size: rem(16px);
       color: $color-mud_black;
-      min-height: 70px;
-      padding-bottom: 70px;
+      font-family: $figtree-regular;
     }
   }
 }

@@ -49,7 +49,7 @@ import {
   PieChart,
   LineChart,
   ScatterChart,
-  DoughnutChart
+  DoughnutChart,
 } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 
