@@ -7,13 +7,14 @@
   margin-bottom: $margin-medium;
 
   .liked-by-container{
-    margin: 8px 16px;
+    margin: em(8px) em(16px);
     .avatar{
       width:25px;
       height: 25px;
     }
     span{
       padding-left: em(10px);
+      padding-top: em(2px);
       font-size: em(14px);
       color:$color-mud_black
     }
@@ -24,7 +25,7 @@
     @include flex-center;
     gap: $padding-small;
     height: rem(65px);
-    padding: 5px $padding-medium;
+    padding: em(5px) $padding-medium;
 
     .avatar {
       height: 40px;
@@ -35,18 +36,23 @@
     .actions-right {
       @include flex-center;
       margin-left: auto;
+      color:$secondary-text-color;
 
       .update-date {
-        font-size: 14px;
-        margin-inline-end: 5px;
+        font-size: em(14px);
+        margin-inline-end: em(5px);
+        gap:em(4px);
+
         .icon {
-          width: 14px;
-          height: 14px;
+          width: 15px;
+          height: 15px;
+          fill:$secondary-text-color
         }
       }
 
       .menu-icon {
         @include action;
+        padding: 2px;
         display: inline-block;
         width: fit-content;
         height: 24px;

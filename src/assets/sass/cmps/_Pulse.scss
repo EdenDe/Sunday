@@ -21,7 +21,7 @@
       @include btn(transparent);
       @include flex-center;
       width: 100%;
-     //height: em(32px);
+     height: em(32px);
         
       &-close {
         @include flex-center;
@@ -53,6 +53,7 @@
       height: fit-content;
       .task-update-icon {
         padding-inline-end: em(4px);
+        padding-block-start: em(1.4px);
       }
       .btn-tab-wrapper {
         @include flex-center;
