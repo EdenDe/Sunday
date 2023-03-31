@@ -10,10 +10,11 @@
 </template>
 
 <script>
+import { utilService } from '../services/util.service'
 export default {
-  name: "avatar",
+  name: 'avatar',
   props: {
     person: Object,
   },
-};
+}
 </script>

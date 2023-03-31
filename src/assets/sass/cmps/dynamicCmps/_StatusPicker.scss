@@ -24,10 +24,17 @@
 }
 
 }
+
+.v-popper__popper{
+
 .v-popper__inner:has(.status-label-picker) {
   @include label-picker-container;
   height: rem(280px);
   .color-picker-label {
     @include color-picker-label;
   }
+  // &.picker-close {
+  //   display: none;
+  // }
+}
 }

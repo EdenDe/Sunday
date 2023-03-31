@@ -50,7 +50,6 @@ async function save(board) {
 // })
 
 function setFilter(currBoard, filterBy) {
-	console.log(filterBy)
 	let board = JSON.parse(JSON.stringify(currBoard))
 	let groups = []
 	board.groups.forEach(group => {
@@ -202,7 +201,7 @@ function getEmptyGroup() {
 		id: 'g' + utilService.makeId(),
 		title: 'New Group',
 		color: utilService.getRandomColor(),
-		tasks: [],
+		tasks: Array(3).fill().map(() => getEmptyTask()),
 	}
 }
 
@@ -227,15 +226,15 @@ function getEmptyBoard() {
 		archivedAt: null,
 		createdBy: userService.getLoggedinUser(),
 		cmpOrder: [
-			{ name: 'checkbox', width: '30px' },
-			{ name: 'taskTitle', width: '1fr' },
-			{ name: 'person', width: '80px' },
-			{ name: 'status', width: '80px' },
-			{ name: 'priority', width: '80px' },
-			{ name: 'date', width: '120px' },
-			{ name: 'timeline', width: '1fr' },
-			{ name: 'txt', width: '1fr' },
-			{ name: 'file', width: '80px' },
+			{ name: 'checkbox', width: '33px' },
+			{ name: 'taskTitle', width: '323px' },
+			{ name: 'person', width: '140px' },
+			{ name: 'status', width: '129px' },
+			{ name: 'priority', width: '129px' },
+			{ name: 'date', width: '99px' },
+			{ name: 'timeline', width: '177px' },
+			{ name: 'txt', width: '278px' },
+			{ name: 'file', width: '129px' },
 		],
 		priorityLabels: [
 			{

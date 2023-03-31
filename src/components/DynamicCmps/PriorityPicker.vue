@@ -46,6 +46,7 @@ export default {
   methods: {
     toggleColorPicker() {
       this.isPickerOpen = !this.isPickerOpen
+      console.log(this.isPickerOpen)
     },
     updateLabel(labelTitle) {
       this.toggleColorPicker()

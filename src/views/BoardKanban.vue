@@ -1,5 +1,6 @@
 <template>
   <section class="kanban-layout grid grid-col">
+    <div class="top-border"></div>
     <div class="kanban flex">
       <Container
         class="kanban-container"

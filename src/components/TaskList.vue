@@ -9,7 +9,13 @@
     }"
     drag-class="on-drag"
   >
-    <Draggable class="task-list" v-for="(task, index) in tasks" :key="index">
+    <Draggable
+      :class="{ active: activeTasks.some((t) => t.id === task.id) }"
+      class="task-list"
+      v-for="(task, index) in tasks"
+      :key="index"
+      @click="activeTasks.push(task.id)"
+    >
       <div
         class="group-actions-wrapper task-options sticky"
         :style="{ width: '40px' }"
@@ -66,6 +72,7 @@ export default {
     return {
       taskActionsOpen: null,
       dropPlaceholder: true,
+      activeTasks: [],
     }
   },
   methods: {

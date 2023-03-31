@@ -58,50 +58,6 @@
   }
 }
 
-@mixin tooltip($pos: bottom) {
-  position: absolute;
-
-  background-color: $color-mud_black;
-  color: $color-riverstone_gray;
-  padding: em(5px) em(10px);
-  border-radius: $border-radius;
-  font-size: em(14px, 40px);
-  z-index: 1;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s;
-
-  @if $pos == bottom {
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-  } @else if $pos == right {
-    // TODO: fix positioning
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-  } @else if $pos == top {
-    // TODO: fix positioning
-    bottom: -25%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  // @include tooltip-arrow();
-}
-
-@mixin tooltip-arrow {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: em(5px) solid transparent;
-  border-right: em(5px) solid transparent;
-  border-top: em(5px) solid black;
-}
-
 @mixin modal-arrow {
   content: '';
   position: absolute;
@@ -206,12 +162,11 @@
   grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 }
 
-@mixin infinity-table{
-    content: "";
-      background-color: $color-snow_white;
-      border-top: 1px solid $ui-border-color;
-      border-bottom: 1px solid $ui-border-color;
-      width: 100px;
+@mixin infinity-table {
+  content: '';
+  border-top: 1px solid $ui-border-color;
+  border-bottom: 1px solid $ui-border-color;
+  width: 100px;
 }
 
 @mixin task-row {
