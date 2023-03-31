@@ -67,10 +67,9 @@ router.beforeEach((to, from, next) => {
 })
 
 router.beforeResolve((to, from, next) => {
-	// show loader
+
 	store.commit('setPageLoading', true)
 
-	// wait for async route components to resolve
 	Promise.all(to.matched.map(record => {
 		if (record.beforeEnter) {
 			return new Promise((resolve, reject) => {

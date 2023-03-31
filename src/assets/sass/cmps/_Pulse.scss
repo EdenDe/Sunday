@@ -7,13 +7,13 @@
   width: em(629px);
   box-shadow: $box-shadow-large;
   background-color: $color-snow_white;
-   overflow-y: auto;
+  overflow-y: auto;
 
   header {
     border-bottom: 0.5px solid $workspace-side-nav;
     padding: em(20px) em(20px) 0 em(24px);
 
-    .home-icon{
+    .home-icon {
       height: 16px;
       width: 16px;
     }
@@ -82,20 +82,17 @@
     padding: em(24px);
   }
 
-  &:hover + .screen{
-    display:block;
+  &:hover + .screen {
+    display: block;
   }
-
 }
 
-
-
-.screen{
+.screen {
   position: absolute;
-  background:$transparent-overlay;
+  background: $transparent-overlay;
   inset: 0;
-  z-index:200;
+  z-index: 1000;
   opacity: 0.5;
-  display:none;
-  transition: background .1s ease;
+  display: none;
+  transition: background-color 0.1s ease;
 }

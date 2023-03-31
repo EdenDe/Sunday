@@ -16,26 +16,56 @@
         </article>
       </section>
 
+      <section class="item status-chart">
+        <h4>Tasks number by status</h4>
+        <BarChart
+          v-if="isStatusBar"
+          :style="{ height: '430px', width: '600px' }"
+          @click="() => (isStatusBar = !isStatusBar)"
+          :chartData="status"
+          :options="options"
+        />
+        <DoughnutChart
+          v-else
+          :style="{ height: '430px', width: '600px' }"
+          @click="() => (isStatusBar = !isStatusBar)"
+          :chartData="status"
+          :options="options"
+        />
+      </section>
+
       <section class="item person-chart">
-        <h4> person tasks number </h4>
-        <PieChart @click="() => isPersonPie = !isPersonPie" v-if="isPersonPie" :chartData="taskPerPerson"
-          :options="options" />
-        <BarChart v-else @click="() => isPersonPie = !isPersonPie" :chartData="taskPerPerson"
-          :options="horizontalOptions" />
+        <h4>Tasks per person</h4>
+        <PieChart
+          class="chart"
+          :style="{ height: '430px', width: '430px' }"
+          @click="() => (isPersonPie = !isPersonPie)"
+          v-if="isPersonPie"
+          :chartData="taskPerPerson"
+          :options="options"
+        />
+        <BarChart
+          v-else
+          :style="{ height: '430px', width: '430px' }"
+          @click="() => (isPersonPie = !isPersonPie)"
+          :chartData="taskPerPerson"
+          :options="horizontalOptions"
+        />
       </section>
       <section class="item priority-chart">
-        <h4> tasks number by priority </h4>
-        <BarChart @click="() => isPriorityBar = !isPriorityBar" v-if="isPriorityBar" :width="500" :height="500"
-          :chartData="priority" :options="options" />
-        <DoughnutChart v-else :width="500" :height="500" @click="() => isPriorityBar = !isPriorityBar"
-          :chartData="priority" :options="options" />
-      </section>
-      <section class="item status-chart">
-        <h4> tasks number by status </h4>
-        <BarChart @click="() => isStatusBar = !isStatusBar" v-if="isStatusBar" :width="500" :height="500"
-          :chartData="status" :options="options" />
-        <DoughnutChart v-else :width="500" :height="500" @click="() => isStatusBar = !isStatusBar" :chartData="status"
-          :options="options" />
+        <h4>Tasks number by priority</h4>
+        <BarChart
+          @click="() => (isPriorityBar = !isPriorityBar)"
+          v-if="isPriorityBar"
+          :chartData="priority"
+          :options="options"
+        />
+        <DoughnutChart
+          v-else
+          @click="() => (isPriorityBar = !isPriorityBar)"
+          :chartData="priority"
+          :options="options"
+        />
       </section>
     </div>
   </section>
@@ -87,17 +117,19 @@ export default {
 
       for (let label in priorityLabel) {
         const priority = priorityLabel[label]
-        labels.push(priority.title === "" ? 'No priority' : priority.title)
+        labels.push(priority.title === '' ? 'No priority' : priority.title)
         data.push(taskPerLabel[priority.title])
         colors.push(priority.color)
       }
 
       return {
         labels: labels,
-        datasets: [{
-          data: data,
-          backgroundColor: colors,
-        }]
+        datasets: [
+          {
+            data: data,
+            backgroundColor: colors,
+          },
+        ],
       }
     },
     status() {
@@ -118,17 +150,19 @@ export default {
 
       for (let label in statusLabel) {
         const status = statusLabel[label]
-        labels.push(status.title === "" ? 'No Status' : status.title)
+        labels.push(status.title === '' ? 'No Status' : status.title)
         data.push(taskPerLabel[status.title])
         colors.push(status.color)
       }
 
       return {
         labels: labels,
-        datasets: [{
-          data: data,
-          backgroundColor: colors,
-        }]
+        datasets: [
+          {
+            data: data,
+            backgroundColor: colors,
+          },
+        ],
       }
     },
     taskPerPerson() {
@@ -137,7 +171,7 @@ export default {
 
       this.board.groups.forEach((group) => {
         res = group.tasks.reduce((obj, task) => {
-          task.person.forEach(person => {
+          task.person.forEach((person) => {
             if (!obj[person.fullname]) obj[person.fullname] = 0
             obj[person.fullname] += 1
           })
@@ -158,14 +192,15 @@ export default {
 
       return {
         labels: labels,
-        datasets: [{
-          data: data,
-          backgroundColor: colors,
-        }]
+        datasets: [
+          {
+            data: data,
+            backgroundColor: colors,
+          },
+        ],
       }
-    }
-  }
-  ,
+    },
+  },
   data() {
     return {
       isPriorityBar: true,
@@ -177,6 +212,7 @@ export default {
             display: false,
           },
         },
+        scale: 1,
         responsive: true,
       },
     }
@@ -188,7 +224,7 @@ export default {
     PolarAreaChart,
     BubbleChart,
     ScatterChart,
-    DoughnutChart
+    DoughnutChart,
   },
 }
 </script>

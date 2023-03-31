@@ -1,36 +1,50 @@
 .dashboard-container{
+  overflow: scroll;
   grid-template-columns: 20px 1fr 20px;
   width:100%;
-  background-color: $color-riverstone_gray;
-  height:100%;
-  padding: 10px;
-
+  background-color: $color-snow_white;
+  height:75%;
+  padding: 20px 10px;
+  
   >*{
     grid-column: 2;
   }
 
   .dashboard-inner-layout{
-    grid-template-columns: 300px repeat(auto-fill,minmax(500px,auto)) ;
-  
-
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    >*{
+      margin-bottom:15px ;
+    }
     .dashboard-stats{
       text-align: center;
       height: fit-content;
       gap: 10px;
-
-      .stat{
         h2{
-          padding: 15px;  
-        }
+          padding: 15px;
       }
     }
-
-    .item{
-      border-radius: $border-radius-rounder;
+  .status-chart{
+    grid-column: auto/span 3;
+  }
+  
+  .priority-chart, .person-chart{
+    grid-column: auto/span 2;
+  }
+  .item{
+    border-radius: $border-radius-rounder;
       border: 1px solid #d1d4e4;
       background-color: $color-snow_white;
       align-self: start;
-
+      box-shadow: $box-shadow-xs;
+      *:not(h4){padding: $padding-medium;}
+      &:not(.stat){
+        height: 470px;
+      }
+      canvas{
+        padding: $padding-medium;
+        height: 75%;
+      }
       h4{
         font-size:18px;
         padding: 13px 20px;

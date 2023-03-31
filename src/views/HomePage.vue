@@ -35,14 +35,15 @@
           animationDelay: `${star.delay}s`,
         }"
       ></div>
-    </div>
-    <div class="home-page-carousel">
-      <div class="home-page-carousel-wrapper">
-        <el-carousel :interval="4000" type="card" height="350px">
-          <el-carousel-item v-for="item in 3" :key="item">
-            <img src="../assets/img/homePageImg/0.png" />
-          </el-carousel-item>
-        </el-carousel>
+
+      <div class="home-page-carousel">
+        <div class="home-page-carousel-wrapper">
+          <el-carousel :interval="4000" type="card" height="350px">
+            <el-carousel-item v-for="item in 3" :key="item">
+              <img src="../assets/img/homePageImg/0.png" />
+            </el-carousel-item>
+          </el-carousel>
+        </div>
       </div>
     </div>
   </section>
