@@ -4,7 +4,7 @@
       <Avatar :person="update.byUser" />
       <p>{{ update.byUser.fullname }}</p>
       <div class="actions-right">
-        <div class="update-date">
+        <div class="update-date flex align-center">
           <TimeIcon class="icon icon-time" />
           <span class="update-date-txt">
             {{ dateFormatted(update.createdAt) }}
@@ -24,7 +24,7 @@
       <p class="update-text" v-html="update.txt"></p>
       <div class="flex liked-by-container align-center">
         <Avatar v-for="person in update.likedBy" :person="person" :key="person._id" v-tooltip="person.fullname" />
-        <span>Liked</span>
+        <span v-if="update.likedBy.length > 0">Liked</span>
       </div>
       <div class="btn-container">
         <button @click="onToggleLike" :class="{ liked: likeUpdate }" class="btn grid grid-col">

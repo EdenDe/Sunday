@@ -141,6 +141,28 @@
       }
     }
   }
+
+  @include for-mobile-layout {
+   
+    .board-header-top-wrapper{
+        justify-content: center;
+        >*:not(.board-title){
+          display:none;
+        }     
+      }
+     
+    .btn-add-task .btn-blue:not(.mobile), .desc-wrapper{
+      display:none;
+    }    
+      
+      .mobile{
+        display:block;
+        position: absolute;
+        border-radius: 50px;
+      }
+      
+  }
+ 
 }
 
 .seconde-row-container {
@@ -178,8 +200,12 @@
     &-container {
       height: 32px;
 
+      .btn.mobile{
+        display:none
+      }
+
       .btn-add-task {
-        margin-inline-end: $margin-medium;
+        margin-inline-end: $margin-medium;       
       }
 
       &:not(.btn-add-task) {
@@ -203,3 +229,5 @@
     fill: #ffffff;
   }
 }
+
+

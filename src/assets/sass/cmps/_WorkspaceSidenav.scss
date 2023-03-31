@@ -225,4 +225,13 @@
   input {
     all: unset;
   }
+
+  @include for-mobile-layout {
+ 
+    &{
+      width:95%
+    }
+  }
+
 }
+

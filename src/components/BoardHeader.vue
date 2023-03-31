@@ -61,6 +61,7 @@
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
         <button @click="addTask" class="btn btn-blue">New Task</button>
+        <button @click="addTask" class="btn btn-blue mobile">+</button>
 
         <span class="btn btn-blue task-filter-icon">
           <ArrowDownIcon class="arrow-down-icon icon" />
