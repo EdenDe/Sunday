@@ -142,7 +142,9 @@
     }
   }
 
+  //MQ
   @include for-mobile-layout {
+     padding: 20px;
    
     .board-header-top-wrapper{
         justify-content: center;
