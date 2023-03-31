@@ -9,9 +9,9 @@
     <ul class="card-checkbox">
       <li
         v-for="label in checkboxLabels"
-        class="flex align-center justify-between label"
+        class="flex align-end justify-between label"
       >
-        <div class="checkbox-wrapper flex align-items">
+        <div class="checkbox-wrapper flex align-center">
           <input
             name="checkbox"
             type="checkbox"
@@ -33,19 +33,14 @@
 </template>
 
 <script>
-import TimeIcon from '../../assets/icons/Time.svg'
 import dateIcon from '../../assets/icons/Calendar.svg'
 import timelineIcon from '../../assets/icons/Timeline.svg'
-import statusIcon from '../../assets/icons/Status.svg'
-import priorityIcon from '../../assets/icons/Priority.svg'
-import personIcon from '../../assets/icons/PersonsWithBorder.svg'
+import statusIcon from '../../assets/icons/StatusEmpty.svg'
+import priorityIcon from '../../assets/icons/StatusEmpty.svg'
+import personIcon from '../../assets/icons/PersonRound.svg'
 import fileIcon from '../../assets/icons/Page.svg'
 import plusIcon from '../../assets/icons/Add.svg'
-import TaskTitleIcon from '../../assets/icons/Text.svg'
 import txtIcon from '../../assets/icons/Text.svg'
-import CreatedIcon from '../../assets/icons/AddWithBorder.svg'
-import DeletedIcon from '../../assets/icons/Delete2.svg'
-import ArrowRight from '../../assets/icons/ArrowRight.svg'
 import InfoIcon from '../../assets/icons/Info.svg'
 
 export default {

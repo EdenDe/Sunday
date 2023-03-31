@@ -1,6 +1,6 @@
 <template>
   <section class="kanban-column">
-    <div class="filter-title">
+    <div class="filter-title flex justify-between align-start">
       <h4 class="select-title">Kanban Column</h4>
       <div class="icon-wrapper">
         <InfoIcon class="icon icon-info" />
@@ -8,12 +8,30 @@
     </div>
     <div class="kanban-filter-select">
       <div class="filter-select-input" @click="toggleOptions">
-        <span>{{ columnFilter }}</span>
-        <div class="icon"><ArrowDown /></div>
+        <div class="column-filter-title">
+          <div class="icon-wrapper flex align-center">
+            <StatusIcon class="icon-status icon" />
+          </div>
+          <span>{{ columnFilter }}</span>
+        </div>
+        <div class="icon icon-arrow"><ArrowDown /></div>
       </div>
       <ul class="options-list" v-if="isOptionOpen">
-        <li class="flex option" @mousedown="onSelect('Status')">Status</li>
-        <li class="flex option" @mousedown="onSelect('Priority')">Priority</li>
+        <li class="flex justify-between option" @mousedown="onSelect('Status')">
+          <span> Status </span>
+          <div class="icon-wrapper">
+            <StatusIcon class="icon icon-status" />
+          </div>
+        </li>
+        <li
+          class="flex justify-between option"
+          @mousedown="onSelect('Priority')"
+        >
+          <span> Priority </span>
+          <div class="icon-wrapper">
+            <StatusIcon class="icon icon-status" />
+          </div>
+        </li>
       </ul>
     </div>
   </section>
@@ -22,6 +40,8 @@
 <script>
 import ArrowDown from '../../assets/icons/ArrowDown.svg'
 import InfoIcon from '../../assets/icons/Info.svg'
+import StatusIcon from '../../assets/icons/StatusEmpty.svg'
+
 export default {
   name: 'FilterKanbanColumn',
   emits: ['changeLabel'],
@@ -44,6 +64,7 @@ export default {
   components: {
     ArrowDown,
     InfoIcon,
+    StatusIcon,
   },
 }
 </script>

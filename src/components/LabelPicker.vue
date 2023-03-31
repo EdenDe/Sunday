@@ -18,7 +18,6 @@
 export default {
   name: 'LabelPicker',
   props: { labels: Array },
-
   methods: {
     setLabel(labelTitle) {
       this.$emit('setLabel', labelTitle)
