@@ -20,6 +20,9 @@
       padding: 0 8px
     }
   }
+  .peeling-span {
+    @include peeling-span;
+  }
  }
 
  .priority-label-picker{
@@ -36,11 +39,10 @@
   border-left: 18px solid transparent;
   border-right: 18px solid transparent;
 }
+
+
   // display: block;
 
-  .peeling-span {
-    @include peeling-span;
-  }
   // & * {
   //   height: 100%;
   // }
