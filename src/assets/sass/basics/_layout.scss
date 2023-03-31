@@ -4,16 +4,16 @@
   grid-template-columns: 66px auto 1fr;
   grid-template-areas: 'app-sidenav workspace-sidenav board';
 
-  // @include for-mobile-layout {
-  //   &.board-index:has(.workspace-close) {
-  //     grid-template-columns: 2rem 100%;
-  //     grid-template-areas: "workspace-sidenav board";
-  //   }
-  //   &.board-index {
-  //     grid-template-columns: 4rem 1fr;
-  //     grid-template-areas: "app-sidenav workspace-sidenav";
-  //   }
-  // }
+  @include for-mobile-layout {
+    &.board-index:has(.workspace-close) {
+      grid-template-columns: 2rem 100%;
+      grid-template-areas: "workspace-sidenav board";
+    }
+    &.board-index {
+      grid-template-columns: 4rem 1fr;
+      grid-template-areas: "app-sidenav workspace-sidenav";
+    }
+  }
 }
 
 .home-page-layout {
@@ -36,15 +36,15 @@
     }
   }
 
-  // @include for-narrow-layout {
-  //   @include layoutGTC($break-narrow);
-  // }
+  @include for-narrow-layout {
+    @include layoutGTC($break-narrow);
+  }
 
-  // @include for-normal-layout {
-  //   @include layoutGTC($break-normal);
-  // }
+  @include for-normal-layout {
+    @include layoutGTC($break-normal);
+  }
 
-  // @include for-wide-layout {
-  //   @include layoutGTC($break-wide);
-  // }
+  @include for-wide-layout {
+    @include layoutGTC($break-wide);
+  }
 }
