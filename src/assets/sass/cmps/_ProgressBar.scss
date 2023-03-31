@@ -34,6 +34,7 @@
     width: 90%;
     > * {
       height: 24px;
+      transition: scale .2s ease-in;
       &:hover {
         scale: 1.2;
       }

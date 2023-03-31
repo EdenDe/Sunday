@@ -62,7 +62,7 @@
     // margin: 8px 0 0;
     border-bottom: 1px solid $layout-border-color;
 
-    & > *:not(:last-child) {
+    & > * {
       position: relative;
 
       &::after {
@@ -80,11 +80,7 @@
       margin-left: -2px;
       padding-inline-start: 2px;
     }
-    & > *:last-child {
-      // padding: 3px;
-      align-self: center;
-      justify-self: center;
-    }
+   
     .btn-container {
       @include flex-center;
       > *:not(.icon-container) {
@@ -110,6 +106,9 @@
     gap: rem(10px);
     .person-picker-wrapper {
       pointer-events: none;
+      .merge-person{
+        margin-inline-end: 0;
+      }
     }
     .btn-activity {
       width: fit-content;

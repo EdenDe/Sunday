@@ -133,7 +133,7 @@
   content: '';
   border-top: 1px solid $ui-border-color;
   border-bottom: 1px solid $ui-border-color;
-  width: 100px;
+  width: 100vw;
 }
 
 @mixin task-row {
@@ -210,7 +210,8 @@
 @mixin actions-list($height: rem(130px), $width: rem(234px), $z-index: 100) {
   z-index: $z-index;
   position: absolute;
-  top: 10px;
+  top: 25px;
+  left: 15px;
   height: $height;
   width: $width;
   padding: $padding-small;
