@@ -30,6 +30,7 @@ export const focus = {
 export const clickOutside = {
   mounted(el, { value: cb }) {
     el.clickOutside = ({ clientX, clientY }) => {
+      console.log(cb)
       const { left, top, width, height } = el.getBoundingClientRect()
       if (
         !(
