@@ -28,6 +28,8 @@
   // & * {
   //   height: 100%;
   // }
+
+    
 .v-popper__inner:has(.priority-label-picker) {
   @include label-picker-container;
   height: rem(240px);
@@ -36,3 +38,5 @@
     @include color-picker-label;
   }
 }
+
+

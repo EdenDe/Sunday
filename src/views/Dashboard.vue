@@ -1,31 +1,43 @@
 <template>
   <section class="dashboard-container grid">
-    <section class="grid-item dashboard-stats flex stats">
-      <article class="stat flex">
-        <h4>Total board tasks</h4>
-        <h2>48</h2>
-      </article>
-      <article class="stat flex">
-        <h4>Board members</h4>
-        <h2>4</h2>
-      </article>
-      <article class="stat flex">
-        <h4>Total board groups</h4>
-        <h2>8</h2>
-      </article>
-    </section>
+    <div class="grid dashboard-inner-layout">
+      <section class="dashboard-stats grid">
+        <article class="stat item grid">
+          <h4>Total board tasks</h4>
+          <h2>{{ sumOfTasks }}</h2>
+        </article>
+        <article class="stat item grid">
+          <h4>Board members</h4>
+          <h2>{{ board.members.length }}</h2>
+        </article>
+        <article class="stat item grid">
+          <h4>Total board groups</h4>
+          <h2>{{ board.groups.length }}</h2>
+        </article>
+      </section>
 
-    <PieChart @click="isRadar = !isRadar" v-if="!isRadar" class="grid-item pie1" :chartData="data" :options="options" />
-    <PolarAreaChart @click="isRadar = !isRadar" v-if="isRadar" class="grid-item pie1" :chartData="data"
-      :options="options" />
-    <PieChart @click="isBubble = !isBubble" v-if="!isBubble" class="grid-item pie2" :chartData="data"
-      :options="options" />
-    <BubbleChart @click="isBubble = !isBubble" v-if="isBubble" class="grid-item pie2" :chartData="data"
-      :options="options" />
-    <BarChart @click="isLine = !isLine" v-if="!isLine" :width="500" :height="500" class="grid-item bar-chart"
-      :chartData="data" :options="options" />
-    <LineChart :width="500" :height="500" @click="isLine = !isLine" class="grid-item bar-chart" v-if="isLine"
-      :chartData="data" :options="options" />
+      <section class="item person-chart">
+        <h4> person tasks number </h4>
+        <PieChart @click="() => isPersonPie = !isPersonPie" v-if="isPersonPie" :chartData="taskPerPerson"
+          :options="options" />
+        <BarChart v-else @click="() => isPersonPie = !isPersonPie" :chartData="taskPerPerson"
+          :options="horizontalOptions" />
+      </section>
+      <section class="item priority-chart">
+        <h4> tasks number by priority </h4>
+        <BarChart @click="() => isPriorityBar = !isPriorityBar" v-if="isPriorityBar" :width="500" :height="500"
+          :chartData="priority" :options="options" />
+        <DoughnutChart v-else :width="500" :height="500" @click="() => isPriorityBar = !isPriorityBar"
+          :chartData="priority" :options="options" />
+      </section>
+      <section class="item status-chart">
+        <h4> tasks number by status </h4>
+        <BarChart @click="() => isStatusBar = !isStatusBar" v-if="isStatusBar" :width="500" :height="500"
+          :chartData="status" :options="options" />
+        <DoughnutChart v-else :width="500" :height="500" @click="() => isStatusBar = !isStatusBar" :chartData="status"
+          :options="options" />
+      </section>
+    </div>
   </section>
 </template>
 
@@ -37,14 +49,138 @@ import {
   PieChart,
   LineChart,
   ScatterChart,
+  DoughnutChart
 } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 
 Chart.register(...registerables)
 
 export default {
-  name: 'awesome-chart',
+  name: 'dashboard',
+  computed: {
+    horizontalOptions() {
+      let options = JSON.parse(JSON.stringify(this.options))
+      options.indexAxis = 'y'
+      return options
+    },
+    board() {
+      return this.$store.getters.currBoard
+    },
+    sumOfTasks() {
+      return this.$store.getters.sumOfTasks
+    },
+    priority() {
+      let taskPerLabel = {}
+      const priorityLabel = { ...this.$store.getters.priorityLabels }
 
+      this.board.groups.forEach((group) => {
+        taskPerLabel = group.tasks.reduce((label, task) => {
+          if (!label[task.priority]) label[task.priority] = 0
+          label[task.priority] += 1
+          return label
+        }, taskPerLabel)
+      })
+
+      const labels = []
+      const colors = []
+      const data = []
+
+      for (let label in priorityLabel) {
+        const priority = priorityLabel[label]
+        labels.push(priority.title === "" ? 'No priority' : priority.title)
+        data.push(taskPerLabel[priority.title])
+        colors.push(priority.color)
+      }
+
+      return {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: colors,
+        }]
+      }
+    },
+    status() {
+      let taskPerLabel = {}
+      const statusLabel = { ...this.$store.getters.statusLabels }
+
+      this.board.groups.forEach((group) => {
+        taskPerLabel = group.tasks.reduce((label, task) => {
+          if (!label[task.status]) label[task.status] = 0
+          label[task.status] += 1
+          return label
+        }, taskPerLabel)
+      })
+
+      const labels = []
+      const colors = []
+      const data = []
+
+      for (let label in statusLabel) {
+        const status = statusLabel[label]
+        labels.push(status.title === "" ? 'No Status' : status.title)
+        data.push(taskPerLabel[status.title])
+        colors.push(status.color)
+      }
+
+      return {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: colors,
+        }]
+      }
+    },
+    taskPerPerson() {
+      let res = {}
+      const members = this.board.members
+
+      this.board.groups.forEach((group) => {
+        res = group.tasks.reduce((obj, task) => {
+          task.person.forEach(person => {
+            if (!obj[person.fullname]) obj[person.fullname] = 0
+            obj[person.fullname] += 1
+          })
+          return obj
+        }, res)
+      })
+
+      const labels = []
+      const colors = []
+      const data = []
+
+      for (let member in members) {
+        const person = members[member]
+        labels.push(person.fullname)
+        data.push(res[person.fullname] || 0)
+        colors.push(person.color)
+      }
+
+      return {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: colors,
+        }]
+      }
+    }
+  }
+  ,
+  data() {
+    return {
+      isPriorityBar: true,
+      isStatusBar: true,
+      isPersonPie: true,
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        responsive: true,
+      },
+    }
+  },
   components: {
     BarChart,
     PieChart,
@@ -52,48 +188,11 @@ export default {
     PolarAreaChart,
     BubbleChart,
     ScatterChart,
-  },
-  data() {
-    return {
-      data: {
-        labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
-        datasets: [
-          {
-            data: [30, 40, 60, 70, 5],
-            backgroundColor: [
-              'red',
-              '#77CEFF',
-              '#0079AF',
-              '#123E6B',
-              '#97B0C4',
-              '#A5C8ED',
-            ],
-          },
-        ],
-      },
-
-      isLine: false,
-      isRadar: false,
-      isBubble: false,
-      options: {
-        plugins: {
-          legend: {
-            display: false,
-          },
-        },
-      },
-    }
+    DoughnutChart
   },
 }
 </script>
-<style>
-.grid {
-  display: grid;
-}
-
-.flex {
-  display: flex;
-}
+<!-- <style>
 
 .dashboard-container.grid {
   box-shadow: 0 0 4px 1px #c3c3c3;
@@ -189,13 +288,8 @@ export default {
     grid-area: stats;
   }
 
-  .stat {
-    height: 100%;
-    font-size: 1.15rem;
-  }
-
   .stat h2 {
     font-size: 72px;
   }
 }
-</style>
+</style> -->
