@@ -1,4 +1,5 @@
 .task-card{
+ 
   height: max-content;
   width: 238px;
   margin: 12px;
@@ -10,8 +11,34 @@
   box-shadow: $box-shadow-medium;
 
   .card-row{
-    grid-template-columns: 25px 55px 140px;
+    grid-template-columns: 25px 55px 130px;
+    align-content: start;
     padding: $padding-small;
+    background-color: $color-snow_white;
+    color: $color-asphalt;
+    fill: $color-asphalt;
+    >*{
+      height: 36px;
+      &:not(:last-child){
+
+        display: flex;
+        align-items: center;
+      }
+    }
+    
+    .task-txt {
+        width: 100%;
+      }
+
+      .icon{
+        height:15px;
+        width:15px;
+      }
+    .cmp-name{
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+    
     &.taskTitle-row{
       grid-template-columns:170px 24px 20px;
 
@@ -20,8 +47,8 @@
       }
       .task-title{
         padding:0;
-
-      }
+        color: $color-mud_black;
+      }    
     }
 
     &:not(.taskTitle-row):nth-child(3){
@@ -47,7 +74,7 @@
       display: inline-block;
       width: em(24px);
       height: em(24px);
-    }
+     }
 
     .pulse-icon {
       color: $layout-border-color;
