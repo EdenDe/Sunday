@@ -6,9 +6,20 @@
     <div class="cmp-name">
       {{ cmp }}
     </div>
-    <component :is="cmp" :info="task[cmp]" :taskId="task.id" />
-    <div class="pulse-bubble" v-if="cmp === 'taskTitle'" v-tooltip="'Add to conversation'">
-      <RouterLink :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`">
+    <component
+      :is="cmp"
+      :info="task[cmp]"
+      :taskId="task.id"
+      @updateProp="updateProp"
+    />
+    <div
+      class="pulse-bubble"
+      v-if="cmp === 'taskTitle'"
+      v-tooltip="'Add to conversation'"
+    >
+      <RouterLink
+        :to="`/board/${$route.params.boardId}/main-table/pulse/${task.id}`"
+      >
         <PulseIcon class="pulse-icon icon" v-if="taskUpdatesNum === 0" />
         <div class="pulse-icon-empty icon" v-else>
           <PulseEmptyIcon />
@@ -45,24 +56,25 @@ export default {
   name: 'KanbanCard',
   props: {
     cmp: String,
-    task: Object
+    task: Object,
   },
+  emits: ['updateProp'],
   data() {
     return {
       isActionBarOpen: false,
     }
   },
   methods: {
-
+    updateProp(prop, toUpdate) {
+      this.$emit('updateProp', this.task.groupId, this.task.id, prop, toUpdate)
+    },
   },
   computed: {
     taskUpdatesNum() {
       return this.task.updates?.length || 0
     },
   },
-  created() {
-
-  },
+  created() {},
   components: {
     checkbox,
     date,

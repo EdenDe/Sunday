@@ -28,6 +28,7 @@
           <KanbanCards
             :cmpsToDisplay="cmpsToDisplay"
             :tasks="tasks(label.title)"
+            @updateProp="updateProp"
           />
         </Draggable>
       </Container>
@@ -68,6 +69,16 @@ export default {
         toUpdate: this.labelsOrder,
       })
     },
+    updateProp(groupId, taskId, prop, toUpdate) {
+      console.log(groupId, taskId, prop, toUpdate)
+      this.$store.dispatch({
+        type: 'updateCurrBoard',
+        groupId,
+        taskId,
+        prop,
+        toUpdate,
+      })
+    },
     onChangeLabel(value) {
       this.currLabel =
         value === 'Priority' ? 'priorityOrderKanban' : 'statusOrderKanban'
@@ -87,12 +98,13 @@ export default {
     tasks() {
       return (currLabel) => {
         let taskPerLabel = {}
-        const groups = this.$store.getters.groups
+        const groups = JSON.parse(JSON.stringify(this.$store.getters.groups))
         const orderFilter =
           this.currLabel === 'priorityOrderKanban' ? 'priority' : 'status'
         groups.forEach((group) => {
           taskPerLabel = group.tasks.reduce((label, task) => {
             if (!label[task[orderFilter]]) label[task[orderFilter]] = []
+            task.groupId = group.id
             label[task[orderFilter]].push(task)
             return label
           }, taskPerLabel)
