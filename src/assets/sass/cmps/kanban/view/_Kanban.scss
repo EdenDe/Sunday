@@ -1,40 +1,44 @@
-.kanban-layout{
+.kanban-layout {
   display: grid;
   grid-template-columns: 14px 1fr 268px;
-  border-top: 1px solid $ui-border-color;
-  height: 85%;
-  padding-bottom: 150px;
-  
-  .kanban{
+  height: max-content;
+  .top-border {
+    z-index: 2023;
+    position: sticky;
+    top: 193px;
+    height: 1px;
+    width: 100vw;
+    background-color: $ui-border-color;
+  }
+  .kanban {
     grid-column: 2;
     gap: 14px;
-    padding-top:14px;
-    overflow:scroll;
+    padding-top: 14px;
+    overflow: scroll;
     .smooth-dnd-container.horizontal {
       display: grid;
-        grid-auto-flow: column;
-        gap: 15px;
-  
-   
-  .label-col{
-    cursor: pointer;
-    background-color: $color-riverstone_gray;
-    width: 260px;
-    height: max-content;
-    border-radius: $border-radius-rounder;
-    &:hover {
-        background-color: $color-ui_grey;
+      grid-auto-flow: column;
+      gap: 15px;
+
+      .label-col {
+        cursor: pointer;
+        background-color: $color-riverstone_gray;
+        width: 260px;
+        height: max-content;
+        border-radius: $border-radius-rounder;
+        &:hover {
+          background-color: $color-ui_grey;
+        }
+        &-title {
+          display: flex;
+          align-items: center;
+          padding-inline-start: $padding-small;
+          height: 40px;
+          color: $color-snow_white;
+          border-top-right-radius: $border-radius-rounder;
+          border-top-left-radius: $border-radius-rounder;
+        }
       }
-    &-title{
-      display: flex;
-      align-items: center;
-      padding-inline-start: $padding-small;
-      height: 40px;
-      color: $color-snow_white;
-      border-top-right-radius: $border-radius-rounder;
-      border-top-left-radius: $border-radius-rounder;
-      
     }
   }
 }
-  }}

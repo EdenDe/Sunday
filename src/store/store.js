@@ -10,12 +10,10 @@ export const store = Vuex.createStore({
 	mutations: {
 		setPageLoading(state, { isLoading }) {
 			state.pageLoading = isLoading
-			console.log('page loading', state.pageLoading)
 		},
 	},
 	getters: {
 		getPageLoading({ pageLoading }) {
-			console.log('store getters', pageLoading)
 			return pageLoading
 		},
 	},

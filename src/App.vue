@@ -19,8 +19,6 @@ export default {
   },
   computed: {
     pageLoading() {
-      console.log('hi')
-      console.log(this.$store.getters.getPageLoading)
       return this.$store.getters.getPageLoading
     },
   },

@@ -162,12 +162,11 @@
   grid-template-columns: 40px 6px 33px 323px 140px 129px 129px 99px 177px 278px 129px 1fr;
 }
 
-@mixin infinity-table{
-    content: "";
-      background-color: $color-snow_white;
-      border-top: 1px solid $ui-border-color;
-      border-bottom: 1px solid $ui-border-color;
-      width: 100px;
+@mixin infinity-table {
+  content: '';
+  border-top: 1px solid $ui-border-color;
+  border-bottom: 1px solid $ui-border-color;
+  width: 100px;
 }
 
 @mixin task-row {
@@ -294,6 +293,7 @@
     outline: 1px solid $color-basic_blue;
   }
 }
+
 @mixin peeling-span {
   transition: opacity 0.3s ease-in-out;
   display: none;

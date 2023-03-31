@@ -1,35 +1,26 @@
 <template>
   <section class="update-log grid">
-    <section class="editor-wrapper grid" v-clickOutside="toggleIsEditor">
-      <input
-        v-if="!isEditor"
-        @focus="toggleIsEditor(true)"
-        @input="onType"
-        v-model="content"
-        placeholder="Write an update..."
-        class="input-update-log"
-      />
+    <section class="editor-wrapper " v-clickOutside="toggleIsEditor">
+      <input v-if="!isEditor" @focus="() => toggleIsEditor(true)" @input="onType" v-model="content"
+        placeholder="Write an update..." class="input-update-log" />
       <TextEditor v-model="content" @setContent="setContent" v-else />
-      <div class="emoji-container" @click="toggleShowEmoji">
-        <button class="btn flex align-center justify-between">
-          <Emoji />
-          Emoji
-        </button>
-        <picker v-if="isEmojiOpen" :data="emojiIndex" @select="addEmoji" />
+      <div class="flex justify-between btn-container">
+        <div class="emoji-container " @click="() => toggleShowEmoji(isEmojiOpen ? false : true)"
+          v-clickOutside="toggleShowEmoji">
+          <button class="btn flex align-center justify-between">
+            <Emoji />
+            Emoji
+          </button>
+          <picker v-if="isEmojiOpen" :data="emojiIndex" @select="addEmoji" />
+        </div>
+        <button class="btn-update" @click="onUpdate">Update</button>
+
       </div>
-      <button class="btn-update" @click="onUpdate">Update</button>
     </section>
     <section class="updates-wrapper flex-col">
       <h1>{{ typingUser }}</h1>
-      <Update
-        v-for="update in updates"
-        :update="update"
-        :key="update.id"
-        @removeUpdate="removeUpdate"
-        :loggedInUserId="loggedInUser._id"
-        @editUpdate="editUpdate"
-        @toggleLike="toggleLike"
-      />
+      <Update v-for="update in updates" :update="update" :key="update.id" @removeUpdate="removeUpdate"
+        :loggedInUserId="loggedInUser._id" @editUpdate="editUpdate" @toggleLike="toggleLike" />
     </section>
   </section>
 </template>
@@ -69,8 +60,8 @@ export default {
         this.isEditor = value
       }
     },
-    toggleShowEmoji() {
-      this.isEmojiOpen = !this.isEmojiOpen
+    toggleShowEmoji(value = false) {
+      this.isEmojiOpen = value
     },
     setContent(content) {
       this.content = content
@@ -84,7 +75,8 @@ export default {
         likedBy: [],
         byUser: { ...this.loggedInUser },
       })
-      this.content = ''
+      this.setContent('')
+      this.toggleIsEditor()
       this.$emit('editUpdates', 'updates', updates)
     },
     removeUpdate(updateId) {

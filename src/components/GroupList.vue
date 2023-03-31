@@ -2,10 +2,17 @@
   <section class="group-list">
     <Container @drop="onDrop">
       <Draggable v-for="group in groups" :key="group.id">
-        <GroupPreview :group="group" @addGroup="onAddGroup" @removeGroup="removeGroup" />
+        <GroupPreview
+          :group="group"
+          @addGroup="onAddGroup"
+          @removeGroup="removeGroup"
+        />
       </Draggable>
     </Container>
-    <button class="btn-add-group flex justify-center align-center" @click="onAddGroup()">
+    <button
+      class="btn-add-group flex justify-center align-center"
+      @click="onAddGroup()"
+    >
       <AddIcon class="add-icon icon" />
       Add new group
     </button>
@@ -30,11 +37,11 @@ export default {
       this.updateBoard('groups', groupList)
     },
     onAddGroup(group) {
+      console.log(this.groups)
       const groups = this.groups
       const newGroup = group || boardService.getEmptyGroup()
       groups.push(newGroup)
       this.updateBoard('groups', groups)
-
       const activity = boardService.addActivity('Created', newGroup.title)
       this.updateBoard('activities', activity, newGroup.color)
     },

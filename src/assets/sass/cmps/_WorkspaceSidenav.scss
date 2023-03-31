@@ -24,11 +24,11 @@
     &:not(.workspace-close) {
       min-width: 254px;
     }
-    &.workspace-close .toggle-workspace:hover{
-        right: rem(-45px);
-        & .arrow-left-icon {
-            margin-right: -8px;
-          }
+    &.workspace-close .toggle-workspace:hover {
+      right: rem(-45px);
+      & .arrow-left-icon {
+        margin-right: -8px;
+      }
     }
   }
   .navigation-header {
@@ -126,7 +126,9 @@
       border-radius: 4px;
       font-size: rem(14px);
       color: $primary-text-color;
-
+      &:hover {
+        background-color: $primary-background-hover-color;
+      }
       .dots-wrapper {
         display: none;
       }

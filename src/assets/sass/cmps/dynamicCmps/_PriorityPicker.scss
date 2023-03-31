@@ -20,6 +20,21 @@
     }
   }
  }
+
+ .priority-label-picker{
+  position: relative;
+ }
+
+ .priority-label-picker::after{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-10px);
+  border-bottom: 20px solid #ffffff;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+}
   // display: block;
 
   .peeling-span {
@@ -39,4 +54,10 @@
   }
 }
 
+.v-popper__popper .v-popper__arrow-container{
+  display: none;
+}
 
+.v-popper--theme-dropdown .v-popper__wrapper .v-popper__inner{
+  border: none;
+}
