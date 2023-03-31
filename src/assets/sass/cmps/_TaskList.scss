@@ -1,18 +1,23 @@
 .task-list {
   @include task-cols;
   background-color: $color-snow_white;
+  &.active {
+    background-color: $color-highlight_blue !important;
+  }
+  &.active > *:not(:nth-child(-n + 2)) {
+    background-color: $color-highlight_blue !important;
+  }
+  &::after {
+    @include infinity-table;
+    border-bottom: none;
+    height: 33px;
+    grid-column: 12;
+  }
 
-    &::after {
-        @include infinity-table;
-        border-bottom: none;
-        height: 33px;
-        grid-column: 12;
-      }
-
-  >*:not(:first-child){
+  > *:not(:first-child) {
     border-top: 1px solid $ui-border-color;
   }
-  
+
   &:last-child > *:not(:first-child) {
     border-bottom: 1px solid $layout-border-color;
   }

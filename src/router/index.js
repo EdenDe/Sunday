@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { store } from '../store/store'
+import { userService } from '../services/user.service'
 import HomePage from '../views/HomePage.vue'
 import LoginSignup from '../views/LoginSignup.vue'
 import BoardIndex from '../views/BoardIndex.vue'
@@ -7,6 +8,7 @@ import BoardKanban from '../views/BoardKanban.vue'
 import BoardTable from '../views/BoardTable.vue'
 import Pulse from '../views/Pulse.vue'
 import Dashboard from '../views/Dashboard.vue'
+
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
@@ -54,15 +56,32 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	if (to.matched.some(route => route.meta.requiresAuth)) {
-		if (!sessionStorage.getItem('loggedinUser')) {
-			next({
-				name: 'loginSignup',
-				query: { redirect: to.fullPath },
+	if (to.meta.requiresAuth && !userService.isLoggedin()) {
+		next({
+			name: 'loginSignup',
+			query: { redirect: to.fullPath },
+		})
+	} else {
+		next()
+	}
+})
+
+router.beforeResolve((to, from, next) => {
+	// show loader
+	store.commit('setPageLoading', true)
+
+	// wait for async route components to resolve
+	Promise.all(to.matched.map(record => {
+		if (record.beforeEnter) {
+			return new Promise((resolve, reject) => {
+				record.beforeEnter(to, from, resolve, reject)
 			})
 		}
-	}
-	next()
+	})).then(() => {
+		store.commit('setPageLoading', false)
+		next()
+	})
 })
+
 
 export default router

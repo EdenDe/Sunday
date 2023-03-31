@@ -17,6 +17,7 @@ export const userService = {
 	getById,
 	remove,
 	update,
+	isLoggedin
 }
 
 function query() {
@@ -83,6 +84,11 @@ function getLoggedinUser() {
 	saveLocalUser(guestUser)
 	socketService.login(guestUser._id)
 	return guestUser
+}
+
+function isLoggedin() {
+	console.log((sessionStorage.getItem('loggedinUser')) ? true : false);
+	return sessionStorage.getItem('loggedinUser') ? true : false;
 }
 
 // function saveLocalUser(user) {
