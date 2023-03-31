@@ -189,6 +189,15 @@
       transform: rotate(90deg);
     }
   }
+
+  @include for-mobile-layout {
+    .group-labels{
+      touch-action:auto;
+    }
+    :grid-title{
+      touch-action: auto;
+    }
+  }
 }
 
 .task-options-wrapper {
