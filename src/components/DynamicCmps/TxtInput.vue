@@ -7,10 +7,21 @@
       v-tooltip="txt"
       >{{ txt }}</span
     >
+    <div class="default-txt">
+      hii
+      <div class="icon-wrapper flex align-center justify-center">
+        <PlusIcon />
+      </div>
+      <div class="icon-wrapper flex align-center justify-center">
+        <TextIcon />
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import TextIcon from '../../assets/icons/Text.svg'
+import PlusIcon from '../../assets/icons/Add.svg'
 export default {
   name: 'TextInput',
   props: {
@@ -32,6 +43,10 @@ export default {
       this.txt = txt
       this.$emit('updateProp', 'text', txt)
     },
+  },
+  components: {
+    PlusIcon,
+    TextIcon,
   },
 }
 </script>

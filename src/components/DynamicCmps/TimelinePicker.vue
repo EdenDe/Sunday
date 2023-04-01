@@ -3,7 +3,6 @@
     <div class="timeline-display">
       <label
         :data-diff="formattedDaysRange"
-        :for="taskId + 'Timeline'"
         class="timeline-label"
         :class="{ 'active-timeline': timeline?.length }"
         :style="
@@ -13,6 +12,7 @@
               }
             : null
         "
+        @click="openDatePicker"
       >
         {{ formattedDates }}
         <el-date-picker
@@ -24,7 +24,8 @@
           range-separator=""
           start-placeholder=""
           end-placeholder=""
-          :id="taskId + 'Timeline'"
+          ref="datePicker"
+          :id="`${taskId}-Timeline`"
         />
         <i
           v-if="timeline.length"
@@ -62,6 +63,9 @@ export default {
     },
     onRemoveTimeline() {
       this.$emit('updateProp', 'timeline', [])
+    },
+    openDatePicker() {
+      this.$refs.datePicker.showPicker()
     },
   },
   watch: {
