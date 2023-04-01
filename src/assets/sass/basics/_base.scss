@@ -88,3 +88,10 @@ ul {
   border-radius: $border-radius !important;
   max-width: 300px !important;
 }
+
+
+@include for-mobile-layout{
+  ::-webkit-scrollbar-track,::-webkit-scrollbar-thumb, ::-webkit-scrollbar {
+    display:none;
+  }
+}

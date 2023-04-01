@@ -147,21 +147,31 @@
 
   //MQ
   @include for-mobile-layout {
-     padding: 20px;
-   
+     padding: 0 20px;
+     height:fit-content ;
      .nav-bar{
       display:none;
      }
     .board-header-top-wrapper{
+   
         justify-content: center;
         >*:not(.board-title){
           display:none;
-        }     
+        }   
+        
+        .board-title{
+          font-family: $figtree-bold;
+          font-size: em(16px);
+        }
       }
      
     .btn-add-task .btn-blue:not(.mobile), .desc-wrapper{
       display: none;
     }    
+
+    .btn-add-task{
+      position: absolute;
+    }
       
     .btn-container.btn-add-task .btn.mobile{
       display:block;
@@ -176,8 +186,6 @@
       border-radius: 50px;
     }    
   }
-
-
 }
 
 .seconde-row-container {
@@ -249,8 +257,9 @@
 
   @include for-mobile-layout {
     border-bottom: 1px solid $layout-border-color;
-
-   
+    justify-content:center;
+    align-items: center; 
+    padding: 5px 0;
   }
 }
 
