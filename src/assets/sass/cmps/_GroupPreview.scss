@@ -64,7 +64,6 @@
       @include task-row;
       @include flex-center;
       padding: 6px;
-      border-bottom: 1px solid $layout-border-color;
       margin-bottom: -1px;
     }
     & > *:nth-child(-n + 4) {

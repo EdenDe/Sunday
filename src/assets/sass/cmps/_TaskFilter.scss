@@ -1,6 +1,7 @@
 .task-filter {
   justify-content: start;
   position: relative;
+  gap: 48vw;
   .filter {
     position: relative;
     border-radius: $border-radius-filter;
@@ -200,6 +201,7 @@
   @include for-mobile-layout {
     & {
       position: static;
+      gap: 25vw;
       .filter {
         position: static;
       }
@@ -255,7 +257,13 @@
         width: 15px;
         height: 15px;
         margin-inline-end: 5px;
-        margin-inline-start: 12px;
+        &:not(.icon-setting){
+          margin-inline-start: 12px;
+        }
+      }
+      .icon-setting{
+        margin-inline-start: 5px;
+        
       }
     }
   }
