@@ -5,8 +5,8 @@
     position: relative;
     border-radius: $border-radius-filter;
     margin-inline-end: rem(8px);
-    &.kanban-editor{
-      display:none;
+    &.kanban-editor {
+      display: none;
     }
     .btn {
       @include flex-center;
@@ -23,7 +23,6 @@
           fill: $icon-color;
         }
       }
-      
     }
     &-modal {
       @include filter-modal;
@@ -126,6 +125,7 @@
         .header {
           padding: 24px 24px 0px 24px;
           margin-block-end: rem(16px);
+          align-items: center;
           .title {
             font-size: rem(16px);
             margin-inline-end: rem(8px);
@@ -134,6 +134,14 @@
           .subtitle {
             font-size: rem(12px);
             font-family: $poppins-light;
+          }
+          .save-btn {
+            display: none;
+            @include btn;
+            @include btn-blue;
+            justify-self: flex-end;
+            margin-inline-end: 40px;
+            padding: 10px 20px;
           }
         }
         .quick-filter {
@@ -190,8 +198,47 @@
   }
 
   @include for-mobile-layout {
-    .filter-search,.filter-member{
-      display:none;
+    .filter-search,
+    .filter-member {
+      display: none;
+    }
+    & {
+      .filter-main.active {
+        .filter-modal {
+          display: flex;
+          flex-direction: column;
+          width: 100vw !important;
+          height: 100vh !important;
+          top: 0%;
+          right: 25%;
+          transform: translate(60%, 0%);
+          .header {
+            .save-btn {
+              display: block;
+            }
+          }
+          .quick-filter {
+            .filters-lists-container {
+              display: flex;
+              flex-direction: column;
+              ul {
+                display: flex;
+                flex-direction: column;
+                align-content: flex-start;
+                align-items: flex-start;
+                .filter-list {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  gap: 10px;
+                  li {
+                    margin-top: 0px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
     .filter .btn {
       background-color: $grey-background-color;
