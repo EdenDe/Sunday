@@ -1,6 +1,6 @@
 .app-header {
   align-content: center;
-  height: 10vh;
+  height: 72px;
   background-color: $color-snow_white;
   .logo {
     @include flex-center;
@@ -55,6 +55,26 @@
         font-size: rem(13px);
         justify-content: space-between;
         background-color: $color-blue-get-started;
+      }
+    }
+  }
+  @include for-mobile-layout {
+    & {
+      height: 60px;
+      .logo-link {
+        justify-content: flex-start;
+        div {
+          display: flex;
+          align-items: baseline;
+        }
+      }
+      .login-btn-txt {
+        font-size: 18px;
+      }
+      .btn-wrapper {
+        .btn {
+          display: none;
+        }
       }
     }
   }
