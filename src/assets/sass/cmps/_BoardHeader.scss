@@ -50,6 +50,7 @@
 
   .desc-wrapper {
     max-width: 20vw;
+    margin-bottom: 10px;
     .desc {
       @include editableSpan;
       width: 100%;
