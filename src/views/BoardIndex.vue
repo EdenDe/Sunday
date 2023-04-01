@@ -56,12 +56,12 @@ export default {
     async loadBoard(boardId) {
       await this.$store.dispatch({ type: 'loadBoard', boardId })
     },
-    updateBoard(prop, toUpdate) {
+    updateBoard(prop, toUpdate, groupId = null) {
       this.$store.dispatch({
         type: 'updateCurrBoard',
-        groupId: null,
+        groupId,
         taskId: null,
-        prop: prop,
+        prop,
         toUpdate,
       })
     },

@@ -1,7 +1,12 @@
 <template>
   <section class="task-action-bar-container grid grid-col">
     <div class="selected-tasks-num grid">{{ selectedTasksNum }}</div>
-    <div class="selected-tasks-num-txt">Item Selected</div>
+    <div class="selected-tasks-num-txt">
+      <p>Item<span v-if="selectedTasksNum > 1">s</span> Selected</p>
+      <div class="selected-tasks-num-dots grid grid-col">
+        <div class="dot" v-for="num in selectedTasksNum"></div>
+      </div>
+    </div>
     <div class="btn btn-container grid" @click="$emit('copy')">
       <div class="btn-icon">
         <DuplicateIcon class="duplicate-icon icon" />
