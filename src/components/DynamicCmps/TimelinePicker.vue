@@ -1,5 +1,6 @@
 <template>
   <section class="timeline-picker">
+    <label class="label-cover" :for="taskId + 'Timeline'"> </label>
     <div class="timeline-display">
       <label
         :data-diff="formattedDaysRange"
@@ -12,7 +13,6 @@
               }
             : null
         "
-        @click="openDatePicker"
       >
         {{ formattedDates }}
         <el-date-picker
@@ -24,8 +24,7 @@
           range-separator=""
           start-placeholder=""
           end-placeholder=""
-          ref="datePicker"
-          :id="`${taskId}-Timeline`"
+          :id="taskId + 'Timeline'"
         />
         <i
           v-if="timeline.length"

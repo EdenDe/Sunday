@@ -1,10 +1,13 @@
 .task-preview {
   @include task-row;
   //background-color: $color-snow_white;
-
+  
   &:not(:has(.task-title)) {
     display: grid;
   }
+    &:has(.person-list){
+      @include flex-center;
+    }
 
   &:has(.task-txt, .task-title) {
     overflow: hidden;
@@ -27,13 +30,22 @@
       .task-title,
       .task-action-bar-container,
       .priority-picker,
-      .status-picker
+      .status-picker,
+      .person-picker
     ) {
     font-size: em(14px);
     margin: 0;
     display: flex;
     flex: 1 1 auto;
     justify-content: center;
+  }
+
+  &:has(.person-picker) {
+    position: relative;
+    
+    &:hover .add-icon {
+      opacity: 1;
+    }
   }
 
   .pulse-bubble {

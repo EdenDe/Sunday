@@ -1,5 +1,11 @@
 .timeline-picker {
   position: relative;
+
+  .label-cover{
+    inset: 0;
+    position: absolute;
+    cursor: pointer;
+  }
   .timeline-display {
     @include flex-center;
     position: absolute;
