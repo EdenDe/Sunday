@@ -38,7 +38,9 @@
     .btn-container {
       @include flex-center;
       border-radius: $border-radius;
-      padding: 4px;
+      &:not(.btn-kanban-editor){
+        padding: 4px;
+      }
       & * {
         line-height: 20px;
         color: $icon-color;
@@ -49,11 +51,12 @@
   }
 
   .desc-wrapper {
-    max-width: 20vw;
+    max-width: 60vw;
     margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
     .desc {
       @include editableSpan;
-      width: 100%;
       font-size: rem(14px);
       color: $color-asphalt;
     }
@@ -96,6 +99,7 @@
           height: 18px;
           width: 18px;
         }
+        
       }
     }
   }
@@ -235,7 +239,7 @@
       &:not(.btn-add-task) {
         padding: $padding-small;
       }
-      & > :last-child:not(.btn-blue) {
+      & > :last-child:not(.btn-blue, .icon-setting) {
         padding-right: 12px;
       }
     }

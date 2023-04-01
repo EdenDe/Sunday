@@ -45,7 +45,7 @@
         "
       />
 
-      <div class="desc-wrapper">
+      <div class="desc-wrapper" v-tooltip="currBoard.description">
         <span
           class="desc"
           contenteditable

@@ -93,11 +93,11 @@
     </div>
     <div class="filter kanban-editor" :class="{ active: isKanbanEditorOpen }">
       <button
-        class="btn btn-container"
+        class="btn btn-container btn-kanban-editor"
         @click="() => (isKanbanEditorOpen = !isKanbanEditorOpen)"
         v-tooltip="'Settings'"
       >
-        <div class="icon-container">
+        <div class="icon-container icon-setting">
           <SettingsIcon />
         </div>
       </button>
