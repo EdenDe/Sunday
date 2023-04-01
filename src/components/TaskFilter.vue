@@ -49,7 +49,7 @@
     <div class="filter kanban-editor" :class="{ active: isKanbanEditorOpen }">
       <button class="btn btn-container" @click="() => isKanbanEditorOpen = !isKanbanEditorOpen" v-tooltip="'Settings'">
         <div class="icon-container">
-          <span>Icon</span>
+          <SettingsIcon />
         </div>
       </button>
     </div>
@@ -61,6 +61,7 @@ import SearchIcon from '../assets/icons/Search.svg'
 import MemberIcon from '../assets/icons/PersonRound.svg'
 import FilterIcon from '../assets/icons/Filter.svg'
 import SortIcon from '../assets/icons/Sort.svg'
+import SettingsIcon from '../assets/icons/Settings.svg'
 import MemberFilter from './filterCmps/FilterMember.vue'
 import SortFilter from './filterCmps/FilterSort.vue'
 import MainFilter from './filterCmps/FilterMain.vue'
@@ -108,6 +109,7 @@ export default {
     SearchIcon,
     MemberIcon,
     FilterIcon,
+    SettingsIcon,
     SortIcon,
     MemberFilter,
     SortFilter,
