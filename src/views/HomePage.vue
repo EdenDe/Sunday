@@ -8,7 +8,7 @@
           A platform built for a new way of working
         </h1>
         <h4 class="home-page-body-sub-header flex align-end justify-center">
-          What would you like to manage with sunday.com Work OS?
+          What would you like to manage with sunday.com Work OS??
           <div class="comet-line underline"></div>
         </h4>
       </div>
