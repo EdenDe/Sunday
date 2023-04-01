@@ -8,7 +8,7 @@
       >{{ txt }}</span
     >
     <div class="default-txt">
-      hii
+      hello
       <div class="icon-wrapper flex align-center justify-center">
         <PlusIcon />
       </div>
