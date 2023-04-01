@@ -24,23 +24,36 @@
     span{
       padding: 0 8px
     }
-}
-.peeling-span {
-  @include peeling-span;
+  }
+  .peeling-span {
+    @include peeling-span;
+  }
+
 }
 
+.status-label-picker{
+  font-size: em(14px);
+  position: relative;
+}
+
+.status-label-picker::after{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-10px);
+  border-bottom: 20px solid $color-snow_white;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
 }
 
 .v-popper__popper{
 
 .v-popper__inner:has(.status-label-picker) {
-  @include label-picker-container;
-  height: rem(280px);
-  .color-picker-label {
-    @include color-picker-label;
+    @include label-picker-container;
+    height: rem(280px);
+    .color-picker-label {
+      @include color-picker-label;
+    }
   }
-  // &.picker-close {
-  //   display: none;
-  // }
-}
 }

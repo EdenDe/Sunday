@@ -26,9 +26,15 @@
   .v-popper {
     width: 100%;
   }
+
+
   .person-list {
       padding-left: em(10px);  
       @include fullSize;
+
+      .person-default-icon{
+        width:30px;
+      }
     }
 
     .merge-person {
@@ -164,6 +170,17 @@
 
     &:hover {
       background-color: #dddfec;
+    }
+  }
+}
+
+.task-card {
+  
+  .person-picker{
+  position: relative;
+
+    &:hover .add-icon{
+      opacity: 1;
     }
   }
 }

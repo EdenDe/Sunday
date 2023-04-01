@@ -38,7 +38,8 @@
       <div class="merge-person avatar flex align-center" v-if="info?.length > personToDisplay?.length">
         <span class="flex align-center">+{{ info.length - 1 }}</span>
       </div>
-
+      <img v-if="!personToDisplay?.length" src="https://cdn.monday.com/icons/dapulse-person-column.svg"
+        class="person-default-icon" title="" alt="" aria-hidden="true">
     </section>
   </section>
 </template>

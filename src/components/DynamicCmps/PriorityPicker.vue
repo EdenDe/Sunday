@@ -1,20 +1,12 @@
 <template>
   <section class="priority-picker">
     <VDropdown :distance="6">
-      <div
-        :style="{ backgroundColor: status.color }"
-        class="priority"
-        @click="toggleColorPicker"
-      >
-        <span>{{ status.title }}</span>
+      <div :style="{ backgroundColor: status.color }" class="priority" @click="toggleColorPicker">
+        <span>{{ status.title }} </span>
       </div>
       <template #popper v-if="isPickerOpen">
-        <LabelPicker
-          v-clickOutside="toggleColorPicker"
-          class="priority-label-picker"
-          :labels="priorityLabels"
-          @setLabel="updateLabel"
-        >
+        <LabelPicker v-clickOutside="toggleColorPicker" class="priority-label-picker" :labels="priorityLabels"
+          @setLabel="updateLabel">
         </LabelPicker>
       </template>
       <span class="peeling-span scale-up-tr"></span>
@@ -55,6 +47,7 @@ export default {
     setLabels() {
       let labels = this.$store.getters.priorityLabels
       this.status = labels.find((label) => label.title === this.info)
+
       if (!this.status) {
         this.status = labels[4]
       }
