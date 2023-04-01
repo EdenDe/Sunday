@@ -4,8 +4,9 @@
   .add-icon-wrapper {
       @include flex-center;
       position: absolute;
-      top: 32%;
-      left: 13%;
+      top: 25%;
+      left: -50%;
+      // width: 130px;
       transition: opacity 0.2s ease-in-out;
       
       .add-icon {
@@ -28,9 +29,7 @@
   }
   .person-list {
     position: relative;
-    padding-left: em(10px);
-    margin-inline-end:45px;
-  
+    padding-left: em(10px);  
     }
 
 
