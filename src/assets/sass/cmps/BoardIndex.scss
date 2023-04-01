@@ -1,7 +1,10 @@
 .board-index{
   &:has(.kanban-editor.active){
     .kanban-filter{
-      display:block;
+      display:flex;
+      @include for-mobile-layout {
+        align-items: center;
+      }
     }
     .kanban-layout {
       grid-template-columns: 14px 1fr 268px;

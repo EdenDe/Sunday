@@ -6,7 +6,7 @@
   padding: $padding-small;
 
   background-color: $color-snow_white;
- // border-radius: $border-radius;
+ border-radius: $border-radius;
   gap:8px;
   box-shadow: $box-shadow-medium;
 
@@ -25,9 +25,12 @@
         align-items: center;
       }
     }
+    &:hover{
+      background-color: $grey-background-color;
+    }
     
     .task-txt {
-        width: 100%;
+        width: 190px;
       }
 
       .icon{
@@ -48,16 +51,13 @@
       .task-title{
         padding:0;
         color: $color-mud_black;
+        span{
+          margin-left: 2px; 
+        }
       }    
     }
 
-    &:not(.taskTitle-row):nth-child(3){
-      background-color: #f5f6f8;
-
-      &:hover{
-        //couldnt find :(
-      }
-    }
+   
   }
 
   .pulse-bubble {
@@ -104,14 +104,22 @@
 
 
      @include for-mobile-layout {
-        width: 85%;
+        width: 94%;
       .card-row{
-        grid-template-columns: 25px 55px 1fr;
+        grid-template-columns: 25px 60px 1fr;
         &:last-child{
           align-self: end;
         }
+
       &.taskTitle-row{
         grid-template-columns: 170px 1fr;
+      }
+      .person-picker{
+        margin:auto; 
+        .person-list{
+          margin-inline-end: 0;
+
+        } 
       }
     }
      }
