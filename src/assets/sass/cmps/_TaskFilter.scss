@@ -240,5 +240,18 @@
         }
       }
     }
+    .filter .btn {
+      background-color: $grey-background-color;
+      border-radius: $border-radius-filter;
+      font-size: em(14px);
+      height: rem(28px);
+      
+      .icon-container{
+        width: 15px;
+        height: 15px;
+        margin-inline-end: 5px;
+        margin-inline-start:12px;
+      }
+    }
   }
 }

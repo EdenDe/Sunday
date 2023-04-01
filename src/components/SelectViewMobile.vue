@@ -1,41 +1,41 @@
 <template>
   <div class="mobile-view-select">
-    <div class="filter-select-input" @click="toggleOptions">
-      <div class="column-filter-title">
-        <!-- <div class="icon-wrapper flex align-center">
-          <StatusIcon class="icon-status icon" />
-        </div> -->
-        <span>{{ columnFilter === 'main-table' ? 'main table' : columnFilter }}</span>
+    <div class="filter-select-input flex align-center" @click="toggleOptions">
+
+      <div class="icon-wrapper flex align-center">
+        <component :is="(columnFilter === 'main-table' ? 'mainTable' : columnFilter) + 'Icon'" class="home-icon icon" />
       </div>
-      <!-- <div class="icon icon-arrow">
+      <span>{{ columnFilter === 'main-table' ? 'main table' : columnFilter }}</span>
+
+      <div class="icon-arrow">
         <ArrowDown />
-      </div> -->
+      </div>
     </div>
-    <ul class="options-list" v-if="isOptionOpen">
+    <ul class="options-list" v-if="isOptionOpen" v-clickOutside="toggleOptions">
       <RouterLink :to="'/board/' + currBoard._id + '/main-table'">
-        <li class="flex justify-between option" @mousedown="() => onSelect('main-table')">
+        <li class="grid option" @mousedown="() => onSelect('main-table')">
+          <div class="icon-wrapper flex align-center">
+            <mainTableIcon class="icon" />
+          </div>
           <span>Main Table</span>
-          <!-- <div class="icon-wrapper">
-            <StatusIcon class="icon icon-status" />
-          </div> -->
         </li>
       </RouterLink>
-      <li class="flex justify-between option" @mousedown="() => onSelect('kanban')">
-        <RouterLink :to="'/board/' + currBoard._id + '/kanban'" :class="{ 'kanban-active': columnFilter === 'kanban' }">
 
+      <RouterLink :to="'/board/' + currBoard._id + '/kanban'" :class="{ 'kanban-active': columnFilter === 'kanban' }">
+        <li class="grid option" @mousedown="() => onSelect('kanban')">
+          <div class="icon-wrapper flex align-center">
+            <kanbanIcon class="icon" />
+          </div>
           <span>Kanban</span>
-          <!-- <div class="icon-wrapper">
-            <StatusIcon class="icon icon-status" />
-          </div> -->
-        </RouterLink>
-      </li>
+        </li>
+      </RouterLink>
 
       <RouterLink :to="'/board/' + currBoard._id + '/dashboard'">
-        <li class="flex justify-between option" @mousedown="() => onSelect('dashboard')">
+        <li class="grid option" @mousedown="() => onSelect('dashboard')">
+          <div class="icon-wrapper flex align-center">
+            <dashboardIcon class="icon-status" />
+          </div>
           <span>Dashboard</span>
-          <!-- <div class="icon-wrapper">
-            <StatusIcon class="icon icon-status" />
-          </div> -->
         </li>
       </RouterLink>
     </ul>
@@ -43,6 +43,11 @@
 </template>
 
 <script>
+import mainTableIcon from '../assets/icons/Home.svg'
+import dashboardIcon from '../assets/icons/Dashboard.svg'
+import kanbanIcon from '../assets/icons/Kanban.svg'
+import ArrowDown from '../assets/icons/ArrowDown.svg'
+
 export default {
   name: 'SelectViewMobile',
   data() {
@@ -66,13 +71,11 @@ export default {
       return this.$store.getters.currBoard
     },
   },
-  created() {
-
-  },
   components: {
-
+    mainTableIcon,
+    dashboardIcon,
+    kanbanIcon,
+    ArrowDown
   },
 }
 </script>
-
-<style></style>
