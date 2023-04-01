@@ -1,6 +1,11 @@
-.moble-view-select{
+.mobile-view-select{
+  display:none;
   .options-list{
     @include actions-list
+  }
+
+  @include for-mobile-layout {
+    display:block;
   }
 }
 

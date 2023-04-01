@@ -188,4 +188,10 @@
       }
     }
   }
+
+  @include for-mobile-layout {
+    .filter-search,.filter-member{
+      display:none;
+    }
+  }
 }

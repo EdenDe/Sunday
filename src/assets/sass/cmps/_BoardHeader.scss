@@ -149,6 +149,9 @@
   @include for-mobile-layout {
      padding: 20px;
    
+     .nav-bar{
+      display:none;
+     }
     .board-header-top-wrapper{
         justify-content: center;
         >*:not(.board-title){
