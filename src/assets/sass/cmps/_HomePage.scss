@@ -8,6 +8,8 @@
     height: 100vh;
     & > *:not(.el-carousel) {
       justify-self: center;
+      justify-items: center;
+      justify-content: center;
       margin-bottom: $margin-medium;
     }
     background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
@@ -16,7 +18,7 @@
     text-align: center;
     &-title {
       width: em(740px);
-      height: em(230px);
+      justify-items: center;
       font-family: $poppins-light;
     }
     &-header {
@@ -24,6 +26,7 @@
       font-weight: 400;
       font-size: 4.5em;
       line-height: 1.5em;
+      margin-block-end: 16px;
     }
     &-body-header {
       max-width: min(800px, 1440px);
@@ -42,7 +45,7 @@
         transform: rotate(0deg);
         width: em(105px);
         bottom: 0%;
-        left: 38%;
+        left: 32%;
         height: 1px;
         background: linear-gradient(90deg, transparent, #fff);
       }
@@ -51,7 +54,7 @@
       z-index: 1;
       @include btn-get-started(em(50px), em(175px));
       background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
-      margin-top: 16px;
+      margin-top: 48px;
     }
     .home-page-carousel {
       color: rgb(255, 255, 255);
@@ -223,7 +226,6 @@
   @include for-mobile-layout {
     font-size: 6px;
     .home-page-body {
-      height: fit-content;
       padding-bottom: 0px;
       padding-top: 30px;
       &-header {
@@ -233,19 +235,24 @@
       &-sub-header {
         font-size: 16px;
       }
-    }
-    .btn-get-started {
-      margin-top: 30vh;
-      width: 70vw;
-      &::after {
-        top: auto;
+      .btn-get-started {
+        width: 100%;
+        padding: 30px;
+        margin-block-start: 36px;
+        &::after {
+          top: auto;
+        }
+        span {
+          font-size: 20px;
+        }
       }
-      span {
-        font-size: 20px;
+      .under-btn {
+        margin-block-start: 16px;
+        white-space: nowrap;
       }
     }
     .home-page-carousel {
-      height: 100vh;
+      width: 100vw;
     }
   }
 }

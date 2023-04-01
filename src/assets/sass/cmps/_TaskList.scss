@@ -49,10 +49,8 @@
   //   height: 100%;
   // }
 
-  @include for-mobile-layout {
-     
-      touch-action:pan-x;
-      
+  @include for-mobile-layout {   
+      touch-action:pan-x;  
      .group-actions-wrapper.task-options.sticky{
         width:10px !important;
         left:0;    
@@ -66,6 +64,9 @@
       .task-preview:has(.task-title){
         left:16px;
         width:200px !important;
+      }
+      &:not(:has(a.router-link-active)) > *:not(:first-child) {
+        background-color: rgba($color-snow_white,0.9);
       }
   }
 }

@@ -5,6 +5,9 @@
     position: relative;
     border-radius: $border-radius-filter;
     margin-inline-end: rem(8px);
+    &.kanban-editor{
+      display:none;
+    }
     .btn {
       @include flex-center;
       @include btn(transparent);
@@ -20,6 +23,7 @@
           fill: $icon-color;
         }
       }
+      
     }
     &-modal {
       @include filter-modal;
