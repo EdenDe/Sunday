@@ -1,54 +1,90 @@
-.dashboard-container{
+.dashboard-container {
   overflow: scroll;
   grid-template-columns: 20px 1fr 20px;
-  width:100%;
+  width: 100%;
   background-color: $color-snow_white;
-  height:75%;
+  height: 75%;
   padding: 20px 10px;
-  
-  >*{
+
+  > * {
     grid-column: 2;
   }
 
-  .dashboard-inner-layout{
+  .dashboard-inner-layout {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
-    >*{
-      margin-bottom:15px ;
+    > * {
+      margin-bottom: 15px;
     }
-    .dashboard-stats{
+    .dashboard-stats {
       text-align: center;
       height: fit-content;
       gap: 10px;
-        h2{
-          padding: 15px;
+      h2 {
+        padding: 15px;
       }
     }
-  .status-chart{
-    grid-column: auto/span 3;
-  }
-  
-  .priority-chart, .person-chart{
-    grid-column: auto/span 2;
-  }
-  .item{
-    border-radius: $border-radius-rounder;
+    .chart {
+      height: 90%;
+      width: 100%;
+    }
+    .person-chart {
+      & > * {
+        width: 90% !important;
+      }
+    }
+    .status-chart {
+      grid-column: auto/span 3;
+    }
+
+    .priority-chart,
+    .person-chart {
+      grid-column: auto/span 2;
+    }
+    .item {
+      border-radius: $border-radius-rounder;
       border: 1px solid #d1d4e4;
       background-color: $color-snow_white;
       align-self: start;
       box-shadow: $box-shadow-xs;
-      *:not(h4){padding: $padding-medium;}
-      &:not(.stat){
-        height: 470px;
+      *:not(h4) {
+        padding: $padding-medium;
+        display: flex !important;
+        justify-items: center;
+        justify-content: center;
+        align-self: center;
       }
-      canvas{
+      &:not(.stat) {
+        height: 470px;
+        display: flex;
+        flex-direction: column;
+      }
+      canvas {
         padding: $padding-medium;
         height: 75%;
       }
-      h4{
-        font-size:18px;
+      h4 {
+        font-size: 18px;
         padding: 13px 20px;
         border-bottom: 1px solid #d1d4e4;
+      }
+    }
+  }
+  @include for-mobile-layout {
+    & {
+      height: 60%;
+      .dashboard-inner-layout {
+        grid-template-columns: repeat(2, 1fr);
+        .dashboard-stats {
+          grid-column: -1/1;
+          display: grid;
+        }
+        .item:not(.stat) {
+          height: fit-content;
+        }
+        .person-chart > * {
+          width: 100%;
+        }
       }
     }
   }
