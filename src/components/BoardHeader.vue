@@ -46,7 +46,7 @@
             <span>Main Table</span>
           </div>
         </RouterLink>
-        <RouterLink :to="'/board/' + currBoard._id + '/kanban'">
+        <RouterLink :to="'/board/' + currBoard._id + '/kanban'" class="kanban-active">
           <div class="btn btn-container grid grid-col" v-tooltip="'Kanban'">
             <span>Kanban</span>
           </div>
@@ -57,16 +57,17 @@
           </div>
         </RouterLink>
       </nav>
+
     </div>
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
         <button @click="addTask" class="btn btn-blue">New Task</button>
         <button @click="addTask" class="btn btn-blue mobile">+</button>
-
         <span class="btn btn-blue task-filter-icon">
           <ArrowDownIcon class="arrow-down-icon icon" />
         </span>
       </div>
+      <SelectViewMobile />
       <TaskFilter @setFilter="(filterBy) => $emit('setFilter', filterBy)" />
     </div>
   </section>
@@ -82,6 +83,7 @@ import ArrowDownIcon from '../assets/icons/ArrowDown.svg'
 import PersonPicker from './dynamicCmps/PersonPicker.vue'
 import AddPersonIcon from '../assets/icons/AddToTeam.svg'
 import Invite from '../components/Invite.vue'
+import SelectViewMobile from './SelectViewMobile.vue'
 
 export default {
   name: 'BoardHeader',
@@ -119,6 +121,7 @@ export default {
     PersonPicker,
     Invite,
     AddPersonIcon,
+    SelectViewMobile
   },
 }
 </script>

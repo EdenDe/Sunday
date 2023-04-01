@@ -141,6 +141,10 @@
     }
   }
 
+  &:has(.router-link-active.kanban-active) .kanban-editor{
+    display:block;
+  }
+
   //MQ
   @include for-mobile-layout {
      padding: 20px;
@@ -153,17 +157,24 @@
       }
      
     .btn-add-task .btn-blue:not(.mobile), .desc-wrapper{
-      display:none;
+      display: none;
     }    
       
-      .mobile{
-        display:block;
-        position: absolute;
-        border-radius: 50px;
-      }
-      
+    .btn-container.btn-add-task .btn.mobile{
+      display:block;
+      position: fixed;
+      bottom: 20px;
+      right:20px;
+      width:em(30px);
+      height: em(30px);
+
+      box-shadow: $box-shadow-mediun;
+      font-size:em(30px);
+      border-radius: 50px;
+    }    
   }
- 
+
+
 }
 
 .seconde-row-container {
@@ -216,6 +227,7 @@
         padding-right: 12px;
       }
     }
+  
   }
   //ICONS
   &.group-open {
@@ -227,7 +239,15 @@
     width: 15px;
   }
   .arrow-down-icon {
-    fill: #ffffff;
+    fill: $color-snow_white;
+  }
+
+
+
+  @include for-mobile-layout {
+    border-bottom: 1px solid $layout-border-color;
+
+   
   }
 }
 

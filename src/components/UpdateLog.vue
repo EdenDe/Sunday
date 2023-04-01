@@ -14,7 +14,6 @@
           <picker v-if="isEmojiOpen" :data="emojiIndex" @select="addEmoji" />
         </div>
         <button class="btn-update" @click="onUpdate">Update</button>
-
       </div>
     </section>
     <section class="updates-wrapper flex-col">
