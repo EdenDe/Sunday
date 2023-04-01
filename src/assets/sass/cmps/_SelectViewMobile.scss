@@ -10,6 +10,12 @@
   position: relative;
   height: rem(28px);
 
+  .filter-select-input{
+    span{
+      white-space: nowrap;
+    }
+  }
+
 
   .options-list{
     @include actions-list(fit-content,200px);
@@ -22,6 +28,7 @@
 
    span{
     align-self: center;
+    white-space: nowrap;
    }
 
     svg{

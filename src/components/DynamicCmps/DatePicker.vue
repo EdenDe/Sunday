@@ -15,11 +15,21 @@
     <div class="remove-btn" v-if="date" @click.prevent="onRemoveDate">
       <CloseIcon class="close-icon icon" />
     </div>
+    <div class="default-date" v-if="!date">
+      <div class="add-icon-wrapper">
+        <PlusIcon class="icon add-icon" />
+      </div>
+      <div class="calendar-icon-wrapper">
+        <CalendarIcon class="icon icon-calendar" />
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 import CloseIcon from '../../assets/icons/Close.svg'
+import PlusIcon from '../../assets/icons/Add.svg'
+import CalendarIcon from '../../assets/icons/Calendar.svg'
 export default {
   name: 'Date',
   props: {
@@ -50,6 +60,8 @@ export default {
   },
   components: {
     CloseIcon,
+    PlusIcon,
+    CalendarIcon,
   },
 }
 </script>

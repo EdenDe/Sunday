@@ -1,6 +1,27 @@
 .task-date {
   position: relative;
   width: 100%;
+  &:hover .default-date{
+    display:flex;
+  }
+  .default-date {
+    display: none;
+    align-items: center;
+    position: absolute;
+    margin-top: 7px;
+    
+    .add-icon-wrapper {
+        transition: opacity 0.2s ease-in-out;
+        .add-icon {
+          border-radius: 50%;
+          height: 13px;
+          width: 13px;
+          background-color: $color-blue-btn;
+          color: $color-snow_white;
+          padding: 1px;
+        }
+      }
+    }
   .remove-btn {
     display: none;
     top: 50%;

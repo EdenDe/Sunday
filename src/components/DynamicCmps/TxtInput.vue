@@ -5,14 +5,13 @@
       @focusout="onFocusout($event.target.innerText)"
       :style="{ fontSize: '14px' }"
       v-tooltip="txt"
-      >{{ txt }}</span
-    >
-    <div class="default-txt">
-      hello
-      <div class="icon-wrapper flex align-center justify-center">
-        <PlusIcon />
+      >{{ txt }}
+    </span>
+    <div class="default-txt" v-if="!txt.length">
+      <div class="icon-wrapper add-icon-wrapper">
+        <PlusIcon class="add-icon" />
       </div>
-      <div class="icon-wrapper flex align-center justify-center">
+      <div class="icon-wrapper">
         <TextIcon />
       </div>
     </div>

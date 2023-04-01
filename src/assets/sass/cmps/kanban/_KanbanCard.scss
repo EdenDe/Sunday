@@ -28,6 +28,13 @@
     &:hover{
       background-color: $grey-background-color;
     }
+      .task-date .remove-btn .close-icon{
+          height: 12px;
+          width:12px;
+          top:0;
+          right:0;
+
+        }
     
     .task-txt {
         width: 190px;
@@ -110,7 +117,7 @@
         &:last-child{
           align-self: end;
         }
-
+      
       &.taskTitle-row{
         grid-template-columns: 170px 1fr;
       }

@@ -3,92 +3,98 @@
     class="task-filter grid grid-col"
     v-clickOutsideParent="setActiveFilter"
   >
-    <div
-      class="filter-search filter"
-      ref="search"
-      :class="{ active: activeFilter === 'search' }"
-    >
-      <button
-        class="btn btn-container"
-        @click="() => setActiveFilter('search')"
+    <div class="grid grid-col">
+      <div
+        class="filter-search filter"
+        ref="search"
+        :class="{ active: activeFilter === 'search' }"
       >
-        <div class="icon-container">
-          <SearchIcon class="search-icon icon" />
-        </div>
-        <input
-          placeholder="Search"
-          v-model="txt"
-          @input="() => setText('txt', txt)"
-          class="flex align-center justify-start search-input"
-          :class="{ typing: txt.length > 0 }"
-        />
-      </button>
-    </div>
-
-    <div
-      class="filter-member filter"
-      :class="{ active: activeFilter === 'member' }"
-    >
-      <button
-        class="btn btn-container"
-        @click="
-          () => setActiveFilter(activeFilter === 'member' ? null : 'member')
-        "
-        v-tooltip="'Filter by person'"
-      >
-        <div class="icon-container">
-          <MemberIcon class="member-icon icon" />
-        </div>
-        <span>Person</span>
-      </button>
-      <div class="filter-modal">
-        <MemberFilter
-          @setFilterBy="setFilterBy"
-          :filterPerson="filterBy.person"
-        />
+        <button
+          class="btn btn-container"
+          @click="() => setActiveFilter('search')"
+        >
+          <div class="icon-container">
+            <SearchIcon class="search-icon icon" />
+          </div>
+          <input
+            placeholder="Search"
+            v-model="txt"
+            @input="() => setText('txt', txt)"
+            class="flex align-center justify-start search-input"
+            :class="{ typing: txt.length > 0 }"
+          />
+        </button>
       </div>
-    </div>
 
-    <div
-      class="filter-main filter"
-      ref="member"
-      :class="{ active: activeFilter === 'main' }"
-    >
-      <button
-        class="btn btn-container"
-        @click="() => setActiveFilter(activeFilter === 'main' ? null : 'main')"
-        v-tooltip="'Filter by anything'"
+      <div
+        class="filter-member filter"
+        :class="{ active: activeFilter === 'member' }"
       >
-        <div class="icon-container">
-          <FilterIcon class="filter-icon icon" />
+        <button
+          class="btn btn-container"
+          @click="
+            () => setActiveFilter(activeFilter === 'member' ? null : 'member')
+          "
+          v-tooltip="'Filter by person'"
+        >
+          <div class="icon-container">
+            <MemberIcon class="member-icon icon" />
+          </div>
+          <span>Person</span>
+        </button>
+        <div class="filter-modal">
+          <MemberFilter
+            @setFilterBy="setFilterBy"
+            :filterPerson="filterBy.person"
+          />
         </div>
-        <span>Filter</span>
-      </button>
-      <div class="filter-modal">
-        <MainFilter
-          @setActiveFilter="setActiveFilter"
-          @setFilterBy="setFilterBy"
-          :filter="filterBy"
-        />
       </div>
-    </div>
-    <div
-      hidden
-      class="filter-sort filter"
-      ref="sort"
-      :class="{ active: activeFilter === 'sort' }"
-    >
-      <button
-        class="btn btn-container"
-        @click="() => setActiveFilter(activeFilter === 'sort' ? null : 'sort')"
+
+      <div
+        class="filter-main filter"
+        ref="member"
+        :class="{ active: activeFilter === 'main' }"
       >
-        <div class="icon-container">
-          <SortIcon class="filter-icon icon" />
+        <button
+          class="btn btn-container"
+          @click="
+            () => setActiveFilter(activeFilter === 'main' ? null : 'main')
+          "
+          v-tooltip="'Filter by anything'"
+        >
+          <div class="icon-container">
+            <FilterIcon class="filter-icon icon" />
+          </div>
+          <span>Filter</span>
+        </button>
+        <div class="filter-modal">
+          <MainFilter
+            @setActiveFilter="setActiveFilter"
+            @setFilterBy="setFilterBy"
+            :filter="filterBy"
+          />
         </div>
-        <span>Sort</span>
-      </button>
-      <div class="filter-modal">
-        <SortFilter />
+      </div>
+      <div
+        hidden
+        class="filter-sort filter"
+        ref="sort"
+        :class="{ active: activeFilter === 'sort' }"
+      >
+        <button
+          class="btn btn-container"
+          @click="
+            () => setActiveFilter(activeFilter === 'sort' ? null : 'sort')
+          "
+        >
+          <div class="icon-container">
+            <SortIcon class="filter-icon icon" />
+          </div>
+          <span>Sort</span>
+        </button>
+        <div class="filter-modal">
+          <SortFilter />
+        </div>
       </div>
     </div>
     <div class="filter kanban-editor" :class="{ active: isKanbanEditorOpen }">
