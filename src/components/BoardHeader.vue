@@ -2,8 +2,12 @@
   <section class="board-header flex-col align-start">
     <div class="board-header-wrapper flex-col align-start">
       <div class="board-header-top-wrapper flex align-center">
-        <h2 v-tooltip="'Click to Edit'" contenteditable class="board-title"
-          @focusout="onChangeTitle($event.target.innerText)">
+        <h2
+          v-tooltip="'Click to Edit'"
+          contenteditable
+          class="board-title"
+          @focusout="onChangeTitle($event.target.innerText)"
+        >
           {{ currBoard.title }}
         </h2>
         <div class="btn btn-container" v-tooltip="'Show board description'">
@@ -14,7 +18,10 @@
         </div>
 
         <div class="btn-action-wrapper flex">
-          <RouterLink :to="'/board/' + currBoard._id + '/main-table/pulse'" class="btn btn-activity flex">
+          <RouterLink
+            :to="'/board/' + currBoard._id + '/main-table/pulse'"
+            class="btn btn-activity flex"
+          >
             Activity
             <div class="person-picker-wrapper flex">
               <PersonPicker :info="currBoard.members" :maxDisplay="3" />
@@ -29,11 +36,21 @@
           </button>
         </div>
       </div>
-      <Invite v-clickOutside="toggleInviteModal" v-if="isInviteModalOpen" @toggleInviteModal="toggleInviteModal"
-        @updateBoard="(props, toUpdate) => $emit('updateBoard', props, toUpdate)" />
+      <Invite
+        v-clickOutside="toggleInviteModal"
+        v-if="isInviteModalOpen"
+        @toggleInviteModal="toggleInviteModal"
+        @updateBoard="
+          (props, toUpdate) => $emit('updateBoard', props, toUpdate)
+        "
+      />
 
       <div class="desc-wrapper">
-        <span class="desc" contenteditable @focusout="onChangeDesc($event.target.innerText)">
+        <span
+          class="desc"
+          contenteditable
+          @focusout="onChangeDesc($event.target.innerText)"
+        >
           {{ currBoard.description }}
         </span>
       </div>
@@ -46,7 +63,10 @@
             <span>Main Table</span>
           </div>
         </RouterLink>
-        <RouterLink :to="'/board/' + currBoard._id + '/kanban'" class="kanban-active">
+        <RouterLink
+          :to="'/board/' + currBoard._id + '/kanban'"
+          class="kanban-active"
+        >
           <div class="btn btn-container grid grid-col" v-tooltip="'Kanban'">
             <span>Kanban</span>
           </div>
@@ -57,7 +77,6 @@
           </div>
         </RouterLink>
       </nav>
-
     </div>
     <div class="seconde-row-container grid grid-col">
       <div class="btn-container btn-add-task grid grid-col aling-center">
@@ -74,6 +93,7 @@
 </template>
 
 <script>
+import { boardService } from '../services/board.service.js'
 import TaskFilter from './TaskFilter.vue'
 import InfoIcon from '../assets/icons/Info.svg'
 import StarIcon from '../assets/icons/Favorite.svg'
@@ -101,6 +121,15 @@ export default {
     },
   },
   methods: {
+    addTask() {
+      let currGroup = JSON.parse(
+        JSON.stringify(this.$store.getters.currBoard.groups[0])
+      )
+      let newTask = boardService.getEmptyTask()
+      newTask.taskTitle = 'New Task'
+      currGroup.tasks.unshift(newTask)
+      this.$emit('updateBoard', 'tasks', currGroup.tasks, currGroup.id)
+    },
     onChangeTitle(txt) {
       this.$emit('updateBoard', 'title', txt)
     },
@@ -121,7 +150,7 @@ export default {
     PersonPicker,
     Invite,
     AddPersonIcon,
-    SelectViewMobile
+    SelectViewMobile,
   },
 }
 </script>
