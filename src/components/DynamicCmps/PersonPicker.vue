@@ -1,7 +1,7 @@
 <template>
-  <section class="person-picker">
+  <section class="person-picker" @click="() => isPersonPickerOpen = true">
     <VDropdown :distance="6">
-      <div class="add-icon-wrapper">
+      <div class="add-icon-wrapper" @click="() => isPersonPickerOpen = true">
         <AddIcon class="add-icon icon" />
       </div>
       <template #popper>
@@ -33,11 +33,12 @@
         </div>
       </template>
     </VDropdown>
-    <section class="person-list flex align-center justify-center">
+    <section class="person-list flex align-center justify-center" @click="() => isPersonPickerOpen = true">
       <PersonAvatar v-for="(person, idx) in personToDisplay" :key="idx" :person="person" />
       <div class="merge-person avatar flex align-center" v-if="info?.length > personToDisplay?.length">
         <span class="flex align-center">+{{ info.length - 1 }}</span>
       </div>
+
     </section>
   </section>
 </template>
@@ -47,6 +48,7 @@ import Avatar from '../Avatar.vue'
 import SearchIcon from '../../assets/icons/Search.svg'
 import CloseIcon from '../../assets/icons/Close.svg'
 import AddIcon from '../../assets/icons/Add.svg'
+import PersonIcon from '../../assets/icons/PersonRound.svg'
 export default {
   name: 'PersonPicker',
   emits: ['updateProp'],
@@ -104,6 +106,7 @@ export default {
     SearchIcon,
     CloseIcon,
     AddIcon,
+    PersonIcon
   },
 }
 </script>
