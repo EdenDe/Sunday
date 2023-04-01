@@ -1,5 +1,5 @@
 <template>
-  <div class="moble-view-select">
+  <div class="mobile-view-select">
     <div class="filter-select-input" @click="toggleOptions">
       <div class="column-filter-title">
         <!-- <div class="icon-wrapper flex align-center">

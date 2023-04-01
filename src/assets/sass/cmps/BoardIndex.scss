@@ -22,13 +22,11 @@
         display:block;
       }
     }
-    
+ 
     grid-template-columns: 4rem 1fr;
     grid-template-areas: "app-sidenav workspace-sidenav";
     .board-container{
       display:none;
     }
-    
   }
-
 }

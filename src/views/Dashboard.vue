@@ -20,36 +20,35 @@
         <h4>Tasks number by status</h4>
         <BarChart
           v-if="isStatusBar"
-          :style="{ height: '430px', width: '600px' }"
           @click="() => (isStatusBar = !isStatusBar)"
           :chartData="status"
           :options="options"
+          class="status-chart-bar chart"
         />
         <DoughnutChart
           v-else
-          :style="{ height: '430px', width: '600px' }"
           @click="() => (isStatusBar = !isStatusBar)"
           :chartData="status"
           :options="options"
+          class="status-chart-doughnut chart"
         />
       </section>
 
       <section class="item person-chart">
         <h4>Tasks per person</h4>
         <PieChart
-          class="chart"
-          :style="{ height: '430px', width: '430px' }"
           @click="() => (isPersonPie = !isPersonPie)"
           v-if="isPersonPie"
           :chartData="taskPerPerson"
           :options="options"
+          class="person-chart-pie chart"
         />
         <BarChart
           v-else
-          :style="{ height: '430px', width: '430px' }"
           @click="() => (isPersonPie = !isPersonPie)"
           :chartData="taskPerPerson"
           :options="horizontalOptions"
+          class="person-chart-bar chart"
         />
       </section>
       <section class="item priority-chart">
@@ -59,12 +58,14 @@
           v-if="isPriorityBar"
           :chartData="priority"
           :options="options"
+          class="priority-chart-bar chart"
         />
         <DoughnutChart
           v-else
           @click="() => (isPriorityBar = !isPriorityBar)"
           :chartData="priority"
           :options="options"
+          class="priority-chart-doughnut chart"
         />
       </section>
     </div>
