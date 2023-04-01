@@ -54,12 +54,10 @@
     text-align: center;
     &::after {
          @include infinity-table;
-         content: "+";
-         color: $color-mud_black;
-         font-size: 24px;
          border-bottom: none;
          height: 33px;
-        grid-column: 12;
+         grid-column: 12;
+      
        }
 
     > *:not(:first-child, :nth-child(2)) {

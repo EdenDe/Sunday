@@ -1,25 +1,45 @@
 .person-picker {
   @include flex-center;
+  position: relative;
+  .add-icon-wrapper {
+      @include flex-center;
+      position: absolute;
+      top: 32%;
+      left: 13%;
+      transition: opacity 0.2s ease-in-out;
+      
+      .add-icon {
+        border-radius: 50%;
+        background-color: $color-blue-btn;
+        padding: 13px;
+        opacity: 0;
+        height: 13px;
+        width: 13px;
+        color: $color-snow_white;
+        padding: 1px;
+      }
+    }
+     &:hover .add-icon {
+         opacity: 1;
+            }
+            
   .v-popper {
     width: 100%;
   }
   .person-list {
-    padding-left: em(10px);
     position: relative;
-
-    &:hover {
-      .add-icon-wrapper {
-        opacity: 1;
-      }
+    padding-left: em(10px);
+    margin-inline-end:45px;
+  
     }
+
 
     .merge-person {
       @include flex-center;
-      background-color: $color-blackish;
-      border-radius: 50%;
+      background-color: $color-mud_black;
       padding-inline-end: 2px;
       color: $color-snow_white;
-      font-size: em(12px);
+      font-size: rem(11px);
       height: 25px;
       min-width: 25px;
     }
@@ -29,26 +49,9 @@
       width: 25px;
     }
 
-    .add-icon-wrapper {
-      @include flex-center;
-      position: absolute;
-      top: 30%;
-      left: 13%;
-      border-radius: 50%;
-      opacity: 0;
-      height: 13px;
-      width: 13px;
-      background-color: $color-blue-btn;
-      transition: opacity 0.2s ease-in-out;
-      .add-icon {
-        height: 100%;
-        width: 100%;
-        color: $color-snow_white;
-        padding: 1px;
-      }
-    }
+    
   }
-}
+
 
 .v-popper__inner:has(.person-picker-container) {
   z-index: 100;
@@ -78,6 +81,7 @@
   border-radius: em(15px);
   margin-left: em(15px);
   margin-top: em(5px);
+  cursor: default;
 }
 
 .person-picker-avatar {
@@ -124,11 +128,11 @@
   background-color: transparent;
 
   .close-icon {
+    @include flex-center;
     color: $color-mud_black;
     position: absolute;
     right: 3px;
-    top: 3px;
-    padding: 0.5px;
+    top: 2px;
     width: 10px;
     height: 10px;
   }
@@ -161,6 +165,7 @@
     padding: 0 15px;
     border-radius: 5px;
     height: em(40px);
+    cursor: pointer;
 
     &:hover {
       background-color: #dddfec;

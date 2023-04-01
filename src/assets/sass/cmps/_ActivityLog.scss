@@ -3,16 +3,17 @@
   font-size: 14px;
   padding: 0 16px 0 8px;
   border-bottom: 1px solid $ui-border-color;
-
+  
   > * {
     display: flex;
     align-items: center;
     height: 56px;
     padding: 8px 0;
     align-self: center;
+    color: $color-mud_black;
     &.activity-values {
       display: grid;
-      grid-template-columns: 75px 15px 75px;
+      grid-template-columns: 75px 20px 75px;
       pointer-events: none;
 
       .icon-arrow-right{

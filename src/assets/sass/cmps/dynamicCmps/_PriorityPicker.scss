@@ -15,6 +15,11 @@
     align-items: center;
     justify-content: center;
     color: $color-snow_white;
+    transition: all .3s ease-in-out;
+
+     &:hover {
+       opacity: 0.8;
+    }
 
     span{
       padding: 0 8px
