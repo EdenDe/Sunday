@@ -76,7 +76,7 @@
   }
   @include for-mobile-layout {
     & {
-      height: 60%;
+      height: 90%;
       .dashboard-inner-layout {
         grid-template-columns: repeat(2, 1fr);
         .dashboard-stats {
