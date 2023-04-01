@@ -33,7 +33,7 @@
     @include layoutGTC($break-normal);
   }
 
-  @include for-wide-layout {
-    @include layoutGTC($break-wide);
-  }
+  // @include for-wide-layout {
+  //   @include layoutGTC($break-wide);
+  // }
 }

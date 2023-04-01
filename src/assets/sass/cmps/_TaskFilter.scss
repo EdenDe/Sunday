@@ -198,6 +198,12 @@
   }
 
   @include for-mobile-layout {
+    & {
+      position: static;
+      .filter {
+        position: static;
+      }
+    }
     .filter-search,
     .filter-member {
       display: none;
@@ -209,9 +215,8 @@
           flex-direction: column;
           width: 100vw !important;
           height: 100vh !important;
-          top: 0%;
-          right: 25%;
-          transform: translate(60%, 0%);
+          inset: 0;
+          transform: translate(0%, 0%);
           .header {
             .save-btn {
               display: block;
@@ -245,12 +250,12 @@
       border-radius: $border-radius-filter;
       font-size: em(14px);
       height: rem(28px);
-      
-      .icon-container{
+
+      .icon-container {
         width: 15px;
         height: 15px;
         margin-inline-end: 5px;
-        margin-inline-start:12px;
+        margin-inline-start: 12px;
       }
     }
   }
