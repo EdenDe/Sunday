@@ -139,7 +139,8 @@
   .actions-list {
     @include actions-list;
     top: 50px;
-    right: 10px;
+    right: 0;
+    left: auto;
     height: fit-content;
 
     .action {
