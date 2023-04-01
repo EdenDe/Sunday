@@ -40,6 +40,14 @@
     justify-content: center;
   }
 
+  &:has(.person-picker) {
+    position: relative;
+    
+    &:hover .add-icon {
+      opacity: 1;
+    }
+  }
+
   .pulse-bubble {
     @include flex-center;
     position: relative;

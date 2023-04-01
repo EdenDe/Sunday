@@ -1,24 +1,17 @@
 <template>
-  <section class="person-picker flex">
+  <section class="person-picker">
     <VDropdown :distance="6">
-      <div class="add-icon-wrapper" @click="isPersonPickerOpen = true">
+      <div class="add-icon-wrapper">
         <AddIcon class="add-icon icon" />
       </div>
       <template #popper>
-        <div
-          v-if="isPersonPickerOpen"
-          class="person-picker-container flex-col justify-between"
-          v-clickOutside="onClosePicker"
-        >
+        <div v-if="isPersonPickerOpen" class="person-picker-container flex-col justify-between"
+          v-clickOutside="onClosePicker">
           <div class="flex wrap person-picker-avatar">
-            <article
-              class="task-person flex align-center"
-              v-for="(person, idx) in info"
-              :key="idx"
-            >
+            <article class="task-person flex align-center" v-for="(person, idx) in info" :key="idx">
               <PersonAvatar :person="person" />
               <span class="person-fullname">{{ person.fullname }}</span>
-              <button class="delete-person" @click="onDelete(person._id)">
+              <button class="delete-person" @click="() => onDelete(person._id)">
                 <CloseIcon class="close-icon icon" />
               </button>
             </article>
@@ -30,11 +23,8 @@
           <div class="suggested-members">
             <h3>Suggested people</h3>
             <ul class="clean-list">
-              <li
-                v-for="member in members"
-                @click="addPersonToTask(member)"
-                class="flex align-center member-picker-suggestions"
-              >
+              <li v-for="member in members" @click="() => addPersonToTask(member)"
+                class="flex align-center member-picker-suggestions">
                 <PersonAvatar :person="member" />
                 <span class="person-fullname">{{ member.fullname }}</span>
               </li>
@@ -44,15 +34,8 @@
       </template>
     </VDropdown>
     <section class="person-list flex align-center justify-center">
-      <PersonAvatar
-        v-for="(person, idx) in personToDisplay"
-        :key="idx"
-        :person="person"
-      />
-      <div
-        class="merge-person avatar flex align-center"
-        v-if="info?.length > personToDisplay?.length"
-      >
+      <PersonAvatar v-for="(person, idx) in personToDisplay" :key="idx" :person="person" />
+      <div class="merge-person avatar flex align-center" v-if="info?.length > personToDisplay?.length">
         <span class="flex align-center">+{{ info.length - 1 }}</span>
       </div>
     </section>
@@ -112,6 +95,7 @@ export default {
     addPersonToTask(member) {
       let personList = [...this.info]
       personList.push(member)
+      this.onClosePicker()
       this.updatePersonList(personList)
     },
   },

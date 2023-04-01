@@ -1,11 +1,12 @@
 .person-picker {
-  @include flex-center;
-  position: relative;
+  @include fullSize;
+  align-self: center;
   .add-icon-wrapper {
       @include flex-center;
       position: absolute;
-      top: 25%;
-      left: -50%;
+      top: 50%;
+      left: 7%;
+      transform:translateY(-50%);
       // width: 130px;
       transition: opacity 0.2s ease-in-out;
       
@@ -20,18 +21,15 @@
         padding: 1px;
       }
     }
-     &:hover .add-icon {
-         opacity: 1;
-            }
+  
             
   .v-popper {
     width: 100%;
   }
   .person-list {
-    position: relative;
-    padding-left: em(10px);  
+      padding-left: em(10px);  
+      @include fullSize;
     }
-
 
     .merge-person {
       @include flex-center;
@@ -47,8 +45,6 @@
       height: 25px;
       width: 25px;
     }
-
-    
   }
 
 
