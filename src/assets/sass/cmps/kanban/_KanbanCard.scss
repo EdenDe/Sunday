@@ -102,4 +102,17 @@
     }
   }
 
+
+     @include for-mobile-layout {
+        width: 85%;
+      .card-row{
+        grid-template-columns: 25px 55px 1fr;
+        &:last-child{
+          align-self: end;
+        }
+      &.taskTitle-row{
+        grid-template-columns: 170px 1fr;
+      }
+    }
+     }
 }

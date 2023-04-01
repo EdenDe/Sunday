@@ -1,7 +1,7 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="top-border"></div>
-    <div class="kanban flex">
+    <div class="kanban">
       <Container
         class="kanban-container"
         orientation="horizontal"

@@ -1,10 +1,16 @@
 .kanban-filter {
+  
+      display: none;
+    
   grid-column: 3;
   flex-direction: column;
   width: 268px;
   padding: 9px 16px;
   background-color: $color-snow_white;
   border-left: 1px solid $ui-border-color;
+  .btn-close {
+      display:none;
+    }
 
   * {
     font-size: rem(14px);
@@ -15,4 +21,14 @@
     color: $color-scrollbar_gray;
     margin-bottom: $margin-medium;
   }
+
+    @include for-mobile-layout {
+    @include flex-center;
+     grid-row: 2;
+     grid-column: 1 /-1;
+     width: 100%;
+     padding: 0;
+     
+    
+    }
 }
