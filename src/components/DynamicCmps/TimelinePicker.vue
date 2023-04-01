@@ -1,21 +1,36 @@
 <template>
   <section class="timeline-picker">
-    <label class="label-cover" :for="taskId + 'Timeline'">
-
-    </label>
+    <label class="label-cover" :for="taskId + 'Timeline'"> </label>
     <div class="timeline-display">
-      <label :data-diff="formattedDaysRange" class="timeline-label" :class="{ 'active-timeline': timeline?.length }"
+      <label
+        :data-diff="formattedDaysRange"
+        class="timeline-label"
+        :class="{ 'active-timeline': timeline?.length }"
         :style="
           timeline?.length
             ? {
-              background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})`,
-            }
+                background: ` linear-gradient(90deg, ${groupColor} ${gridientColor.start}, #323232 ${gridientColor.start})`,
+              }
             : null
-        ">
+        "
+      >
         {{ formattedDates }}
-        <el-date-picker v-model="timeline" @change="onChangeTimeline" type="daterange" format="M D" value-format="x"
-          range-separator="" start-placeholder="" end-placeholder="" :id="taskId + 'Timeline'" />
-        <i v-if="timeline.length" v-icon="'closeSmall'" @click.prevent="onRemoveTimeline"></i>
+        <el-date-picker
+          v-model="timeline"
+          @change="onChangeTimeline"
+          type="daterange"
+          format="M D"
+          value-format="x"
+          range-separator=""
+          start-placeholder=""
+          end-placeholder=""
+          :id="taskId + 'Timeline'"
+        />
+        <i
+          v-if="timeline.length"
+          v-icon="'closeSmall'"
+          @click.prevent="onRemoveTimeline"
+        ></i>
       </label>
     </div>
   </section>
@@ -47,6 +62,9 @@ export default {
     },
     onRemoveTimeline() {
       this.$emit('updateProp', 'timeline', [])
+    },
+    openDatePicker() {
+      this.$refs.datePicker.showPicker()
     },
   },
   watch: {
