@@ -8,11 +8,21 @@
     &.board-index:has(.workspace-close) {
       grid-template-columns:8vw 92vw;
       grid-template-areas: "workspace-sidenav board";
+      .app-sidenav{
+        display:none;
+      }
+      .board-container{
+        display:block;
+      }
     }
     &.board-index {
       grid-template-columns: 4rem 1fr;
       grid-template-areas: "app-sidenav workspace-sidenav";
+      .board-container{
+        display:none;
+      }
     }
+   
   }
 }
 

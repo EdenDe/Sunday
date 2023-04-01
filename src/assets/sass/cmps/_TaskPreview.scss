@@ -88,6 +88,12 @@
       width: 50%;
     }
   }
+
+  @include for-mobile-layout {
+    .pulse-bubble{
+      min-width: 2em;
+    }
+  }
 }
 .remove-btn {
   position: absolute;

@@ -13,4 +13,8 @@
     margin-right: 2px;
     font-size: rem(16px);
   }
+
+  @include for-mobile-layout {
+    padding-inline-start: 10px;
+  }
 }
