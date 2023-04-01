@@ -43,18 +43,32 @@
     }
   }
 
-  & > *:nth-child(-n + 3) {
-    position: sticky;
-    top: 0;
-    height: 100%;
-  }
+  // & > *:nth-child(-n + 3) {
+  //   position: sticky;
+  //   top: 0;
+  //   height: 100%;
+  // }
 
   @include for-mobile-layout {
      
       touch-action:pan-x;
-      .group-actions-wrapper{
+      
+     .group-actions-wrapper.task-options.sticky{
+        width:10px !important;
+        left:0;    
+      }
+      .first-col-color{
+        left: 10px;
+      }
+      .task-preview:has(.task-checkbox){
         display:none;
       }
+      .task-preview:has(.task-title){
+        left:16px;
+        width:200px !important;
+      }
+  
+   
   }
 }
 

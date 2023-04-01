@@ -6,7 +6,7 @@
 
   @include for-mobile-layout {
     &.board-index:has(.workspace-close) {
-      grid-template-columns:8vw 87vw;
+      grid-template-columns:8vw 92vw;
       grid-template-areas: "workspace-sidenav board";
     }
     &.board-index {

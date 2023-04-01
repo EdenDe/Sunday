@@ -1,54 +1,29 @@
 <template>
-  <Container
-    orientation="horizental"
-    @drop="onDrop"
-    :drop-placeholder="{
-      className: 'drop-placeholder',
-      animationDuration: '200',
-      showOnTop: true,
-    }"
-    drag-class="on-drag"
-  >
-    <Draggable
-      @click="activeTask = task.id"
-      :class="{ active: activeTask === task.id || task.checkbox }"
-      class="task-list"
-      v-for="(task, index) in tasks"
-      :key="index"
-    >
-      <div
-        class="group-actions-wrapper task-options sticky"
-        :style="{ width: '40px' }"
-      >
+  <Container orientation="horizental" @drop="onDrop" :drop-placeholder="{
+    className: 'drop-placeholder',
+    animationDuration: '200',
+    showOnTop: true,
+  }" drag-class="on-drag">
+    <Draggable @click="activeTask = task.id" :class="{ active: activeTask === task.id || task.checkbox }"
+      class="task-list" v-for="(task, index) in tasks" :key="index">
+      <div class="group-actions-wrapper task-options sticky" :style="{ width: '40px' }">
         <div class="svg-wrapper">
-          <span
-            class="dots-icon"
-            @click="
-              setTaskActionOpen(taskActionsOpen === null ? task.id : null)
-            "
-            :class="{ active: taskActionsOpen === task.id }"
-          >
+          <span class="dots-icon" @click="
+            setTaskActionOpen(taskActionsOpen === null ? task.id : null)
+          " :class="{ active: taskActionsOpen === task.id }">
             <MenuIcon class="menu-icon icon" />
           </span>
         </div>
         <div class="group-actions">
-          <TaskActions
-            :taskId="task.id"
-            @add="addTaskBelow"
-            @copy="copyTask"
-            @remove="removeTask"
-            v-if="taskActionsOpen === task.id"
-          />
+          <TaskActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask"
+            v-if="taskActionsOpen === task.id" />
         </div>
       </div>
-      <div
-        class="first-col-color sticky"
-        :style="{
-          backgroundColor: groupBgColor,
-          borderColor: groupBgColor,
-          width: '6px',
-        }"
-      ></div>
+      <div class="first-col-color sticky" :style="{
+        backgroundColor: groupBgColor,
+        borderColor: groupBgColor,
+        width: '6px',
+      }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
       <div></div>
     </Draggable>

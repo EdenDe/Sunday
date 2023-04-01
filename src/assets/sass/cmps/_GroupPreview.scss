@@ -192,10 +192,47 @@
 
   @include for-mobile-layout {
     .group-labels{
-      touch-action:auto;
+      .group-label {
+        &:first-child{
+          width:10px !important;
+          left:0;   
+        }
+        &:nth-of-type(2){
+          left:10px;
+        }
+        &:nth-of-type(3){
+          display:none;
+        }
+        &:nth-of-type(4){
+          left:16px;
+          width:200px !important;
+        }
+      }
     }
-    :grid-title{
-      touch-action: auto;
+    .add-task-container{
+      grid-template-columns: 10px 6px 200px 140px 129px 129px 99px 177px 278px 129px 1fr;
+      .task-option{
+        left:0;   
+      }
+      .first-col-color{
+        left:10px;
+      }
+     .task-checkbox{
+        display:none;
+      }
+      .add-task-input-container{
+        left:16px;
+        grid-column: 3 span ;
+      }
+      
+    }
+    .grid-title{
+      >*:not(.group-title-container){
+        display:none;
+      }
+      .group-title-container{
+        left:6px
+      }
     }
   }
 }
