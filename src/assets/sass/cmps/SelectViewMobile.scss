@@ -1,11 +1,53 @@
 .mobile-view-select{
+  @include btn(transparent);
+  padding:0;
   display:none;
+  background-color: $grey-background-color;
+  border-radius: $border-radius-filter; 
+  font-size: em(14px);
+  text-transform:capitalize;
+  margin-inline-end: em(10px);
+  position: relative;
+  height: rem(28px);
+
+
   .options-list{
-    @include actions-list
+    @include actions-list(fit-content,200px);
+  }
+
+  .option{
+    grid-template-columns: 30px 1fr;
+    padding: 5px;
+    font-size: em(13px);
+    
+   span{
+    align-self: center;
+   }
+
+    svg{
+      width:15px;
+      height: 15px;
+    }
+  }
+
+
+  .icon-arrow,.home-icon {
+    margin-inline-start:5px;
+    width: 15px;
+    margin-inline-end: 5px;
+    margin-inline-start:5px;
+
+    &.icon-arrow{
+      width: 10px;
+    }
   }
 
   @include for-mobile-layout {
-    display:block;
+    display:flex;
+  }  
+
+  .router-link-active {
+    color: $primary-on-secondary-color;
   }
 }
 
