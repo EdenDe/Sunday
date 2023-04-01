@@ -20,6 +20,7 @@
           <RouterLink
             :to="'/board/' + boardId + '/main-table'"
             class="btn-get-started flex justify-between"
+            v-if="boardId"
           >
             Get Started
           </RouterLink>

@@ -8,24 +8,23 @@
           A platform built for a new way of working
         </h1>
         <h4 class="home-page-body-sub-header flex align-end justify-center">
-          What would you like to manage with sunday.com Work OS??
+          What would you like to manage with sunday.com Work OS?
           <div class="comet-line underline"></div>
         </h4>
+
+        <RouterLink
+          v-if="firstBoardId"
+          :to="'/board/' + firstBoardId + '/main-table'"
+          class="btn-get-started"
+          @click.native="handleLinkClick"
+        >
+          <span> Get Started </span>
+        </RouterLink>
+
+        <div class="under-btn" :style="{ marginTop: '8px', fontSize: '13px' }">
+          No credit card needed &nbsp; ✦ &nbsp; Unlimited time on Free plan
+        </div>
       </div>
-
-      <RouterLink
-        v-if="firstBoardId"
-        :to="'/board/' + firstBoardId + '/main-table'"
-        class="btn-get-started"
-        @click.native="handleLinkClick"
-      >
-        <span> Get Started </span>
-      </RouterLink>
-
-      <div :style="{ marginTop: '8px', fontSize: '13px' }">
-        No credit card needed &nbsp; ✦ &nbsp; Unlimited time on Free plan
-      </div>
-
       <div
         v-for="(star, index) in stars"
         :key="star"
