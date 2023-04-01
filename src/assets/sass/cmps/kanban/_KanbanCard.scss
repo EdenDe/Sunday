@@ -31,8 +31,9 @@
       .task-date .remove-btn .close-icon{
           height: 12px;
           width:12px;
-          top:0;
-          right:0;
+         top:50%;
+         left:50%;
+         transform: translate(-55%, -55%);
 
         }
     
