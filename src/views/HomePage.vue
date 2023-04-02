@@ -12,12 +12,8 @@
           <div class="comet-line underline"></div>
         </h4>
 
-        <RouterLink
-          v-if="firstBoardId"
-          :to="'/board/' + firstBoardId + '/main-table'"
-          class="btn-get-started"
-          @click.native="handleLinkClick"
-        >
+        <RouterLink v-if="firstBoardId" :to="'/board/' + firstBoardId + '/main-table'" class="btn-get-started"
+          @click.native="handleLinkClick">
           <span> Get Started </span>
         </RouterLink>
 
@@ -25,21 +21,15 @@
           No credit card needed &nbsp; ✦ &nbsp; Unlimited time on Free plan
         </div>
       </div>
-      <div
-        v-for="(star, index) in stars"
-        :key="star"
-        class="star"
-        :class="`star${index + 1}`"
-        :style="{
-          animationDelay: `${star.delay}s`,
-        }"
-      ></div>
+      <div v-for="(star, index) in stars" :key="star" class="star" :class="`star${index + 1}`" :style="{
+        animationDelay: `${star.delay}s`,
+      }"></div>
 
       <div class="home-page-carousel">
         <div class="home-page-carousel-wrapper">
-          <el-carousel :interval="4000" type="card" height="350px">
-            <el-carousel-item v-for="item in 3" :key="item">
-              <img src="../assets/img/homePageImg/0.png" />
+          <el-carousel :interval="40000" type="card" height="350px">
+            <el-carousel-item v-for="item in ['kanban2', 'main-table2', 'dashboard2']" :key="item">
+              <img :src="'src/assets/img/homePageImg/' + item + '.jpeg'" />
             </el-carousel-item>
           </el-carousel>
         </div>
