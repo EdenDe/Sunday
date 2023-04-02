@@ -1,12 +1,20 @@
 <template>
   <section class="priority-picker">
     <VDropdown :distance="6">
-      <div :style="{ backgroundColor: status.color }" class="priority" @click="toggleColorPicker">
+      <div
+        :style="{ backgroundColor: status.color }"
+        class="priority"
+        @click="toggleColorPicker"
+      >
         <span>{{ status.title }} </span>
       </div>
-      <template #popper v-if="isPickerOpen">
-        <LabelPicker v-clickOutside="toggleColorPicker" class="priority-label-picker" :labels="priorityLabels"
-          @setLabel="updateLabel">
+      <template #popper :shown="isPickerOpen" v-if="isPickerOpen">
+        <LabelPicker
+          v-clickOutside="toggleColorPicker"
+          class="priority-label-picker"
+          :labels="priorityLabels"
+          @setLabel="updateLabel"
+        >
         </LabelPicker>
       </template>
       <span class="peeling-span scale-up-tr"></span>
@@ -38,7 +46,6 @@ export default {
   methods: {
     toggleColorPicker() {
       this.isPickerOpen = !this.isPickerOpen
-      console.log(this.isPickerOpen)
     },
     updateLabel(labelTitle) {
       this.toggleColorPicker()

@@ -2,21 +2,38 @@
   <section class="kanban-layout grid grid-col">
     <div class="top-border"></div>
     <div class="kanban">
-      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn" :drop-placeholder="{
-        className: 'drop-placeholder',
-        animationDuration: '200',
-        showOnTop: true,
-      }">
-        <Draggable class="label-col" v-for="(label, index) in labels" :key="index">
-          <div class="label-col-title" :style="{ backgroundColor: label.color }">
+      <Container
+        class="kanban-container"
+        orientation="horizontal"
+        @drop="onDropColumn"
+        :drop-placeholder="{
+          className: 'drop-placeholder',
+          animationDuration: '200',
+          showOnTop: true,
+        }"
+      >
+        <Draggable
+          class="label-col"
+          v-for="(label, index) in labels"
+          :key="index"
+        >
+          <div
+            class="label-col-title"
+            :style="{ backgroundColor: label.color }"
+          >
             <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
 
-          <KanbanCards :cmpsToDisplay="cmpsToDisplay" :tasks="tasks(label.title)" @updateProp="updateProp" />
+          <KanbanCards
+            :cmpsToDisplay="cmpsToDisplay"
+            :tasks="tasks(label.title)"
+            @updateProp="updateProp"
+          />
         </Draggable>
       </Container>
     </div>
+
     <KanbanFilter @changeLabel="onChangeLabel" @setFilterCmp="setFilterCmp" />
   </section>
 </template>

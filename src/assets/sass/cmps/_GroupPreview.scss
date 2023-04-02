@@ -54,6 +54,7 @@
     text-align: center;
     &::after {
          @include infinity-table;
+         border-top: 1px solid $ui-border-color;
          border-bottom: none;
          height: 33px;
          grid-column: 12;
@@ -64,8 +65,6 @@
       @include task-row;
       @include flex-center;
       padding: 6px;
-      // border-bottom: 1px solid $layout-border-color;
-      // margin-bottom: -1px;
     }
     & > *:nth-child(-n + 4) {
       position: sticky;
