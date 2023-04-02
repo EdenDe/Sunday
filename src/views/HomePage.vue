@@ -28,8 +28,11 @@
       <div class="home-page-carousel">
         <div class="home-page-carousel-wrapper">
           <el-carousel :interval="40000" type="card" height="350px">
-            <el-carousel-item v-for="item in ['kanban2', 'main-table2', 'dashboard2']" :key="item">
-              <img :src="'src/assets/img/homePageImg/' + item + '.jpeg'" />
+            <el-carousel-item
+              v-for="item in ['http://res.cloudinary.com/decasx192/image/upload/v1680424852/dashboard2_zmqkse.jpg',
+                'http://res.cloudinary.com/decasx192/image/upload/v1680424860/main-table2_axajnt.jpg', 'http://res.cloudinary.com/decasx192/image/upload/v1680424871/kanban2_j8rpfp.jpg']"
+              :key="item">
+              <img :src="item" />
             </el-carousel-item>
           </el-carousel>
         </div>
