@@ -52,6 +52,9 @@
     @include task-cols;
     text-transform: capitalize;
     text-align: center;
+    .smooth-dnd-container.horizontal{
+      display: flex;
+    }
     &::after {
          @include infinity-table;
          border-top: 1px solid $ui-border-color;
