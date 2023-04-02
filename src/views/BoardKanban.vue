@@ -1,39 +1,23 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="top-border"></div>
-    <div class="kanban">
-      <Container
-        class="kanban-container"
-        orientation="horizontal"
-        @drop="onDropColumn"
-        :drop-placeholder="{
-          className: 'drop-placeholder',
-          animationDuration: '200',
-          showOnTop: true,
-        }"
-      >
-        <Draggable
-          class="label-col"
-          v-for="(label, index) in labels"
-          :key="index"
-        >
-          <div
-            class="label-col-title"
-            :style="{ backgroundColor: label.color }"
-          >
+    <div class="kanban flex">
+      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn" :drop-placeholder="{
+        className: 'drop-placeholder',
+        animationDuration: '200',
+        showOnTop: true,
+      }">
+        <Draggable class="label-col" v-for="(label, index) in labels" :key="index">
+          <div class="label-col-title" :style="{ backgroundColor: label.color }">
             <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
-
-          <KanbanCards
-            :cmpsToDisplay="cmpsToDisplay"
-            :tasks="tasks(label.title)"
-            @updateProp="updateProp"
-          />
+          <div class="kanban-tasks">
+            <KanbanCards :cmpsToDisplay="cmpsToDisplay" :tasks="tasks(label.title)" />
+          </div>
         </Draggable>
       </Container>
     </div>
-
     <KanbanFilter @changeLabel="onChangeLabel" @setFilterCmp="setFilterCmp" />
   </section>
 </template>
@@ -47,7 +31,7 @@ export default {
     return {
       labelsOrder: [],
       currLabel: 'statusOrderKanban',
-      cmpsToDisplay: ['taskTitle', 'date', 'person', 'priority'],
+      cmpsToDisplay: ['taskTitle', 'date', 'person'],
     }
   },
   created() {
@@ -70,16 +54,6 @@ export default {
         toUpdate: this.labelsOrder,
       })
     },
-    updateProp(groupId, taskId, prop, toUpdate) {
-      console.log(groupId, taskId, prop, toUpdate)
-      this.$store.dispatch({
-        type: 'updateCurrBoard',
-        groupId,
-        taskId,
-        prop,
-        toUpdate,
-      })
-    },
     onChangeLabel(value) {
       this.currLabel =
         value === 'Priority' ? 'priorityOrderKanban' : 'statusOrderKanban'
@@ -99,13 +73,12 @@ export default {
     tasks() {
       return (currLabel) => {
         let taskPerLabel = {}
-        const groups = JSON.parse(JSON.stringify(this.$store.getters.groups))
+        const groups = this.$store.getters.groups
         const orderFilter =
           this.currLabel === 'priorityOrderKanban' ? 'priority' : 'status'
         groups.forEach((group) => {
           taskPerLabel = group.tasks.reduce((label, task) => {
             if (!label[task[orderFilter]]) label[task[orderFilter]] = []
-            task.groupId = group.id
             label[task[orderFilter]].push(task)
             return label
           }, taskPerLabel)
