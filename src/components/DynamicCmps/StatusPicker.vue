@@ -6,7 +6,10 @@
         class="status"
         @click="toggleColorPicker"
       >
-        <span>{{ status.title }}</span>
+        <span>
+          <ConfettiExplosion />
+          {{ status.title }}
+        </span>
       </div>
       <template #popper v-if="isPickerOpen">
         <LabelPicker
@@ -24,6 +27,7 @@
 
 <script>
 import LabelPicker from '../LabelPicker.vue'
+import ConfettiExplosion from 'vue-confetti-explosion'
 export default {
   name: 'TaskStatus',
   props: {
@@ -67,6 +71,7 @@ export default {
   },
   components: {
     LabelPicker,
+    ConfettiExplosion,
   },
 }
 </script>
