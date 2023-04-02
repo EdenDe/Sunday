@@ -94,10 +94,12 @@
       &-empty {
         position: relative;
         color: $primary-on-secondary-color;
+        height: 100%;
+        width: 100%;       
         p {
           position: absolute;
           bottom: 0;
-          right: -5px;
+          right: 0;
           @include flex-center;
           height: rem(13px);
           width: rem(13px);
@@ -109,7 +111,6 @@
       }
     }
   }
-
 
      @include for-mobile-layout {
         width: 94%;
