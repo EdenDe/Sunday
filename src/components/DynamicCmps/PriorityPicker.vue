@@ -1,12 +1,20 @@
 <template>
   <section class="priority-picker">
     <VDropdown :distance="6">
+<<<<<<< HEAD
       <div
         :style="{ backgroundColor: status.color }"
         class="priority"
         @click="toggleColorPicker"
       >
         <span>{{ status.title }} </span>
+=======
+      <div :style="{ backgroundColor: status.color }" class="priority" @click="toggleColorPicker">
+        <span class="flex align-center">
+          {{ status.title }}
+          <CriticalIcon v-if="status.title === 'Critical'" />
+        </span>
+>>>>>>> 36c5a4fc1113055502e95687514b37f48d5416b7
       </div>
       <template #popper :shown="isPickerOpen" v-if="isPickerOpen">
         <LabelPicker
@@ -24,6 +32,7 @@
 
 <script>
 import LabelPicker from '../LabelPicker.vue'
+import CriticalIcon from '@/assets/icons/Critical.svg'
 export default {
   name: 'priority',
   props: {
@@ -67,6 +76,7 @@ export default {
   },
   components: {
     LabelPicker,
+    CriticalIcon
   },
 }
 </script>

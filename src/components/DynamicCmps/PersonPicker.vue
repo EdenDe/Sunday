@@ -1,5 +1,6 @@
 <template>
-  <section class="person-picker" @click="() => isPersonPickerOpen = true">
+  <!-- <div :style="{ inset: 0, position: 'absolute', zIndex: 10000 }" @click="() => isPersonPickerOpen = true"></div> -->
+  <section class="person-picker">
     <VDropdown :distance="6">
       <div class="add-icon-wrapper" @click="() => isPersonPickerOpen = true">
         <AddIcon class="add-icon icon" />
