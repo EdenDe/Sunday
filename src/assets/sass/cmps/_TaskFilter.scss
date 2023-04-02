@@ -1,7 +1,7 @@
 .task-filter {
   justify-content: start;
   position: relative;
-  gap: 48vw;
+  align-items: center;
   .filter {
     position: relative;
     border-radius: $border-radius-filter;
@@ -201,7 +201,6 @@
   @include for-mobile-layout {
     & {
       position: static;
-      gap: 25vw;
       .filter {
         position: static;
       }
