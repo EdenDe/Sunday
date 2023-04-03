@@ -86,6 +86,10 @@
   &:hover + .screen {
     display: block;
   }
+
+  @include for-mobile-layout {
+    width: 100vw;
+  }
 }
 
 .screen {

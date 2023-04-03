@@ -6,22 +6,24 @@
     padding-top: em(50px);
     padding-bottom: em(60px);
     height: 100vh;
+    background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
+    color: $color-snow_white;
+    font-family: $figtree-regular;
+      text-align: center;
     & > *:not(.el-carousel) {
       justify-self: center;
       justify-items: center;
       justify-content: center;
       margin-bottom: $margin-medium;
     }
-    background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
-    color: $color-snow_white;
-    font-family: $figtree-regular;
-    text-align: center;
+   
     &-title {
-      width: em(740px);
+      
       justify-items: center;
       font-family: $poppins-light;
     }
     &-header {
+      
       z-index: 1;
       font-weight: 400;
       font-size: 4.5em;
@@ -56,10 +58,13 @@
       background: linear-gradient(90deg, #5034ff 25.69%, #b4b4ff 100%);
       margin-top: 48px;
     }
+    .under-btn{
+      font-size: rem(12px);
+    }
     .home-page-carousel {
       color: rgb(255, 255, 255);
-      background: #06073a;
-      padding-top: 10vh;
+      background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
+      padding: 10vh 0;
       &-wrapper {
         min-height: 30vw;
         min-width: 100vw;
@@ -69,10 +74,6 @@
   }
 
   //CAROUSEL
-  .el-carousel__item--card{
-  
-  }
-
   .el-carousel__mask{
     background-color: transparent;
   }
@@ -87,16 +88,8 @@
 
     img {
       width: 100%;
-     
     }
 
-    // &:nth-child(2n) {
-    //   background-color: #99a9bf;
-    // }
-
-    // &:nth-child(2n + 1) {
-    //   background-color: #d3dce6;
-    // }
   }
   .el-carousel__horizontal {
     overflow-y: hidden;
@@ -109,7 +102,6 @@
     height: 100%;
     object-fit: contain;
   }
-
 
   //STARS
   .star {
@@ -244,7 +236,7 @@
         font-size: 16px;
       }
       .btn-get-started {
-        width: 100%;
+        width: 80%;
         padding: 30px;
         margin-block-start: 36px;
         &::after {

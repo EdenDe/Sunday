@@ -3,7 +3,7 @@
   <section class="home-page grid" v-else>
     <AppHeader :boardId="firstBoardId" />
     <div class="home-page-body grid">
-      <div class="home-page-body-title grid">
+      <div class="home-page-body-title grid home-page-layout">
         <h1 class="home-page-body-header">
           A platform built for a new way of working
         </h1>
@@ -12,8 +12,12 @@
           <div class="comet-line underline"></div>
         </h4>
 
-        <RouterLink v-if="firstBoardId" :to="'/board/' + firstBoardId + '/main-table'" class="btn-get-started"
-          @click.native="handleLinkClick">
+        <RouterLink
+          v-if="firstBoardId"
+          :to="'/board/' + firstBoardId + '/main-table'"
+          class="btn-get-started"
+          @click.native="handleLinkClick"
+        >
           <span> Get Started </span>
         </RouterLink>
 
@@ -21,17 +25,27 @@
           No credit card needed &nbsp; ✦ &nbsp; Unlimited time on Free plan
         </div>
       </div>
-      <div v-for="(star, index) in stars" :key="star" class="star" :class="`star${index + 1}`" :style="{
-        animationDelay: `${star.delay}s`,
-      }"></div>
+      <div
+        v-for="(star, index) in stars"
+        :key="star"
+        class="star"
+        :class="`star${index + 1}`"
+        :style="{
+          animationDelay: `${star.delay}s`,
+        }"
+      ></div>
 
       <div class="home-page-carousel">
         <div class="home-page-carousel-wrapper">
           <el-carousel :interval="40000" type="card" height="350px">
             <el-carousel-item
-              v-for="item in ['http://res.cloudinary.com/decasx192/image/upload/v1680424852/dashboard2_zmqkse.jpg',
-                'http://res.cloudinary.com/decasx192/image/upload/v1680424860/main-table2_axajnt.jpg', 'http://res.cloudinary.com/decasx192/image/upload/v1680424871/kanban2_j8rpfp.jpg']"
-              :key="item">
+              v-for="item in [
+                'http://res.cloudinary.com/decasx192/image/upload/v1680424852/dashboard2_zmqkse.jpg',
+                'http://res.cloudinary.com/decasx192/image/upload/v1680424860/main-table2_axajnt.jpg',
+                'http://res.cloudinary.com/decasx192/image/upload/v1680424871/kanban2_j8rpfp.jpg',
+              ]"
+              :key="item"
+            >
               <img :src="item" />
             </el-carousel-item>
           </el-carousel>

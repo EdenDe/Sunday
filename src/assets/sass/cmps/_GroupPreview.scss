@@ -121,7 +121,7 @@
     @include grid-temp;
     &::after {
         @include infinity-table;
-        // border-top: -1px solid $ui-border-color;
+        border-top: 1px solid $ui-border-color;
         height: 38px;
         grid-column: 12;
       }
@@ -183,6 +183,17 @@
         }
       }
     }
+
+    @include for-mobile-layout{
+       position: sticky;
+       left: 0;
+       &::after{
+        position: sticky;
+        left: 0;
+        border-top: none;
+        
+       }
+     }
   }
   &.list-open {
     .open-list-icon {
