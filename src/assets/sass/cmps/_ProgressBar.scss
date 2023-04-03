@@ -1,5 +1,6 @@
 .progress-bar {
   @include task-cols;
+
   &::after {
       @include infinity-table;
       border-top: none;
@@ -73,6 +74,20 @@
           }
         }
       }
+    }
+  }
+  @include for-mobile-layout {
+    &>*:not(:nth-child(-n + 4)) {
+      left:210px;
+    }
+    &>*:first-child {
+      width: 10px !important;
+    }
+    &>*:nth-child(3) {
+      width: 0px !important;
+    }
+    &>*:nth-child(4) {
+      width: 200px !important;
     }
   }
 }
