@@ -28,6 +28,9 @@
   .peeling-span {
     @include peeling-span;
   }
+    canvas {
+      position: absolute;
+    }
 
 }
 
@@ -58,6 +61,4 @@
   }
 }
 
-canvas{
-  position: absolute;
-}
+

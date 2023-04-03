@@ -113,7 +113,7 @@
   }
 
      @include for-mobile-layout {
-        width: 94%;
+        width: 90%;
       .card-row{
         grid-template-columns: 25px 60px 1fr;
         &:last-child{
