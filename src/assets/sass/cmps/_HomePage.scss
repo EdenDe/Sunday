@@ -5,7 +5,7 @@
     position: relative;
     padding-top: em(50px);
     padding-bottom: em(60px);
-    height: 100vh;
+    height: fit-content;
     background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
     color: $color-snow_white;
     font-family: $figtree-regular;
@@ -63,8 +63,7 @@
     }
     .home-page-carousel {
       color: rgb(255, 255, 255);
-      background: linear-gradient(rgb(0, 1, 51) 0%, rgb(15, 16, 72) 100%);
-      padding: 10vh 0;
+      padding-top: 10vh;
       &-wrapper {
         min-height: 30vw;
         min-width: 100vw;
@@ -253,6 +252,7 @@
     }
     .home-page-carousel {
       width: 100vw;
+      padding: 0;
     }
   }
 }

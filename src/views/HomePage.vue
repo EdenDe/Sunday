@@ -37,7 +37,7 @@
 
       <div class="home-page-carousel">
         <div class="home-page-carousel-wrapper">
-          <el-carousel :interval="40000" type="card" height="350px">
+          <el-carousel :interval="40000" type="card">
             <el-carousel-item
               v-for="item in [
                 'http://res.cloudinary.com/decasx192/image/upload/v1680424852/dashboard2_zmqkse.jpg',
