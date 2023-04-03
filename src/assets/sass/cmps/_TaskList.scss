@@ -46,7 +46,7 @@
  
 
   @include for-mobile-layout {   
-      touch-action:pan-x;  
+      touch-action:auto;  
       &:last-child:after{
           border-bottom: 1px solid $ui-border-color;
       }

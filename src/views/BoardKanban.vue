@@ -1,35 +1,20 @@
 <template>
   <section class="kanban-layout grid grid-col">
     <div class="kanban flex">
-      <Container
-        class="kanban-container"
-        orientation="horizontal"
-        @drop="onDropColumn"
-        :drop-placeholder="{
-          className: 'drop-placeholder',
-          animationDuration: '200',
-          showOnTop: true,
-        }"
-      >
-        <Draggable
-          class="label-col"
-          v-for="(label, index) in labels"
-          :key="index"
-        >
-          <div
-            class="label-col-title"
-            :style="{ backgroundColor: label.color }"
-          >
+      <Container class="kanban-container" orientation="horizontal" @drop="onDropColumn" :drop-placeholder="{
+        className: 'drop-placeholder',
+        animationDuration: '200',
+        showOnTop: true,
+      }">
+        <component :is="dragCmp" class="label-col" v-for="(label, index) in labels" :key="index">
+          <div class="label-col-title" :style="{ backgroundColor: label.color }">
             <div v-if="index === labels.length - 1">Blank</div>
             {{ label.title }}
           </div>
           <div class="kanban-tasks">
-            <KanbanCards
-              :cmpsToDisplay="cmpsToDisplay"
-              :tasks="tasks(label.title)"
-            />
+            <KanbanCards :cmpsToDisplay="cmpsToDisplay" :tasks="tasks(label.title)" />
           </div>
-        </Draggable>
+        </component>
       </Container>
     </div>
     <KanbanFilter @changeLabel="onChangeLabel" @setFilterCmp="setFilterCmp" />
@@ -98,6 +83,13 @@ export default {
           }, taskPerLabel)
         })
         return taskPerLabel[currLabel]
+      }
+    },
+    dragCmp() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return 'div'
+      } else {
+        return 'Draggable'
       }
     },
   },

@@ -6,4 +6,10 @@
     width: 38px;
     display: block;
   }
+
+  @include for-mobile-layout{
+    .group-list-draggable{
+      touch-action: auto;
+    }
+  }
 }

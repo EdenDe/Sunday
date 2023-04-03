@@ -1,18 +1,11 @@
 <template>
   <section class="group-list">
     <Container @drop="onDrop">
-      <Draggable v-for="group in groups" :key="group.id">
-        <GroupPreview
-          :group="group"
-          @addGroup="onAddGroup"
-          @removeGroup="removeGroup"
-        />
-      </Draggable>
+      <component :is="dragCmp" v-for="group in groups" :key="group.id" class="group-list-draggable">
+        <GroupPreview :group="group" @addGroup="onAddGroup" @removeGroup="removeGroup" />
+      </component>
     </Container>
-    <button
-      class="btn-add-group flex justify-center align-center"
-      @click="onAddGroup()"
-    >
+    <button class="btn-add-group flex justify-center align-center" @click="onAddGroup()">
       <AddIcon class="add-icon icon" />
       Add new group
     </button>
@@ -32,6 +25,7 @@ export default {
   },
   methods: {
     onDrop({ addedIndex, removedIndex }) {
+      document.activeElement.blur()
       let groupList = this.groups
       groupList.splice(addedIndex, 0, groupList.splice(removedIndex, 1)[0])
       this.updateBoard('groups', groupList)
@@ -51,6 +45,15 @@ export default {
     },
     updateBoard(prop, groups) {
       this.$emit('updateBoard', prop, groups)
+    },
+  },
+  computed: {
+    dragCmp() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return 'div'
+      } else {
+        return 'Draggable'
+      }
     },
   },
   components: {

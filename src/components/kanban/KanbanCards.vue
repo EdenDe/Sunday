@@ -1,26 +1,12 @@
 <template>
-  <Container
-    class="kanban-cards grid"
-    orientation="vertical"
-    :drop-placeholder="{
-      className: 'drop-placeholder1',
-      animationDuration: '200',
-      showOnTop: true,
-    }"
-  >
-    <Draggable
-      class="task-card grid grid-col"
-      v-for="(task, index) in tasks"
-      :key="index"
-    >
-      <KanbanCard
-        v-for="(cmp, index) in cmpsToDisplay"
-        :task="task"
-        :cmp="cmp"
-        :key="index"
-        @updateProp="updateProp"
-      />
-    </Draggable>
+  <Container class="kanban-cards grid" orientation="vertical" :drop-placeholder="{
+    className: 'drop-placeholder1',
+    animationDuration: '200',
+    showOnTop: true,
+  }">
+    <component :is="dragCmp" class="task-card grid grid-col" v-for="(task, index) in tasks" :key="index">
+      <KanbanCard v-for="(cmp, index) in cmpsToDisplay" :task="task" :cmp="cmp" :key="index" @updateProp="updateProp" />
+    </component>
   </Container>
 </template>
 <script>
@@ -36,7 +22,15 @@ export default {
       this.$emit('updateProp', groupId, taskId, prop, toUpdate)
     },
   },
-  created() {},
+  computed: {
+    dragCmp() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return 'div'
+      } else {
+        return 'Draggable'
+      }
+    },
+  },
   components: {
     Container,
     Draggable,

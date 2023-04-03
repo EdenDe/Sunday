@@ -32,8 +32,8 @@
         animationDuration: '200',
         showOnTop: true,
       }">
-        <Draggable v-for="(label, index) in labels" :key="index" class="group-label" :class="label"
-          :groupColor="group.color" :style="{ width: label.width, height: '36px' }" draggable="false">
+        <component :is="dragCmp" v-for="(label, index) in labels" :key="index" class="group-label" :class="label"
+          :groupColor="group.color" :style="{ width: label.width, height: '36px' }">
           <div class="draggable-label">
             {{ label.name }}
           </div>
@@ -42,7 +42,7 @@
           <div v-if="index === 2" class="group-checkbox group-label">
             <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
           </div>
-        </Draggable>
+        </component>
       </Container>
 
       <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
@@ -101,6 +101,7 @@ export default {
   },
   methods: {
     onDropColumn({ addedIndex, removedIndex }) {
+      document.activeElement.blur()
       addedIndex -= 2
       removedIndex -= 2
       let cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
@@ -231,6 +232,13 @@ export default {
     tasksNumber() {
       if (this.group.tasks?.length) return this.group.tasks.length
       else return 'No '
+    },
+    dragCmp() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return 'div'
+      } else {
+        return 'Draggable'
+      }
     },
   },
   watch: {

@@ -52,6 +52,7 @@
     @include task-cols;
     text-transform: capitalize;
     text-align: center;
+
     &.smooth-dnd-container.horizontal{
       display: flex;
     }
@@ -203,6 +204,7 @@
 
   @include for-mobile-layout {
     .group-labels{
+       touch-action:auto;
       .group-label {
         &:first-child{
           width:10px !important;

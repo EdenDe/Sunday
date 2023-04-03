@@ -1,10 +1,6 @@
 <template>
-  <Container orientation="horizental" @drop="onDrop" :drop-placeholder="{
-    className: 'drop-placeholder',
-    animationDuration: '200',
-    showOnTop: true,
-  }" drag-class="on-drag">
-    <Draggable @click="activeTask = task.id" :class="{ active: activeTask === task.id || task.checkbox }"
+  <Container orientation="horizental" @drop="onDrop" drag-class="on-drag">
+    <component :is="dragCmp" @click="activeTask = task.id" :class="{ active: activeTask === task.id || task.checkbox }"
       class="task-list" v-for="(task, index) in tasks" :key="index">
       <div class="group-actions-wrapper task-options sticky" :style="{ width: '40px' }">
         <div class="svg-wrapper">
@@ -26,7 +22,7 @@
       }"></div>
       <TaskPreview :task="task" @updateProp="updateProp" />
       <div></div>
-    </Draggable>
+    </component>
   </Container>
 </template>
 
@@ -58,6 +54,7 @@ export default {
       this.$emit('updateProp', taskId, prop, toUpdate)
     },
     onDrop({ addedIndex, removedIndex }) {
+      document.activeElement.blur()
       this.currTasks.splice(
         addedIndex,
         0,
@@ -82,6 +79,15 @@ export default {
     removeTask(taskId) {
       this.currTasks = this.currTasks.filter((task) => task.id !== taskId)
       this.updateProp(null, 'tasks', this.currTasks)
+    },
+  },
+  computed: {
+    dragCmp() {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return 'div'
+      } else {
+        return 'Draggable'
+      }
     },
   },
   watch: {
