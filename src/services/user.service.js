@@ -17,7 +17,7 @@ export const userService = {
 	getById,
 	remove,
 	update,
-	isLoggedin
+	isLoggedin,
 }
 
 function query() {
@@ -77,7 +77,7 @@ function getLoggedinUser() {
 	)
 	if (user) return user
 	const guestUser = {
-		_id: utilService.makeId(),
+		_id: '1234',
 		fullname: 'guest',
 		color: 'black',
 	}
@@ -87,8 +87,8 @@ function getLoggedinUser() {
 }
 
 function isLoggedin() {
-	console.log((sessionStorage.getItem('loggedinUser')) ? true : false);
-	return sessionStorage.getItem('loggedinUser') ? true : false;
+	console.log(sessionStorage.getItem('loggedinUser') ? true : false)
+	return sessionStorage.getItem('loggedinUser') ? true : false
 }
 
 // function saveLocalUser(user) {
