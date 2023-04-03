@@ -18,10 +18,13 @@
     }
     .dashboard-stats {
       text-align: center;
-      height: fit-content;
       gap: 10px;
+      .stat {
+        height: 100%;
+      }
       h2 {
         padding: 15px;
+        font-weight: 300;
       }
     }
     .chart {
