@@ -1,32 +1,31 @@
 .color-picker-wrapper {
-  position: relative;
+  z-index: 500;
+  top: 38px;
+  left: 49px;
+  position: absolute;
 
   .color-picker {
-    z-index: 500;
-    position: absolute;
-    top: 70%;
-    right: 200px;
+    position: static;
     width: 142px;
     border: 1px solid;
     border-color: $ui-border-color;
     padding: 5px;
     background-color: $secondary-background-color;
     line-height: 0px;
-      border-radius: $border-radius;
-  }
-     .color-picker-colors {
-       cursor: pointer;
-       width: 20px;
-       height: 20px;
-       display: inline-block;
-       border-radius: 50%;
-       margin: em(3px);
-       border: none;
-     }
-}
-.color-picker{
-  
-  //transform: translateY(50px);
+    border-radius: $border-radius;
 
- 
+    .color-picker-colors {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border-radius: 50%;
+      margin: em(3px);
+      border: none;
+    }
+  }
+  
+  @include for-mobile-layout{
+    left:17px;
+  }
 }

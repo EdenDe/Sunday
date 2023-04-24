@@ -1,20 +1,10 @@
 <template>
   <Container orientation="horizental" @drop="onDrop" drag-class="on-drag">
-    <component :is="dragCmp" @click="activeTask = task.id" :class="{ active: activeTask === task.id || task.checkbox }"
-      class="task-list" v-for="(task, index) in tasks" :key="index">
-      <div class="group-actions-wrapper task-options sticky" :style="{ width: '40px' }">
-        <div class="svg-wrapper">
-          <span class="dots-icon" @click="
-            setTaskActionOpen(taskActionsOpen === null ? task.id : null)
-          " :class="{ active: taskActionsOpen === task.id }">
-            <MenuIcon class="menu-icon icon" />
-          </span>
-        </div>
-        <div class="group-actions">
-          <TaskActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask"
-            v-if="taskActionsOpen === task.id" />
-        </div>
-      </div>
+    <component :is="dragCmp" @click="() => activeTask = task.id"
+      :class="{ active: activeTask === task.id || task.checkbox }" class="task-list" v-for="(task, index) in tasks"
+      :key="index">
+      <TaskActions :taskId="task.id" @add="addTaskBelow" @copy="copyTask" @remove="removeTask" />
+
       <div class="first-col-color sticky" :style="{
         backgroundColor: groupBgColor,
         borderColor: groupBgColor,
@@ -29,7 +19,6 @@
 <script>
 import { Container, Draggable } from 'vue3-smooth-dnd'
 import TaskPreview from './TaskPreview.vue'
-import TaskActionBar from './TaskActionBar.vue'
 import TaskActions from './TaskActions.vue'
 import { utilService } from '../services/util.service'
 import { boardService } from '../services/board.service'
@@ -41,15 +30,11 @@ export default {
   emits: ['updateProp'],
   data() {
     return {
-      taskActionsOpen: null,
       dropPlaceholder: true,
       activeTask: null,
     }
   },
   methods: {
-    setTaskActionOpen(value) {
-      this.taskActionsOpen = value
-    },
     updateProp(taskId, prop, toUpdate) {
       this.$emit('updateProp', taskId, prop, toUpdate)
     },
@@ -107,7 +92,6 @@ export default {
     TaskPreview,
     Container,
     Draggable,
-    TaskActionBar,
     TaskActions,
     MenuIcon,
   },

@@ -4,7 +4,8 @@
   z-index: 100;
   left: 0;
   height: 100%;
-  opacity: 0;
+  background-color: $color-snow_white;
+
   &:hover {
     .dots-icon {
       opacity: 1;
@@ -12,10 +13,14 @@
   }
 }
 .task-actions {
-  position: absolute;
+  position: relative;
+
 }
 .task-actions-list {
   @include actions-list;
+ left:0;
+ top:10px;
+
   .task-action {
     @include action;
   }
@@ -25,6 +30,7 @@
   position: relative;
   .dots-icon {
     @include flex-center;
+    opacity: 0;
     border-radius: $btn-border-radius;
     &:hover {
       background-color: $primary-background-hover-color;
@@ -37,4 +43,8 @@
       }
     }
   }
+}
+
+.group-preview:has(.dots-icon.active) .task-actions-wrapper {
+  background-color: transparent;
 }

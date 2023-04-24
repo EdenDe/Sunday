@@ -5,8 +5,6 @@
   left: 0;
   height: 100%;
 
-
-
   &:hover {
     .dots-icon {
       opacity: 1;
@@ -17,7 +15,8 @@
   }
 }
 .group-actions-list {
-  @include actions-list(rem(230px), rem(264px), 102);
+  @include actions-list(rem(230px), rem(200px), 110);
+ 
   .group-action {
     @include action;
   }

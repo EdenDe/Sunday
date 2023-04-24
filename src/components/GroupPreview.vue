@@ -1,60 +1,24 @@
 <template>
   <section class="group-preview" :class="isListOpen ? 'list-open' : 'list-close'">
-    <GroupPreviewClose v-if="!isListOpen" :group="group" :isGroupActionsOpen="isGroupActionsOpen"
-      @toggleOpenList="toggleOpenList" @updateProp="updateProp" @copyGroup="copyGroup" />
+    <ColorPicker v-if="isColorModalOpen" @changeColor="changeColor" />
+
+    <GroupPreviewClose v-if="!isListOpen" :group="group" @toggleOpenList="toggleOpenList">
+      <GroupTitle :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused" />
+    </GroupPreviewClose>
+
     <template v-if="isListOpen">
       <div class="grid-title">
-        <div class="group-actions-wrapper sticky" :style="{ width: '40px' }">
-          <div class="svg-wrapper">
-            <span class="dots-icon" @click="toggleGroupActions(!isGroupActionsOpen)"
-              :class="isGroupActionsOpen ? 'active group-menu-active' : ''">
-              <MenuIcon class="menu-icon icon" />
-            </span>
-
-            <div class="group-actions" v-if="isGroupActionsOpen" v-clickOutside="toggleGroupActions">
-              <GroupActions :groupColor="group.color" @add="$emit('addGroup')" @copyGroup="copyGroup"
-                @renameTitle="toggleFocusGroupTitle" @openColorPicker="toggleColorModal" @toggleOpenList="toggleOpenList"
-                @remove="$emit('removeGroup', group.id)" />
-            </div>
-          </div>
-        </div>
+        <GroupActions />
 
         <div :style="{ width: '33px' }" class="open-list" v-tooltip="'Collapse group'">
           <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="toggleOpenList" />
         </div>
-        <GroupTitle :color="group.color" :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused"
-          :isColorModalOpen="isColorModalOpen" @updateProp="updateProp" @toggleFocusGroupTitle="toggleFocusGroupTitle"
-          @toggleColorModal="toggleColorModal" />
+        <GroupTitle :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused" />
       </div>
-
-      <Container class="group-labels" @drop="onDropColumn" orientation="horizontal" :drop-placeholder="{
-        className: 'drop-placeholder1',
-        animationDuration: '200',
-        showOnTop: true,
-      }">
-        <component :is="dragCmp" v-for="(label, index) in labels" :key="index" class="group-label" :class="label"
-          :groupColor="group.color" :style="{ width: label.width, height: '36px' }">
-          <div class="draggable-label">
-            {{ label.name }}
-          </div>
-          <div v-if="index === 1" class="first-col-color group-label"
-            :style="{ backgroundColor: group.color, width: '6px' }"></div>
-          <div v-if="index === 2" class="group-checkbox group-label">
-            <Checkbox :info="groupCheckbox" @updateProp="toggleSelectGroup" />
-          </div>
-        </component>
-      </Container>
+      <GroupLabels :groupCheckbox="groupCheckbox" @toggleSelectGroup="toggleSelectGroup" />
 
       <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
-      <div class="add-task-container">
-        <div class="task-option"></div>
-        <div class="first-col-color" :style="{ backgroundColor: group.color }"></div>
-        <Checkbox />
-
-        <form @submit.prevent="onAddTask" class="add-task-input-container sticky">
-          <input @focusout="onAddTask" placeholder="+ Add task" type="text" v-model="newTask.taskTitle" />
-        </form>
-      </div>
+      <AddTask :groupClr="group.color" @addTask="addTask" />
       <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
     </template>
     <TaskActionBar v-if="isActionBarOpen" :selectedTasksNum="selectedTasksNum" @closeActionBar="closeActionBar"
@@ -63,7 +27,9 @@
 </template>
 
 <script>
+import { computed } from 'vue'
 import GroupTitle from './GroupTitle.vue'
+import AddTask from './AddTask.vue'
 import TaskList from './TaskList.vue'
 import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
@@ -76,11 +42,24 @@ import ColorPicker from '../components/ColorPicker.vue'
 import GroupPreviewClose from './GroupPreviewClose.vue'
 //ICONS
 import ArrowDownIcon from '../assets/icons/ArrowRight.svg'
-import MenuIcon from '../assets/icons/Menu.svg'
+import GroupLabels from './GroupLabels.vue'
 export default {
   name: 'GroupPreview',
   props: {
     group: Object,
+  },
+  provide() {
+    return {
+      updateProp: this.updateProp,
+      removeGroup: () => this.$emit('removeGroup', this.group.id),
+      renameTitle: this.toggleFocusGroupTitle,
+      addGroup: () => this.$emit('addGroup'),
+      copyGroup: this.copyGroup,
+      toggleOpenList: this.toggleOpenList,
+      toggleColorModal: this.toggleColorModal,
+      toggleFocusGroupTitle: this.toggleFocusGroupTitle,
+      groupClr: computed(() => this.group.color)
+    }
   },
   data() {
     return {
@@ -91,46 +70,32 @@ export default {
       isListOpen: true,
       isColorModalOpen: false,
       isGroupActionsOpen: false,
-      dropPlaceholderOptions: {
-        className: 'drop-preview',
-        animationDuration: '150',
-        showOnTop: true,
-      },
       isTitleFocused: false,
     }
   },
   methods: {
-    onDropColumn({ addedIndex, removedIndex }) {
-      document.activeElement.blur()
-      addedIndex -= 2
-      removedIndex -= 2
-      let cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
-      cmpOrder.splice(addedIndex, 0, cmpOrder.splice(removedIndex, 1)[0])
-      this.$store.dispatch({
-        type: 'updateCurrBoard',
-        groupId: null,
-        taskId: null,
-        prop: 'cmpOrder',
-        toUpdate: cmpOrder,
-      })
-    },
     updateProp(taskId, prop, toUpdate) {
       console.log(taskId, prop, toUpdate)
       this.$store.dispatch({
         type: 'updateCurrBoard',
-        groupId: this.group.id,
+        groupId: prop === 'cmpOrder' ? null : this.group.id,
         taskId,
         prop,
         toUpdate,
       })
     },
-    onAddTask() {
-      if (this.newTask.taskTitle === '') return
+    changeColor(color) {
+      this.toggleFocusGroupTitle(false)
+      if (color === this.group.color) return
+      this.updateProp(null, 'color', color)
+    },
+    addTask(taskTitle) {
+      this.newTask.taskTitle = taskTitle
       let group = JSON.parse(JSON.stringify(this.group))
       group.tasks.push({ ...this.newTask })
       this.updateProp(null, 'tasks', group.tasks)
       this.newTask.id = 't' + utilService.makeId()
-      this.newTask.taskTitle = ''
+
     },
     removeTasks() {
       this.group.tasks = this.group.tasks.filter(
@@ -162,9 +127,7 @@ export default {
     closeActionBar() {
       this.toggleSelectGroup('checkbox', false)
     },
-    toggleGroupActions(value = false) {
-      this.isGroupActionsOpen = value
-    },
+
     copyGroup() {
       let newGroup = JSON.parse(JSON.stringify(this.group))
       newGroup.id = 'g' + utilService.makeId()
@@ -174,29 +137,19 @@ export default {
 
       this.$emit('addGroup', newGroup)
     },
-    toggleColorModal(value = true) {
+    toggleColorModal(value = !this.isColorModalOpen) {
       this.toggleFocusGroupTitle(value)
       this.isColorModalOpen = value
     },
     toggleFocusGroupTitle(value = true) {
+      console.log('change focus', value)
       this.isTitleFocused = value
+      if (!value) this.isColorModalOpen = value
     },
   },
   computed: {
-    labels() {
-      let labels = [
-        { name: '', width: '40px' },
-        { name: '', width: '6px' },
-        { name: '', width: '33px' },
-      ]
-      const cmpOrder = JSON.parse(JSON.stringify(this.$store.getters.cmpOrder))
-      labels.push(...cmpOrder.slice(1).map((cmp) => cmp))
-
-      return labels.map((label) => {
-        if (label.name === 'taskTitle') label.name = 'task'
-        if (label.name === 'txt') label.name = 'text'
-        return label
-      })
+    titleCmp() {
+      return `<GroupTitle :title="${this.group.title}" :tasksNumber="${this.tasksNumber}" :isTitleFocused="${this.isTitleFocused}" />`
     },
     groupTitle() {
       return this.group.title || 'Enter Title'
@@ -233,13 +186,7 @@ export default {
       if (this.group.tasks?.length) return this.group.tasks.length
       else return 'No '
     },
-    dragCmp() {
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return 'div'
-      } else {
-        return 'Draggable'
-      }
-    },
+
   },
   watch: {
     group: {
@@ -262,6 +209,7 @@ export default {
   },
   components: {
     GroupTitle,
+    AddTask,
     TaskList,
     ProgressBar,
     Container,
@@ -272,7 +220,8 @@ export default {
     ColorPicker,
     GroupPreviewClose,
     ArrowDownIcon,
-    MenuIcon,
+
+    GroupLabels
   },
 }
 </script>

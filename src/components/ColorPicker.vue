@@ -1,12 +1,8 @@
 <template>
   <section class="color-picker-wrapper">
     <div class="color-picker">
-      <button
-        v-for="color in colors"
-        class="color-picker-colors"
-        :style="{ backgroundColor: color }"
-        @mousedown="changeColor(color)"
-      ></button>
+      <button @mousedown.prevent="() => changeColor(color)" v-for="color in colors" class="color-picker-colors"
+        :style="{ backgroundColor: color }"></button>
     </div>
   </section>
 </template>
@@ -41,14 +37,9 @@ export default {
   emits: ['changeColor'],
   methods: {
     changeColor(color) {
-      console.log(color)
-      this.$emit('changeColor', 'color', color)
+      this.$emit('changeColor', color)
     },
   },
-  computed: {},
-  created() {},
-  components: {},
 }
 </script>
 
-<style></style>

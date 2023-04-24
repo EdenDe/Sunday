@@ -30,4 +30,6 @@ app.directive('clickOutside', clickOutside)
 app.directive('clickOutsideParent', clickOutsideParent)
 app.directive('focus', focus)
 
+app.config.unwrapInjectedRef = true
+
 app.mount('#app')

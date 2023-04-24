@@ -8,10 +8,10 @@
     height: 73px;
   }
 
-  &:hover .menu-icon {
-    opacity: 1;
-    fill: $color-mud_black;
-  }
+  // &:hover .menu-icon {
+  //   opacity: 1;
+  //   fill: $color-mud_black;
+  // }
   &-first-row {
     display: grid;
     grid-auto-flow: column;

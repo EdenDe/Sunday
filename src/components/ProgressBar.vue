@@ -1,43 +1,23 @@
 <template>
   <section class="progress-bar justify-center" v-if="tasks">
     <div :style="{ width: '40px' }"></div>
-    <div
-      v-if="isClose"
-      :style="{ width: '6px', backgroundColor: groupColor }"
-    ></div>
-    <div v-else :style="{ width: '6px' }"></div>
-    <div
-      v-for="(item, idx) in cmpOrder"
-      :key="idx"
-      :style="{ width: item.width }"
-    >
-      <div
-        v-if="item.name === 'status' || item.name === 'priority'"
-        class="flex progress-container"
-        :class="item.name"
-      >
-        <div
-          v-for="label in groupStatusProgress(item.name)"
-          v-tooltip="label.title"
-          :style="{
-            flex: 1,
-            'flex-basis': label.width,
-            backgroundColor: label.color,
-          }"
-        ></div>
+    <div :style="{ width: '6px', backgroundColor: isClose ? groupColor : '' }"></div>
+    <div v-for="(item, idx) in cmpOrder" :key="idx" :style="{ width: item.width }">
+      <div v-if="item.name === 'status' || item.name === 'priority'" class="flex progress-container" :class="item.name">
+        <div v-for="label in groupStatusProgress(item.name)" v-tooltip="label.title" :style="{
+          flex: 1,
+          'flex-basis': label.width,
+          backgroundColor: label.color,
+        }"></div>
       </div>
       <div v-else-if="item.name === 'timeline'" class="flex timeline-display">
-        <label
-          :data-diff="groupTimelineProgressRange"
-          class="timeline-label active-timeline"
-          :style="
-            progressTimeline?.length
-              ? {
-                  background: ` linear-gradient(90deg, ${groupColor} ${gradientPercent}, #323232 ${gradientPercent})`,
-                }
-              : null
-          "
-        >
+        <label :data-diff="groupTimelineProgressRange" class="timeline-label active-timeline" :style="
+          progressTimeline?.length
+            ? {
+              background: ` linear-gradient(90deg, ${groupColor} ${gradientPercent}, #323232 ${gradientPercent})`,
+            }
+            : null
+        ">
           {{ groupTimelineProgressDates }}
         </label>
       </div>
@@ -79,9 +59,8 @@ export default {
             res[title] = {
               width: Math.round(percentageWidth) + '%',
               color: color,
-              title: `${title} ${
-                res[title]
-              }/${totalTaskLength} ${percentageWidth.toFixed(1)}%`,
+              title: `${title} ${res[title]
+                }/${totalTaskLength} ${percentageWidth.toFixed(1)}%`,
             }
           }
         })

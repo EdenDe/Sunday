@@ -1,0 +1,94 @@
+.add-task-container {
+  @include task-cols;
+  @include grid-temp;
+  &::after {
+      @include infinity-table;
+      border-top: 1px solid $ui-border-color;
+      height: 38px;
+      grid-column: 12;
+    }
+  border-radius: 0 0 0 $border-radius-rounder;
+  background-color: $color-snow_white;
+
+  :not(:first-child, .task-option) {
+    border-bottom: 1px solid $layout-border-color;
+  }
+  > *:not(.task-option) {
+    box-shadow: $box-shadow-xs;
+  }
+  > :last-child {
+    border-right: none;
+  }
+  &:hover {
+    opacity: 1;
+    background-color: $color-border_light_gray;
+    & .task-option {
+      background-color: $color-snow_white;
+    }
+  }
+  & :nth-child(3) {
+    position: sticky;
+    left: 46px;
+  }
+  .first-col-color {
+    @include fullSize;
+    border-radius: 0 0 0 $border-radius-rounder;
+    opacity: 0.5;
+  }
+  .task-checkbox input {
+    opacity: 0.5;
+  }
+  .add-task-input-container {
+    @include flex-center;
+    height: 100%;
+    position: sticky;
+    left: 78px;
+    top: 0px;
+    grid-column: 4;
+    border-left: 1px solid $layout-border-color;
+    margin-left: -1px;
+
+    input {
+      padding: em(4px) 0;
+      padding-inline-start: 20px;
+      margin: 6px 10px;
+      width: 95%;
+      border-radius: $border-radius;
+      border: 1px solid transparent;
+      background-color: transparent;
+
+      &:hover {
+        border-color: $ui-border-on-secondary-color;
+      }
+      &:focus-within {
+        outline: 1px solid $color-basic_blue;
+      }
+    }
+  }
+
+  @include for-mobile-layout{
+    grid-template-columns: 10px 6px 200px 140px 129px 129px 99px 177px 278px 129px 1fr;
+     position: sticky;
+     left: 0;
+     &::after{
+      position: sticky;
+      left: 0;
+      border-top: none;
+     }
+
+     .task-option{
+      position: sticky;
+       left:0;   
+     }
+     .first-col-color{
+       left:10px;
+     }
+    .task-checkbox{
+       display:none;
+     }
+     .add-task-input-container{
+       left:16px;
+       grid-column: 3 span ;
+     }
+   }
+}

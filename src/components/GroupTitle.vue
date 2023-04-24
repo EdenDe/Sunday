@@ -1,30 +1,15 @@
 <template>
   <section class="group-title-container">
-    <div
-      class="group-title-wrapper flex align-center"
-      :style="{ color: color, width: '323px' }"
-    >
-      <span
-        class="btn-color"
-        :style="{ backgroundColor: color }"
-        @mousedown.prevent="toggleColorPicker(true)"
-      >
+    <div class="group-title-wrapper flex align-center" :style="{ color: groupClr, width: '323px' }">
+      <span class="btn-color" :style="{ backgroundColor: groupClr }" @mousedown.prevent="toggleColorPicker">
       </span>
-      <span
-        contenteditable
-        ref="groupTitle"
-        class="group-title"
-        @focusout="onChangeGroupProp('title', $event.target.innerText)"
-      >
+      <span contenteditable ref="groupTitle" class="group-title"
+        @focusout="(event) => onChangeTitle(event.target.innerText)">
         {{ title }}
       </span>
-      <span class="tasks-num flex align-items justify-start"
-        >{{ tasksNumber }} Tasks</span
-      >
+      <span class="tasks-num flex align-items justify-start">{{ tasksNumber }} Tasks</span>
     </div>
-    <div v-if="isColorPickerOpen" class="color-picker-wrapper">
-      <ColorPicker @changeColor="onChangeGroupProp" />
-    </div>
+
   </section>
 </template>
 
@@ -38,48 +23,34 @@ export default {
     title: String,
     tasksNumber: Number,
     isTitleFocused: Boolean,
-    isColorModalOpen: Boolean,
   },
-  emits: ['updateProp', 'toggleFocusGroupTitle', 'toggleColorModal'],
-  data() {
-    return {
-      isColorPickerOpen: false,
+  inject: ['toggleColorModal', 'updateProp', 'toggleFocusGroupTitle', 'groupClr'],
+  watch: {
+    isTitleFocused() {
+      if (this.isTitleFocused) {
+        this.$refs.groupTitle.focus()
+        console.log('focus')
+      } else {
+        console.log('unfocus')
+      }
     }
   },
-
-  watch: {
-    isTitleFocused: {
-      handler() {
-        this.focusGroupName()
-      },
-      immediate: true,
-    },
-    isColorModalOpen: {
-      handler() {
-        this.focusGroupName()
-        this.isColorPickerOpen = this.isColorModalOpen
-      },
-      immediate: true,
-    },
-  },
   methods: {
-    toggleColorPicker(value) {
-      this.isColorPickerOpen = value
+    toggleColorPicker() {
+      this.toggleColorModal()
     },
-    onChangeGroupProp(prop, value) {
-      this.$emit('updateProp', null, prop, value)
+    onChangeTitle(value) {
+      this.closeEditor()
+      if (value === this.title) return
+      this.updateProp(null, 'color', value)
       if (prop === 'title' && value.trim().length === 0) {
         value = 'Enter Title'
       }
-      this.closeEditor()
-    },
-    focusGroupName() {
-      if (this.isTitleFocused) this.$refs.groupTitle.focus()
+
     },
     closeEditor() {
-      this.$emit('toggleFocusGroupTitle', false)
-      this.toggleColorPicker(false)
-      this.$emit('toggleColorModal', false)
+      this.toggleFocusGroupTitle(false)
+
     },
   },
   components: {
