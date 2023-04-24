@@ -9,14 +9,12 @@
     <template v-if="isListOpen">
       <div class="grid-title">
         <GroupActions />
-
         <div :style="{ width: '33px' }" class="open-list" v-tooltip="'Collapse group'">
           <ArrowDownIcon class="open-list-icon icon" :style="{ fill: group.color }" @click="toggleOpenList" />
         </div>
         <GroupTitle :title="group.title" :tasksNumber="tasksNumber" :isTitleFocused="isTitleFocused" />
       </div>
       <GroupLabels :groupCheckbox="groupCheckbox" @toggleSelectGroup="toggleSelectGroup" />
-
       <TaskList v-if="isListOpen" :tasks="group.tasks" :groupBgColor="group.color" @updateProp="updateProp" />
       <AddTask :groupClr="group.color" @addTask="addTask" />
       <ProgressBar :tasks="group.tasks" :groupColor="group.color" />
@@ -28,21 +26,22 @@
 
 <script>
 import { computed } from 'vue'
+import { utilService } from '../services/util.service'
+import { boardService } from '../services/board.service'
+
 import GroupTitle from './GroupTitle.vue'
 import AddTask from './AddTask.vue'
 import TaskList from './TaskList.vue'
-import Checkbox from './dynamicCmps/Checkbox.vue'
 import ProgressBar from './ProgressBar.vue'
 import TaskActionBar from './TaskActionBar.vue'
 import GroupActions from './GroupActions.vue'
-import { Container, Draggable } from 'vue3-smooth-dnd'
-import { utilService } from '../services/util.service'
-import { boardService } from '../services/board.service'
 import ColorPicker from '../components/ColorPicker.vue'
 import GroupPreviewClose from './GroupPreviewClose.vue'
+import GroupLabels from './GroupLabels.vue'
+
 //ICONS
 import ArrowDownIcon from '../assets/icons/ArrowRight.svg'
-import GroupLabels from './GroupLabels.vue'
+
 export default {
   name: 'GroupPreview',
   props: {
@@ -212,15 +211,11 @@ export default {
     AddTask,
     TaskList,
     ProgressBar,
-    Container,
-    Draggable,
-    Checkbox,
     TaskActionBar,
     GroupActions,
     ColorPicker,
     GroupPreviewClose,
     ArrowDownIcon,
-
     GroupLabels
   },
 }
